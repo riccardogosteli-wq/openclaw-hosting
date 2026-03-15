@@ -31,7 +31,7 @@ const de = {
   costTotal: 'Gesamtkosten typisch: CHF 29–44/Mt.',
 
   stat1n: '< 10 Min', stat1l: 'bis zur Inbetriebnahme',
-  stat2n: '24/7', stat2l: 'Verfügbarkeit garantiert',
+  stat2n: '24/7', stat2l: 'Verfügbarkeit angestrebt',
   stat3n: '🇨🇭', stat3l: 'In der Schweiz gehostet',
   stat4n: 'ab CHF 24', stat4l: 'pro Monat',
 
@@ -135,7 +135,7 @@ const en: typeof de = {
   costTotal: 'Realistic total: CHF 29–44/mo',
 
   stat1n: '< 10 min', stat1l: 'until you\'re live',
-  stat2n: '24/7', stat2l: 'guaranteed uptime',
+  stat2n: '24/7', stat2l: 'target uptime',
   stat3n: '🇨🇭', stat3l: 'Hosted in Switzerland',
   stat4n: 'from CHF 24', stat4l: 'per month',
 
