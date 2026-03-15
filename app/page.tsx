@@ -158,7 +158,7 @@ const de = {
   finalNote: 'Oder direkt per E-Mail: support@openclaw-consulting.ch',
 
   footerCopy: '© 2026 ',
-  footerPrivacy: 'Datenschutz', footerImprint: 'Impressum',
+  footerPrivacy: 'Datenschutz', footerImprint: 'Impressum', footerAgb: 'AGB',
 }
 
 const en: typeof de = {
@@ -317,7 +317,7 @@ const en: typeof de = {
   finalNote: 'Or email us directly: support@openclaw-consulting.ch',
 
   footerCopy: '© 2026 ',
-  footerPrivacy: 'Privacy', footerImprint: 'Imprint',
+  footerPrivacy: 'Privacy', footerImprint: 'Imprint', footerAgb: 'Terms',
 }
 
 /* ─── PAGE ──────────────────────────────────────────────────────── */
@@ -665,7 +665,7 @@ export default function Home() {
       {/* FOOTER */}
       <footer className="footer">
         <div className="container">
-          <p>{t.footerCopy}<a href="https://openclaw-consulting.ch">openclaw-consulting.ch</a> · <a href="/datenschutz">{t.footerPrivacy}</a> · <a href="/impressum">{t.footerImprint}</a></p>
+          <p>{t.footerCopy}<a href="https://openclaw-consulting.ch">openclaw-consulting.ch</a> · <a href="/datenschutz">{t.footerPrivacy}</a> · <a href="/impressum">{t.footerImprint}</a> · <a href="/agb">{t.footerAgb}</a></p>
         </div>
       </footer>
     </>
