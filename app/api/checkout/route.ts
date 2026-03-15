@@ -24,43 +24,30 @@ export async function POST(req: NextRequest) {
     const interval = isAnnual ? 'P1Y' : 'P1M'
     const referenceId = `${plan}-${billing || 'monthly'}`
 
-    // Build Payrexx Gateway payload
-    const params = new URLSearchParams()
-    params.append('amount', String(amount))
-    params.append('currency', 'CHF')
-    params.append('sku', referenceId)
-    params.append('referenceId', referenceId)
-    params.append('vatRate', '0')
-    params.append('successRedirectUrl', `${BASE_URL}/success?plan=${plan}&billing=${billing || 'monthly'}`)
-    params.append('failedRedirectUrl', `${BASE_URL}/cancel`)
-    params.append('cancelRedirectUrl', `${BASE_URL}/cancel`)
-
-    // Subscription parameters
-    params.append('subscriptionState', '1')
-    params.append('subscriptionInterval', interval)
-    params.append('subscriptionPeriod', interval)
-    params.append('subscriptionCancellationInterval', 'P1M')
-
-    // Product description
-    params.append('basket[0][name]', planInfo.name)
-    params.append('basket[0][description]', isAnnual
-      ? `${planInfo.name} — Jahresabo`
-      : `${planInfo.name} — Monatsabo`)
-    params.append('basket[0][quantity]', '1')
-    params.append('basket[0][amount]', String(amount))
-    params.append('basket[0][vatRate]', '0')
-
-    // Sign with API key
-    const crypto = await import('crypto')
-    const apiSignature = crypto.createHmac('sha256', PAYREXX_API_KEY).update(params.toString()).digest('base64')
-    params.append('ApiSignature', apiSignature)
 
     const response = await fetch(
       `https://api.payrexx.com/v1/Gateway/?instance=${PAYREXX_INSTANCE}`,
       {
         method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: params.toString(),
+        headers: {
+          'Content-Type': 'application/json',
+          'x-api-key': PAYREXX_API_KEY,
+        },
+        body: JSON.stringify({
+          amount,
+          currency: 'CHF',
+          title: planInfo.name,
+          description: isAnnual ? `${planInfo.name} — Jahresabo` : `${planInfo.name} — Monatsabo`,
+          successRedirectUrl: `${BASE_URL}/success?plan=${plan}&billing=${billing || 'monthly'}`,
+          failedRedirectUrl: `${BASE_URL}/cancel`,
+          cancelRedirectUrl: `${BASE_URL}/cancel`,
+          referenceId,
+          sku: referenceId,
+          subscriptionState: 1,
+          subscriptionInterval: interval,
+          subscriptionPeriod: interval,
+          subscriptionCancellationInterval: 'P1M',
+        }),
       }
     )
 
