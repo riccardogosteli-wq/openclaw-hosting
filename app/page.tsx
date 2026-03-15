@@ -323,7 +323,7 @@ const en: typeof de = {
 /* ─── PAGE ──────────────────────────────────────────────────────── */
 export default function Home() {
   const [lang, setLang] = useState<'de'|'en'>('de')
-  const [billing, setBilling] = useState<'monthly'|'annual'>('monthly')
+  const [billing, setBilling] = useState<'monthly'|'annual'>('annual')
   const t = lang === 'de' ? de : en
 
   return (
@@ -505,30 +505,28 @@ export default function Home() {
           <h2 className="section-h2">{t.pH2}</h2>
 
           {/* Billing toggle */}
-          <div style={{display:'flex', alignItems:'center', gap:'0.75rem', marginBottom:'2rem', flexWrap:'wrap'}}>
+          <div style={{display:'inline-flex', alignItems:'center', gap:'0', marginBottom:'2rem', background:'#f1f5f9', borderRadius:'10px', padding:'4px'}}>
             <button
               onClick={() => setBilling('monthly')}
-              style={{padding:'0.45rem 1.1rem', borderRadius:'7px', border:'1.5px solid', fontWeight:600, fontSize:'0.88rem', cursor:'pointer', transition:'all 0.15s',
-                background: billing==='monthly' ? 'var(--green)' : 'transparent',
-                color: billing==='monthly' ? '#fff' : 'var(--slate)',
-                borderColor: billing==='monthly' ? 'var(--green)' : 'var(--border)'
+              style={{padding:'0.45rem 1.25rem', borderRadius:'7px', border:'none', fontWeight:600, fontSize:'0.88rem', cursor:'pointer', transition:'all 0.15s',
+                background: billing==='monthly' ? '#fff' : 'transparent',
+                color: billing==='monthly' ? 'var(--ink)' : 'var(--slate)',
+                boxShadow: billing==='monthly' ? '0 1px 4px rgba(0,0,0,0.1)' : 'none'
               }}>
               {lang==='de' ? 'Monatlich' : 'Monthly'}
             </button>
             <button
               onClick={() => setBilling('annual')}
-              style={{padding:'0.45rem 1.1rem', borderRadius:'7px', border:'1.5px solid', fontWeight:600, fontSize:'0.88rem', cursor:'pointer', transition:'all 0.15s',
+              style={{padding:'0.45rem 1.25rem', borderRadius:'7px', border:'none', fontWeight:600, fontSize:'0.88rem', cursor:'pointer', transition:'all 0.15s',
                 background: billing==='annual' ? 'var(--green)' : 'transparent',
                 color: billing==='annual' ? '#fff' : 'var(--slate)',
-                borderColor: billing==='annual' ? 'var(--green)' : 'var(--border)'
+                boxShadow: billing==='annual' ? '0 1px 4px rgba(18,168,120,0.3)' : 'none'
               }}>
               {lang==='de' ? 'Jährlich' : 'Annual'}
             </button>
-            {billing==='annual' && (
-              <span style={{background:'#dcfce7', color:'#14532d', padding:'0.2rem 0.65rem', borderRadius:'99px', fontSize:'0.78rem', fontWeight:700}}>
-                🎉 {lang==='de' ? '2 Monate gratis' : '2 months free'}
-              </span>
-            )}
+            <span style={{marginLeft:'0.6rem', background:'#dcfce7', color:'#14532d', padding:'0.2rem 0.6rem', borderRadius:'99px', fontSize:'0.75rem', fontWeight:700, whiteSpace:'nowrap'}}>
+              {lang==='de' ? '2 Monate gratis' : '2 months free'}
+            </span>
           </div>
 
           <div className="pricing-transparency">
