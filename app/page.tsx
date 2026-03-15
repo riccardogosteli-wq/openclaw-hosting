@@ -582,7 +582,27 @@ export default function Home() {
                   {p.features.map((f: string,i: number) => <li key={i}>{f}</li>)}
                   {(p.dims||[]).map((f: string,i: number) => <li key={i} className="dim">{f}</li>)}
                 </ul>
-                <a href={p.href} className={p.ctaClass}>{p.cta}</a>
+                <button
+                  className={p.ctaClass}
+                  style={{cursor:'pointer', textAlign:'center'}}
+                  onClick={async () => {
+                    const btn = document.activeElement as HTMLButtonElement
+                    if (btn) { btn.textContent = lang==='de'?'Wird geladen...':'Loading...'; btn.disabled = true }
+                    try {
+                      const r = await fetch('/api/checkout', {
+                        method: 'POST',
+                        headers: {'Content-Type':'application/json'},
+                        body: JSON.stringify({plan: p.plan, billing})
+                      })
+                      const d = await r.json()
+                      if (d.checkoutUrl) window.location.href = d.checkoutUrl
+                      else alert('Fehler: ' + (d.error || 'Unbekannt'))
+                    } catch {
+                      if (btn) { btn.textContent = p.cta; btn.disabled = false }
+                      alert('Verbindungsfehler')
+                    }
+                  }}
+                >{p.cta}</button>
               </div>
             ))}
           </div>
