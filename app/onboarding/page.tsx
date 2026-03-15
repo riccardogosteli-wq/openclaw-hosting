@@ -18,7 +18,7 @@ function OnboardingForm() {
   const [done, setDone] = useState(false)
   const [form, setForm] = useState({
     name: '', email: '', company: '',
-    telegramToken: '',
+    telegramToken: '', telegramUserId: '',
     aiProvider: 'anthropic', aiKey: '',
     language: 'de',
     notes: '',
@@ -136,12 +136,21 @@ function OnboardingForm() {
             <p style={hintStyle}>🔒 <strong>Sicherheitshinweis:</strong> Ihr Telegram-Token wird verschlüsselt übertragen und ausschliesslich auf Ihrem eigenen Server in der Schweiz gespeichert. Wir speichern ihn nicht auf unseren Systemen und haben nach der Einrichtung keinen Zugriff darauf.</p>
           </div>
 
+          <div style={{ marginTop: '1.1rem' }}>
+            <label style={labelStyle}>Ihre Telegram-Benutzer-ID *</label>
+            <input style={inputStyle} value={form.telegramUserId} onChange={e => set('telegramUserId', e.target.value.replace(/\D/g,''))} placeholder="123456789" inputMode="numeric" />
+            <p style={hintStyle}>
+              Ihr Assistent antwortet <strong>nur auf Ihre Nachrichten</strong> — das verhindert Missbrauch durch andere.<br />
+              Ihre ID in 10 Sekunden: Schreiben Sie in Telegram an <a href="https://t.me/userinfobot" target="_blank" rel="noopener noreferrer" style={{color:'var(--green)'}}>@userinfobot</a> — er antwortet sofort mit Ihrer numerischen ID.
+            </p>
+          </div>
+
           <div style={{ display: 'flex', gap: '0.75rem', marginTop: '1.75rem' }}>
             <button onClick={() => setStep(1)} style={{ flex: 1, padding: '0.8rem', background: 'transparent', border: '1px solid var(--border)', borderRadius: '9px', fontWeight: 600, fontSize: '0.93rem', cursor: 'pointer', color: 'var(--slate)' }}>← Zurück</button>
             <button
               onClick={() => setStep(3)}
-              disabled={!form.telegramToken}
-              style={{ flex: 2, padding: '0.8rem', background: form.telegramToken ? 'var(--green)' : 'var(--border)', color: form.telegramToken ? '#fff' : 'var(--slate)', border: 'none', borderRadius: '9px', fontWeight: 700, fontSize: '0.97rem', cursor: form.telegramToken ? 'pointer' : 'not-allowed' }}
+              disabled={!form.telegramToken || !form.telegramUserId}
+              style={{ flex: 2, padding: '0.8rem', background: form.telegramToken && form.telegramUserId ? 'var(--green)' : 'var(--border)', color: form.telegramToken && form.telegramUserId ? '#fff' : 'var(--slate)', border: 'none', borderRadius: '9px', fontWeight: 700, fontSize: '0.97rem', cursor: form.telegramToken && form.telegramUserId ? 'pointer' : 'not-allowed' }}
             >
               Weiter →
             </button>

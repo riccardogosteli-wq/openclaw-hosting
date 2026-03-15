@@ -7,7 +7,7 @@ const FROM_EMAIL = 'support@openclaw-consulting.ch'
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json()
-    const { name, email, company, telegramToken, aiProvider, aiKey, language, notes, plan } = body
+    const { name, email, company, telegramToken, telegramUserId, aiProvider, aiKey, language, notes, plan } = body
 
     if (!name || !email || !telegramToken || !aiKey) {
       return NextResponse.json({ error: 'Fehlende Pflichtfelder' }, { status: 400 })
@@ -32,11 +32,12 @@ export async function POST(req: NextRequest) {
             <tr><td style="padding:8px;background:#f7faf9;font-weight:600;">KI-Anbieter</td><td style="padding:8px;border-bottom:1px solid #e4ede9;">${aiProvider}</td></tr>
             <tr><td style="padding:8px;background:#f7faf9;font-weight:600;">API-Schlüssel</td><td style="padding:8px;border-bottom:1px solid #e4ede9;font-family:monospace;">${aiKey}</td></tr>
             <tr><td style="padding:8px;background:#f7faf9;font-weight:600;">Telegram Token</td><td style="padding:8px;border-bottom:1px solid #e4ede9;font-family:monospace;">${telegramToken}</td></tr>
+            <tr><td style="padding:8px;background:#f7faf9;font-weight:600;">Telegram User ID</td><td style="padding:8px;border-bottom:1px solid #e4ede9;font-family:monospace;">${telegramUserId || '—'}</td></tr>
             <tr><td style="padding:8px;background:#f7faf9;font-weight:600;">Anmerkungen</td><td style="padding:8px;">${notes || '—'}</td></tr>
           </table>
           <p style="margin-top:20px;font-size:13px;color:#4B5563;">
             ➡️ Jetzt Provisioning-Script ausführen:<br/>
-            <code>./provision-customer.sh --name "${name}" --email "${email}" --telegram-token "${telegramToken}" --ai-key "${aiKey}" --ai-provider "${aiProvider}" --language "${language}"</code>
+            <code>./provision-openclaw.sh --name "${name}" --email "${email}" --telegram-token "${telegramToken}" --telegram-user-id "${telegramUserId}" --ai-key "${aiKey}" --ai-provider "${aiProvider}" --language "${language}" --plan "${plan}"</code>
           </p>
         `,
       }),
