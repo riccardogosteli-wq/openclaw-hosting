@@ -498,7 +498,7 @@ export default function Home() {
           <div className="pricing-transparency">
             <strong>⚠️ {lang==='de'?'Wichtig':'Important'}:</strong> {t.pNote}
           </div>
-          <div className="plans" style={{gridTemplateColumns:'repeat(3,1fr)', maxWidth:'1000px'}}>
+          <div className="plans plans-3">
             {/* Starter */}
             <div className="plan">
               <h3>{t.p1n}</h3>

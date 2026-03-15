@@ -129,6 +129,7 @@ a { color: inherit; }
 .pricing-transparency { background: var(--green3); border: 1px solid #b2dfd4; border-radius: 10px; padding: 1.1rem 1.4rem; margin-bottom: 2.5rem; font-size: 0.88rem; color: var(--ink2); line-height: 1.7; }
 .pricing-transparency strong { color: var(--green2); }
 .plans { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; max-width: 800px; }
+.plans-3 { grid-template-columns: repeat(3, 1fr); max-width: 1000px; }
 .plan { background: var(--white); border: 1px solid var(--border); border-radius: var(--r); padding: 2rem; display: flex; flex-direction: column; }
 .plan.featured { border-color: var(--green); box-shadow: 0 0 0 1px rgba(18,168,120,0.2), 0 8px 32px rgba(18,168,120,0.1); }
 .plan-badge { display: inline-block; background: var(--green); color: #fff; font-size: 0.7rem; font-weight: 700; padding: 0.18rem 0.55rem; border-radius: 99px; margin-bottom: 0.75rem; letter-spacing: 0.06em; }
@@ -190,7 +191,7 @@ a { color: inherit; }
   .section-h2 { font-size: 1.75rem; }
   .steps { grid-template-columns: 1fr; }
   .uc-grid { grid-template-columns: 1fr 1fr; }
-  .plans { grid-template-columns: 1fr !important; max-width: 100% !important; }
+  .plans, .plans-3 { grid-template-columns: 1fr !important; max-width: 100% !important; }
   .faq-grid { grid-template-columns: 1fr; }
   .nav-links a:not(.nav-cta):not(.lang-btn) { display: none; }
   .compare-table { font-size: 0.78rem; }
