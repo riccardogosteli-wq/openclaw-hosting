@@ -20,12 +20,6 @@ export default function Impressum() {
           E-Mail: <a href="mailto:support@openclaw-consulting.ch" style={{ color: 'var(--green)' }}>support@openclaw-consulting.ch</a>
         </p>
 
-        <h2 style={{ fontSize: '1rem', marginBottom: '0.5rem', color: 'var(--ink)' }}>Verantwortlich für den Inhalt</h2>
-        <p style={{ color: 'var(--slate)', lineHeight: 1.7, marginBottom: '1.5rem' }}>
-          Riccardo Gosteli<br />
-          Truttikon, Schweiz
-        </p>
-
         <h2 style={{ fontSize: '1rem', marginBottom: '0.5rem', color: 'var(--ink)' }}>Hosting</h2>
         <p style={{ color: 'var(--slate)', lineHeight: 1.7, marginBottom: '1.5rem' }}>
           Diese Website wird über Vercel Inc., San Francisco, USA, bereitgestellt.<br />

@@ -4,7 +4,7 @@ import { useState } from 'react'
 /* ─── CONTENT ───────────────────────────────────────────────────── */
 const de = {
   navBrand1: 'OpenClaw', navBrand2: 'Hosting',
-  navHow: 'So funktioniert\'s', navPricing: 'Preise', navFaq: 'FAQ',
+  navHow: 'So funktioniert\'s', navPricing: 'Preise', navFaq: 'FAQ', navContact: 'Kontakt',
   navCta: 'Jetzt starten',
 
   badge: '🇨🇭 In der Schweiz gehostet',
@@ -155,7 +155,7 @@ const de = {
   finalH2a: 'Bereit für Ihren', finalH2b: 'persönlichen KI-Assistenten?',
   finalSub: 'Kein Technikwissen nötig. Wir richten alles ein — in unter 10 Minuten.',
   finalCta: 'Jetzt anfragen',
-  finalNote: 'Oder schreiben Sie uns: support@openclaw-consulting.ch',
+  finalNote: 'Oder direkt per E-Mail: support@openclaw-consulting.ch',
 
   footerCopy: '© 2026 ',
   footerPrivacy: 'Datenschutz', footerImprint: 'Impressum',
@@ -163,7 +163,7 @@ const de = {
 
 const en: typeof de = {
   navBrand1: 'OpenClaw', navBrand2: 'Hosting',
-  navHow: 'How it works', navPricing: 'Pricing', navFaq: 'FAQ',
+  navHow: 'How it works', navPricing: 'Pricing', navFaq: 'FAQ', navContact: 'Contact',
   navCta: 'Get started',
 
   badge: '🇨🇭 Hosted in Geneva · Infomaniak datacenter',
@@ -314,7 +314,7 @@ const en: typeof de = {
   finalH2a: 'Ready for your', finalH2b: 'personal AI assistant?',
   finalSub: 'No tech skills needed. We set everything up — in under 10 minutes.',
   finalCta: 'Get in touch',
-  finalNote: 'Or email us: support@openclaw-consulting.ch',
+  finalNote: 'Or email us directly: support@openclaw-consulting.ch',
 
   footerCopy: '© 2026 ',
   footerPrivacy: 'Privacy', footerImprint: 'Imprint',
@@ -336,6 +336,7 @@ export default function Home() {
             <a href="#how">{t.navHow}</a>
             <a href="#pricing">{t.navPricing}</a>
             <a href="#faq">{t.navFaq}</a>
+            <a href="/contact">{t.navContact}</a>
             <button className="lang-btn" onClick={() => setLang(l => l==='de'?'en':'de')}>{lang==='de'?'EN':'DE'}</button>
             <a href="#pricing" className="nav-cta">{t.navCta}</a>
           </div>
@@ -638,7 +639,7 @@ export default function Home() {
         <div className="container">
           <h2>{t.finalH2a} <em>{t.finalH2b}</em></h2>
           <p>{t.finalSub}</p>
-          <a href="mailto:support@openclaw-consulting.ch?subject=OpenClaw Hosting" className="btn-primary" style={{fontSize:'1.05rem', padding:'0.95rem 2.5rem'}}>{t.finalCta}</a>
+          <a href="/contact" className="btn-primary" style={{fontSize:'1.05rem', padding:'0.95rem 2.5rem'}}>{t.finalCta}</a>
           <p style={{marginTop:'1rem', fontSize:'0.83rem', color:'var(--dim)'}}>{t.finalNote}</p>
         </div>
       </section>
