@@ -68,7 +68,7 @@ export default function AgbPage() {
         </Section>
 
         <Section title="5. Kündigung und Rückerstattung">
-          <p style={{ color: '#4B5563', lineHeight: 1.75, marginBottom: '0.85rem', fontSize: '0.93rem' }}><strong>Monatliches Abo:</strong> Der Kunde kann jederzeit per E-Mail an support@openclaw-consulting.ch kündigen. Die Instanz bleibt bis zum Ende der bezahlten Periode aktiv. Es werden keine anteiligen Rückerstattungen für den laufenden Monat gewährt, sofern nicht gesetzlich vorgeschrieben.</p>
+          <p style={{ color: '#4B5563', lineHeight: 1.75, marginBottom: '0.85rem', fontSize: '0.93rem' }}><strong>Monatliches Abo:</strong> Der Kunde kann jederzeit per E-Mail an support@openclaw-consulting.ch kündigen. Die Instanz bleibt bis zum Ende der bezahlten Monatslaufzeit aktiv. Es werden keine Rückerstattungen für den laufenden Monat gewährt.</p>
           <p style={{ color: '#4B5563', lineHeight: 1.75, marginBottom: '0.85rem', fontSize: '0.93rem' }}><strong>Jahresabo:</strong> Das Jahresabo kann jederzeit per E-Mail gekündigt werden. Die Instanz bleibt bis zum Ende der bezahlten Jahresperiode aktiv. Es werden keine Rückerstattungen für die verbleibende Laufzeit gewährt. Der Jahresdiscount ist für den bezahlten Zeitraum garantiert.</p>
           {p('Der Anbieter kann das Vertragsverhältnis bei schwerwiegenden Verstössen gegen diese AGB mit sofortiger Wirkung kündigen.')}
         </Section>
