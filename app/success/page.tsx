@@ -18,7 +18,7 @@ function SuccessContent() {
         <div style={{ background: 'var(--green3)', border: '1px solid #b2dfd4', borderRadius: '10px', padding: '1rem 1.25rem', marginBottom: '1.75rem', textAlign: 'left', fontSize: '0.88rem', color: 'var(--ink2)', lineHeight: 1.6 }}>
           <strong>Was jetzt passiert:</strong><br />
           1. Sie füllen das Formular aus (5 Min.)<br />
-          2. Wir richten Ihren Server ein (in der Regel < 2 Stunden)<br />
+          2. Wir richten Ihren Server ein (in der Regel unter 2 Stunden)<br />
           3. Sie erhalten eine E-Mail mit Ihrem persönlichen Assistenten
         </div>
         <Link href={`/onboarding?plan=${plan}`} style={{ display: 'block', background: 'var(--green)', color: '#fff', padding: '0.85rem', borderRadius: '9px', fontWeight: 700, textDecoration: 'none', fontSize: '1rem', marginBottom: '1rem' }}>
