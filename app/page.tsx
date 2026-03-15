@@ -45,6 +45,16 @@ const de = {
   s3t: '3. Ihr Assistent ist online',
   s3d: 'Wir richten Ihren privaten Server in der Schweiz ein und senden Ihnen eine Bestätigungs-E-Mail. Ihr 24/7-Assistent ist bereit.',
 
+  dashLabel: 'Ihr persönliches Dashboard', dashH2: 'Alles auf einen Blick — nur für Sie.',
+  dashSub: 'Jeder Kunde erhält ein persönliches, passwortgeschütztes Dashboard. Sicher, nur über einen privaten Link erreichbar — niemand sonst hat Zugang.',
+  dashPoints: [
+    '🔒 Zugänglich nur mit Ihrem persönlichen Link — kein Login, kein gemeinsamer Server',
+    '🇨🇭 Dashboard läuft auf Ihrem eigenen Server in der Schweiz',
+    '🌤️ Live-Wetter für Ihren Standort (anpassbar)',
+    '🤖 Status Ihres Assistenten in Echtzeit',
+    '🔗 Übersicht aller möglichen Integrationen mit Telegram-Befehlen',
+    '⚙️ Modell wechseln und Einstellungen anpassen — direkt im Browser',
+  ],
   ucLabel: 'Was Ihr Assistent kann', ucH2: 'Ein Assistent. Unzählige Aufgaben.',
   ucSub: 'OpenClaw verbindet sich mit Ihren Tools und arbeitet proaktiv — nicht nur dann, wenn Sie etwas fragen.',
   ucs: [
@@ -185,6 +195,16 @@ const en: typeof de = {
   s3t: '3. Your assistant goes live',
   s3d: 'We set up your private Infomaniak server in Geneva and send you a confirmation. Your 24/7 assistant is ready.',
 
+  dashLabel: 'Your personal dashboard', dashH2: 'Everything at a glance — just for you.',
+  dashSub: 'Every customer gets a personal, password-protected dashboard. Secure, accessible only via a private link — nobody else has access.',
+  dashPoints: [
+    '🔒 Accessible only with your personal link — no login, no shared server',
+    '🇨🇭 Dashboard runs on your own server in Switzerland',
+    '🌤️ Live weather for your location (customisable)',
+    '🤖 Real-time status of your assistant',
+    '🔗 Overview of all integrations with Telegram commands',
+    '⚙️ Switch AI model and adjust settings — right in the browser',
+  ],
   ucLabel: 'What your assistant can do', ucH2: 'One assistant. Countless tasks.',
   ucSub: 'OpenClaw connects to your tools and works proactively — not just when you ask.',
   ucs: [
@@ -389,6 +409,34 @@ export default function Home() {
                 <p>{desc}</p>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* DASHBOARD PREVIEW */}
+      <section style={{padding:'5rem 0', background:'var(--surface)', borderTop:'1px solid var(--border)', borderBottom:'1px solid var(--border)'}}>
+        <div className="container">
+          <div className="section-label">{t.dashLabel}</div>
+          <h2 className="section-h2">{t.dashH2}</h2>
+          <p className="section-sub">{t.dashSub}</p>
+          <div style={{display:'grid', gridTemplateColumns:'1fr 1fr', gap:'3rem', alignItems:'center'}}>
+            {/* Screenshot */}
+            <div style={{borderRadius:'12px', overflow:'hidden', border:'1px solid var(--border)', boxShadow:'0 8px 40px rgba(15,23,20,0.12)'}}>
+              <img src="/dashboard-preview.jpg" alt="OpenClaw Dashboard Preview" style={{width:'100%', display:'block'}} />
+            </div>
+            {/* Points */}
+            <div style={{display:'flex', flexDirection:'column', gap:'0.85rem'}}>
+              {t.dashPoints.map((p, i) => (
+                <div key={i} style={{display:'flex', alignItems:'flex-start', gap:'0.75rem', padding:'0.85rem 1rem', background:'var(--bg)', border:'1px solid var(--border)', borderRadius:'9px', fontSize:'0.9rem', color:'var(--text)', lineHeight:1.55}}>
+                  {p}
+                </div>
+              ))}
+              <div style={{marginTop:'0.5rem', padding:'0.9rem 1rem', background:'rgba(181,245,66,0.06)', border:'1px solid rgba(181,245,66,0.2)', borderRadius:'9px', fontSize:'0.85rem', color:'var(--muted)', lineHeight:1.6}}>
+                <strong style={{color:'var(--accent)'}}>🔒 Technisch gesichert:</strong> {lang==='de'
+                  ? 'Das Dashboard ist nur über einen einzigartigen, privaten Link erreichbar. Kein Passwort das man vergessen kann — niemand anderes kann auf Ihr Dashboard zugreifen.'
+                  : 'The dashboard is only accessible via a unique, private link. No password to forget — nobody else can access your dashboard.'}
+              </div>
+            </div>
           </div>
         </div>
       </section>
