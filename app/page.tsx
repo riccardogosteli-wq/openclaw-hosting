@@ -12,7 +12,7 @@ const de = {
   h1b: 'Läuft 24/7.',
   h1c: 'Ohne Aufwand.',
   sub: 'OpenClaw auf Ihrem eigenen Server – wir richten alles ein, warten ihn und halten ihn am Laufen. Sie chatten einfach los. Auf Deutsch.',
-  cta: 'Jetzt starten – CHF 24/Mo',
+  cta: 'Jetzt starten – CHF 24/Mt.',
   ghost: 'Mehr erfahren',
   n1: '✓ Kein Technikwissen nötig',
   n2: '✓ Jederzeit kündbar',
@@ -26,14 +26,14 @@ const de = {
   ],
 
   costLabel: '💡 Transparente Gesamtkosten — weil wir nichts verstecken',
-  costUs: 'Hosting bei uns: CHF 24–44/Mo',
-  costApi: 'KI-API separat bei Anthropic/OpenAI: ca. CHF 5–20/Mo',
-  costTotal: 'Realistischer Gesamtbetrag: CHF 29–44/Mo',
+  costUs: 'Hosting: CHF 24–44/Mt.',
+  costApi: 'KI-API direkt bei Ihrem Anbieter: ca. CHF 5–20/Mt.',
+  costTotal: 'Gesamtkosten typisch: CHF 29–44/Mt.',
 
-  stat1n: '< 10 Min', stat1l: 'Setup-Zeit',
-  stat2n: '24/7', stat2l: 'Verfügbarkeit',
+  stat1n: '< 10 Min', stat1l: 'bis zur Inbetriebnahme',
+  stat2n: '24/7', stat2l: 'Verfügbarkeit garantiert',
   stat3n: '🇨🇭', stat3l: 'In der Schweiz gehostet',
-  stat4n: 'CHF 24', stat4l: 'Ab pro Monat',
+  stat4n: 'ab CHF 24', stat4l: 'pro Monat',
 
   howLabel: 'So einfach geht\'s', howH2: 'In 3 Schritten live',
   howSub: 'Kein Terminal. Kein SSH. Kein Technikwissen. Wir erledigen alles.',
@@ -59,7 +59,7 @@ const de = {
   ],
 
   pLabel: 'Preise', pH2: 'Einfach. Transparent. Fair.',
-  pNote: '⚠️ Was Sie uns bezahlen: den Betrieb Ihres privaten Servers in der Schweiz (CHF 24–44/Mo). Was Sie separat bezahlen: Ihren eigenen API-Schlüssel direkt bei Ihrem KI-Anbieter (ca. CHF 5–20/Mo je nach Nutzung). Diese Kosten gehen direkt an Anthropic, OpenAI oder Google — wir sehen diese Daten nie.',
+  pNote: '⚠️ Was Sie uns bezahlen: den Betrieb Ihres privaten Servers in der Schweiz (CHF 24–44/Mt.). Was Sie separat bezahlen: Ihren eigenen API-Schlüssel direkt bei Ihrem KI-Anbieter (ca. CHF 5–20/Mt. je nach Nutzung). Diese Kosten gehen direkt an Anthropic, OpenAI oder Google — wir sehen diese Daten nie.',
 
   p1n: 'Starter', p1d: 'Für Einzelpersonen und Einsteiger',
   p1p: '24', p1a: '→ CHF 220/Jahr (2 Monate gratis)',
@@ -82,15 +82,15 @@ const de = {
     ['Datenschutz', 'Je nach VPS-Anbieter', 'DSGVO & nDSG-konform'],
     ['Support', 'OpenClaw-Community (English)', 'Persönlicher Support auf Deutsch'],
     ['Uptime-Monitoring', 'Selbst einrichten', 'Inklusive'],
-    ['Preis', 'CHF 5–15/Mo VPS + Ihre Zeit', 'CHF 24/Mo — alles inklusive'],
+    ['Preis', 'CHF 5–15/Mt. VPS + Ihre Zeit', 'CHF 24/Mt. — alles inklusive'],
   ],
 
   fLabel: 'FAQ', fH2: 'Häufige Fragen',
   faqs: [
     ['Brauche ich technisches Wissen?', 'Nein. Wir richten alles für Sie ein. Sie benötigen lediglich einen Telegram-Account und einen API-Schlüssel Ihres KI-Anbieters — das dauert ca. 5 Minuten, und wir führen Sie Schritt für Schritt durch den Prozess.'],
-    ['Was ist ein API-Schlüssel?', 'Ihr Assistent benötigt Zugang zu einem KI-Modell (Claude, GPT-4 oder Gemini). Diesen Schlüssel erstellen Sie kostenlos auf der Website des jeweiligen Anbieters. Die Nutzungskosten (~CHF 5–20/Mo) werden direkt dort abgerechnet.'],
+    ['Was ist ein API-Schlüssel?', 'Ihr Assistent benötigt Zugang zu einem KI-Modell (Claude, GPT-4 oder Gemini). Diesen Schlüssel erstellen Sie kostenlos auf der Website des jeweiligen Anbieters. Die Nutzungskosten (~CHF 5–20/Mt.) werden direkt dort abgerechnet.'],
     ['Wo werden meine Daten gespeichert?', 'Ihr Server läuft in der Schweiz — vollständig DSGVO- und nDSG-konform. Ihren API-Schlüssel speichern wir nie; er wird direkt auf Ihren Server übertragen und verbleibt dort.'],
-    ['Welchen KI-Anbieter kann ich nutzen?', 'OpenClaw unterstützt Claude (Anthropic), GPT-4 (OpenAI) und Gemini (Google). Wir empfehlen Claude Haiku für budgetfreundliche Nutzung (~CHF 5/Mo) oder Claude Sonnet für maximale Qualität (~CHF 15–20/Mo).'],
+    ['Welchen KI-Anbieter kann ich nutzen?', 'OpenClaw unterstützt Claude (Anthropic), GPT-4 (OpenAI) und Gemini (Google). Wir empfehlen Claude Haiku für budgetfreundliche Nutzung (~CHF 5/Mt.) oder Claude Sonnet für maximale Qualität (~CHF 15–20/Mt.).'],
     ['Kann ich jederzeit kündigen?', 'Ja, beim Monatsabo ohne Mindestlaufzeit. Beim Jahresabo läuft der bereits bezahlte Zeitraum bis zum Ende aus. Keine versteckten Gebühren, keine Überraschungen.'],
     ['Was ist OpenClaw?', 'OpenClaw ist die beliebteste Open-Source-KI-Assistenten-Plattform mit über 200\'000 GitHub-Stars. Sie läuft auf Ihrem eigenen Server und verbindet sich mit Telegram, Discord oder WhatsApp.'],
     ['Was passiert bei OpenClaw-Updates?', 'Wir testen neue Versionen zuerst und spielen Updates automatisch ein — ohne Unterbruch. Sie müssen nichts tun.'],
@@ -134,10 +134,10 @@ const en: typeof de = {
   costApi: 'AI API separately at Anthropic/OpenAI: approx. CHF 5–20/mo',
   costTotal: 'Realistic total: CHF 29–44/mo',
 
-  stat1n: '< 10 min', stat1l: 'Setup time',
-  stat2n: '24/7', stat2l: 'Uptime',
-  stat3n: '🇨🇭', stat3l: 'Hosted in Geneva, Switzerland',
-  stat4n: 'CHF 24', stat4l: 'Starting price per month',
+  stat1n: '< 10 min', stat1l: 'until you\'re live',
+  stat2n: '24/7', stat2l: 'guaranteed uptime',
+  stat3n: '🇨🇭', stat3l: 'Hosted in Switzerland',
+  stat4n: 'from CHF 24', stat4l: 'per month',
 
   howLabel: 'How it works', howH2: 'Live in 3 steps',
   howSub: 'No terminal. No SSH. No technical knowledge required. We handle everything.',
