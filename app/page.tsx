@@ -115,7 +115,7 @@ const de = {
 
   p2badge: 'EMPFOHLEN', p2n: 'Pro', p2d: 'Für Power-User und Freelancer',
   p2p: '34', p2a: '→ CHF 320/Jahr (2 Monate gratis)',
-  p2fs: ['2 vCPU · 4 GB RAM · 40 GB SSD', '🇨🇭 Privater Server in der Schweiz', 'Telegram, Discord & WhatsApp', '🎙️ Sprachnotizen (Whisper vorinstalliert)', 'Automatische Updates, Monitoring & wöchentliche Backups', '✅ Persönliches Dashboard (nur für Sie zugänglich)', 'E-Mail-Support (24 Std.)', 'Jederzeit kündbar'],
+  p2fs: ['1 vCPU · 4 GB RAM · 50 GB SSD', '🇨🇭 Privater Server in der Schweiz', 'Telegram, Discord & WhatsApp', '🎙️ Sprachnotizen (Whisper vorinstalliert)', 'Automatische Updates, Monitoring & wöchentliche Backups', '✅ Persönliches Dashboard (nur für Sie zugänglich)', 'E-Mail-Support (24 Std.)', 'Jederzeit kündbar'],
   p2ds: ['Kein Onboarding-Call'],
   p2cta: 'Pro wählen',
 
@@ -271,7 +271,7 @@ const en: typeof de = {
 
   p2badge: 'RECOMMENDED', p2n: 'Pro', p2d: 'For power users & freelancers',
   p2p: '34', p2a: '→ CHF 320/year (2 months free)',
-  p2fs: ['2 vCPU · 4 GB RAM · 40 GB SSD', '🇨🇭 Private server in Switzerland', 'Telegram, Discord & WhatsApp', '🎙️ Voice notes (Whisper pre-installed)', 'Automatic updates, monitoring & weekly backups', '✅ Personal dashboard (private access only)', 'Email support (24h)', 'Cancel anytime'],
+  p2fs: ['1 vCPU · 4 GB RAM · 50 GB SSD', '🇨🇭 Private server in Switzerland', 'Telegram, Discord & WhatsApp', '🎙️ Voice notes (Whisper pre-installed)', 'Automatic updates, monitoring & weekly backups', '✅ Personal dashboard (private access only)', 'Email support (24h)', 'Cancel anytime'],
   p2ds: ['No onboarding call'],
   p2cta: 'Choose Pro',
 
