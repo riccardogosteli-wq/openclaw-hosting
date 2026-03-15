@@ -109,8 +109,8 @@ const de = {
 
   p1n: 'Starter', p1d: 'Für Einzelpersonen und Einsteiger',
   p1p: '24', p1a: '→ CHF 220/Jahr (2 Monate gratis)',
-  p1fs: ['Privater Server in der Schweiz', 'Telegram & Discord', 'Automatische Updates & Monitoring', 'E-Mail-Support (48 Std. Reaktionszeit)', 'Jederzeit kündbar'],
-  p1ds: ['Kein WhatsApp-Anschluss', 'Kein Onboarding-Call'],
+  p1fs: ['Privater Server in der Schweiz', 'Telegram, Discord & WhatsApp', 'Automatische Updates & Monitoring', 'E-Mail-Support (48 Std. Reaktionszeit)', 'Jederzeit kündbar'],
+  p1ds: ['Kein Onboarding-Call'],
   p1cta: 'Starter wählen',
 
   p2badge: 'EMPFOHLEN', p2n: 'Pro', p2d: 'Für Unternehmen und anspruchsvolle Nutzer',
@@ -259,8 +259,8 @@ const en: typeof de = {
 
   p1n: 'Starter', p1d: 'For individuals and beginners',
   p1p: '24', p1a: '→ CHF 220/year (2 months free)',
-  p1fs: ['Private server in Switzerland (Infomaniak, Geneva)', 'Telegram & Discord', 'Automatic updates & monitoring', 'Email support (48h response time)', 'Cancel anytime'],
-  p1ds: ['No WhatsApp', 'No onboarding call'],
+  p1fs: ['Private server in Switzerland', 'Telegram, Discord & WhatsApp', 'Automatic updates & monitoring', 'Email support (48h response time)', 'Cancel anytime'],
+  p1ds: ['No onboarding call'],
   p1cta: 'Choose Starter',
 
   p2badge: 'RECOMMENDED', p2n: 'Pro', p2d: 'For businesses & power users',
