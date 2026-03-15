@@ -17,6 +17,7 @@ const de = {
   n1: '✓ Kein Technikwissen nötig',
   n2: '✓ Jederzeit kündbar',
   n3: '✓ Setup in < 10 Min.',
+  trustBanner: '🔒 Wir speichern Ihren API-Schlüssel und Telegram-Token nie auf unseren Systemen — sie werden ausschliesslich auf Ihrem eigenen, privaten Server in der Schweiz gespeichert.',
 
   chatMessages: [
     { bot: true, text: 'Guten Morgen! Hier Ihr Tagesbriefing:' },
@@ -156,6 +157,7 @@ const en: typeof de = {
   n1: '✓ No technical skills needed',
   n2: '✓ Cancel anytime',
   n3: '✓ Live in < 10 min',
+  trustBanner: '🔒 We never store your API key or Telegram token on our systems — they are stored exclusively on your own private server in Switzerland.',
 
   chatMessages: [
     { bot: true, text: 'Good morning! Here\'s your daily briefing:' },
@@ -321,6 +323,7 @@ export default function Home() {
                 <span key={i} className="hero-note-item"><span>✓</span>{n.replace('✓ ','')}</span>
               ))}
             </div>
+            <div className="trust-banner">{t.trustBanner}</div>
           </div>
           {/* Chat demo */}
           <div className="chat-demo">

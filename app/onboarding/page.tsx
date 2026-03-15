@@ -133,7 +133,7 @@ function OnboardingForm() {
           <div>
             <label style={labelStyle}>Telegram-Bot-Token *</label>
             <input style={inputStyle} value={form.telegramToken} onChange={e => set('telegramToken', e.target.value)} placeholder="123456789:AAFxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" />
-            <p style={hintStyle}>Ihr Token bleibt sicher — er wird direkt auf Ihrem Server gespeichert und nicht bei uns.</p>
+            <p style={hintStyle}>🔒 <strong>Sicherheitshinweis:</strong> Ihr Telegram-Token wird verschlüsselt übertragen und ausschliesslich auf Ihrem eigenen Server in der Schweiz gespeichert. Wir speichern ihn nicht auf unseren Systemen und haben nach der Einrichtung keinen Zugriff darauf.</p>
           </div>
 
           <div style={{ display: 'flex', gap: '0.75rem', marginTop: '1.75rem' }}>
@@ -166,7 +166,7 @@ function OnboardingForm() {
             <div>
               <label style={labelStyle}>API-Schlüssel *</label>
               <input style={inputStyle} type="password" value={form.aiKey} onChange={e => set('aiKey', e.target.value)} placeholder="sk-ant-..." />
-              <p style={hintStyle}>Wird verschlüsselt übertragen und nur auf Ihrem Server gespeichert. Wir sehen ihn nicht.</p>
+              <p style={hintStyle}>🔒 <strong>Sicherheitshinweis:</strong> Ihr API-Schlüssel wird verschlüsselt übertragen und ausschliesslich auf Ihrem eigenen, privaten Server gespeichert. Er verlässt Ihren Server nie — wir speichern, sehen oder verarbeiten ihn nicht auf unserer Seite.</p>
             </div>
 
             <div>
