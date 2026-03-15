@@ -121,7 +121,10 @@ function OnboardingForm() {
       {step === 2 && (
         <div>
           <h2 style={{ fontFamily: 'Bricolage Grotesque, sans-serif', fontSize: '1.4rem', color: 'var(--ink)', marginBottom: '0.25rem' }}>Schritt 2: Telegram verbinden</h2>
-          <p style={{ color: 'var(--slate)', fontSize: '0.88rem', marginBottom: '1.75rem' }}>So erhält Ihr Assistent eine eigene Telefonnummer auf Telegram.</p>
+          <p style={{ color: 'var(--slate)', fontSize: '0.88rem', marginBottom: '0.75rem' }}>So erhält Ihr Assistent eine eigene Nummer auf Telegram.</p>
+          <a href="/guide" target="_blank" rel="noopener noreferrer" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.4rem', background: 'var(--green3)', border: '1px solid #b2dfd4', color: 'var(--green2)', padding: '0.45rem 0.9rem', borderRadius: '7px', fontSize: '0.84rem', fontWeight: 600, textDecoration: 'none', marginBottom: '1.25rem' }}>
+            📖 Schritt-für-Schritt Anleitung mit Bildern öffnen →
+          </a>
 
           <div style={{ background: 'var(--green3)', border: '1px solid #b2dfd4', borderRadius: '10px', padding: '1rem 1.25rem', marginBottom: '1.5rem', fontSize: '0.85rem', color: 'var(--ink2)', lineHeight: 1.7 }}>
             <strong>So erstellen Sie einen Telegram-Bot (2 Min.):</strong><br />
@@ -161,7 +164,10 @@ function OnboardingForm() {
       {step === 3 && (
         <div>
           <h2 style={{ fontFamily: 'Bricolage Grotesque, sans-serif', fontSize: '1.4rem', color: 'var(--ink)', marginBottom: '0.25rem' }}>Schritt 3: KI-Anbieter</h2>
-          <p style={{ color: 'var(--slate)', fontSize: '0.88rem', marginBottom: '1.75rem' }}>Das «Gehirn» Ihres Assistenten. Sie bezahlen Ihren Anbieter direkt.</p>
+          <p style={{ color: 'var(--slate)', fontSize: '0.88rem', marginBottom: '0.75rem' }}>Das «Gehirn» Ihres Assistenten. Sie bezahlen Ihren Anbieter direkt.</p>
+          <a href="/guide#api" target="_blank" rel="noopener noreferrer" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.4rem', background: 'var(--green3)', border: '1px solid #b2dfd4', color: 'var(--green2)', padding: '0.45rem 0.9rem', borderRadius: '7px', fontSize: '0.84rem', fontWeight: 600, textDecoration: 'none', marginBottom: '1.25rem' }}>
+            📖 Wo finde ich meinen API-Schlüssel? →
+          </a>
 
           <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
             <div>
