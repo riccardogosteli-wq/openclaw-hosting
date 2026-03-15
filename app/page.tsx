@@ -21,15 +21,15 @@ const de = {
 
   chatMessages: [
     { bot: true, text: 'Guten Morgen! Hier Ihr Tagesbriefing:' },
-    { bot: true, text: '📧 3 neue E-Mails — 1 dringend (Kundenprojekt)\n📅 2 Termine heute (10:00 & 14:30)\n🌤️ 8°C in Zürich, leicht bewölkt' },
-    { bot: false, text: 'Fasse die dringende Mail zusammen' },
-    { bot: true, text: 'Müller AG: Abgabefrist für das Angebot wurde auf Freitag vorgezogen (war nächste Woche). Soll ich einen Entwurf erstellen?' },
+    { bot: true, text: '📧 2 neue E-Mails — 1 dringend\n📅 3 Termine heute (9:00 / 14:00 / 16:30)\n🌤️ 11°C in Zürich, sonnig' },
+    { bot: false, text: 'Fasse dieses YouTube-Video zusammen: https://youtu.be/dQw4w9WgXcQ' },
+    { bot: true, text: '📺 Zusammenfassung: Das Video erklärt die wichtigsten Trends in der KI-Automatisierung für 2026 — besonders interessant ab Minute 4:30 zum Thema Agenten-Workflows. Soll ich die Kernpunkte als Liste aufbereiten?' },
   ],
 
   costLabel: '💡 Transparente Gesamtkosten — weil wir nichts verstecken',
-  costUs: 'Hosting: CHF 24–44/Mt.',
+  costUs: 'Hosting: CHF 19–59/Mt.',
   costApi: 'KI-API direkt bei Ihrem Anbieter: ca. CHF 5–20/Mt.',
-  costTotal: 'Gesamtkosten typisch: CHF 29–44/Mt.',
+  costTotal: 'Gesamtkosten typisch: CHF 24–79/Mt.',
 
   stat1n: '< 10 Min', stat1l: 'bis zur Inbetriebnahme',
   stat2n: '24/7', stat2l: 'Verfügbarkeit angestrebt',
@@ -105,18 +105,24 @@ const de = {
   ],
 
   pLabel: 'Preise', pH2: 'Einfach. Transparent. Fair.',
-  pNote: '⚠️ Was Sie uns bezahlen: den Betrieb Ihres privaten Servers in der Schweiz (CHF 24–44/Mt.). Was Sie separat bezahlen: Ihren eigenen API-Schlüssel direkt bei Ihrem KI-Anbieter (ca. CHF 5–20/Mt. je nach Nutzung). Diese Kosten gehen direkt an Anthropic, OpenAI oder Google — wir sehen diese Daten nie.',
+  pNote: '⚠️ Was Sie uns bezahlen: den Betrieb Ihres privaten Servers in der Schweiz (CHF 19–59/Mt.). Was Sie separat bezahlen: Ihren eigenen API-Schlüssel direkt bei Ihrem KI-Anbieter (ca. CHF 5–20/Mt. je nach Nutzung). Diese Kosten gehen direkt an Anthropic, OpenAI oder Google — wir sehen diese Daten nie.',
 
-  p1n: 'Starter', p1d: 'Für Einzelpersonen und Einsteiger',
-  p1p: '24', p1a: '→ CHF 220/Jahr (2 Monate gratis)',
-  p1fs: ['Privater Server in der Schweiz', 'Telegram, Discord & WhatsApp', 'Automatische Updates & Monitoring', 'E-Mail-Support (48 Std. Reaktionszeit)', 'Jederzeit kündbar'],
-  p1ds: ['Kein Onboarding-Call'],
+  p1n: 'Starter', p1d: 'Für Einsteiger und Privatpersonen',
+  p1p: '19', p1a: '→ CHF 180/Jahr (2 Monate gratis)',
+  p1fs: ['1 vCPU · 2 GB RAM · 20 GB SSD', '🇨🇭 Privater Server in der Schweiz', 'Telegram, Discord & WhatsApp', '🎙️ Sprachnotizen (Whisper vorinstalliert)', 'Automatische Updates & Monitoring', 'E-Mail-Support (48 Std.)', 'Jederzeit kündbar'],
+  p1ds: ['Kein Dashboard', 'Kein Onboarding-Call', 'Keine Backups'],
   p1cta: 'Starter wählen',
 
-  p2badge: 'EMPFOHLEN', p2n: 'Pro', p2d: 'Für Unternehmen und anspruchsvolle Nutzer',
-  p2p: '44', p2a: '→ CHF 400/Jahr (2 Monate gratis)',
-  p2fs: ['Privater Server in der Schweiz', 'Telegram, Discord & WhatsApp', 'Automatische Updates, Monitoring & Backups', 'Prioritäts-Support (24 Std. Reaktionszeit)', '30-minütiger Onboarding-Call auf Deutsch', 'Einrichtung von Custom Skills & Automationen', 'Jederzeit kündbar'],
+  p2badge: 'EMPFOHLEN', p2n: 'Pro', p2d: 'Für Power-User und Freelancer',
+  p2p: '34', p2a: '→ CHF 320/Jahr (2 Monate gratis)',
+  p2fs: ['2 vCPU · 4 GB RAM · 40 GB SSD', '🇨🇭 Privater Server in der Schweiz', 'Telegram, Discord & WhatsApp', '🎙️ Sprachnotizen (Whisper vorinstalliert)', 'Automatische Updates, Monitoring & wöchentliche Backups', '✅ Persönliches Dashboard (nur für Sie zugänglich)', 'E-Mail-Support (24 Std.)', 'Jederzeit kündbar'],
+  p2ds: ['Kein Onboarding-Call'],
   p2cta: 'Pro wählen',
+
+  p3badge: 'BUSINESS', p3n: 'Business', p3d: 'Für Unternehmen und Teams',
+  p3p: '59', p3a: '→ CHF 560/Jahr (2 Monate gratis)',
+  p3fs: ['4 vCPU · 8 GB RAM · 80 GB SSD', '🇨🇭 Privater Server in der Schweiz', 'Telegram, Discord & WhatsApp', '🎙️ Sprachnotizen (Whisper vorinstalliert)', 'Automatische Updates, Monitoring & tägliche Backups', '✅ Persönliches Dashboard (nur für Sie zugänglich)', 'Prioritäts-Support (< 24 Std.)', '30-minütiger Onboarding-Call auf Deutsch', 'Einrichtung von Custom Skills & Automationen', 'Jederzeit kündbar'],
+  p3cta: 'Business wählen',
 
   cLabel: 'Vergleich', cH2: 'Warum nicht selbst hosten?',
   cHead: ['Merkmal', 'Selbst-Hosting', 'OpenClaw Hosting (CH)'],
@@ -171,9 +177,9 @@ const en: typeof de = {
 
   chatMessages: [
     { bot: true, text: 'Good morning! Here\'s your daily briefing:' },
-    { bot: true, text: '📧 3 new emails — 1 urgent (client project)\n📅 2 meetings today (10:00 & 14:30)\n🌤️ 8°C in Zurich, partly cloudy' },
-    { bot: false, text: 'Summarize the urgent email' },
-    { bot: true, text: 'Müller AG: proposal deadline moved to Friday (was next week). Shall I draft a reply?' },
+    { bot: true, text: '📧 2 new emails — 1 urgent\n📅 3 meetings today (9:00 / 14:00 / 16:30)\n🌤️ 11°C in Zurich, sunny' },
+    { bot: false, text: 'Summarize this YouTube video: https://youtu.be/dQw4w9WgXcQ' },
+    { bot: true, text: '📺 Summary: The video covers the most important AI automation trends for 2026 — especially interesting from minute 4:30 on agent workflows. Want me to list the key points?' },
   ],
 
   costLabel: '💡 Full cost transparency — because we hide nothing',
@@ -255,18 +261,24 @@ const en: typeof de = {
   ],
 
   pLabel: 'Pricing', pH2: 'Simple. Transparent. Fair.',
-  pNote: '⚠️ What you pay us: running your private server in Switzerland (CHF 24–44/mo). What you pay separately: your own API key directly to your AI provider (approx. CHF 5–20/mo depending on usage). These costs go directly to Anthropic, OpenAI or Google — we never see that data.',
+  pNote: '⚠️ What you pay us: running your private server in Switzerland (CHF 19–59/mo). What you pay separately: your own API key directly to your AI provider (approx. CHF 5–20/mo depending on usage). These costs go directly to Anthropic, OpenAI or Google — we never see that data.',
 
   p1n: 'Starter', p1d: 'For individuals and beginners',
-  p1p: '24', p1a: '→ CHF 220/year (2 months free)',
-  p1fs: ['Private server in Switzerland', 'Telegram, Discord & WhatsApp', 'Automatic updates & monitoring', 'Email support (48h response time)', 'Cancel anytime'],
-  p1ds: ['No onboarding call'],
+  p1p: '19', p1a: '→ CHF 180/year (2 months free)',
+  p1fs: ['1 vCPU · 2 GB RAM · 20 GB SSD', '🇨🇭 Private server in Switzerland', 'Telegram, Discord & WhatsApp', '🎙️ Voice notes (Whisper pre-installed)', 'Automatic updates & monitoring', 'Email support (48h)', 'Cancel anytime'],
+  p1ds: ['No dashboard', 'No onboarding call', 'No backups'],
   p1cta: 'Choose Starter',
 
-  p2badge: 'RECOMMENDED', p2n: 'Pro', p2d: 'For businesses & power users',
-  p2p: '44', p2a: '→ CHF 400/year (2 months free)',
-  p2fs: ['Private server in Switzerland (Infomaniak, Geneva)', 'Telegram, Discord & WhatsApp', 'Automatic updates, monitoring & backups', 'Priority support (24h response time)', '30-min onboarding call in English or German', 'Custom skills & automation setup included', 'Cancel anytime'],
+  p2badge: 'RECOMMENDED', p2n: 'Pro', p2d: 'For power users & freelancers',
+  p2p: '34', p2a: '→ CHF 320/year (2 months free)',
+  p2fs: ['2 vCPU · 4 GB RAM · 40 GB SSD', '🇨🇭 Private server in Switzerland', 'Telegram, Discord & WhatsApp', '🎙️ Voice notes (Whisper pre-installed)', 'Automatic updates, monitoring & weekly backups', '✅ Personal dashboard (private access only)', 'Email support (24h)', 'Cancel anytime'],
+  p2ds: ['No onboarding call'],
   p2cta: 'Choose Pro',
+
+  p3badge: 'BUSINESS', p3n: 'Business', p3d: 'For companies & teams',
+  p3p: '59', p3a: '→ CHF 560/year (2 months free)',
+  p3fs: ['4 vCPU · 8 GB RAM · 80 GB SSD', '🇨🇭 Private server in Switzerland', 'Telegram, Discord & WhatsApp', '🎙️ Voice notes (Whisper pre-installed)', 'Automatic updates, monitoring & daily backups', '✅ Personal dashboard (private access only)', 'Priority support (< 24h)', '30-min onboarding call in German or English', 'Custom skills & automation setup included', 'Cancel anytime'],
+  p3cta: 'Choose Business',
 
   cLabel: 'Comparison', cH2: 'Why not self-host?',
   cHead: ['Feature', 'Self-hosting', 'OpenClaw Hosting (CH)'],
@@ -486,7 +498,8 @@ export default function Home() {
           <div className="pricing-transparency">
             <strong>⚠️ {lang==='de'?'Wichtig':'Important'}:</strong> {t.pNote}
           </div>
-          <div className="plans">
+          <div className="plans" style={{gridTemplateColumns:'repeat(3,1fr)', maxWidth:'1000px'}}>
+            {/* Starter */}
             <div className="plan">
               <h3>{t.p1n}</h3>
               <p className="plan-desc">{t.p1d}</p>
@@ -498,6 +511,7 @@ export default function Home() {
               </ul>
               <a href={`mailto:support@openclaw-consulting.ch?subject=OpenClaw Hosting Starter`} className="plan-cta outline">{t.p1cta}</a>
             </div>
+            {/* Pro */}
             <div className="plan featured">
               <span className="plan-badge">{t.p2badge}</span>
               <h3>{t.p2n}</h3>
@@ -506,8 +520,21 @@ export default function Home() {
               <p className="plan-annual">{t.p2a}</p>
               <ul className="plan-features">
                 {t.p2fs.map((f,i) => <li key={i}>{f}</li>)}
+                {t.p2ds.map((f,i) => <li key={i} className="dim">{f}</li>)}
               </ul>
               <a href={`mailto:support@openclaw-consulting.ch?subject=OpenClaw Hosting Pro`} className="plan-cta">{t.p2cta}</a>
+            </div>
+            {/* Business */}
+            <div className="plan">
+              <span className="plan-badge" style={{background:'var(--ink2)', color:'#fff'}}>{t.p3badge}</span>
+              <h3>{t.p3n}</h3>
+              <p className="plan-desc">{t.p3d}</p>
+              <div className="plan-price"><span className="amount">CHF {t.p3p}</span><span className="per">/mo</span></div>
+              <p className="plan-annual">{t.p3a}</p>
+              <ul className="plan-features">
+                {t.p3fs.map((f,i) => <li key={i}>{f}</li>)}
+              </ul>
+              <a href={`mailto:support@openclaw-consulting.ch?subject=OpenClaw Hosting Business`} className="plan-cta outline">{t.p3cta}</a>
             </div>
           </div>
           <p style={{marginTop:'1.5rem', fontSize:'0.83rem', color:'var(--dim)'}}>
