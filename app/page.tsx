@@ -58,6 +58,41 @@ const de = {
     { icon:'👤', t:'Persönlicher Assistent', d:'Reiseplanung, Rezeptideen, Geschenkvorschläge, Fremdsprachen üben – alles bequem über Telegram.', ex:'"Was soll ich heute kochen?"' },
   ],
 
+  secLabel: 'Sicherheit', secH2: 'Ihre Daten sind sicher. Wirklich.',
+  secSub: 'Wir wissen, dass die Frage nach Sicherheit berechtigt ist. Hier sind die konkreten Antworten.',
+  secItems: [
+    {
+      icon: '🔑',
+      title: 'API-Schlüssel: direkt auf Ihren Server',
+      desc: 'Ihr KI-API-Schlüssel wird beim Onboarding einmalig übertragen und direkt auf Ihrem privaten Server gespeichert. Wir sehen ihn nicht, speichern ihn nicht und haben danach keinen Zugriff darauf.',
+    },
+    {
+      icon: '🖥️',
+      title: 'Ihr eigener, isolierter Server',
+      desc: 'Jeder Kunde erhält einen eigenen, vollständig isolierten Server in der Schweiz. Keine geteilte Infrastruktur, kein gemeinsamer Speicher — Ihre Daten liegen nur bei Ihnen.',
+    },
+    {
+      icon: '🇨🇭',
+      title: 'Datenhaltung in der Schweiz',
+      desc: 'Ihr Server läuft bei einem Schweizer Anbieter und unterliegt dem Schweizer Datenschutzgesetz (nDSG) sowie der DSGVO. Keine Weitergabe an Dritte, keine Daten ausserhalb der Schweiz/EU.',
+    },
+    {
+      icon: '🔒',
+      title: 'Telegram-Token: ausschliesslich auf Ihrem Server',
+      desc: 'Ihr Telegram-Bot-Token wird ebenfalls nur auf Ihrem Server gespeichert. OpenClaw kommuniziert damit direkt mit Telegram — ohne Umweg über unsere Infrastruktur.',
+    },
+    {
+      icon: '👁️',
+      title: 'Wir lesen Ihre Nachrichten nicht',
+      desc: 'Wir haben technisch keinen Zugriff auf Ihre Chat-Verläufe. Alle Gespräche mit Ihrem Assistenten laufen verschlüsselt zwischen Telegram und Ihrem Server ab.',
+    },
+    {
+      icon: '🚫',
+      title: 'Kein Vendor Lock-in',
+      desc: 'OpenClaw ist Open Source. Wenn Sie den Dienst beenden, können Sie Ihren Server und alle Daten jederzeit mitnehmen oder löschen lassen. Keine Abhängigkeit von uns.',
+    },
+  ],
+
   pLabel: 'Preise', pH2: 'Einfach. Transparent. Fair.',
   pNote: '⚠️ Was Sie uns bezahlen: den Betrieb Ihres privaten Servers in der Schweiz (CHF 24–44/Mt.). Was Sie separat bezahlen: Ihren eigenen API-Schlüssel direkt bei Ihrem KI-Anbieter (ca. CHF 5–20/Mt. je nach Nutzung). Diese Kosten gehen direkt an Anthropic, OpenAI oder Google — wir sehen diese Daten nie.',
 
@@ -160,6 +195,41 @@ const en: typeof de = {
     { icon:'📊', t:'Reports & dashboards', d:'Weekly reports, revenue summaries, or status updates — automatically in your chat.', ex:'"How was my week?"' },
     { icon:'🔗', t:'Tool integrations', d:'Gmail, Google Calendar, Notion, JIRA, Slack, WordPress and many more.', ex:'"Create a JIRA ticket for this"' },
     { icon:'👤', t:'Personal assistant', d:'Travel planning, recipe suggestions, gift ideas, language practice — all via Telegram.', ex:'"What should I cook tonight?"' },
+  ],
+
+  secLabel: 'Security', secH2: 'Your data is safe. For real.',
+  secSub: 'We know security questions are legitimate. Here are the concrete answers.',
+  secItems: [
+    {
+      icon: '🔑',
+      title: 'API key: straight to your server',
+      desc: 'Your AI API key is transferred once during onboarding and stored directly on your private server. We never see it, never store it, and have no access to it afterwards.',
+    },
+    {
+      icon: '🖥️',
+      title: 'Your own isolated server',
+      desc: 'Every customer gets their own fully isolated server in Switzerland. No shared infrastructure, no shared storage — your data lives only with you.',
+    },
+    {
+      icon: '🇨🇭',
+      title: 'Data stored in Switzerland',
+      desc: 'Your server runs with a Swiss provider and is subject to Swiss data protection law (nDSG) and GDPR. No data shared with third parties, no data outside Switzerland/EU.',
+    },
+    {
+      icon: '🔒',
+      title: 'Telegram token: only on your server',
+      desc: 'Your Telegram bot token is also stored exclusively on your server. OpenClaw communicates directly with Telegram — no detour through our infrastructure.',
+    },
+    {
+      icon: '👁️',
+      title: 'We cannot read your messages',
+      desc: 'We have no technical access to your chat history. All conversations with your assistant are encrypted between Telegram and your server.',
+    },
+    {
+      icon: '🚫',
+      title: 'No vendor lock-in',
+      desc: 'OpenClaw is open source. If you cancel, you can take your server and all data with you or have it deleted. No dependency on us.',
+    },
   ],
 
   pLabel: 'Pricing', pH2: 'Simple. Transparent. Fair.',
@@ -333,6 +403,24 @@ export default function Home() {
                 <h3>{uc.t}</h3>
                 <p>{uc.d}</p>
                 <p className="uc-example">{uc.ex}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* SECURITY */}
+      <section className="security" id="security">
+        <div className="container">
+          <div className="section-label">{t.secLabel}</div>
+          <h2 className="section-h2">{t.secH2}</h2>
+          <p className="section-sub">{t.secSub}</p>
+          <div className="sec-grid">
+            {t.secItems.map((item, i) => (
+              <div key={i} className="sec-card">
+                <div className="sec-icon">{item.icon}</div>
+                <h3>{item.title}</h3>
+                <p>{item.desc}</p>
               </div>
             ))}
           </div>

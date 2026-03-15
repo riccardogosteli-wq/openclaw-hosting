@@ -102,6 +102,16 @@ a { color: inherit; }
 .uc-card p { font-size: 0.84rem; color: var(--slate); line-height: 1.55; }
 .uc-example { margin-top: 0.6rem; font-size: 0.79rem; color: var(--green2); font-style: italic; border-left: 2px solid var(--green3); padding-left: 0.5rem; }
 
+/* ── SECURITY ────────────────────────────── */
+.security { padding: 5rem 0; }
+.sec-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+.sec-card { background: var(--white); border: 1px solid var(--border); border-radius: var(--r); padding: 1.5rem; border-left: 3px solid var(--green); }
+.sec-icon { font-size: 1.5rem; margin-bottom: 0.6rem; }
+.sec-card h3 { font-size: 0.94rem; color: var(--ink); margin-bottom: 0.4rem; font-weight: 600; }
+.sec-card p { font-size: 0.85rem; color: var(--slate); line-height: 1.6; }
+@media (max-width: 768px) { .sec-grid { grid-template-columns: 1fr; } }
+@media (max-width: 900px) { .sec-grid { grid-template-columns: 1fr 1fr; } }
+
 /* ── PRICING ─────────────────────────────── */
 .pricing { padding: 5rem 0; }
 .pricing-transparency { background: var(--green3); border: 1px solid #b2dfd4; border-radius: 10px; padding: 1.1rem 1.4rem; margin-bottom: 2.5rem; font-size: 0.88rem; color: var(--ink2); line-height: 1.7; }
