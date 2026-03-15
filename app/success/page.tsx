@@ -25,7 +25,7 @@ function SuccessContent() {
           Onboarding-Formular ausfüllen →
         </Link>
         <p style={{ fontSize: '0.82rem', color: 'var(--slate)' }}>
-          Fragen? <a href="mailto:hello@openclaw-consulting.ch" style={{ color: 'var(--green)' }}>hello@openclaw-consulting.ch</a>
+          Fragen? <a href="mailto:support@openclaw-consulting.ch" style={{ color: 'var(--green)' }}>support@openclaw-consulting.ch</a>
         </p>
       </div>
     </main>

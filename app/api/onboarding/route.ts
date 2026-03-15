@@ -1,8 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server'
 
 const RESEND_API_KEY = process.env.RESEND_API_KEY || 're_jSGcCv3C_NHdjr17ryPUYFtUx3S3qKQEZ'
-const NOTIFY_EMAIL = 'riccardo.gosteli@advance-metrics.com'
-const FROM_EMAIL = 'hello@openclaw-consulting.ch'
+const NOTIFY_EMAIL = 'riccardogosteli@gmail.com' // personal fallback until support@ is verified
+const FROM_EMAIL = 'support@openclaw-consulting.ch'
 
 export async function POST(req: NextRequest) {
   try {
@@ -64,7 +64,7 @@ export async function POST(req: NextRequest) {
             </div>
             <p style="color:#4B5563;line-height:1.7;">
               Bei Fragen: einfach auf diese E-Mail antworten oder schreiben Sie uns an<br/>
-              <a href="mailto:hello@openclaw-consulting.ch" style="color:#12A878;">hello@openclaw-consulting.ch</a>
+              <a href="mailto:support@openclaw-consulting.ch" style="color:#12A878;">support@openclaw-consulting.ch</a>
             </p>
             <p style="color:#4B5563;line-height:1.7;">Freundliche Grüsse,<br/>Riccardo Gosteli<br/>OpenClaw Hosting</p>
             <hr style="border:none;border-top:1px solid #E4EDE9;margin:24px 0;"/>

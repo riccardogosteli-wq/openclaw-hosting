@@ -21,7 +21,7 @@ export default function Datenschutz() {
         <p style={{ color: 'var(--slate)', marginBottom: '1.5rem' }}>
           Alexandra Gosteli Digital Solutions<br />
           Truttikon, Schweiz<br />
-          E-Mail: <a href="mailto:hello@openclaw-consulting.ch" style={{ color: 'var(--green)' }}>hello@openclaw-consulting.ch</a>
+          E-Mail: <a href="mailto:support@openclaw-consulting.ch" style={{ color: 'var(--green)' }}>support@openclaw-consulting.ch</a>
         </p>
 
         <h2 style={{ fontSize: '1.1rem', margin: '2rem 0 0.5rem' }}>2. Erhobene Daten und Verwendungszweck</h2>
@@ -65,7 +65,7 @@ export default function Datenschutz() {
           <li>Datenportabilität</li>
         </ul>
         <p style={{ color: 'var(--slate)', marginBottom: '1.5rem' }}>
-          Für Anfragen wenden Sie sich an: <a href="mailto:hello@openclaw-consulting.ch" style={{ color: 'var(--green)' }}>hello@openclaw-consulting.ch</a>
+          Für Anfragen wenden Sie sich an: <a href="mailto:support@openclaw-consulting.ch" style={{ color: 'var(--green)' }}>support@openclaw-consulting.ch</a>
         </p>
 
         <h2 style={{ fontSize: '1.1rem', margin: '2rem 0 0.5rem' }}>7. Cookies und Tracking</h2>

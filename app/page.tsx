@@ -136,7 +136,7 @@ const de = {
   finalH2a: 'Bereit für Ihren', finalH2b: 'persönlichen KI-Assistenten?',
   finalSub: 'Kein Technikwissen nötig. Wir richten alles ein — in unter 10 Minuten.',
   finalCta: 'Jetzt anfragen',
-  finalNote: 'Oder schreiben Sie uns: hello@openclaw-consulting.ch',
+  finalNote: 'Oder schreiben Sie uns: support@openclaw-consulting.ch',
 
   footerCopy: '© 2026 Alexandra Gosteli Digital Solutions · ',
   footerPrivacy: 'Datenschutz', footerImprint: 'Impressum',
@@ -276,7 +276,7 @@ const en: typeof de = {
   finalH2a: 'Ready for your', finalH2b: 'personal AI assistant?',
   finalSub: 'No tech skills needed. We set everything up — in under 10 minutes.',
   finalCta: 'Get in touch',
-  finalNote: 'Or email us: hello@openclaw-consulting.ch',
+  finalNote: 'Or email us: support@openclaw-consulting.ch',
 
   footerCopy: '© 2026 Alexandra Gosteli Digital Solutions · ',
   footerPrivacy: 'Privacy', footerImprint: 'Imprint',
@@ -448,7 +448,7 @@ export default function Home() {
                 {t.p1fs.map((f,i) => <li key={i}>{f}</li>)}
                 {t.p1ds.map((f,i) => <li key={i} className="dim">{f}</li>)}
               </ul>
-              <a href={`mailto:hello@openclaw-consulting.ch?subject=OpenClaw Hosting Starter`} className="plan-cta outline">{t.p1cta}</a>
+              <a href={`mailto:support@openclaw-consulting.ch?subject=OpenClaw Hosting Starter`} className="plan-cta outline">{t.p1cta}</a>
             </div>
             <div className="plan featured">
               <span className="plan-badge">{t.p2badge}</span>
@@ -459,7 +459,7 @@ export default function Home() {
               <ul className="plan-features">
                 {t.p2fs.map((f,i) => <li key={i}>{f}</li>)}
               </ul>
-              <a href={`mailto:hello@openclaw-consulting.ch?subject=OpenClaw Hosting Pro`} className="plan-cta">{t.p2cta}</a>
+              <a href={`mailto:support@openclaw-consulting.ch?subject=OpenClaw Hosting Pro`} className="plan-cta">{t.p2cta}</a>
             </div>
           </div>
           <p style={{marginTop:'1.5rem', fontSize:'0.83rem', color:'var(--dim)'}}>
@@ -515,7 +515,7 @@ export default function Home() {
         <div className="container">
           <h2>{t.finalH2a} <em>{t.finalH2b}</em></h2>
           <p>{t.finalSub}</p>
-          <a href="mailto:hello@openclaw-consulting.ch?subject=OpenClaw Hosting" className="btn-primary" style={{fontSize:'1.05rem', padding:'0.95rem 2.5rem'}}>{t.finalCta}</a>
+          <a href="mailto:support@openclaw-consulting.ch?subject=OpenClaw Hosting" className="btn-primary" style={{fontSize:'1.05rem', padding:'0.95rem 2.5rem'}}>{t.finalCta}</a>
           <p style={{marginTop:'1rem', fontSize:'0.83rem', color:'var(--dim)'}}>{t.finalNote}</p>
         </div>
       </section>

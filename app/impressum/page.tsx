@@ -17,7 +17,7 @@ export default function Impressum() {
         <p style={{ color: 'var(--slate)', lineHeight: 1.7, marginBottom: '1.5rem' }}>
           Alexandra Gosteli Digital Solutions<br />
           Truttikon, Schweiz<br />
-          E-Mail: <a href="mailto:hello@openclaw-consulting.ch" style={{ color: 'var(--green)' }}>hello@openclaw-consulting.ch</a>
+          E-Mail: <a href="mailto:support@openclaw-consulting.ch" style={{ color: 'var(--green)' }}>support@openclaw-consulting.ch</a>
         </p>
 
         <h2 style={{ fontSize: '1rem', marginBottom: '0.5rem', color: 'var(--ink)' }}>Verantwortlich für den Inhalt</h2>

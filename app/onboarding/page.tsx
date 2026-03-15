@@ -64,7 +64,7 @@ function OnboardingForm() {
         Wir richten Ihren persönlichen OpenClaw-Assistenten ein und melden uns innerhalb von 24 Stunden per E-Mail.
       </p>
       <p style={{ fontSize: '0.85rem', color: 'var(--slate)' }}>
-        Fragen? <a href="mailto:hello@openclaw-consulting.ch" style={{ color: 'var(--green)' }}>hello@openclaw-consulting.ch</a>
+        Fragen? <a href="mailto:support@openclaw-consulting.ch" style={{ color: 'var(--green)' }}>support@openclaw-consulting.ch</a>
       </p>
     </div>
   )
