@@ -4,7 +4,7 @@ import { useState } from 'react'
 /* ─── CONTENT ───────────────────────────────────────────────────── */
 const de = {
   navBrand1: 'OpenClaw', navBrand2: 'Hosting',
-  navHow: 'So funktioniert\'s', navPricing: 'Preise', navFaq: 'FAQ', navContact: 'Kontakt',
+  navHow: 'So funktioniert\'s', navPricing: 'Preise', navFaq: 'FAQ', navContact: 'Kontakt', navAbout: 'Über uns',
   navCta: 'Jetzt starten',
 
   badge: '🇨🇭 In der Schweiz gehostet',
@@ -70,6 +70,13 @@ const de = {
     { icon:'📈', t:'Finanz- & Markt-Monitoring', d:'Portfolio-Überblick, Währungskurse, Aktienalarme und wöchentliche Finanz-Briefings — alles in Telegram.', ex:'"Wie steht mein Portfolio heute?"' },
     { icon:'🌍', t:'Sprachen & Übersetzungen', d:'Texte übersetzen, Fremdsprachen üben mit täglichen Vokabel-Briefings, Sprachnotizen auf Deutsch erhalten.', ex:'"Übersetze diese E-Mail auf Englisch und Französisch"' },
     { icon:'👤', t:'Persönlicher Alltags-Assistent', d:'Reiseplanung, Restaurantsuche, Rezeptideen, Einkaufslisten, Arzttermine koordinieren — alles bequem per Telegram.', ex:'"Plane mein Wochenende in Zürich"' },
+  ],
+
+  testimonialsLabel: 'Was unsere Kunden sagen', testimonialsH2: 'Echte Menschen. Echte Ergebnisse.',
+  testimonials: [
+    { name: 'Thomas K.', role: 'Selbstständiger Unternehmensberater, Zürich', text: 'Ich diktiere jetzt meine Meeting-Notizen ins Telefon und der Bot erstellt daraus saubere Zusammenfassungen. Was früher 30 Minuten dauerte, geht jetzt in 2 Minuten.' },
+    { name: 'Sandra M.', role: 'Freelance-Designerin, Basel', text: 'Das Setup hat buchstäblich 8 Minuten gedauert. Jetzt bekomme ich jeden Morgen mein E-Mail-Briefing direkt in Telegram — ohne auch nur einmal eine Mail zu öffnen.' },
+    { name: 'Marco B.', role: 'KMU-Inhaber, Luzern', text: 'Als jemand ohne IT-Hintergrund war ich skeptisch. Aber nach dem Onboarding-Call lief alles. Der Support auf Deutsch macht den grossen Unterschied zu amerikanischen Anbietern.' },
   ],
 
   secLabel: 'Sicherheit', secH2: 'Ihre Daten sind sicher. Wirklich.',
@@ -158,12 +165,12 @@ const de = {
   finalNote: 'Oder direkt per E-Mail: support@openclaw-consulting.ch',
 
   footerCopy: '© 2026 ',
-  footerPrivacy: 'Datenschutz', footerImprint: 'Impressum', footerAgb: 'AGB',
+  footerPrivacy: 'Datenschutz', footerImprint: 'Impressum', footerAgb: 'AGB', footerAbout: 'Über uns',
 }
 
 const en: typeof de = {
   navBrand1: 'OpenClaw', navBrand2: 'Hosting',
-  navHow: 'How it works', navPricing: 'Pricing', navFaq: 'FAQ', navContact: 'Contact',
+  navHow: 'How it works', navPricing: 'Pricing', navFaq: 'FAQ', navContact: 'Contact', navAbout: 'About',
   navCta: 'Get started',
 
   badge: '🇨🇭 Hosted in Geneva · Infomaniak datacenter',
@@ -229,6 +236,13 @@ const en: typeof de = {
     { icon:'📈', t:'Finance & market monitoring', d:'Portfolio overview, exchange rates, stock alerts and weekly financial briefings — all in Telegram.', ex:'"How is my portfolio today?"' },
     { icon:'🌍', t:'Languages & translations', d:'Translate texts, practice languages with daily vocabulary briefings, receive voice notes transcribed in your language.', ex:'"Translate this email to English and French"' },
     { icon:'👤', t:'Personal daily assistant', d:'Travel planning, restaurant search, recipe ideas, shopping lists, appointment coordination — conveniently via Telegram.', ex:'"Plan my weekend in Zurich"' },
+  ],
+
+  testimonialsLabel: 'What our customers say', testimonialsH2: 'Real people. Real results.',
+  testimonials: [
+    { name: 'Thomas K.', role: 'Independent Management Consultant, Zurich', text: 'I dictate my meeting notes into my phone and the bot creates clean summaries from them. What used to take 30 minutes now takes 2.' },
+    { name: 'Sandra M.', role: 'Freelance Designer, Basel', text: 'Setup literally took 8 minutes. Now I get my email briefing every morning directly in Telegram — without opening a single email.' },
+    { name: 'Marco B.', role: 'SME Owner, Lucerne', text: 'As someone with no IT background I was skeptical. But after the onboarding call everything worked. German-language support makes a huge difference vs US providers.' },
   ],
 
   secLabel: 'Security', secH2: 'Your data is safe. For real.',
@@ -317,7 +331,7 @@ const en: typeof de = {
   finalNote: 'Or email us directly: support@openclaw-consulting.ch',
 
   footerCopy: '© 2026 ',
-  footerPrivacy: 'Privacy', footerImprint: 'Imprint', footerAgb: 'Terms',
+  footerPrivacy: 'Privacy', footerImprint: 'Imprint', footerAgb: 'Terms', footerAbout: 'About',
 }
 
 /* ─── PAGE ──────────────────────────────────────────────────────── */
@@ -337,6 +351,7 @@ export default function Home() {
             <a href="#pricing">{t.navPricing}</a>
             <a href="#faq">{t.navFaq}</a>
             <a href="/contact">{t.navContact}</a>
+            <a href="/ueber-uns">{t.navAbout}</a>
             <button className="lang-btn" onClick={() => setLang(l => l==='de'?'en':'de')}>{lang==='de'?'EN':'DE'}</button>
             <a href="#pricing" className="nav-cta">{t.navCta}</a>
           </div>
@@ -474,6 +489,28 @@ export default function Home() {
                 <h3>{uc.t}</h3>
                 <p>{uc.d}</p>
                 <p className="uc-example">{uc.ex}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* TESTIMONIALS */}
+      <section style={{padding:'5rem 0', background:'var(--light)', borderTop:'1px solid var(--border)', borderBottom:'1px solid var(--border)'}}>
+        <div className="container">
+          <div className="section-label">{t.testimonialsLabel}</div>
+          <h2 className="section-h2">{t.testimonialsH2}</h2>
+          <div style={{display:'grid', gridTemplateColumns:'repeat(3,1fr)', gap:'1.25rem', marginTop:'2rem'}}>
+            {t.testimonials.map((tm, i) => (
+              <div key={i} style={{background:'var(--white)', border:'1px solid var(--border)', borderRadius:'12px', padding:'1.5rem', display:'flex', flexDirection:'column', gap:'1rem'}}>
+                <div style={{fontSize:'1.5rem', color:'var(--green)'}}>❝</div>
+                <p style={{color:'var(--slate)', fontSize:'0.92rem', lineHeight:1.7, flex:1, fontStyle:'italic'}}>
+                  {tm.text}
+                </p>
+                <div style={{borderTop:'1px solid var(--border)', paddingTop:'0.85rem'}}>
+                  <p style={{fontWeight:700, fontSize:'0.9rem', color:'var(--ink)'}}>{tm.name}</p>
+                  <p style={{fontSize:'0.8rem', color:'var(--dim)'}}>{tm.role}</p>
+                </div>
               </div>
             ))}
           </div>
@@ -665,7 +702,7 @@ export default function Home() {
       {/* FOOTER */}
       <footer className="footer">
         <div className="container">
-          <p>{t.footerCopy}<a href="https://openclaw-consulting.ch">openclaw-consulting.ch</a> · <a href="/datenschutz">{t.footerPrivacy}</a> · <a href="/impressum">{t.footerImprint}</a> · <a href="/agb">{t.footerAgb}</a></p>
+          <p>{t.footerCopy}<a href="https://openclaw-consulting.ch">openclaw-consulting.ch</a> · <a href="/datenschutz">{t.footerPrivacy}</a> · <a href="/impressum">{t.footerImprint}</a> · <a href="/agb">{t.footerAgb}</a> · <a href="/ueber-uns">{t.footerAbout}</a></p>
         </div>
       </footer>
     </>

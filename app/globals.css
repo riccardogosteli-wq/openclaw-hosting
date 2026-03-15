@@ -213,3 +213,6 @@ a { color: inherit; }
   .hero h1 { font-size: 1.95rem; }
   .stat-num { font-size: 1.6rem; }
 }
+@media (max-width: 768px) {
+  .testimonials-grid { grid-template-columns: 1fr !important; }
+}
