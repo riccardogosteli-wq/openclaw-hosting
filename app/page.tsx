@@ -431,9 +431,9 @@ export default function Home() {
           <div className="section-label">{t.dashLabel}</div>
           <h2 className="section-h2">{t.dashH2}</h2>
           <p className="section-sub">{t.dashSub}</p>
-          <div style={{display:'grid', gridTemplateColumns:'1fr 1fr', gap:'3rem', alignItems:'center'}}>
+          <div className="dashboard-preview-grid" style={{display:'grid', gridTemplateColumns:'1fr 1fr', gap:'3rem', alignItems:'center'}}>
             {/* Screenshot */}
-            <div style={{borderRadius:'12px', overflow:'hidden', border:'1px solid var(--border)', boxShadow:'0 8px 40px rgba(15,23,20,0.12)'}}>
+            <div className="dashboard-screenshot" style={{borderRadius:'12px', overflow:'hidden', border:'1px solid var(--border)', boxShadow:'0 8px 40px rgba(15,23,20,0.12)'}}>
               <img src="/dashboard-preview.jpg" alt="OpenClaw Dashboard Preview" style={{width:'100%', display:'block'}} />
             </div>
             {/* Points */}
