@@ -62,7 +62,7 @@ const de = {
     { icon:'📅', t:'Kalender & Meetings', d:'Termine abfragen, Verfügbarkeit prüfen, Erinnerungen setzen und Meetings direkt aus dem Chat heraus organisieren.', ex:'"Buche ein Meeting mit Max nächste Woche"' },
     { icon:'📺', t:'YouTube & Web zusammenfassen', d:'YouTube-Videos, Webseiten, PDFs und Nachrichtenartikel in Sekunden auf das Wesentliche reduzieren.', ex:'"Fasse dieses YouTube-Video zusammen: [URL]"' },
     { icon:'⚡', t:'Automatisierungen & Cron-Jobs', d:'Tägliche Briefings, Preisalarme, Newsletter-Zusammenfassungen und Erinnerungen — vollautomatisch, ohne Ihr Zutun.', ex:'"Täglich um 8 Uhr: Wetter + Kalender + Top-Mails"' },
-    { icon:'🎙️', t:'Sprachnachrichten & Diktate', d:'Spracheingabe während der Fahrt: Notizen diktieren, transkribieren lassen, Aufgaben erstellen — alles ohne Tippen.', ex:'"Erstelle eine Aufgabe aus dieser Sprachnotiz"' },
+    { icon:'🎙️', t:'Voice-Chat mit Ihrem Assistenten', d:'Senden Sie Sprachnachrichten und erhalten Sie Antworten — per Text oder Sprache. Diktieren, fragen, anweisen: ganz ohne Tippen.', ex:'"[Sprachnachricht] Was steht heute in meinem Kalender?"' },
     { icon:'📊', t:'Wöchentliche Reports', d:'Umsatzübersichten, Projektfortschritte oder Team-Updates — automatisch aus Ihren Daten zusammengestellt und per Telegram geliefert.', ex:'"Erstelle meinen Wochenbericht"' },
     { icon:'📰', t:'News & Branchen-Monitoring', d:'Täglich kuratierte News zu Ihren Themen — kein Nachrichtenflut, nur was wirklich relevant ist.', ex:'"Was ist heute in der KI-Welt passiert?"' },
     { icon:'✍️', t:'Texte & Inhalte erstellen', d:'Blog-Artikel, Social-Media-Posts, Produktbeschreibungen, Angebote und E-Mails auf Knopfdruck — markenkonform und mehrsprachig.', ex:'"Schreibe einen LinkedIn-Post über unser neues Produkt"' },
@@ -119,19 +119,19 @@ const de = {
 
   p1n: 'Starter', p1d: 'Für Einsteiger und Privatpersonen',
   p1p: '19', p1a: '→ CHF 180/Jahr (2 Monate gratis)',
-  p1fs: ['2 vCPU · 4 GB RAM · 50 GB SSD', '🇨🇭 Privater Server in der Schweiz', 'Telegram, Discord & WhatsApp', '🎙️ Sprachnotizen (Whisper vorinstalliert)', 'Automatische Updates, Monitoring & tägliche Backups', 'E-Mail-Support (48 Std.)', 'Jederzeit kündbar'],
+  p1fs: ['2 vCPU · 4 GB RAM · 50 GB SSD', '🇨🇭 Privater Server in der Schweiz', 'Telegram, Discord & WhatsApp', '🎙️ Voice-Chat: Sprache senden, Text oder Sprache empfangen', 'Automatische Updates, Monitoring & tägliche Backups', 'E-Mail-Support (48 Std.)', 'Jederzeit kündbar'],
   p1ds: ['Kein Dashboard', 'Kein Onboarding-Call'],
   p1cta: 'Starter wählen',
 
   p2badge: 'EMPFOHLEN', p2n: 'Pro', p2d: 'Für Power-User und Freelancer',
   p2p: '34', p2a: '→ CHF 320/Jahr (2 Monate gratis)',
-  p2fs: ['4 vCPU · 8 GB RAM · 80 GB SSD', '🇨🇭 Privater Server in der Schweiz', 'Telegram, Discord & WhatsApp', '🎙️ Sprachnotizen (Whisper vorinstalliert)', 'Automatische Updates, Monitoring & tägliche Backups', '✅ Persönliches Dashboard (nur für Sie zugänglich)', 'E-Mail-Support (24 Std.)', 'Jederzeit kündbar'],
+  p2fs: ['4 vCPU · 8 GB RAM · 80 GB SSD', '🇨🇭 Privater Server in der Schweiz', 'Telegram, Discord & WhatsApp', '🎙️ Voice-Chat: Sprache senden, Text oder Sprache empfangen', 'Automatische Updates, Monitoring & tägliche Backups', '✅ Persönliches Dashboard (nur für Sie zugänglich)', 'E-Mail-Support (24 Std.)', 'Jederzeit kündbar'],
   p2ds: ['Kein Onboarding-Call'],
   p2cta: 'Pro wählen',
 
   p3badge: 'BUSINESS', p3n: 'Business', p3d: 'Für Unternehmen und Teams',
   p3p: '59', p3a: '→ CHF 560/Jahr (2 Monate gratis)',
-  p3fs: ['8 vCPU · 16 GB RAM · 80 GB SSD', '🇨🇭 Privater Server in der Schweiz', 'Telegram, Discord & WhatsApp', '🎙️ Sprachnotizen (Whisper vorinstalliert)', 'Automatische Updates, Monitoring & tägliche Backups', '✅ Persönliches Dashboard (nur für Sie zugänglich)', 'Prioritäts-Support (< 24 Std.)', '30-minütiger Onboarding-Call auf Deutsch', 'Einrichtung von Custom Skills & Automationen', 'Jederzeit kündbar'],
+  p3fs: ['8 vCPU · 16 GB RAM · 80 GB SSD', '🇨🇭 Privater Server in der Schweiz', 'Telegram, Discord & WhatsApp', '🎙️ Voice-Chat: Sprache senden, Text oder Sprache empfangen', 'Automatische Updates, Monitoring & tägliche Backups', '✅ Persönliches Dashboard (nur für Sie zugänglich)', 'Prioritäts-Support (< 24 Std.)', '30-minütiger Onboarding-Call auf Deutsch', 'Einrichtung von Custom Skills & Automationen', 'Jederzeit kündbar'],
   p3cta: 'Business wählen',
 
   cLabel: 'Vergleich', cH2: 'Warum nicht selbst hosten?',
@@ -228,7 +228,7 @@ const en: typeof de = {
     { icon:'📅', t:'Calendar & meetings', d:'Check availability, set reminders, coordinate meetings and book appointments directly from chat.', ex:'"Schedule a meeting with Max next week"' },
     { icon:'📺', t:'YouTube & web summaries', d:'Summarize YouTube videos, websites, PDFs and news articles in seconds — just send the URL.', ex:'"Summarize this YouTube video: [URL]"' },
     { icon:'⚡', t:'Automation & cron jobs', d:'Daily briefings, price alerts, newsletter summaries and reminders — fully automated, no action required.', ex:'"Every morning at 8: weather + calendar + top emails"' },
-    { icon:'🎙️', t:'Voice notes & dictation', d:'Dictate while driving: create notes, transcribe them, create tasks — all without typing.', ex:'"Create a task from this voice note"' },
+    { icon:'🎙️', t:'Voice chat with your assistant', d:'Send voice messages and receive replies — by text or voice. Dictate, ask, instruct: no typing required.', ex:'"[Voice message] What\'s on my calendar today?"' },
     { icon:'📊', t:'Weekly reports', d:'Revenue overviews, project progress or team updates — automatically compiled from your data and delivered via Telegram.', ex:'"Create my weekly report"' },
     { icon:'📰', t:'News & industry monitoring', d:'Daily curated news on your topics — no information overload, only what\'s truly relevant.', ex:'"What happened in AI today?"' },
     { icon:'✍️', t:'Content creation', d:'Blog posts, social media content, product descriptions, proposals and emails on demand — brand-consistent and multilingual.', ex:'"Write a LinkedIn post about our new product"' },
@@ -285,19 +285,19 @@ const en: typeof de = {
 
   p1n: 'Starter', p1d: 'For individuals and beginners',
   p1p: '19', p1a: '→ CHF 180/year (2 months free)',
-  p1fs: ['2 vCPU · 4 GB RAM · 50 GB SSD', '🇨🇭 Private server in Switzerland', 'Telegram, Discord & WhatsApp', '🎙️ Voice notes (Whisper pre-installed)', 'Automatic updates, monitoring & daily backups', 'Email support (48h)', 'Cancel anytime'],
+  p1fs: ['2 vCPU · 4 GB RAM · 50 GB SSD', '🇨🇭 Private server in Switzerland', 'Telegram, Discord & WhatsApp', '🎙️ Voice chat: send voice, receive text or voice replies', 'Automatic updates, monitoring & daily backups', 'Email support (48h)', 'Cancel anytime'],
   p1ds: ['No dashboard', 'No onboarding call'],
   p1cta: 'Choose Starter',
 
   p2badge: 'RECOMMENDED', p2n: 'Pro', p2d: 'For power users & freelancers',
   p2p: '34', p2a: '→ CHF 320/year (2 months free)',
-  p2fs: ['4 vCPU · 8 GB RAM · 80 GB SSD', '🇨🇭 Private server in Switzerland', 'Telegram, Discord & WhatsApp', '🎙️ Voice notes (Whisper pre-installed)', 'Automatic updates, monitoring & daily backups', '✅ Personal dashboard (private access only)', 'Email support (24h)', 'Cancel anytime'],
+  p2fs: ['4 vCPU · 8 GB RAM · 80 GB SSD', '🇨🇭 Private server in Switzerland', 'Telegram, Discord & WhatsApp', '🎙️ Voice chat: send voice, receive text or voice replies', 'Automatic updates, monitoring & daily backups', '✅ Personal dashboard (private access only)', 'Email support (24h)', 'Cancel anytime'],
   p2ds: ['No onboarding call'],
   p2cta: 'Choose Pro',
 
   p3badge: 'BUSINESS', p3n: 'Business', p3d: 'For companies & teams',
   p3p: '59', p3a: '→ CHF 560/year (2 months free)',
-  p3fs: ['8 vCPU · 16 GB RAM · 80 GB SSD', '🇨🇭 Private server in Switzerland', 'Telegram, Discord & WhatsApp', '🎙️ Voice notes (Whisper pre-installed)', 'Automatic updates, monitoring & daily backups', '✅ Personal dashboard (private access only)', 'Priority support (< 24h)', '30-min onboarding call in German or English', 'Custom skills & automation setup included', 'Cancel anytime'],
+  p3fs: ['8 vCPU · 16 GB RAM · 80 GB SSD', '🇨🇭 Private server in Switzerland', 'Telegram, Discord & WhatsApp', '🎙️ Voice chat: send voice, receive text or voice replies', 'Automatic updates, monitoring & daily backups', '✅ Personal dashboard (private access only)', 'Priority support (< 24h)', '30-min onboarding call in German or English', 'Custom skills & automation setup included', 'Cancel anytime'],
   p3cta: 'Choose Business',
 
   cLabel: 'Comparison', cH2: 'Why not self-host?',
