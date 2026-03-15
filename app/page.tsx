@@ -157,7 +157,7 @@ const de = {
   finalCta: 'Jetzt anfragen',
   finalNote: 'Oder schreiben Sie uns: support@openclaw-consulting.ch',
 
-  footerCopy: '© 2026 Alexandra Gosteli Digital Solutions · ',
+  footerCopy: '© 2026 ',
   footerPrivacy: 'Datenschutz', footerImprint: 'Impressum',
 }
 
@@ -316,7 +316,7 @@ const en: typeof de = {
   finalCta: 'Get in touch',
   finalNote: 'Or email us: support@openclaw-consulting.ch',
 
-  footerCopy: '© 2026 Alexandra Gosteli Digital Solutions · ',
+  footerCopy: '© 2026 ',
   footerPrivacy: 'Privacy', footerImprint: 'Imprint',
 }
 
