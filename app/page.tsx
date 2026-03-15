@@ -323,6 +323,7 @@ const en: typeof de = {
 /* ─── PAGE ──────────────────────────────────────────────────────── */
 export default function Home() {
   const [lang, setLang] = useState<'de'|'en'>('de')
+  const [billing, setBilling] = useState<'monthly'|'annual'>('monthly')
   const t = lang === 'de' ? de : en
 
   return (
@@ -501,47 +502,88 @@ export default function Home() {
         <div className="container">
           <div className="section-label">{t.pLabel}</div>
           <h2 className="section-h2">{t.pH2}</h2>
+
+          {/* Billing toggle */}
+          <div style={{display:'flex', alignItems:'center', gap:'0.75rem', marginBottom:'2rem', flexWrap:'wrap'}}>
+            <button
+              onClick={() => setBilling('monthly')}
+              style={{padding:'0.45rem 1.1rem', borderRadius:'7px', border:'1.5px solid', fontWeight:600, fontSize:'0.88rem', cursor:'pointer', transition:'all 0.15s',
+                background: billing==='monthly' ? 'var(--green)' : 'transparent',
+                color: billing==='monthly' ? '#fff' : 'var(--slate)',
+                borderColor: billing==='monthly' ? 'var(--green)' : 'var(--border)'
+              }}>
+              {lang==='de' ? 'Monatlich' : 'Monthly'}
+            </button>
+            <button
+              onClick={() => setBilling('annual')}
+              style={{padding:'0.45rem 1.1rem', borderRadius:'7px', border:'1.5px solid', fontWeight:600, fontSize:'0.88rem', cursor:'pointer', transition:'all 0.15s',
+                background: billing==='annual' ? 'var(--green)' : 'transparent',
+                color: billing==='annual' ? '#fff' : 'var(--slate)',
+                borderColor: billing==='annual' ? 'var(--green)' : 'var(--border)'
+              }}>
+              {lang==='de' ? 'Jährlich' : 'Annual'}
+            </button>
+            {billing==='annual' && (
+              <span style={{background:'#dcfce7', color:'#14532d', padding:'0.2rem 0.65rem', borderRadius:'99px', fontSize:'0.78rem', fontWeight:700}}>
+                🎉 {lang==='de' ? '2 Monate gratis' : '2 months free'}
+              </span>
+            )}
+          </div>
+
           <div className="pricing-transparency">
             <strong>⚠️ {lang==='de'?'Wichtig':'Important'}:</strong> {t.pNote}
           </div>
           <div className="plans plans-3">
-            {/* Starter */}
-            <div className="plan">
-              <h3>{t.p1n}</h3>
-              <p className="plan-desc">{t.p1d}</p>
-              <div className="plan-price"><span className="amount">CHF {t.p1p}</span><span className="per">/mo</span></div>
-              <p className="plan-annual">{t.p1a}</p>
-              <ul className="plan-features">
-                {t.p1fs.map((f,i) => <li key={i}>{f}</li>)}
-                {t.p1ds.map((f,i) => <li key={i} className="dim">{f}</li>)}
-              </ul>
-              <a href={process.env.NEXT_PUBLIC_PAYREXX_STARTER || "/onboarding?plan=starter"} className="plan-cta outline">{t.p1cta}</a>
-            </div>
-            {/* Pro */}
-            <div className="plan featured">
-              <span className="plan-badge">{t.p2badge}</span>
-              <h3>{t.p2n}</h3>
-              <p className="plan-desc">{t.p2d}</p>
-              <div className="plan-price"><span className="amount">CHF {t.p2p}</span><span className="per">/mo</span></div>
-              <p className="plan-annual">{t.p2a}</p>
-              <ul className="plan-features">
-                {t.p2fs.map((f,i) => <li key={i}>{f}</li>)}
-                {t.p2ds.map((f,i) => <li key={i} className="dim">{f}</li>)}
-              </ul>
-              <a href={process.env.NEXT_PUBLIC_PAYREXX_PRO || "/onboarding?plan=pro"} className="plan-cta">{t.p2cta}</a>
-            </div>
-            {/* Business */}
-            <div className="plan">
-              <span className="plan-badge" style={{background:'var(--ink2)', color:'#fff'}}>{t.p3badge}</span>
-              <h3>{t.p3n}</h3>
-              <p className="plan-desc">{t.p3d}</p>
-              <div className="plan-price"><span className="amount">CHF {t.p3p}</span><span className="per">/mo</span></div>
-              <p className="plan-annual">{t.p3a}</p>
-              <ul className="plan-features">
-                {t.p3fs.map((f,i) => <li key={i}>{f}</li>)}
-              </ul>
-              <a href={process.env.NEXT_PUBLIC_PAYREXX_BUSINESS || "/onboarding?plan=business"} className="plan-cta outline">{t.p3cta}</a>
-            </div>
+            {[
+              { plan:'starter', featured:false, badge:null, badgeStyle:{},
+                name:t.p1n, desc:t.p1d,
+                price: billing==='annual' ? 15 : 19,
+                annual: billing==='annual' ? (lang==='de'?'CHF 180/Jahr abgerechnet':'CHF 180/year billed') : (lang==='de'?'→ CHF 180/Jahr (2 Monate gratis)':'→ CHF 180/year (2 months free)'),
+                features:t.p1fs, dims:t.p1ds, cta:t.p1cta,
+                href: billing==='annual'
+                  ? (process.env.NEXT_PUBLIC_PAYREXX_STARTER_ANNUAL||'/onboarding?plan=starter&billing=annual')
+                  : (process.env.NEXT_PUBLIC_PAYREXX_STARTER||'/onboarding?plan=starter'),
+                ctaClass:'plan-cta outline'
+              },
+              { plan:'pro', featured:true, badge:t.p2badge, badgeStyle:{},
+                name:t.p2n, desc:t.p2d,
+                price: billing==='annual' ? 27 : 34,
+                annual: billing==='annual' ? (lang==='de'?'CHF 320/Jahr abgerechnet':'CHF 320/year billed') : (lang==='de'?'→ CHF 320/Jahr (2 Monate gratis)':'→ CHF 320/year (2 months free)'),
+                features:t.p2fs, dims:t.p2ds, cta:t.p2cta,
+                href: billing==='annual'
+                  ? (process.env.NEXT_PUBLIC_PAYREXX_PRO_ANNUAL||'/onboarding?plan=pro&billing=annual')
+                  : (process.env.NEXT_PUBLIC_PAYREXX_PRO||'/onboarding?plan=pro'),
+                ctaClass:'plan-cta'
+              },
+              { plan:'business', featured:false, badge:t.p3badge, badgeStyle:{background:'var(--ink2)', color:'#fff'},
+                name:t.p3n, desc:t.p3d,
+                price: billing==='annual' ? 47 : 59,
+                annual: billing==='annual' ? (lang==='de'?'CHF 560/Jahr abgerechnet':'CHF 560/year billed') : (lang==='de'?'→ CHF 560/Jahr (2 Monate gratis)':'→ CHF 560/year (2 months free)'),
+                features:t.p3fs, dims:[], cta:t.p3cta,
+                href: billing==='annual'
+                  ? (process.env.NEXT_PUBLIC_PAYREXX_BUSINESS_ANNUAL||'/onboarding?plan=business&billing=annual')
+                  : (process.env.NEXT_PUBLIC_PAYREXX_BUSINESS||'/onboarding?plan=business'),
+                ctaClass:'plan-cta outline'
+              },
+            ].map((p) => (
+              <div key={p.plan} className={`plan${p.featured?' featured':''}`}>
+                {p.badge && <span className="plan-badge" style={p.badgeStyle}>{p.badge}</span>}
+                <h3>{p.name}</h3>
+                <p className="plan-desc">{p.desc}</p>
+                <div className="plan-price">
+                  <span className="amount">CHF {p.price}</span>
+                  <span className="per">{lang==='de'?'/Mt.':'/mo'}</span>
+                </div>
+                <p className="plan-annual" style={{color: billing==='annual'?'var(--green2)':'var(--muted)', fontWeight: billing==='annual'?700:400}}>
+                  {p.annual}
+                </p>
+                <ul className="plan-features">
+                  {p.features.map((f: string,i: number) => <li key={i}>{f}</li>)}
+                  {(p.dims||[]).map((f: string,i: number) => <li key={i} className="dim">{f}</li>)}
+                </ul>
+                <a href={p.href} className={p.ctaClass}>{p.cta}</a>
+              </div>
+            ))}
           </div>
           <p style={{marginTop:'1.5rem', fontSize:'0.83rem', color:'var(--dim)'}}>
             {lang==='de'
