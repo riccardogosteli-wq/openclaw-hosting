@@ -1,256 +1,231 @@
 'use client'
-
 import { useState } from 'react'
 
+/* ─── CONTENT ───────────────────────────────────────────────────── */
 const de = {
-  navBrand: 'OpenClaw Hosting',
-  navHow: 'So funktioniert\'s',
-  navPricing: 'Preise',
-  navFaq: 'FAQ',
+  navBrand1: 'OpenClaw', navBrand2: 'Hosting',
+  navHow: 'So funktioniert\'s', navPricing: 'Preise', navFaq: 'FAQ',
   navCta: 'Jetzt starten',
 
-  heroBadge: '🇨🇭 In der Schweiz gehostet',
-  heroH1: 'Ihr KI-Assistent. Läuft 24/7. Ohne Aufwand.',
-  heroSub: 'OpenClaw läuft auf Ihrem eigenen Server – wir richten alles ein, warten ihn und halten ihn am Laufen. Sie chatten einfach los.',
-  heroCta: 'Jetzt starten – CHF 24/Mo',
-  heroGhost: 'Mehr erfahren',
-  heroNote1: 'Kein Technikwissen nötig.',
-  heroNote2: 'Jederzeit kündbar.',
-  heroNote3: 'Setup in unter 10 Minuten.',
+  badge: '🇨🇭 In Genf gehostet · Infomaniak-Rechenzentrum',
+  h1a: 'Ihr KI-Assistent.',
+  h1b: 'Läuft 24/7.',
+  h1c: 'Ohne Aufwand.',
+  sub: 'OpenClaw auf Ihrem eigenen Server – wir richten alles ein, warten ihn und halten ihn am Laufen. Sie chatten einfach los. Auf Deutsch.',
+  cta: 'Jetzt starten – CHF 24/Mo',
+  ghost: 'Mehr erfahren',
+  n1: '✓ Kein Technikwissen nötig',
+  n2: '✓ Jederzeit kündbar',
+  n3: '✓ Setup in < 10 Min.',
 
-  costTitle: '💡 Transparente Gesamtkosten',
-  costHosting: 'Hosting bei uns: CHF 24/Mo',
-  costApi: 'KI-API direkt bei Anthropic/OpenAI: ca. CHF 5–20/Mo je nach Nutzung',
-  costTotal: 'Gesamtkosten realistisch: CHF 29–44/Mo für einen 24/7-KI-Assistenten',
+  chatMessages: [
+    { bot: true, text: 'Guten Morgen! Hier Ihr Tagesbriefing:' },
+    { bot: true, text: '📧 3 neue E-Mails — 1 dringend (Kundenprojekt)\n📅 2 Termine heute (10:00 & 14:30)\n🌤️ 8°C in Zürich, leicht bewölkt' },
+    { bot: false, text: 'Fass die dringende Mail zusammen' },
+    { bot: true, text: 'Kunde Müller AG: Abgabetermin für Angebot auf Freitag vorgezogen (war nächste Woche). Soll ich einen Entwurf erstellen?' },
+  ],
 
-  howLabel: 'So einfach geht\'s',
-  howH2: 'In 3 Schritten online',
+  costLabel: '💡 Transparente Gesamtkosten — weil wir nichts verstecken',
+  costUs: 'Hosting bei uns: CHF 24–44/Mo',
+  costApi: 'KI-API separat bei Anthropic/OpenAI: ca. CHF 5–20/Mo',
+  costTotal: 'Realistischer Gesamtbetrag: CHF 29–44/Mo',
+
+  stat1n: '< 10 Min', stat1l: 'Setup-Zeit',
+  stat2n: '24/7', stat2l: 'Verfügbarkeit',
+  stat3n: '🇨🇭', stat3l: 'Hosted in Genf, Schweiz',
+  stat4n: 'CHF 24', stat4l: 'Ab Preis pro Monat',
+
+  howLabel: 'So einfach geht\'s', howH2: 'In 3 Schritten live',
   howSub: 'Kein Terminal. Kein SSH. Kein Technikwissen. Wir erledigen alles.',
-  step1Title: 'Plan wählen & bezahlen',
-  step1Desc: 'Wählen Sie Ihren Plan, bezahlen Sie bequem mit TWINT, Visa oder Mastercard – und wir erhalten sofort Ihre Bestellung.',
-  step2Title: 'Onboarding-Formular ausfüllen',
-  step2Desc: 'Sie teilen uns Ihren Telegram-Bot-Token und Ihren KI-API-Schlüssel mit. Das dauert ca. 5 Minuten – wir zeigen Ihnen wie.',
-  step3Title: 'Ihr Agent startet',
-  step3Desc: 'Wir richten Ihren persönlichen OpenClaw-Server ein und senden Ihnen eine Bestätigungs-E-Mail. Ihr Assistent ist bereit.',
+  s1t: '1. Plan wählen & bezahlen',
+  s1d: 'Wählen Sie Ihren Plan und bezahlen Sie mit TWINT, Visa oder Mastercard. Innerhalb weniger Minuten erhalten Sie eine Bestätigung.',
+  s2t: '2. Onboarding-Formular (5 Min.)',
+  s2d: 'Sie teilen uns Telegram-Bot-Token und Ihren KI-API-Schlüssel mit. Wir zeigen Ihnen Schritt für Schritt, wo Sie diese finden.',
+  s3t: '3. Ihr Assistent ist online',
+  s3d: 'Wir richten Ihren privaten Infomaniak-Server in Genf ein und senden Ihnen eine Bestätigung. Ihr 24/7-Assistent ist bereit.',
 
-  usecasesLabel: 'Was Ihr Assistent kann',
-  usecasesH2: 'Ein Assistent. Unzählige Aufgaben.',
-  uc1Title: 'E-Mails verwalten',
-  uc1Desc: 'Tägliches E-Mail-Briefing, Entwürfe schreiben, wichtige Nachrichten hervorheben.',
-  uc2Title: 'Kalender & Meetings',
-  uc2Desc: 'Termine prüfen, Erinnerungen senden, Verfügbarkeit koordinieren.',
-  uc3Title: 'Recherche & Zusammenfassungen',
-  uc3Desc: 'Webseiten, PDFs und Nachrichten auf Knopfdruck zusammenfassen.',
-  uc4Title: 'Automatisierungen',
-  uc4Desc: 'Cron-Jobs, tägliche Briefings, Preisalerts – alles automatisch.',
-  uc5Title: 'Sprachnachrichten',
-  uc5Desc: 'Sprachnotizen aufnehmen, transkribieren lassen und als Text weiterverarbeiten.',
-  uc6Title: 'Ihr eigener Workflow',
-  uc6Desc: 'OpenClaw ist vollständig anpassbar. Wir helfen Ihnen beim Setup Ihrer Automationen.',
+  ucLabel: 'Was Ihr Assistent kann', ucH2: 'Ein Assistent. Unzählige Aufgaben.',
+  ucSub: 'OpenClaw verbindet sich mit Ihren Tools und arbeitet proaktiv — nicht nur wenn Sie fragen.',
+  ucs: [
+    { icon:'📧', t:'E-Mail-Management', d:'Tägliches Briefing, Entwürfe schreiben, wichtige Mails hervorheben und priorisieren.', ex:'"Fass alle ungelesenen Mails zusammen"' },
+    { icon:'📅', t:'Kalender & Planung', d:'Termine prüfen, Erinnerungen senden, Verfügbarkeit prüfen und Meetings koordinieren.', ex:'"Wann bin ich diese Woche frei?"' },
+    { icon:'🔍', t:'Recherche & Zusammenfassungen', d:'Webseiten, PDFs, YouTube-Videos und Nachrichten auf Knopfdruck zusammenfassen.', ex:'"Fass diesen Artikel zusammen"' },
+    { icon:'⚡', t:'Automatisierungen & Cron-Jobs', d:'Tägliche Briefings, Preisalerts, Erinnerungen und Reports – vollautomatisch, ohne Ihr Zutun.', ex:'"Täglich um 8 Uhr: Wetter + Termine"' },
+    { icon:'🎙️', t:'Sprachnachrichten', d:'Sprachnotizen aufnehmen (auch beim Autofahren), transkribieren lassen und weiterverarbeiten.', ex:'"Erstell eine Aufgabe aus dieser Sprachnotiz"' },
+    { icon:'🛠️', t:'Eigene Automationen', d:'OpenClaw ist vollständig erweiterbar. Wir helfen Ihnen, Ihre Workflows und Skills einzurichten.', ex:'"Erinner mich täglich an meine Ziele"' },
+    { icon:'📊', t:'Reports & Dashboards', d:'Wöchentliche Reports, Umsatzübersichten oder Status-Updates – automatisch in Ihren Chat.', ex:'"Wie war meine Woche?"' },
+    { icon:'🔗', t:'Tool-Integrationen', d:'Gmail, Google Calendar, Notion, JIRA, Slack, WordPress und viele mehr.', ex:'"Erstell ein JIRA-Ticket dafür"' },
+    { icon:'👤', t:'Persönlicher Assistent', d:'Reiseplanung, Rezepte suchen, Geschenkideen, Fremdsprachen üben – alles über Telegram.', ex:'"Was soll ich heute kochen?"' },
+  ],
 
-  pricingLabel: 'Preise',
-  pricingH2: 'Einfach. Transparent. Fair.',
-  pricingNote: '⚠️ Was Sie bei uns bezahlen: das Hosting und die Verwaltung Ihres Servers (CHF 24–44/Mo). Was Sie separat bei Anthropic, OpenAI oder Google bezahlen: Ihren eigenen API-Schlüssel für die KI-Nutzung (ca. CHF 5–20/Mo). Diese Kosten gehen direkt an Ihren KI-Anbieter – wir sehen diese Daten nie.',
+  pLabel: 'Preise', pH2: 'Einfach. Transparent. Fair.',
+  pNote: '⚠️ Was Sie uns bezahlen: den Betrieb Ihres privaten Servers in der Schweiz (CHF 24–44/Mo). Was Sie separat bezahlen: Ihren eigenen API-Schlüssel direkt bei Ihrem KI-Anbieter (ca. CHF 5–20/Mo je nach Nutzung). Diese Kosten gehen direkt an Anthropic, OpenAI oder Google — wir sehen diese Daten nie.',
 
-  plan1Badge: '',
-  plan1Name: 'Starter',
-  plan1Desc: 'Perfekt für Einsteiger und Einzelpersonen',
-  plan1Price: '24',
-  plan1Annual: '→ CHF 220/Jahr (2 Monate gratis)',
-  plan1F1: 'Eigener, dedizierter OpenClaw-Server',
-  plan1F2: 'Telegram & Discord verbunden',
-  plan1F3: 'Automatische Updates',
-  plan1F4: 'E-Mail-Support (48h)',
-  plan1F5: 'Jederzeit kündbar',
-  plan1Dim1: 'Kein WhatsApp-Anschluss',
-  plan1Dim2: 'Kein Onboarding-Call',
-  plan1Cta: 'Starter wählen',
+  p1n: 'Starter', p1d: 'Für Einsteiger und Einzelpersonen',
+  p1p: '24', p1a: '→ CHF 220/Jahr (2 Monate gratis)',
+  p1fs: ['Privater Server in der Schweiz (Infomaniak, Genf)', 'Telegram & Discord', 'Automatische Updates & Monitoring', 'E-Mail-Support (48h Reaktionszeit)', 'Jederzeit kündbar'],
+  p1ds: ['Kein WhatsApp', 'Kein Onboarding-Call'],
+  p1cta: 'Starter wählen',
 
-  plan2Badge: 'EMPFOHLEN',
-  plan2Name: 'Pro',
-  plan2Desc: 'Für Unternehmen & anspruchsvolle Nutzer',
-  plan2Price: '44',
-  plan2Annual: '→ CHF 400/Jahr (2 Monate gratis)',
-  plan2F1: 'Eigener, dedizierter OpenClaw-Server',
-  plan2F2: 'Telegram, Discord & WhatsApp',
-  plan2F3: 'Automatische Updates & Monitoring',
-  plan2F4: 'Prioritäts-Support (24h)',
-  plan2F5: '30-Min. Onboarding-Call mit uns',
-  plan2F6: 'Custom Skills & Automationen Setup',
-  plan2F7: 'Jederzeit kündbar',
-  plan2Cta: 'Pro wählen',
+  p2badge: 'EMPFOHLEN', p2n: 'Pro', p2d: 'Für Unternehmen & Power-User',
+  p2p: '44', p2a: '→ CHF 400/Jahr (2 Monate gratis)',
+  p2fs: ['Privater Server in der Schweiz (Infomaniak, Genf)', 'Telegram, Discord & WhatsApp', 'Automatische Updates, Monitoring & Backups', 'Prioritäts-Support (24h Reaktionszeit)', '30-Min. Onboarding-Call auf Deutsch', 'Custom Skills & Automationen (Setup inklusive)', 'Jederzeit kündbar'],
+  p2cta: 'Pro wählen',
 
-  compLabel: 'Vergleich',
-  compH2: 'Warum nicht selbst hosten?',
-  compCol1: 'Merkmal',
-  compCol2: 'Selbst-Hosting',
-  compCol3: 'OpenClaw Hosting',
-  compRow1: ['Setup-Zeit', '60+ Minuten (SSH, Node.js, Server)', '< 10 Minuten'],
-  compRow2: ['Technisches Wissen', 'Linux, SSH, CLI nötig', 'Nicht nötig'],
-  compRow3: ['Updates', 'Manuell, Sie sind verantwortlich', 'Automatisch'],
-  compRow4: ['Serverstandort', 'Je nach VPS-Anbieter', '🇨🇭 Schweiz / 🇪🇺 EU'],
-  compRow5: ['Support', 'OpenClaw Community', 'Persönlicher Support auf Deutsch'],
-  compRow6: ['Preis', 'CHF 5–15/Mo VPS + Ihre Zeit', 'CHF 24/Mo all-in'],
-  compRow7: ['Uptime-Monitoring', 'Selbst einrichten', 'Inklusive'],
+  cLabel: 'Vergleich', cH2: 'Warum nicht selbst hosten?',
+  cHead: ['Merkmal', 'Selbst-Hosting', 'OpenClaw Hosting (CH)'],
+  cRows: [
+    ['Setup-Zeit', '60+ Min. (SSH, Linux, Node.js)', '< 10 Minuten'],
+    ['Technisches Wissen', 'Linux, SSH, CLI erforderlich', 'Nicht nötig'],
+    ['Updates', 'Manuell — Sie sind verantwortlich', 'Automatisch'],
+    ['Serverstandort', 'Unbekannt / international', '🇨🇭 Infomaniak, Genf (Schweiz)'],
+    ['Datenschutz', 'Je nach VPS-Anbieter', 'DSGVO & nDSG-konform'],
+    ['Support', 'OpenClaw-Community (English)', 'Persönlicher Support auf Deutsch'],
+    ['Uptime-Monitoring', 'Selbst einrichten', 'Inklusive'],
+    ['Preis', 'CHF 5–15/Mo VPS + Ihre Zeit', 'CHF 24/Mo — all inclusive'],
+  ],
 
-  faqLabel: 'Häufige Fragen',
-  faqH2: 'Alles Wichtige auf einen Blick',
-  faq1Q: 'Brauche ich technisches Wissen?',
-  faq1A: 'Nein. Wir richten alles für Sie ein. Sie brauchen nur einen Telegram-Account und einen API-Schlüssel von Ihrem KI-Anbieter – das dauert 5 Minuten, wir zeigen Ihnen wie.',
-  faq2Q: 'Was ist der API-Schlüssel und was kostet er?',
-  faq2A: 'Ihr KI-Assistent braucht einen Zugang zu einem KI-Modell (Claude, GPT-4 oder Gemini). Diesen Schlüssel erstellen Sie selbst auf der Website Ihres Anbieters. Die Kosten sind nutzungsabhängig – typisch CHF 5–20/Mo für moderate Nutzung.',
-  faq3Q: 'Wo sind meine Daten gespeichert?',
-  faq3A: 'Ihr Server läuft in der Schweiz oder Deutschland (EU) – vollständig DSGVO/nDSG-konform. Ihren API-Schlüssel speichern wir nie – er geht direkt auf Ihren Server.',
-  faq4Q: 'Welchen KI-Anbieter kann ich nutzen?',
-  faq4A: 'OpenClaw unterstützt Claude (Anthropic), GPT-4 (OpenAI) und Gemini (Google). Wir empfehlen Claude Haiku für budgetfreundliche Nutzung oder Claude Sonnet für maximale Qualität.',
-  faq5Q: 'Kann ich jederzeit kündigen?',
-  faq5A: 'Ja. Keine Mindestlaufzeit beim Monatsabo. Beim Jahresabo läuft der Rest der Laufzeit aus. Kein versteckter Ärger.',
-  faq6Q: 'Was passiert, wenn OpenClaw aktualisiert wird?',
-  faq6A: 'Wir testen neue OpenClaw-Versionen zuerst und spielen Updates automatisch ein – ohne Downtime. Sie müssen nichts tun.',
-  faq7Q: 'Wie komme ich mit meinem Assistenten in Kontakt?',
-  faq7A: 'Über Telegram (alle Pläne), Discord (alle Pläne) oder WhatsApp (Pro-Plan). Einfach Nachricht schicken – wie mit einem Menschen.',
-  faq8Q: 'Bieten Sie Support auf Deutsch?',
-  faq8A: 'Ja – auf Deutsch und Englisch. Kein automatisierter Chatbot, sondern echte Menschen, die OpenClaw kennen und nutzen.',
+  fLabel: 'FAQ', fH2: 'Häufige Fragen',
+  faqs: [
+    ['Brauche ich technisches Wissen?', 'Nein. Wir richten alles für Sie ein. Sie brauchen lediglich einen Telegram-Account und einen API-Schlüssel Ihres KI-Anbieters — das dauert ca. 5 Minuten, wir zeigen Ihnen wie.'],
+    ['Was ist ein API-Schlüssel?', 'Ihr Assistent braucht Zugang zu einem KI-Modell (Claude, GPT-4 oder Gemini). Diesen Schlüssel erstellen Sie kostenlos auf der Website des Anbieters. Die Nutzungskosten (~CHF 5–20/Mo) zahlen Sie direkt dort.'],
+    ['Wo werden meine Daten gespeichert?', 'Ihr Server läuft bei Infomaniak in Genf, Schweiz — vollständig DSGVO- und nDSG-konform. Ihren API-Schlüssel speichern wir nie, er wird direkt auf Ihren Server übertragen.'],
+    ['Welchen KI-Anbieter kann ich nutzen?', 'OpenClaw unterstützt Claude (Anthropic), GPT-4 (OpenAI) und Gemini (Google). Wir empfehlen Claude Haiku für budgetfreundliche Nutzung (~CHF 5/Mo) oder Claude Sonnet für maximale Qualität (~CHF 15–20/Mo).'],
+    ['Kann ich jederzeit kündigen?', 'Ja, ohne Mindestlaufzeit beim Monatsabo. Beim Jahresabo läuft der bezahlte Zeitraum aus. Keine versteckten Gebühren.'],
+    ['Was ist OpenClaw?', 'OpenClaw (früher Clawdbot) ist die beliebteste Open-Source-KI-Assistenten-Plattform mit über 200\'000 GitHub-Stars. Sie läuft auf Ihrem eigenen Server und verbindet sich mit Telegram, Discord oder WhatsApp.'],
+    ['Was passiert bei OpenClaw-Updates?', 'Wir testen neue Versionen und spielen Updates automatisch ein — ohne Downtime. Sie müssen nichts tun.'],
+    ['Bieten Sie Support auf Deutsch?', 'Ja — auf Deutsch und Englisch. Kein automatisierter Bot, sondern echte Menschen, die OpenClaw selbst täglich nutzen.'],
+  ],
 
-  footerText: '© 2026 Alexandra Gosteli Digital Solutions · ',
-  footerLink: 'openclaw-consulting.ch',
-  footerPrivacy: 'Datenschutz',
-  footerImprint: 'Impressum',
+  finalH2a: 'Bereit für Ihren', finalH2b: 'persönlichen KI-Assistenten?',
+  finalSub: 'Kein Technikwissen nötig. Wir richten alles ein — in unter 10 Minuten.',
+  finalCta: 'Jetzt anfragen',
+  finalNote: 'Oder schreiben Sie uns: hello@openclaw-consulting.ch',
+
+  footerCopy: '© 2026 Alexandra Gosteli Digital Solutions · ',
+  footerPrivacy: 'Datenschutz', footerImprint: 'Impressum',
 }
 
-const en = {
-  navBrand: 'OpenClaw Hosting',
-  navHow: 'How it works',
-  navPricing: 'Pricing',
-  navFaq: 'FAQ',
+const en: typeof de = {
+  navBrand1: 'OpenClaw', navBrand2: 'Hosting',
+  navHow: 'How it works', navPricing: 'Pricing', navFaq: 'FAQ',
   navCta: 'Get started',
 
-  heroBadge: '🇨🇭 Hosted in Switzerland',
-  heroH1: 'Your AI assistant. Running 24/7. Zero hassle.',
-  heroSub: 'OpenClaw runs on your own private server — we set it up, maintain it, and keep it running. You just chat.',
-  heroCta: 'Get started – CHF 24/mo',
-  heroGhost: 'Learn more',
-  heroNote1: 'No technical skills needed.',
-  heroNote2: 'Cancel anytime.',
-  heroNote3: 'Live in under 10 minutes.',
+  badge: '🇨🇭 Hosted in Geneva · Infomaniak datacenter',
+  h1a: 'Your AI assistant.',
+  h1b: 'Running 24/7.',
+  h1c: 'Zero hassle.',
+  sub: 'OpenClaw on your own private server — we set it up, maintain it, and keep it running. You just chat.',
+  cta: 'Get started – CHF 24/mo',
+  ghost: 'Learn more',
+  n1: '✓ No technical skills needed',
+  n2: '✓ Cancel anytime',
+  n3: '✓ Live in < 10 min',
 
-  costTitle: '💡 Full cost transparency',
-  costHosting: 'Hosting with us: CHF 24/mo',
-  costApi: 'AI API directly with Anthropic/OpenAI: approx. CHF 5–20/mo depending on usage',
-  costTotal: 'Realistic total: CHF 29–44/mo for a 24/7 AI assistant',
+  chatMessages: [
+    { bot: true, text: 'Good morning! Here\'s your daily briefing:' },
+    { bot: true, text: '📧 3 new emails — 1 urgent (client project)\n📅 2 meetings today (10:00 & 14:30)\n🌤️ 8°C in Zurich, partly cloudy' },
+    { bot: false, text: 'Summarize the urgent email' },
+    { bot: true, text: 'Müller AG: proposal deadline moved to Friday (was next week). Shall I draft a reply?' },
+  ],
 
-  howLabel: 'How it works',
-  howH2: 'Live in 3 steps',
+  costLabel: '💡 Full cost transparency — because we hide nothing',
+  costUs: 'Hosting with us: CHF 24–44/mo',
+  costApi: 'AI API separately at Anthropic/OpenAI: approx. CHF 5–20/mo',
+  costTotal: 'Realistic total: CHF 29–44/mo',
+
+  stat1n: '< 10 min', stat1l: 'Setup time',
+  stat2n: '24/7', stat2l: 'Uptime',
+  stat3n: '🇨🇭', stat3l: 'Hosted in Geneva, Switzerland',
+  stat4n: 'CHF 24', stat4l: 'Starting price per month',
+
+  howLabel: 'How it works', howH2: 'Live in 3 steps',
   howSub: 'No terminal. No SSH. No technical knowledge required. We handle everything.',
-  step1Title: 'Choose a plan & pay',
-  step1Desc: 'Pick your plan and pay with TWINT, Visa or Mastercard — we\'ll receive your order instantly.',
-  step2Title: 'Fill in the onboarding form',
-  step2Desc: 'Share your Telegram bot token and AI API key. Takes about 5 minutes — we\'ll show you how.',
-  step3Title: 'Your agent goes live',
-  step3Desc: 'We set up your personal OpenClaw server and send you a confirmation email. Your assistant is ready.',
+  s1t: '1. Choose a plan & pay',
+  s1d: 'Pick your plan and pay with TWINT, Visa, or Mastercard. You\'ll receive a confirmation within minutes.',
+  s2t: '2. Fill the onboarding form (5 min)',
+  s2d: 'Share your Telegram bot token and AI API key. We\'ll show you step-by-step where to find them.',
+  s3t: '3. Your assistant goes live',
+  s3d: 'We set up your private Infomaniak server in Geneva and send you a confirmation. Your 24/7 assistant is ready.',
 
-  usecasesLabel: 'What your assistant can do',
-  usecasesH2: 'One assistant. Countless tasks.',
-  uc1Title: 'Email management',
-  uc1Desc: 'Daily email briefings, draft replies, highlight important messages.',
-  uc2Title: 'Calendar & meetings',
-  uc2Desc: 'Check availability, set reminders, coordinate schedules.',
-  uc3Title: 'Research & summaries',
-  uc3Desc: 'Summarize websites, PDFs and news on demand.',
-  uc4Title: 'Automation',
-  uc4Desc: 'Cron jobs, daily briefings, price alerts — fully automated.',
-  uc5Title: 'Voice messages',
-  uc5Desc: 'Record voice notes, get transcriptions and process them as text.',
-  uc6Title: 'Your own workflow',
-  uc6Desc: 'OpenClaw is fully customizable. We help you set up your automations.',
+  ucLabel: 'What your assistant can do', ucH2: 'One assistant. Countless tasks.',
+  ucSub: 'OpenClaw connects to your tools and works proactively — not just when you ask.',
+  ucs: [
+    { icon:'📧', t:'Email management', d:'Daily briefings, draft replies, highlight and prioritize important messages.', ex:'"Summarize all unread emails"' },
+    { icon:'📅', t:'Calendar & scheduling', d:'Check availability, set reminders, coordinate meetings across calendars.', ex:'"When am I free this week?"' },
+    { icon:'🔍', t:'Research & summaries', d:'Summarize websites, PDFs, YouTube videos and news on demand.', ex:'"Summarize this article"' },
+    { icon:'⚡', t:'Automation & cron jobs', d:'Daily briefings, price alerts, reminders and reports — fully automated, without lifting a finger.', ex:'"Every morning at 8: weather + agenda"' },
+    { icon:'🎙️', t:'Voice messages', d:'Record voice notes (even while driving), get transcriptions, and process them further.', ex:'"Create a task from this voice note"' },
+    { icon:'🛠️', t:'Custom automations', d:'OpenClaw is fully extensible. We help you set up your own workflows and skills.', ex:'"Remind me of my goals every day"' },
+    { icon:'📊', t:'Reports & dashboards', d:'Weekly reports, revenue summaries, or status updates — automatically in your chat.', ex:'"How was my week?"' },
+    { icon:'🔗', t:'Tool integrations', d:'Gmail, Google Calendar, Notion, JIRA, Slack, WordPress and many more.', ex:'"Create a JIRA ticket for this"' },
+    { icon:'👤', t:'Personal assistant', d:'Travel planning, recipe suggestions, gift ideas, language practice — all via Telegram.', ex:'"What should I cook tonight?"' },
+  ],
 
-  pricingLabel: 'Pricing',
-  pricingH2: 'Simple. Transparent. Fair.',
-  pricingNote: '⚠️ What you pay us: hosting and server management (CHF 24–44/mo). What you pay separately to Anthropic, OpenAI or Google: your own API key for AI usage (approx. CHF 5–20/mo). These costs go directly to your AI provider — we never see that data.',
+  pLabel: 'Pricing', pH2: 'Simple. Transparent. Fair.',
+  pNote: '⚠️ What you pay us: running your private server in Switzerland (CHF 24–44/mo). What you pay separately: your own API key directly to your AI provider (approx. CHF 5–20/mo depending on usage). These costs go directly to Anthropic, OpenAI or Google — we never see that data.',
 
-  plan1Badge: '',
-  plan1Name: 'Starter',
-  plan1Desc: 'Perfect for individuals and beginners',
-  plan1Price: '24',
-  plan1Annual: '→ CHF 220/year (2 months free)',
-  plan1F1: 'Your own dedicated OpenClaw server',
-  plan1F2: 'Telegram & Discord connected',
-  plan1F3: 'Automatic updates',
-  plan1F4: 'Email support (48h)',
-  plan1F5: 'Cancel anytime',
-  plan1Dim1: 'No WhatsApp connection',
-  plan1Dim2: 'No onboarding call',
-  plan1Cta: 'Choose Starter',
+  p1n: 'Starter', p1d: 'For individuals and beginners',
+  p1p: '24', p1a: '→ CHF 220/year (2 months free)',
+  p1fs: ['Private server in Switzerland (Infomaniak, Geneva)', 'Telegram & Discord', 'Automatic updates & monitoring', 'Email support (48h response time)', 'Cancel anytime'],
+  p1ds: ['No WhatsApp', 'No onboarding call'],
+  p1cta: 'Choose Starter',
 
-  plan2Badge: 'RECOMMENDED',
-  plan2Name: 'Pro',
-  plan2Desc: 'For businesses & power users',
-  plan2Price: '44',
-  plan2Annual: '→ CHF 400/year (2 months free)',
-  plan2F1: 'Your own dedicated OpenClaw server',
-  plan2F2: 'Telegram, Discord & WhatsApp',
-  plan2F3: 'Automatic updates & uptime monitoring',
-  plan2F4: 'Priority support (24h)',
-  plan2F5: '30-min onboarding call with us',
-  plan2F6: 'Custom skills & automation setup',
-  plan2F7: 'Cancel anytime',
-  plan2Cta: 'Choose Pro',
+  p2badge: 'RECOMMENDED', p2n: 'Pro', p2d: 'For businesses & power users',
+  p2p: '44', p2a: '→ CHF 400/year (2 months free)',
+  p2fs: ['Private server in Switzerland (Infomaniak, Geneva)', 'Telegram, Discord & WhatsApp', 'Automatic updates, monitoring & backups', 'Priority support (24h response time)', '30-min onboarding call in English or German', 'Custom skills & automation setup included', 'Cancel anytime'],
+  p2cta: 'Choose Pro',
 
-  compLabel: 'Comparison',
-  compH2: 'Why not self-host?',
-  compCol1: 'Feature',
-  compCol2: 'Self-hosting',
-  compCol3: 'OpenClaw Hosting',
-  compRow1: ['Setup time', '60+ minutes (SSH, Node.js, server)', '< 10 minutes'],
-  compRow2: ['Technical knowledge', 'Linux, SSH, CLI required', 'Not required'],
-  compRow3: ['Updates', 'Manual, your responsibility', 'Automatic'],
-  compRow4: ['Server location', 'Depends on VPS provider', '🇨🇭 Switzerland / 🇪🇺 EU'],
-  compRow5: ['Support', 'OpenClaw community', 'Personal support in English & German'],
-  compRow6: ['Price', 'CHF 5–15/mo VPS + your time', 'CHF 24/mo all-in'],
-  compRow7: ['Uptime monitoring', 'Set up yourself', 'Included'],
+  cLabel: 'Comparison', cH2: 'Why not self-host?',
+  cHead: ['Feature', 'Self-hosting', 'OpenClaw Hosting (CH)'],
+  cRows: [
+    ['Setup time', '60+ min (SSH, Linux, Node.js)', '< 10 minutes'],
+    ['Technical knowledge', 'Linux, SSH, CLI required', 'Not required'],
+    ['Updates', 'Manual — your responsibility', 'Automatic'],
+    ['Server location', 'Unknown / international', '🇨🇭 Infomaniak, Geneva (Switzerland)'],
+    ['Privacy', 'Depends on VPS provider', 'GDPR & nDSG compliant'],
+    ['Support', 'OpenClaw community (English only)', 'Personal support in German & English'],
+    ['Uptime monitoring', 'Set up yourself', 'Included'],
+    ['Price', 'CHF 5–15/mo VPS + your time', 'CHF 24/mo — all inclusive'],
+  ],
 
-  faqLabel: 'FAQ',
-  faqH2: 'Everything you need to know',
-  faq1Q: 'Do I need technical skills?',
-  faq1A: 'No. We set everything up for you. You just need a Telegram account and an API key from your AI provider — that takes 5 minutes and we\'ll show you how.',
-  faq2Q: 'What is an API key and what does it cost?',
-  faq2A: 'Your AI assistant needs access to an AI model (Claude, GPT-4, or Gemini). You create this key yourself on your provider\'s website. Costs are usage-based — typically CHF 5–20/mo for moderate use.',
-  faq3Q: 'Where is my data stored?',
-  faq3A: 'Your server runs in Switzerland or Germany (EU) — fully GDPR/nDSG compliant. We never store your API key — it goes directly onto your server.',
-  faq4Q: 'Which AI provider can I use?',
-  faq4A: 'OpenClaw supports Claude (Anthropic), GPT-4 (OpenAI) and Gemini (Google). We recommend Claude Haiku for budget-friendly use or Claude Sonnet for maximum quality.',
-  faq5Q: 'Can I cancel anytime?',
-  faq5A: 'Yes. No minimum term on monthly plans. Annual plans run until the end of the period. No hidden fees or surprises.',
-  faq6Q: 'What happens when OpenClaw updates?',
-  faq6A: 'We test new OpenClaw versions first and roll out updates automatically — zero downtime. You don\'t need to do anything.',
-  faq7Q: 'How do I talk to my assistant?',
-  faq7A: 'Via Telegram (all plans), Discord (all plans), or WhatsApp (Pro plan). Just send a message — like texting a person.',
-  faq8Q: 'Do you offer German-language support?',
-  faq8A: 'Yes — in both German and English. No automated chatbots, just real people who actually use and understand OpenClaw.',
+  fLabel: 'FAQ', fH2: 'Frequently asked questions',
+  faqs: [
+    ['Do I need technical skills?', 'No. We set everything up for you. You just need a Telegram account and an API key from your AI provider — that takes about 5 minutes and we\'ll walk you through it.'],
+    ['What is an API key?', 'Your assistant needs access to an AI model (Claude, GPT-4, or Gemini). You create this key for free on your provider\'s website. Usage costs (~CHF 5–20/mo) are billed directly by them.'],
+    ['Where is my data stored?', 'Your server runs at Infomaniak in Geneva, Switzerland — fully GDPR and nDSG compliant. We never store your API key — it\'s transferred directly to your server.'],
+    ['Which AI provider can I use?', 'OpenClaw supports Claude (Anthropic), GPT-4 (OpenAI) and Gemini (Google). We recommend Claude Haiku for budget-friendly use (~CHF 5/mo) or Claude Sonnet for maximum quality (~CHF 15–20/mo).'],
+    ['Can I cancel anytime?', 'Yes, no minimum term on monthly plans. Annual plans run until the end of the paid period. No hidden fees.'],
+    ['What is OpenClaw?', 'OpenClaw (formerly Clawdbot) is the most popular open-source AI agent platform with 200,000+ GitHub stars. It runs on your own server and connects to Telegram, Discord or WhatsApp.'],
+    ['What happens when OpenClaw updates?', 'We test new versions first and roll out updates automatically — zero downtime. You don\'t need to do anything.'],
+    ['Do you offer German-language support?', 'Yes — in both German and English. No automated chatbot, just real people who use OpenClaw themselves every day.'],
+  ],
 
-  footerText: '© 2026 Alexandra Gosteli Digital Solutions · ',
-  footerLink: 'openclaw-consulting.ch',
-  footerPrivacy: 'Privacy',
-  footerImprint: 'Imprint',
+  finalH2a: 'Ready for your', finalH2b: 'personal AI assistant?',
+  finalSub: 'No tech skills needed. We set everything up — in under 10 minutes.',
+  finalCta: 'Get in touch',
+  finalNote: 'Or email us: hello@openclaw-consulting.ch',
+
+  footerCopy: '© 2026 Alexandra Gosteli Digital Solutions · ',
+  footerPrivacy: 'Privacy', footerImprint: 'Imprint',
 }
 
+/* ─── PAGE ──────────────────────────────────────────────────────── */
 export default function Home() {
   const [lang, setLang] = useState<'de'|'en'>('de')
   const t = lang === 'de' ? de : en
 
   return (
     <>
-      {/* NAVBAR */}
+      {/* NAV */}
       <nav className="navbar">
         <div className="container nav-inner">
-          <a href="#" className="nav-brand">{t.navBrand}</a>
+          <a href="#" className="nav-brand">{t.navBrand1}<span>{t.navBrand2}</span></a>
           <div className="nav-links">
             <a href="#how">{t.navHow}</a>
             <a href="#pricing">{t.navPricing}</a>
             <a href="#faq">{t.navFaq}</a>
-            <button className="lang-btn" onClick={() => setLang(l => l === 'de' ? 'en' : 'de')}>
-              {lang === 'de' ? 'EN' : 'DE'}
-            </button>
+            <button className="lang-btn" onClick={() => setLang(l => l==='de'?'en':'de')}>{lang==='de'?'EN':'DE'}</button>
             <a href="#pricing" className="nav-cta">{t.navCta}</a>
           </div>
         </div>
@@ -258,25 +233,49 @@ export default function Home() {
 
       {/* HERO */}
       <section className="hero">
-        <div className="container">
-          <div className="hero-badge">{t.heroBadge}</div>
-          <h1>{t.heroH1}</h1>
-          <p className="hero-sub">{t.heroSub}</p>
-          <div className="hero-actions">
-            <a href="#pricing" className="btn-primary">{t.heroCta}</a>
-            <a href="#how" className="btn-ghost">{t.heroGhost}</a>
+        <div className="container hero-inner">
+          <div>
+            <div className="hero-badge">{t.badge}</div>
+            <h1>
+              {t.h1a}<br/>
+              <em>{t.h1b}</em><br/>
+              {t.h1c}
+            </h1>
+            <p className="hero-sub">{t.sub}</p>
+            <div className="hero-actions">
+              <a href="#pricing" className="btn-primary">{t.cta}</a>
+              <a href="#how" className="btn-ghost">{t.ghost}</a>
+            </div>
+            <div className="hero-notes">
+              {[t.n1, t.n2, t.n3].map((n,i) => (
+                <span key={i} className="hero-note-item"><span>✓</span>{n.replace('✓ ','')}</span>
+              ))}
+            </div>
           </div>
-          <p className="hero-note">
-            <strong>{t.heroNote1}</strong> &nbsp;{t.heroNote2} &nbsp;{t.heroNote3}
-          </p>
+          {/* Chat demo */}
+          <div className="chat-demo">
+            <div className="chat-header">
+              <div className="chat-dot"/>
+              <span className="chat-title">OpenClaw Assistant</span>
+              <span className="chat-status">● {lang==='de'?'Online':'Online'}</span>
+            </div>
+            <div className="chat-body">
+              {t.chatMessages.map((m,i) => (
+                <div key={i} className={`msg ${m.bot?'bot':'user'}`}>
+                  <div className="msg-bubble" style={{whiteSpace:'pre-line'}}>{m.text}</div>
+                  <div className="msg-time">{['07:01','07:01','07:02','07:02'][i]}</div>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </section>
 
-      {/* COST TRANSPARENCY STRIP */}
+      {/* COST STRIP */}
       <div className="cost-strip">
         <div className="container cost-strip-inner">
-          <span>💡 {lang === 'de' ? 'Transparente Gesamtkosten' : 'Full cost transparency'}:</span>
-          <strong>{t.costHosting}</strong>
+          <span>{t.costLabel}:</span>
+          <strong>{t.costUs}</strong>
           <span className="cost-sep">+</span>
           <span>{t.costApi}</span>
           <span className="cost-sep">=</span>
@@ -284,50 +283,56 @@ export default function Home() {
         </div>
       </div>
 
-      {/* HOW IT WORKS */}
+      {/* STATS */}
+      <section className="stats">
+        <div className="container">
+          <div className="stats-grid">
+            {[
+              {n:t.stat1n, l:t.stat1l},
+              {n:t.stat2n, l:t.stat2l},
+              {n:t.stat3n, l:t.stat3l},
+              {n:t.stat4n, l:t.stat4l},
+            ].map((s,i) => (
+              <div key={i} className="stat-card">
+                <span className="stat-num">{s.n}</span>
+                <span className="stat-label">{s.l}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* HOW */}
       <section className="how" id="how">
         <div className="container">
           <div className="section-label">{t.howLabel}</div>
-          <h2>{t.howH2}</h2>
+          <h2 className="section-h2">{t.howH2}</h2>
           <p className="section-sub">{t.howSub}</p>
           <div className="steps">
-            <div className="step">
-              <div className="step-num">1</div>
-              <h3>{t.step1Title}</h3>
-              <p>{t.step1Desc}</p>
-            </div>
-            <div className="step">
-              <div className="step-num">2</div>
-              <h3>{t.step2Title}</h3>
-              <p>{t.step2Desc}</p>
-            </div>
-            <div className="step">
-              <div className="step-num">3</div>
-              <h3>{t.step3Title}</h3>
-              <p>{t.step3Desc}</p>
-            </div>
+            {[[t.s1t,t.s1d],[t.s2t,t.s2d],[t.s3t,t.s3d]].map(([title,desc],i) => (
+              <div key={i} className="step">
+                <div className="step-num">{i+1}</div>
+                <h3>{title}</h3>
+                <p>{desc}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
       {/* USE CASES */}
-      <section className="use-cases">
+      <section className="use-cases" id="use-cases">
         <div className="container">
-          <div className="section-label">{t.usecasesLabel}</div>
-          <h2>{t.usecasesH2}</h2>
-          <div className="use-cases-grid" style={{marginTop:'2rem'}}>
-            {[
-              {icon:'📧', title:t.uc1Title, desc:t.uc1Desc},
-              {icon:'📅', title:t.uc2Title, desc:t.uc2Desc},
-              {icon:'🔍', title:t.uc3Title, desc:t.uc3Desc},
-              {icon:'⚡', title:t.uc4Title, desc:t.uc4Desc},
-              {icon:'🎙️', title:t.uc5Title, desc:t.uc5Desc},
-              {icon:'🛠️', title:t.uc6Title, desc:t.uc6Desc},
-            ].map((uc, i) => (
-              <div key={i} className="use-case-card">
-                <div className="use-case-icon">{uc.icon}</div>
-                <h3>{uc.title}</h3>
-                <p>{uc.desc}</p>
+          <div className="section-label">{t.ucLabel}</div>
+          <h2 className="section-h2">{t.ucH2}</h2>
+          <p className="section-sub">{t.ucSub}</p>
+          <div className="uc-grid">
+            {t.ucs.map((uc,i) => (
+              <div key={i} className="uc-card">
+                <div className="uc-icon">{uc.icon}</div>
+                <h3>{uc.t}</h3>
+                <p>{uc.d}</p>
+                <p className="uc-example">{uc.ex}</p>
               </div>
             ))}
           </div>
@@ -337,57 +342,39 @@ export default function Home() {
       {/* PRICING */}
       <section className="pricing" id="pricing">
         <div className="container">
-          <div className="section-label">{t.pricingLabel}</div>
-          <h2>{t.pricingH2}</h2>
-          <div className="pricing-note">{t.pricingNote}</div>
+          <div className="section-label">{t.pLabel}</div>
+          <h2 className="section-h2">{t.pH2}</h2>
+          <div className="pricing-transparency">
+            <strong>⚠️ {lang==='de'?'Wichtig':'Important'}:</strong> {t.pNote}
+          </div>
           <div className="plans">
-            {/* Starter */}
             <div className="plan">
-              {t.plan1Badge && <span className="plan-badge">{t.plan1Badge}</span>}
-              <h3>{t.plan1Name}</h3>
-              <p className="plan-desc">{t.plan1Desc}</p>
-              <div className="plan-price">
-                <span className="amount">CHF {t.plan1Price}</span>
-                <span className="per">/mo</span>
-              </div>
-              <p className="plan-annual">{t.plan1Annual}</p>
+              <h3>{t.p1n}</h3>
+              <p className="plan-desc">{t.p1d}</p>
+              <div className="plan-price"><span className="amount">CHF {t.p1p}</span><span className="per">/mo</span></div>
+              <p className="plan-annual">{t.p1a}</p>
               <ul className="plan-features">
-                <li>{t.plan1F1}</li>
-                <li>{t.plan1F2}</li>
-                <li>{t.plan1F3}</li>
-                <li>{t.plan1F4}</li>
-                <li>{t.plan1F5}</li>
-                <li className="dim">{t.plan1Dim1}</li>
-                <li className="dim">{t.plan1Dim2}</li>
+                {t.p1fs.map((f,i) => <li key={i}>{f}</li>)}
+                {t.p1ds.map((f,i) => <li key={i} className="dim">{f}</li>)}
               </ul>
-              <a href="mailto:hello@openclaw-consulting.ch?subject=OpenClaw Hosting Starter" className="plan-cta ghost">{t.plan1Cta}</a>
+              <a href={`mailto:hello@openclaw-consulting.ch?subject=OpenClaw Hosting Starter`} className="plan-cta outline">{t.p1cta}</a>
             </div>
-            {/* Pro */}
             <div className="plan featured">
-              <span className="plan-badge">{t.plan2Badge}</span>
-              <h3>{t.plan2Name}</h3>
-              <p className="plan-desc">{t.plan2Desc}</p>
-              <div className="plan-price">
-                <span className="amount">CHF {t.plan2Price}</span>
-                <span className="per">/mo</span>
-              </div>
-              <p className="plan-annual">{t.plan2Annual}</p>
+              <span className="plan-badge">{t.p2badge}</span>
+              <h3>{t.p2n}</h3>
+              <p className="plan-desc">{t.p2d}</p>
+              <div className="plan-price"><span className="amount">CHF {t.p2p}</span><span className="per">/mo</span></div>
+              <p className="plan-annual">{t.p2a}</p>
               <ul className="plan-features">
-                <li>{t.plan2F1}</li>
-                <li>{t.plan2F2}</li>
-                <li>{t.plan2F3}</li>
-                <li>{t.plan2F4}</li>
-                <li>{t.plan2F5}</li>
-                <li>{t.plan2F6}</li>
-                <li>{t.plan2F7}</li>
+                {t.p2fs.map((f,i) => <li key={i}>{f}</li>)}
               </ul>
-              <a href="mailto:hello@openclaw-consulting.ch?subject=OpenClaw Hosting Pro" className="plan-cta">{t.plan2Cta}</a>
+              <a href={`mailto:hello@openclaw-consulting.ch?subject=OpenClaw Hosting Pro`} className="plan-cta">{t.p2cta}</a>
             </div>
           </div>
-          <p style={{marginTop:'1.5rem', fontSize:'0.85rem', color:'var(--dim)'}}>
-            {lang === 'de'
-              ? '💳 Zahlung via TWINT, Visa & Mastercard. Abrechnung über Payrexx – sicher und Swiss-hosted.'
-              : '💳 Payment via TWINT, Visa & Mastercard. Billed via Payrexx – secure and Swiss-hosted.'}
+          <p style={{marginTop:'1.5rem', fontSize:'0.83rem', color:'var(--dim)'}}>
+            {lang==='de'
+              ? '💳 Zahlung via TWINT, Visa & Mastercard über Payrexx — sicher und in der Schweiz verarbeitet.'
+              : '💳 Payment via TWINT, Visa & Mastercard through Payrexx — secure and processed in Switzerland.'}
           </p>
         </div>
       </section>
@@ -395,19 +382,15 @@ export default function Home() {
       {/* COMPARISON */}
       <section className="comparison" id="compare">
         <div className="container">
-          <div className="section-label">{t.compLabel}</div>
-          <h2>{t.compH2}</h2>
+          <div className="section-label">{t.cLabel}</div>
+          <h2 className="section-h2">{t.cH2}</h2>
           <div style={{overflowX:'auto', marginTop:'2rem'}}>
             <table className="compare-table">
               <thead>
-                <tr>
-                  <th>{t.compCol1}</th>
-                  <th>{t.compCol2}</th>
-                  <th>{t.compCol3}</th>
-                </tr>
+                <tr>{t.cHead.map((h,i) => <th key={i}>{h}</th>)}</tr>
               </thead>
               <tbody>
-                {[t.compRow1, t.compRow2, t.compRow3, t.compRow4, t.compRow5, t.compRow6, t.compRow7].map((row, i) => (
+                {t.cRows.map((row,i) => (
                   <tr key={i}>
                     <td>{row[0]}</td>
                     <td className="no">{row[1]}</td>
@@ -423,22 +406,13 @@ export default function Home() {
       {/* FAQ */}
       <section className="faq-section" id="faq">
         <div className="container">
-          <div className="section-label">{t.faqLabel}</div>
-          <h2>{t.faqH2}</h2>
+          <div className="section-label">{t.fLabel}</div>
+          <h2 className="section-h2">{t.fH2}</h2>
           <div className="faq-grid" style={{marginTop:'2rem'}}>
-            {[
-              {q:t.faq1Q, a:t.faq1A},
-              {q:t.faq2Q, a:t.faq2A},
-              {q:t.faq3Q, a:t.faq3A},
-              {q:t.faq4Q, a:t.faq4A},
-              {q:t.faq5Q, a:t.faq5A},
-              {q:t.faq6Q, a:t.faq6A},
-              {q:t.faq7Q, a:t.faq7A},
-              {q:t.faq8Q, a:t.faq8A},
-            ].map((f, i) => (
+            {t.faqs.map(([q,a],i) => (
               <div key={i} className="faq-item">
-                <h3>{f.q}</h3>
-                <p>{f.a}</p>
+                <h3>{q}</h3>
+                <p>{a}</p>
               </div>
             ))}
           </div>
@@ -446,36 +420,19 @@ export default function Home() {
       </section>
 
       {/* FINAL CTA */}
-      <section style={{padding:'5rem 0', textAlign:'center', background:'var(--surface)', borderTop:'1px solid var(--border)'}}>
+      <section className="final-cta">
         <div className="container">
-          <h2 style={{fontSize:'2rem', marginBottom:'1rem'}}>
-            {lang === 'de' ? 'Bereit für Ihren KI-Assistenten?' : 'Ready for your AI assistant?'}
-          </h2>
-          <p style={{color:'var(--muted)', marginBottom:'2rem', fontSize:'1.05rem'}}>
-            {lang === 'de'
-              ? 'Kein Techniker nötig. Wir richten alles ein – in unter 10 Minuten.'
-              : 'No tech skills needed. We set everything up — in under 10 minutes.'}
-          </p>
-          <a href="mailto:hello@openclaw-consulting.ch?subject=OpenClaw Hosting" className="btn-primary" style={{fontSize:'1.1rem', padding:'1rem 2.5rem'}}>
-            {lang === 'de' ? 'Jetzt anfragen' : 'Get in touch'}
-          </a>
-          <p style={{marginTop:'1rem', fontSize:'0.85rem', color:'var(--dim)'}}>
-            {lang === 'de' ? 'Oder schreiben Sie uns: hello@openclaw-consulting.ch' : 'Or email us: hello@openclaw-consulting.ch'}
-          </p>
+          <h2>{t.finalH2a} <em>{t.finalH2b}</em></h2>
+          <p>{t.finalSub}</p>
+          <a href="mailto:hello@openclaw-consulting.ch?subject=OpenClaw Hosting" className="btn-primary" style={{fontSize:'1.05rem', padding:'0.95rem 2.5rem'}}>{t.finalCta}</a>
+          <p style={{marginTop:'1rem', fontSize:'0.83rem', color:'var(--dim)'}}>{t.finalNote}</p>
         </div>
       </section>
 
       {/* FOOTER */}
       <footer className="footer">
         <div className="container">
-          <p>
-            {t.footerText}
-            <a href={`https://${t.footerLink}`}>{t.footerLink}</a>
-            {' · '}
-            <a href="/datenschutz">{t.footerPrivacy}</a>
-            {' · '}
-            <a href="/impressum">{t.footerImprint}</a>
-          </p>
+          <p>{t.footerCopy}<a href="https://openclaw-consulting.ch">openclaw-consulting.ch</a> · <a href="/datenschutz">{t.footerPrivacy}</a> · <a href="/impressum">{t.footerImprint}</a></p>
         </div>
       </footer>
     </>
