@@ -109,19 +109,19 @@ const de = {
 
   p1n: 'Starter', p1d: 'Für Einsteiger und Privatpersonen',
   p1p: '19', p1a: '→ CHF 180/Jahr (2 Monate gratis)',
-  p1fs: ['1 vCPU · 2 GB RAM · 20 GB SSD', '🇨🇭 Privater Server in der Schweiz', 'Telegram, Discord & WhatsApp', '🎙️ Sprachnotizen (Whisper vorinstalliert)', 'Automatische Updates & Monitoring', 'E-Mail-Support (48 Std.)', 'Jederzeit kündbar'],
+  p1fs: ['2 vCPU · 4 GB RAM · 50 GB SSD', '🇨🇭 Privater Server in der Schweiz', 'Telegram, Discord & WhatsApp', '🎙️ Sprachnotizen (Whisper vorinstalliert)', 'Automatische Updates & Monitoring', 'E-Mail-Support (48 Std.)', 'Jederzeit kündbar'],
   p1ds: ['Kein Dashboard', 'Kein Onboarding-Call', 'Keine Backups'],
   p1cta: 'Starter wählen',
 
   p2badge: 'EMPFOHLEN', p2n: 'Pro', p2d: 'Für Power-User und Freelancer',
   p2p: '34', p2a: '→ CHF 320/Jahr (2 Monate gratis)',
-  p2fs: ['1 vCPU · 4 GB RAM · 50 GB SSD', '🇨🇭 Privater Server in der Schweiz', 'Telegram, Discord & WhatsApp', '🎙️ Sprachnotizen (Whisper vorinstalliert)', 'Automatische Updates, Monitoring & wöchentliche Backups', '✅ Persönliches Dashboard (nur für Sie zugänglich)', 'E-Mail-Support (24 Std.)', 'Jederzeit kündbar'],
+  p2fs: ['4 vCPU · 8 GB RAM · 80 GB SSD', '🇨🇭 Privater Server in der Schweiz', 'Telegram, Discord & WhatsApp', '🎙️ Sprachnotizen (Whisper vorinstalliert)', 'Automatische Updates, Monitoring & wöchentliche Backups', '✅ Persönliches Dashboard (nur für Sie zugänglich)', 'E-Mail-Support (24 Std.)', 'Jederzeit kündbar'],
   p2ds: ['Kein Onboarding-Call'],
   p2cta: 'Pro wählen',
 
   p3badge: 'BUSINESS', p3n: 'Business', p3d: 'Für Unternehmen und Teams',
   p3p: '59', p3a: '→ CHF 560/Jahr (2 Monate gratis)',
-  p3fs: ['4 vCPU · 8 GB RAM · 80 GB SSD', '🇨🇭 Privater Server in der Schweiz', 'Telegram, Discord & WhatsApp', '🎙️ Sprachnotizen (Whisper vorinstalliert)', 'Automatische Updates, Monitoring & tägliche Backups', '✅ Persönliches Dashboard (nur für Sie zugänglich)', 'Prioritäts-Support (< 24 Std.)', '30-minütiger Onboarding-Call auf Deutsch', 'Einrichtung von Custom Skills & Automationen', 'Jederzeit kündbar'],
+  p3fs: ['8 vCPU · 16 GB RAM · 80 GB SSD', '🇨🇭 Privater Server in der Schweiz', 'Telegram, Discord & WhatsApp', '🎙️ Sprachnotizen (Whisper vorinstalliert)', 'Automatische Updates, Monitoring & tägliche Backups', '✅ Persönliches Dashboard (nur für Sie zugänglich)', 'Prioritäts-Support (< 24 Std.)', '30-minütiger Onboarding-Call auf Deutsch', 'Einrichtung von Custom Skills & Automationen', 'Jederzeit kündbar'],
   p3cta: 'Business wählen',
 
   cLabel: 'Vergleich', cH2: 'Warum nicht selbst hosten?',
@@ -265,19 +265,19 @@ const en: typeof de = {
 
   p1n: 'Starter', p1d: 'For individuals and beginners',
   p1p: '19', p1a: '→ CHF 180/year (2 months free)',
-  p1fs: ['1 vCPU · 2 GB RAM · 20 GB SSD', '🇨🇭 Private server in Switzerland', 'Telegram, Discord & WhatsApp', '🎙️ Voice notes (Whisper pre-installed)', 'Automatic updates & monitoring', 'Email support (48h)', 'Cancel anytime'],
+  p1fs: ['2 vCPU · 4 GB RAM · 50 GB SSD', '🇨🇭 Private server in Switzerland', 'Telegram, Discord & WhatsApp', '🎙️ Voice notes (Whisper pre-installed)', 'Automatic updates & monitoring', 'Email support (48h)', 'Cancel anytime'],
   p1ds: ['No dashboard', 'No onboarding call', 'No backups'],
   p1cta: 'Choose Starter',
 
   p2badge: 'RECOMMENDED', p2n: 'Pro', p2d: 'For power users & freelancers',
   p2p: '34', p2a: '→ CHF 320/year (2 months free)',
-  p2fs: ['1 vCPU · 4 GB RAM · 50 GB SSD', '🇨🇭 Private server in Switzerland', 'Telegram, Discord & WhatsApp', '🎙️ Voice notes (Whisper pre-installed)', 'Automatic updates, monitoring & weekly backups', '✅ Personal dashboard (private access only)', 'Email support (24h)', 'Cancel anytime'],
+  p2fs: ['4 vCPU · 8 GB RAM · 80 GB SSD', '🇨🇭 Private server in Switzerland', 'Telegram, Discord & WhatsApp', '🎙️ Voice notes (Whisper pre-installed)', 'Automatic updates, monitoring & weekly backups', '✅ Personal dashboard (private access only)', 'Email support (24h)', 'Cancel anytime'],
   p2ds: ['No onboarding call'],
   p2cta: 'Choose Pro',
 
   p3badge: 'BUSINESS', p3n: 'Business', p3d: 'For companies & teams',
   p3p: '59', p3a: '→ CHF 560/year (2 months free)',
-  p3fs: ['4 vCPU · 8 GB RAM · 80 GB SSD', '🇨🇭 Private server in Switzerland', 'Telegram, Discord & WhatsApp', '🎙️ Voice notes (Whisper pre-installed)', 'Automatic updates, monitoring & daily backups', '✅ Personal dashboard (private access only)', 'Priority support (< 24h)', '30-min onboarding call in German or English', 'Custom skills & automation setup included', 'Cancel anytime'],
+  p3fs: ['8 vCPU · 16 GB RAM · 80 GB SSD', '🇨🇭 Private server in Switzerland', 'Telegram, Discord & WhatsApp', '🎙️ Voice notes (Whisper pre-installed)', 'Automatic updates, monitoring & daily backups', '✅ Personal dashboard (private access only)', 'Priority support (< 24h)', '30-min onboarding call in German or English', 'Custom skills & automation setup included', 'Cancel anytime'],
   p3cta: 'Choose Business',
 
   cLabel: 'Comparison', cH2: 'Why not self-host?',
