@@ -515,7 +515,7 @@ export default function Home() {
                 {t.p1fs.map((f,i) => <li key={i}>{f}</li>)}
                 {t.p1ds.map((f,i) => <li key={i} className="dim">{f}</li>)}
               </ul>
-              <a href={`mailto:support@openclaw-consulting.ch?subject=OpenClaw Hosting Starter`} className="plan-cta outline">{t.p1cta}</a>
+              <a href={process.env.NEXT_PUBLIC_PAYREXX_STARTER || "/onboarding?plan=starter"} className="plan-cta outline">{t.p1cta}</a>
             </div>
             {/* Pro */}
             <div className="plan featured">
@@ -528,7 +528,7 @@ export default function Home() {
                 {t.p2fs.map((f,i) => <li key={i}>{f}</li>)}
                 {t.p2ds.map((f,i) => <li key={i} className="dim">{f}</li>)}
               </ul>
-              <a href={`mailto:support@openclaw-consulting.ch?subject=OpenClaw Hosting Pro`} className="plan-cta">{t.p2cta}</a>
+              <a href={process.env.NEXT_PUBLIC_PAYREXX_PRO || "/onboarding?plan=pro"} className="plan-cta">{t.p2cta}</a>
             </div>
             {/* Business */}
             <div className="plan">
@@ -540,7 +540,7 @@ export default function Home() {
               <ul className="plan-features">
                 {t.p3fs.map((f,i) => <li key={i}>{f}</li>)}
               </ul>
-              <a href={`mailto:support@openclaw-consulting.ch?subject=OpenClaw Hosting Business`} className="plan-cta outline">{t.p3cta}</a>
+              <a href={process.env.NEXT_PUBLIC_PAYREXX_BUSINESS || "/onboarding?plan=business"} className="plan-cta outline">{t.p3cta}</a>
             </div>
           </div>
           <p style={{marginTop:'1.5rem', fontSize:'0.83rem', color:'var(--dim)'}}>
