@@ -67,14 +67,7 @@ export default function ContactPage() {
                 </div>
               </div>
 
-              <div style={{display:'flex', gap:'0.85rem', alignItems:'flex-start'}}>
-                <div style={{width:40, height:40, borderRadius:10, background:'var(--green3)', display:'flex', alignItems:'center', justifyContent:'center', fontSize:'1.1rem', flexShrink:0}}>🇨🇭</div>
-                <div>
-                  <div style={{fontWeight:700, fontSize:'0.92rem', color:'var(--ink)', marginBottom:'0.15rem'}}>Standort</div>
-                  <div style={{fontSize:'0.88rem', color:'var(--slate)'}}>Truttikon, Schweiz</div>
-                  <div style={{fontSize:'0.78rem', color:'var(--slate)', marginTop:'0.1rem'}}>Schweizer Datenschutz (nDSG)</div>
-                </div>
-              </div>
+
             </div>
 
             <div style={{marginTop:'2rem', padding:'1.25rem', background:'var(--white)', border:'1px solid var(--border)', borderRadius:'12px'}}>
