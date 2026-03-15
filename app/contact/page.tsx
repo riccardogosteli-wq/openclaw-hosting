@@ -73,7 +73,7 @@ export default function ContactPage() {
             <div style={{marginTop:'2rem', padding:'1.25rem', background:'var(--white)', border:'1px solid var(--border)', borderRadius:'12px'}}>
               <div style={{fontWeight:700, fontSize:'0.88rem', color:'var(--ink)', marginBottom:'0.75rem'}}>Häufige Fragen</div>
               {[
-                ['Wie schnell ist das Setup?', 'Innerhalb von 24 Stunden nach dem Onboarding-Formular.'],
+                ['Wie schnell ist das Setup?', 'In der Regel innerhalb weniger Stunden nach dem Onboarding-Formular.'],
                 ['Kann ich vor dem Kauf testen?', 'Schreiben Sie uns — wir können eine kurze Demo einrichten.'],
                 ['Gibt es einen Onboarding-Call?', 'Im Pro-Plan inklusive. Im Business-Plan immer dabei.'],
               ].map(([q,a]) => (

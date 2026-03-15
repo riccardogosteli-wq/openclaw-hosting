@@ -61,7 +61,7 @@ function OnboardingForm() {
       <div style={{ fontSize: '3rem', marginBottom: '1rem' }}>✅</div>
       <h2 style={{ fontFamily: 'Bricolage Grotesque, sans-serif', fontSize: '1.5rem', color: 'var(--ink)', marginBottom: '0.75rem' }}>Formular erhalten!</h2>
       <p style={{ color: 'var(--slate)', lineHeight: 1.7, marginBottom: '1.5rem' }}>
-        Wir richten Ihren persönlichen OpenClaw-Assistenten ein und melden uns innerhalb von 24 Stunden per E-Mail.
+        Wir richten Ihren persönlichen OpenClaw-Assistenten ein und melden uns in der Regel innerhalb weniger Stunden per E-Mail.
       </p>
       <p style={{ fontSize: '0.85rem', color: 'var(--slate)' }}>
         Fragen? <a href="mailto:support@openclaw-consulting.ch" style={{ color: 'var(--green)' }}>support@openclaw-consulting.ch</a>

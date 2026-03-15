@@ -56,7 +56,7 @@ export default function AgbPage() {
         </Section>
 
         <Section title="3. Vertragsschluss und Onboarding">
-          {p('Der Vertrag kommt zustande mit erfolgreicher Zahlung durch den Kunden und schriftlicher Bestätigung durch den Anbieter per E-Mail. Nach Zahlung füllt der Kunde das Onboarding-Formular aus. Der Anbieter richtet die Instanz innerhalb von 24 Stunden ein.')}
+          {p('Der Vertrag kommt zustande mit erfolgreicher Zahlung durch den Kunden und schriftlicher Bestätigung durch den Anbieter per E-Mail. Nach Zahlung füllt der Kunde das Onboarding-Formular aus. Der Anbieter richtet die Instanz in der Regel innerhalb weniger Stunden ein.')}
           {p('Der Kunde ist verantwortlich für die Bereitstellung korrekter Onboarding-Daten (Telegram-Bot-Token, API-Schlüssel, Telegram-Benutzer-ID).')}
         </Section>
 

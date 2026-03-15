@@ -61,7 +61,7 @@ export async function POST(req: NextRequest) {
               ✓ Ihr persönlicher OpenClaw-Assistent wird konfiguriert<br/>
               ✓ Sie erhalten eine E-Mail mit Ihrem Telegram-Bot-Link<br/>
               <br/>
-              <strong>Zeitrahmen:</strong> Innerhalb von 24 Stunden.
+              <strong>Zeitrahmen:</strong> In der Regel innerhalb weniger Stunden.
             </div>
             <p style="color:#4B5563;line-height:1.7;">
               Bei Fragen: einfach auf diese E-Mail antworten oder schreiben Sie uns an<br/>
