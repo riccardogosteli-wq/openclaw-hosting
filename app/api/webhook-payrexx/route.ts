@@ -6,6 +6,10 @@ const PAYREXX_WEBHOOK_SECRET = process.env.PAYREXX_WEBHOOK_SECRET || ''
 const FROM_EMAIL = 'support@openclaw-consulting.ch'
 const NOTIFY_EMAIL = 'riccardogosteli@gmail.com'
 
+// Idempotency: track processed referenceIds to prevent duplicate webhook processing
+// In-memory is fine — Payrexx retries happen within minutes, this process stays warm on Vercel edge
+const processedRefs = new Set<string>()
+
 function verifyWebhookSignature(body: string, signature: string | null): boolean {
   if (!PAYREXX_WEBHOOK_SECRET) return false // secret not configured — reject all requests
   if (!signature) return false

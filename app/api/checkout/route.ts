@@ -1,5 +1,24 @@
 import { NextRequest, NextResponse } from 'next/server'
 
+// Simple in-memory rate limiter (resets on cold start — good enough for Next.js edge/serverless)
+const rateLimitMap = new Map<string, { count: number; resetAt: number }>()
+function checkRateLimit(ip: string, maxPerMinute = 10): boolean {
+  const now = Date.now()
+  const entry = rateLimitMap.get(ip)
+  if (!entry || now > entry.resetAt) {
+    rateLimitMap.set(ip, { count: 1, resetAt: now + 60_000 })
+    return true
+  }
+  entry.count++
+  if (entry.count > maxPerMinute) return false
+  return true
+}
+function getClientIp(req: NextRequest): string {
+  return req.headers.get('cf-connecting-ip') || req.headers.get('x-forwarded-for')?.split(',')[0]?.trim() || '0.0.0.0'
+}
+
+
+
 const PAYREXX_INSTANCE = process.env.PAYREXX_INSTANCE || ''
 const PAYREXX_API_KEY = process.env.PAYREXX_API_KEY || ''
 const BASE_URL = 'https://hosting.openclaw-consulting.ch'
@@ -11,6 +30,10 @@ const PLANS: Record<string, { monthly: number; annual: number; name: string }> =
 }
 
 export async function POST(req: NextRequest) {
+  const ip = getClientIp(req)
+  if (!checkRateLimit(ip, 5)) {
+    return NextResponse.json({ error: 'Too many requests — please wait a moment' }, { status: 429 })
+  }
   try {
     const { plan, billing, lang } = await req.json()
     const safeLang = ['de','en','fr'].includes(lang) ? lang : 'de'

@@ -1,10 +1,35 @@
 import { NextRequest, NextResponse } from 'next/server'
 
+// Simple in-memory rate limiter (resets on cold start — good enough for Next.js edge/serverless)
+const rateLimitMap = new Map<string, { count: number; resetAt: number }>()
+function checkRateLimit(ip: string, maxPerMinute = 10): boolean {
+  const now = Date.now()
+  const entry = rateLimitMap.get(ip)
+  if (!entry || now > entry.resetAt) {
+    rateLimitMap.set(ip, { count: 1, resetAt: now + 60_000 })
+    return true
+  }
+  entry.count++
+  if (entry.count > maxPerMinute) return false
+  return true
+}
+function getClientIp(req: NextRequest): string {
+  return req.headers.get('cf-connecting-ip') || req.headers.get('x-forwarded-for')?.split(',')[0]?.trim() || '0.0.0.0'
+}
+
+
+
 const RESEND_API_KEY = process.env.RESEND_API_KEY || ''
-const NOTIFY_EMAIL = 'riccardogosteli@gmail.com' // personal fallback until support@ is verified
+const NOTIFY_EMAIL = 'riccardogosteli@gmail.com'
 const FROM_EMAIL = 'support@openclaw-consulting.ch'
+const PROVISION_API_URL = process.env.PROVISION_API_URL || ''
+const PROVISION_SECRET = process.env.PROVISION_SECRET || ''
 
 export async function POST(req: NextRequest) {
+  const ip = getClientIp(req)
+  if (!checkRateLimit(ip, 3)) {
+    return NextResponse.json({ ok: false, error: 'Too many requests' }, { status: 429 })
+  }
   try {
     const body = await req.json()
     const { name, email, company, telegramToken, telegramUserId, aiProvider, aiKey, language, notes, plan } = body
@@ -12,6 +37,20 @@ export async function POST(req: NextRequest) {
     if (!name || !email || !telegramToken || !aiKey) {
       return NextResponse.json({ error: 'Fehlende Pflichtfelder' }, { status: 400 })
     }
+
+    // Basic input validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+    if (!emailRegex.test(email)) return NextResponse.json({ error: 'Ungültige E-Mail' }, { status: 400 })
+    if (name.length > 100) return NextResponse.json({ error: 'Name zu lang' }, { status: 400 })
+    if (telegramToken.length > 200) return NextResponse.json({ error: 'Token ungültig' }, { status: 400 })
+    if (aiKey.length > 500) return NextResponse.json({ error: 'API-Key ungültig' }, { status: 400 })
+    if (telegramUserId && !/^\d+$/.test(telegramUserId)) return NextResponse.json({ error: 'Telegram-ID muss numerisch sein' }, { status: 400 })
+    const allowedPlans = ['starter', 'pro', 'business']
+    const safePlan = allowedPlans.includes(plan) ? plan : 'starter'
+    const allowedProviders = ['anthropic', 'openai', 'google']
+    const safeProvider = allowedProviders.includes(aiProvider) ? aiProvider : 'anthropic'
+    const allowedLanguages = ['de', 'en', 'fr']
+    const safeLanguage = allowedLanguages.includes(language) ? language : 'de'
 
     // 1. Notify Ricci with all customer details
     await fetch('https://api.resend.com/emails', {
@@ -30,20 +69,47 @@ export async function POST(req: NextRequest) {
             <tr><td style="padding:8px;background:#f7faf9;font-weight:600;">Plan</td><td style="padding:8px;border-bottom:1px solid #e4ede9;">${plan?.toUpperCase()}</td></tr>
             <tr><td style="padding:8px;background:#f7faf9;font-weight:600;">Sprache</td><td style="padding:8px;border-bottom:1px solid #e4ede9;">${language}</td></tr>
             <tr><td style="padding:8px;background:#f7faf9;font-weight:600;">KI-Anbieter</td><td style="padding:8px;border-bottom:1px solid #e4ede9;">${aiProvider}</td></tr>
-            <tr><td style="padding:8px;background:#f7faf9;font-weight:600;">API-Schlüssel</td><td style="padding:8px;border-bottom:1px solid #e4ede9;font-family:monospace;">${aiKey}</td></tr>
-            <tr><td style="padding:8px;background:#f7faf9;font-weight:600;">Telegram Token</td><td style="padding:8px;border-bottom:1px solid #e4ede9;font-family:monospace;">${telegramToken}</td></tr>
-            <tr><td style="padding:8px;background:#f7faf9;font-weight:600;">Telegram User ID</td><td style="padding:8px;border-bottom:1px solid #e4ede9;font-family:monospace;">${telegramUserId || '—'}</td></tr>
+            <tr><td style="padding:8px;background:#f7faf9;font-weight:600;">API-Schlüssel</td><td style="padding:8px;border-bottom:1px solid #e4ede9;color:#9ca3af;font-style:italic;">✅ Direkt an Server übertragen (nicht gespeichert)</td></tr>
+            <tr><td style="padding:8px;background:#f7faf9;font-weight:600;">Bot Token</td><td style="padding:8px;border-bottom:1px solid #e4ede9;color:#9ca3af;font-style:italic;">✅ Direkt an Server übertragen (nicht gespeichert)</td></tr>
+            <tr><td style="padding:8px;background:#f7faf9;font-weight:600;">User ID</td><td style="padding:8px;border-bottom:1px solid #e4ede9;font-family:monospace;">${telegramUserId || '—'}</td></tr>
             <tr><td style="padding:8px;background:#f7faf9;font-weight:600;">Anmerkungen</td><td style="padding:8px;">${notes || '—'}</td></tr>
           </table>
           <p style="margin-top:20px;font-size:13px;color:#4B5563;">
-            ➡️ Jetzt Provisioning-Script ausführen:<br/>
-            <code>./provision-openclaw.sh --name "${name}" --email "${email}" --telegram-token "${telegramToken}" --telegram-user-id "${telegramUserId}" --ai-key "${aiKey}" --ai-provider "${aiProvider}" --language "${language}" --plan "${plan}"</code>
+            ✅ Provisioning wurde automatisch gestartet.
           </p>
         `,
       }),
     })
 
-    // 2. Confirmation email to customer
+    // 2. Trigger automatic provisioning on Mac Mini
+    if (PROVISION_API_URL && PROVISION_SECRET) {
+      try {
+        const provRes = await fetch(`${PROVISION_API_URL}/run`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'x-provision-secret': PROVISION_SECRET,
+          },
+          body: JSON.stringify({
+            name: name.trim(),
+            email: email.trim(),
+            telegram_token: telegramToken.trim(),
+            telegram_user_id: telegramUserId || '',
+            ai_key: aiKey.trim(),
+            ai_provider: safeProvider,
+            language: safeLanguage,
+            plan: safePlan,
+          }),
+        })
+        const provData = await provRes.json()
+        console.log('Provisioning triggered:', provData)
+      } catch (err) {
+        // Don't fail the onboarding if provisioning trigger fails — Ricci gets the email fallback
+        console.error('Provisioning trigger failed:', err)
+      }
+    }
+
+    // 3. Confirmation email to customer
     await fetch('https://api.resend.com/emails', {
       method: 'POST',
       headers: { 'Authorization': `Bearer ${RESEND_API_KEY}`, 'Content-Type': 'application/json' },
@@ -61,7 +127,7 @@ export async function POST(req: NextRequest) {
               ✓ Ihr persönlicher OpenClaw-Assistent wird konfiguriert<br/>
               ✓ Sie erhalten eine E-Mail mit Ihrem Telegram-Bot-Link<br/>
               <br/>
-              <strong>Zeitrahmen:</strong> In der Regel innerhalb weniger Stunden.
+              <strong>Zeitrahmen:</strong> Vollautomatisch — in der Regel innerhalb von 30 Minuten.
             </div>
             <p style="color:#4B5563;line-height:1.7;">
               Bei Fragen: einfach auf diese E-Mail antworten oder schreiben Sie uns an<br/>

@@ -336,7 +336,7 @@ const en: typeof de = {
 
 /* ─── PAGE ──────────────────────────────────────────────────────── */
 export default function Home() {
-  const [lang, setLang] = useState<'de'|'en'>('de')
+  const [lang, setLang] = useState<'de'|'en'|'fr'>('de')
   const [billing, setBilling] = useState<'monthly'|'annual'>('annual')
   const t = lang === 'de' ? de : en
 
@@ -345,7 +345,7 @@ export default function Home() {
       {/* NAV */}
       <nav className="navbar">
         <div className="container nav-inner">
-          <a href="#" className="nav-brand">{t.navBrand1}<span>{t.navBrand2}</span></a>
+          <a href="/" className="nav-brand">{t.navBrand1}<span>{t.navBrand2}</span></a>
           <div className="nav-links">
             <a href="#how">{t.navHow}</a>
             <a href="#pricing">{t.navPricing}</a>
@@ -543,7 +543,7 @@ export default function Home() {
                 color: billing==='monthly' ? 'var(--ink)' : 'var(--slate)',
                 boxShadow: billing==='monthly' ? '0 1px 4px rgba(0,0,0,0.1)' : 'none'
               }}>
-              {lang==='de' ? 'Monatlich' : 'Monthly'}
+              {lang==='de' ? 'Monatlich' : lang==='fr' ? 'Mensuel' : 'Monthly'}
             </button>
             <button
               onClick={() => setBilling('annual')}
@@ -552,10 +552,10 @@ export default function Home() {
                 color: billing==='annual' ? '#fff' : 'var(--slate)',
                 boxShadow: billing==='annual' ? '0 1px 4px rgba(18,168,120,0.3)' : 'none'
               }}>
-              {lang==='de' ? 'Jährlich' : 'Annual'}
+              {lang==='de' ? 'Jährlich' : lang==='fr' ? 'Annuel' : 'Annual'}
             </button>
             <span style={{marginLeft:'0.6rem', background:'#dcfce7', color:'#14532d', padding:'0.2rem 0.6rem', borderRadius:'99px', fontSize:'0.75rem', fontWeight:700, whiteSpace:'nowrap'}}>
-              {lang==='de' ? '2 Monate gratis' : '2 months free'}
+              {lang==='de' ? '2 Monate gratis' : lang==='fr' ? '2 mois offerts' : '2 months free'}
             </span>
           </div>
 
@@ -601,7 +601,7 @@ export default function Home() {
                 <p className="plan-desc">{p.desc}</p>
                 <div className="plan-price">
                   <span className="amount">CHF {p.price}</span>
-                  <span className="per">{lang==='de'?'/Mt.':'/mo'}</span>
+                  <span className="per">{lang==='de'?'/Mt.':lang==='fr'?'/mois':'/mo'}</span>
                 </div>
                 <p className="plan-annual" style={{color: billing==='annual'?'var(--green2)':'var(--muted)', fontWeight: billing==='annual'?700:400}}>
                   {p.annual}
