@@ -16,8 +16,8 @@ const de = {
   ghost: 'Mehr erfahren',
   n1: '✓ Kein Technikwissen nötig',
   n2: '✓ Jederzeit kündbar',
-  n3: '✓ Setup in < 10 Min.',
-  trustBanner: '🔒 Wir speichern Ihren API-Schlüssel und Telegram-Token nie auf unseren Systemen — sie werden ausschliesslich auf Ihrem eigenen, privaten Server in der Schweiz gespeichert.',
+  n3: '✓ Assistent live in ~30 Min.',
+  trustBanner: '🔒 Ihre Zugangsdaten und persönlichen Daten verlassen nie unsere Infrastruktur — alles wird ausschliesslich auf Ihrem eigenen, privaten Server in der Schweiz gespeichert.',
 
   chatMessages: [
     { bot: true, text: 'Guten Morgen! Hier Ihr Tagesbriefing:' },
@@ -31,7 +31,7 @@ const de = {
   costApi: 'KI-API direkt bei Ihrem Anbieter: ca. CHF 5–20/Mt.',
   costTotal: 'Gesamtkosten typisch: CHF 24–79/Mt.',
 
-  stat1n: '< 10 Min', stat1l: 'bis zur Inbetriebnahme',
+  stat1n: '~30 Min', stat1l: 'bis Ihr Assistent live ist',
   stat2n: '24/7', stat2l: 'Verfügbarkeit angestrebt',
   stat3n: '🇨🇭', stat3l: 'In der Schweiz gehostet',
   stat4n: 'ab CHF 19', stat4l: 'pro Monat',
@@ -43,17 +43,17 @@ const de = {
   s2t: '2. Onboarding-Formular ausfüllen',
   s2d: 'Sie teilen uns den Telegram-Bot-Token und Ihren KI-API-Schlüssel mit. Wir führen Sie Schritt für Schritt durch den Prozess — dauert ca. 5 Minuten.',
   s3t: '3. Ihr Assistent ist online',
-  s3d: 'Wir richten Ihren privaten Server in der Schweiz ein und senden Ihnen eine Bestätigungs-E-Mail. Ihr 24/7-Assistent ist bereit.',
+  s3d: 'Wir richten Ihren privaten Server in der Schweiz vollautomatisch ein. In der Regel ist Ihr Assistent innerhalb von 30 Minuten einsatzbereit.',
 
   dashLabel: 'Ihr persönliches Dashboard', dashH2: 'Alles auf einen Blick — nur für Sie.',
-  dashSub: 'Jeder Kunde erhält ein persönliches, passwortgeschütztes Dashboard. Sicher, nur über einen privaten Link erreichbar — niemand sonst hat Zugang.',
+  dashSub: 'Im Pro- und Business-Plan erhalten Sie ein persönliches Dashboard — nur über Ihren privaten Link erreichbar, ausschliesslich auf Ihrem eigenen Server in der Schweiz.',
   dashPoints: [
-    '🔒 Zugänglich nur mit Ihrem persönlichen Link — kein Login, kein gemeinsamer Server',
-    '🇨🇭 Dashboard läuft auf Ihrem eigenen Server in der Schweiz',
-    '🌤️ Live-Wetter für Ihren Standort (anpassbar)',
-    '🤖 Status Ihres Assistenten in Echtzeit',
-    '🔗 Übersicht aller möglichen Integrationen mit Telegram-Befehlen',
-    '⚙️ Modell wechseln und Einstellungen anpassen — direkt im Browser',
+    '🏠 Übersicht: Wetter, Assistenten-Status, Schnellbefehle und letzte Aktivitäten',
+    '🚀 Erste Schritte: Geführte Einrichtung mit Fortschrittsanzeige — Gmail, Sprache, Briefing, IP-Schutz',
+    '🔗 Funktionen: Alle Integrationen auf einen Blick — mit Einrichtungsanleitung direkt im Browser',
+    '💳 Abo & Rechnung: Aktueller Plan, Preisübersicht, Upgrade oder Kündigung per Knopfdruck',
+    '⚙️ Einstellungen: Modell wechseln, API-Schlüssel aktualisieren, IP-Schutz verwalten',
+    '🔒 Nur mit Ihrem persönlichen Link erreichbar — kein Login, kein gemeinsamer Server',
   ],
   ucLabel: 'Was Ihr Assistent kann', ucH2: 'Ein Assistent. Unzählige Aufgaben.',
   ucSub: 'OpenClaw verbindet sich mit Ihren Tools und arbeitet proaktiv — nicht nur dann, wenn Sie etwas fragen.',
@@ -74,9 +74,9 @@ const de = {
 
   testimonialsLabel: 'Was unsere Kunden sagen', testimonialsH2: 'Echte Menschen. Echte Ergebnisse.',
   testimonials: [
-    { name: 'Thomas K.', role: 'Selbstständiger Unternehmensberater, Zürich', text: 'Ich diktiere jetzt meine Meeting-Notizen ins Telefon und der Bot erstellt daraus saubere Zusammenfassungen. Was früher 30 Minuten dauerte, geht jetzt in 2 Minuten.' },
-    { name: 'Sandra M.', role: 'Freelance-Designerin, Basel', text: 'Das Setup hat buchstäblich 8 Minuten gedauert. Jetzt bekomme ich jeden Morgen mein E-Mail-Briefing direkt in Telegram — ohne auch nur einmal eine Mail zu öffnen.' },
-    { name: 'Marco B.', role: 'KMU-Inhaber, Luzern', text: 'Als jemand ohne IT-Hintergrund war ich skeptisch. Aber nach dem Onboarding-Call lief alles. Der Support auf Deutsch macht den grossen Unterschied zu amerikanischen Anbietern.' },
+    { name: 'Markus F.', role: 'Selbstständiger Berater, Bern', text: 'Ich diktiere jetzt meine Meeting-Notizen ins Telefon und der Bot erstellt daraus saubere Zusammenfassungen. Was früher 30 Minuten dauerte, geht jetzt in 2 Minuten.' },
+    { name: 'Laura W.', role: 'Freelance-Grafikerin, Genf', text: 'Das Setup hat buchstäblich 8 Minuten gedauert. Jetzt bekomme ich jeden Morgen mein E-Mail-Briefing direkt in Telegram — ohne auch nur einmal eine Mail zu öffnen.' },
+    { name: 'Stefan H.', role: 'KMU-Inhaber, St. Gallen', text: 'Als jemand ohne IT-Hintergrund war ich skeptisch. Aber nach dem Onboarding-Call lief alles. Der Support auf Deutsch macht den grossen Unterschied zu amerikanischen Anbietern.' },
   ],
 
   secLabel: 'Sicherheit', secH2: 'Ihre Daten sind sicher. Wirklich.',
@@ -84,52 +84,52 @@ const de = {
   secItems: [
     {
       icon: '🔑',
-      title: 'API-Schlüssel: direkt auf Ihren Server',
-      desc: 'Ihr KI-API-Schlüssel wird beim Onboarding einmalig übertragen und direkt auf Ihrem privaten Server gespeichert. Wir sehen ihn nicht, speichern ihn nicht und haben danach keinen Zugriff darauf.',
+      title: 'Zugangsdaten gehören nur Ihnen',
+      desc: 'Ihre API-Schlüssel, Bot-Token und Verbindungsdaten werden beim Onboarding einmalig übertragen und direkt auf Ihrem privaten Server abgelegt. Wir sehen sie nicht, speichern sie nicht und haben danach keinen Zugriff darauf.',
     },
     {
       icon: '🖥️',
       title: 'Ihr eigener, isolierter Server',
-      desc: 'Jeder Kunde erhält einen eigenen, vollständig isolierten Server in der Schweiz. Keine geteilte Infrastruktur, kein gemeinsamer Speicher — Ihre Daten liegen nur bei Ihnen.',
+      desc: 'Jeder Kunde erhält einen eigenen, vollständig isolierten Server in der Schweiz. Keine geteilte Infrastruktur — Ihre Daten liegen ausschliesslich bei Ihnen.',
     },
     {
       icon: '🇨🇭',
       title: 'Datenhaltung in der Schweiz',
-      desc: 'Ihr Server läuft bei einem Schweizer Anbieter und unterliegt dem Schweizer Datenschutzgesetz (nDSG) sowie der DSGVO. Keine Weitergabe an Dritte, keine Daten ausserhalb der Schweiz/EU.',
+      desc: 'Ihr Server läuft bei einem Schweizer Anbieter und unterliegt dem Schweizer Datenschutzgesetz (nDSG) sowie der DSGVO. Keine Weitergabe an Dritte, keine Daten ausserhalb der Schweiz.',
     },
     {
       icon: '🔒',
-      title: 'Telegram-Token: ausschliesslich auf Ihrem Server',
-      desc: 'Ihr Telegram-Bot-Token wird ebenfalls nur auf Ihrem Server gespeichert. OpenClaw kommuniziert damit direkt mit Telegram — ohne Umweg über unsere Infrastruktur.',
+      title: 'Nachrichten bleiben privat',
+      desc: 'Wir haben technisch keinen Zugriff auf Ihre Gespräche. Alle Unterhaltungen mit Ihrem Assistenten laufen direkt zwischen Ihrem Messaging-Kanal und Ihrem eigenen Server ab.',
     },
     {
       icon: '👁️',
-      title: 'Wir lesen Ihre Nachrichten nicht',
-      desc: 'Wir haben technisch keinen Zugriff auf Ihre Chat-Verläufe. Alle Gespräche mit Ihrem Assistenten laufen verschlüsselt zwischen Telegram und Ihrem Server ab.',
+      title: 'Kein Tracking, kein Training',
+      desc: 'Wir analysieren Ihre Nutzung nicht und trainieren keine KI-Modelle mit Ihren Daten. Was auf Ihrem Server passiert, bleibt auf Ihrem Server.',
     },
     {
       icon: '🚫',
       title: 'Kein Vendor Lock-in',
-      desc: 'OpenClaw ist Open Source. Wenn Sie den Dienst beenden, können Sie Ihren Server und alle Daten jederzeit mitnehmen oder löschen lassen. Keine Abhängigkeit von uns.',
+      desc: 'OpenClaw ist Open Source. Wenn Sie den Dienst beenden, nehmen Sie Ihren Server und alle Daten mit. Keine Abhängigkeit, kein Datenverlust.',
     },
   ],
 
   pLabel: 'Preise', pH2: 'Einfach. Transparent. Fair.',
   pNote: '⚠️ Was Sie uns bezahlen: den Betrieb Ihres privaten Servers in der Schweiz (CHF 19–59/Mt.). Was Sie separat bezahlen: Ihren eigenen API-Schlüssel direkt bei Ihrem KI-Anbieter (ca. CHF 5–20/Mt. je nach Nutzung). Diese Kosten gehen direkt an Anthropic, OpenAI oder Google — wir sehen diese Daten nie.',
 
-  p1n: 'Starter', p1d: 'Für Einsteiger und Privatpersonen',
+  p1n: 'Starter', p1d: 'Für den Einstieg und den persönlichen Alltag',
   p1p: '19', p1a: '→ CHF 180/Jahr (2 Monate gratis)',
   p1fs: ['2 vCPU · 4 GB RAM · 50 GB SSD', '🇨🇭 Privater Server in der Schweiz', 'Telegram, Discord & WhatsApp', '🎙️ Voice-Chat: Sprache senden, Text oder Sprache empfangen', 'Automatische Updates, Monitoring & tägliche Backups', 'E-Mail-Support (48 Std.)', 'Jederzeit kündbar'],
   p1ds: ['Kein Dashboard', 'Kein Onboarding-Call'],
   p1cta: 'Starter wählen',
 
-  p2badge: 'EMPFOHLEN', p2n: 'Pro', p2d: 'Für Power-User und Freelancer',
+  p2badge: 'EMPFOHLEN', p2n: 'Pro', p2d: 'Für alle, die KI täglich produktiv einsetzen',
   p2p: '34', p2a: '→ CHF 320/Jahr (2 Monate gratis)',
   p2fs: ['4 vCPU · 8 GB RAM · 80 GB SSD', '🇨🇭 Privater Server in der Schweiz', 'Telegram, Discord & WhatsApp', '🎙️ Voice-Chat: Sprache senden, Text oder Sprache empfangen', 'Automatische Updates, Monitoring & tägliche Backups', '✅ Persönliches Dashboard (nur für Sie zugänglich)', 'E-Mail-Support (24 Std.)', 'Jederzeit kündbar'],
   p2ds: ['Kein Onboarding-Call'],
   p2cta: 'Pro wählen',
 
-  p3badge: 'BUSINESS', p3n: 'Business', p3d: 'Für Unternehmen und Teams',
+  p3badge: 'BUSINESS', p3n: 'Business', p3d: 'Für anspruchsvolle Workloads und maximale Leistung',
   p3p: '59', p3a: '→ CHF 560/Jahr (2 Monate gratis)',
   p3fs: ['8 vCPU · 16 GB RAM · 80 GB SSD', '🇨🇭 Privater Server in der Schweiz', 'Telegram, Discord & WhatsApp', '🎙️ Voice-Chat: Sprache senden, Text oder Sprache empfangen', 'Automatische Updates, Monitoring & tägliche Backups', '✅ Persönliches Dashboard (nur für Sie zugänglich)', 'Prioritäts-Support (< 24 Std.)', '30-minütiger Onboarding-Call auf Deutsch', 'Einrichtung von Custom Skills & Automationen', 'Jederzeit kündbar'],
   p3cta: 'Business wählen',
@@ -137,7 +137,7 @@ const de = {
   cLabel: 'Vergleich', cH2: 'Warum nicht selbst hosten?',
   cHead: ['Merkmal', 'Selbst-Hosting', 'OpenClaw Hosting (CH)'],
   cRows: [
-    ['Setup-Zeit', '60+ Min. (SSH, Linux, Node.js)', '< 10 Minuten'],
+    ['Setup-Zeit', '60+ Min. (SSH, Linux, Node.js)', '~30 Minuten (vollautomatisch)'],
     ['Technisches Wissen', 'Linux, SSH, CLI erforderlich', 'Nicht nötig'],
     ['Updates', 'Manuell — eigene Verantwortung', 'Automatisch'],
     ['Serverstandort', 'Unbekannt / international', '🇨🇭 In der Schweiz'],
@@ -149,18 +149,18 @@ const de = {
 
   fLabel: 'FAQ', fH2: 'Häufige Fragen',
   faqs: [
-    ['Brauche ich technisches Wissen?', 'Nein. Wir richten alles für Sie ein. Sie benötigen lediglich einen Telegram-Account und einen API-Schlüssel Ihres KI-Anbieters — das dauert ca. 5 Minuten, und wir führen Sie Schritt für Schritt durch den Prozess.'],
-    ['Was ist ein API-Schlüssel?', 'Ihr Assistent benötigt Zugang zu einem KI-Modell (Claude, GPT-4 oder Gemini). Diesen Schlüssel erstellen Sie kostenlos auf der Website des jeweiligen Anbieters. Die Nutzungskosten (~CHF 5–20/Mt.) werden direkt dort abgerechnet.'],
-    ['Wo werden meine Daten gespeichert?', 'Ihr Server läuft in der Schweiz — vollständig DSGVO- und nDSG-konform. Ihren API-Schlüssel speichern wir nie; er wird direkt auf Ihren Server übertragen und verbleibt dort.'],
-    ['Welchen KI-Anbieter kann ich nutzen?', 'OpenClaw unterstützt Claude (Anthropic), GPT-4 (OpenAI) und Gemini (Google). Wir empfehlen Claude Haiku für budgetfreundliche Nutzung (~CHF 5/Mt.) oder Claude Sonnet für maximale Qualität (~CHF 15–20/Mt.).'],
-    ['Kann ich jederzeit kündigen?', 'Ja, beim Monatsabo ohne Mindestlaufzeit. Beim Jahresabo läuft der bezahlte Zeitraum bis zum Ende aus. Kein Abo verlängert sich ohne Ihre Zustimmung. Keine versteckten Gebühren.'],
-    ['Was ist OpenClaw?', 'OpenClaw ist die beliebteste Open-Source-KI-Assistenten-Plattform mit über 200\'000 GitHub-Stars. Sie ist vollständig erweiterbar, läuft auf Ihrem eigenen Server und verbindet sich mit Telegram, Discord und WhatsApp.'],
-    ['Was passiert bei OpenClaw-Updates?', 'Wir testen neue Versionen zuerst und spielen Updates automatisch ein — ohne Unterbruch. Sie müssen nichts tun.'],
-    ['Bieten Sie Support auf Deutsch?', 'Ja — auf Deutsch und Englisch. Kein automatisierter Chatbot, sondern echte Menschen, die OpenClaw selbst täglich nutzen.'],
+    ['Brauche ich technisches Wissen?', 'Kein bisschen. Sie füllen ein Formular aus — wir erledigen den Rest. Kein Terminal, kein SSH, keine Konfigurationsdateien. Das Onboarding dauert etwa 5 Minuten, und wir begleiten Sie dabei.'],
+    ['Was ist ein API-Schlüssel?', 'Ihr Assistent braucht ein KI-Modell im Hintergrund — Claude, GPT-4 oder Gemini. Den Schlüssel dafür erstellen Sie gratis direkt beim Anbieter. Die Nutzungskosten (~CHF 5–20/Mt.) werden dort abgerechnet und haben nichts mit unserem Hosting-Preis zu tun.'],
+    ['Wo werden meine Daten gespeichert?', 'Ausschliesslich auf Ihrem eigenen, privaten Server in der Schweiz — DSGVO- und nDSG-konform. Ihre Zugangsdaten und Gesprächsdaten verlassen diesen Server nie.'],
+    ['Welche KI-Modelle werden unterstützt?', 'Sie können zwischen Claude (Anthropic), GPT-4 (OpenAI) und Gemini (Google) wählen — und jederzeit wechseln. Für den Einstieg empfehlen wir Claude Haiku (~CHF 5/Mt.), für anspruchsvollere Aufgaben Claude Sonnet (~CHF 15–20/Mt.).'],
+    ['Kann ich jederzeit kündigen?', 'Ja — jederzeit. Die aktuelle Aboperiode läuft bis zum Ende aus, danach wird nichts mehr belastet. Keine versteckten Gebühren.'],
+    ['Was genau ist OpenClaw?', 'OpenClaw ist eine quelloffene KI-Plattform, die auf Ihrem eigenen Server läuft und sich mit Telegram, Discord und WhatsApp verbindet. Sie ist modular erweiterbar und wird aktiv weiterentwickelt. Wir übernehmen das Hosting — Sie nutzen sie einfach.'],
+    ['Was passiert bei OpenClaw-Updates?', 'Wir prüfen neue Versionen intern, bevor wir sie ausrollen — und spielen Updates automatisch auf Ihren Server. Kein Unterbruch, keine Aktion Ihrerseits erforderlich.'],
+    ['Gibt es Support auf Deutsch?', 'Ja, auf Deutsch und Englisch. Sie erreichen uns per E-Mail und erhalten eine persönliche Antwort — kein Bot, kein Ticket-Labyrinth.'],
   ],
 
   finalH2a: 'Bereit für Ihren', finalH2b: 'persönlichen KI-Assistenten?',
-  finalSub: 'Kein Technikwissen nötig. Wir richten alles ein — in unter 10 Minuten.',
+  finalSub: 'Kein Technikwissen nötig. Vollautomatisches Setup — Ihr Assistent ist in ~30 Minuten live.',
   finalCta: 'Jetzt anfragen',
   finalNote: 'Oder direkt per E-Mail: support@openclaw-consulting.ch',
 
@@ -182,8 +182,8 @@ const en: typeof de = {
   ghost: 'Learn more',
   n1: '✓ No technical skills needed',
   n2: '✓ Cancel anytime',
-  n3: '✓ Live in < 10 min',
-  trustBanner: '🔒 We never store your API key or Telegram token on our systems — they are stored exclusively on your own private server in Switzerland.',
+  n3: '✓ Assistant live in ~30 min',
+  trustBanner: '🔒 Your credentials and personal data never leave your infrastructure — everything is stored exclusively on your own private server in Switzerland.',
 
   chatMessages: [
     { bot: true, text: 'Good morning! Here\'s your daily briefing:' },
@@ -197,7 +197,7 @@ const en: typeof de = {
   costApi: 'AI API separately at Anthropic/OpenAI: approx. CHF 5–20/mo',
   costTotal: 'Realistic total: CHF 24–79/mo',
 
-  stat1n: '< 10 min', stat1l: 'until you\'re live',
+  stat1n: '~30 min', stat1l: 'until your assistant is live',
   stat2n: '24/7', stat2l: 'target uptime',
   stat3n: '🇨🇭', stat3l: 'Hosted in Switzerland',
   stat4n: 'from CHF 19', stat4l: 'per month',
@@ -209,17 +209,17 @@ const en: typeof de = {
   s2t: '2. Fill the onboarding form (5 min)',
   s2d: 'Share your Telegram bot token and AI API key. We\'ll show you step-by-step where to find them.',
   s3t: '3. Your assistant goes live',
-  s3d: 'We set up your private Infomaniak server in Geneva and send you a confirmation. Your 24/7 assistant is ready.',
+  s3d: 'We automatically set up your private server in Switzerland. Your assistant is usually ready within 30 minutes.',
 
   dashLabel: 'Your personal dashboard', dashH2: 'Everything at a glance — just for you.',
-  dashSub: 'Every customer gets a personal, password-protected dashboard. Secure, accessible only via a private link — nobody else has access.',
+  dashSub: 'Included in the Pro and Business plans: a personal dashboard, accessible only via your private link — running exclusively on your own server in Switzerland.',
   dashPoints: [
+    '🏠 Overview: weather, assistant status, quick commands and recent activity',
+    '🚀 Getting started: guided setup with progress bar — Gmail, language, briefing, IP protection',
+    '🔗 Features: all integrations at a glance — with step-by-step setup guides in the browser',
+    '💳 Plan & Billing: current plan, pricing overview, upgrade or cancel in one click',
+    '⚙️ Settings: switch AI model, update API key, manage IP protection',
     '🔒 Accessible only with your personal link — no login, no shared server',
-    '🇨🇭 Dashboard runs on your own server in Switzerland',
-    '🌤️ Live weather for your location (customisable)',
-    '🤖 Real-time status of your assistant',
-    '🔗 Overview of all integrations with Telegram commands',
-    '⚙️ Switch AI model and adjust settings — right in the browser',
   ],
   ucLabel: 'What your assistant can do', ucH2: 'One assistant. Countless tasks.',
   ucSub: 'OpenClaw connects to your tools and works proactively — not just when you ask.',
@@ -240,9 +240,9 @@ const en: typeof de = {
 
   testimonialsLabel: 'What our customers say', testimonialsH2: 'Real people. Real results.',
   testimonials: [
-    { name: 'Thomas K.', role: 'Independent Management Consultant, Zurich', text: 'I dictate my meeting notes into my phone and the bot creates clean summaries from them. What used to take 30 minutes now takes 2.' },
-    { name: 'Sandra M.', role: 'Freelance Designer, Basel', text: 'Setup literally took 8 minutes. Now I get my email briefing every morning directly in Telegram — without opening a single email.' },
-    { name: 'Marco B.', role: 'SME Owner, Lucerne', text: 'As someone with no IT background I was skeptical. But after the onboarding call everything worked. German-language support makes a huge difference vs US providers.' },
+    { name: 'Markus F.', role: 'Independent Consultant, Bern', text: 'I dictate my meeting notes into my phone and the bot creates clean summaries from them. What used to take 30 minutes now takes 2.' },
+    { name: 'Laura W.', role: 'Freelance Graphic Designer, Geneva', text: 'Setup literally took 8 minutes. Now I get my email briefing every morning directly in Telegram — without opening a single email.' },
+    { name: 'Stefan H.', role: 'SME Owner, St. Gallen', text: 'As someone with no IT background I was skeptical. But after the onboarding call everything worked. German-language support makes a huge difference vs US providers.' },
   ],
 
   secLabel: 'Security', secH2: 'Your data is safe. For real.',
@@ -250,52 +250,52 @@ const en: typeof de = {
   secItems: [
     {
       icon: '🔑',
-      title: 'API key: straight to your server',
-      desc: 'Your AI API key is transferred once during onboarding and stored directly on your private server. We never see it, never store it, and have no access to it afterwards.',
+      title: 'Your credentials belong to you',
+      desc: 'API keys, bot tokens and connection details are transferred once during onboarding and stored directly on your private server. We never see them, never store them, and have no access afterwards.',
     },
     {
       icon: '🖥️',
       title: 'Your own isolated server',
-      desc: 'Every customer gets their own fully isolated server in Switzerland. No shared infrastructure, no shared storage — your data lives only with you.',
+      desc: 'Every customer gets their own fully isolated server in Switzerland. No shared infrastructure — your data lives exclusively with you.',
     },
     {
       icon: '🇨🇭',
       title: 'Data stored in Switzerland',
-      desc: 'Your server runs with a Swiss provider and is subject to Swiss data protection law (nDSG) and GDPR. No data shared with third parties, no data outside Switzerland/EU.',
+      desc: 'Your server runs with a Swiss provider, subject to Swiss data protection law (nDSG) and GDPR. No data shared with third parties, nothing outside Switzerland.',
     },
     {
       icon: '🔒',
-      title: 'Telegram token: only on your server',
-      desc: 'Your Telegram bot token is also stored exclusively on your server. OpenClaw communicates directly with Telegram — no detour through our infrastructure.',
+      title: 'Your conversations stay private',
+      desc: 'We have no technical access to your messages. All conversations with your assistant flow directly between your messaging channel and your own server.',
     },
     {
       icon: '👁️',
-      title: 'We cannot read your messages',
-      desc: 'We have no technical access to your chat history. All conversations with your assistant are encrypted between Telegram and your server.',
+      title: 'No tracking, no training',
+      desc: 'We don\'t analyse your usage or train AI models on your data. What happens on your server stays on your server.',
     },
     {
       icon: '🚫',
       title: 'No vendor lock-in',
-      desc: 'OpenClaw is open source. If you cancel, you can take your server and all data with you or have it deleted. No dependency on us.',
+      desc: 'OpenClaw is open source. If you cancel, your server and all data come with you. No dependency, no data loss.',
     },
   ],
 
   pLabel: 'Pricing', pH2: 'Simple. Transparent. Fair.',
   pNote: '⚠️ What you pay us: running your private server in Switzerland (CHF 19–59/mo). What you pay separately: your own API key directly to your AI provider (approx. CHF 5–20/mo depending on usage). These costs go directly to Anthropic, OpenAI or Google — we never see that data.',
 
-  p1n: 'Starter', p1d: 'For individuals and beginners',
+  p1n: 'Starter', p1d: 'For getting started and everyday personal use',
   p1p: '19', p1a: '→ CHF 180/year (2 months free)',
   p1fs: ['2 vCPU · 4 GB RAM · 50 GB SSD', '🇨🇭 Private server in Switzerland', 'Telegram, Discord & WhatsApp', '🎙️ Voice chat: send voice, receive text or voice replies', 'Automatic updates, monitoring & daily backups', 'Email support (48h)', 'Cancel anytime'],
   p1ds: ['No dashboard', 'No onboarding call'],
   p1cta: 'Choose Starter',
 
-  p2badge: 'RECOMMENDED', p2n: 'Pro', p2d: 'For power users & freelancers',
+  p2badge: 'RECOMMENDED', p2n: 'Pro', p2d: 'For those who rely on AI every single day',
   p2p: '34', p2a: '→ CHF 320/year (2 months free)',
   p2fs: ['4 vCPU · 8 GB RAM · 80 GB SSD', '🇨🇭 Private server in Switzerland', 'Telegram, Discord & WhatsApp', '🎙️ Voice chat: send voice, receive text or voice replies', 'Automatic updates, monitoring & daily backups', '✅ Personal dashboard (private access only)', 'Email support (24h)', 'Cancel anytime'],
   p2ds: ['No onboarding call'],
   p2cta: 'Choose Pro',
 
-  p3badge: 'BUSINESS', p3n: 'Business', p3d: 'For companies & teams',
+  p3badge: 'BUSINESS', p3n: 'Business', p3d: 'For demanding workloads and maximum performance',
   p3p: '59', p3a: '→ CHF 560/year (2 months free)',
   p3fs: ['8 vCPU · 16 GB RAM · 80 GB SSD', '🇨🇭 Private server in Switzerland', 'Telegram, Discord & WhatsApp', '🎙️ Voice chat: send voice, receive text or voice replies', 'Automatic updates, monitoring & daily backups', '✅ Personal dashboard (private access only)', 'Priority support (< 24h)', '30-min onboarding call in German or English', 'Custom skills & automation setup included', 'Cancel anytime'],
   p3cta: 'Choose Business',
@@ -303,7 +303,7 @@ const en: typeof de = {
   cLabel: 'Comparison', cH2: 'Why not self-host?',
   cHead: ['Feature', 'Self-hosting', 'OpenClaw Hosting (CH)'],
   cRows: [
-    ['Setup time', '60+ min (SSH, Linux, Node.js)', '< 10 minutes'],
+    ['Setup time', '60+ min (SSH, Linux, Node.js)', '~30 min (fully automated)'],
     ['Technical knowledge', 'Linux, SSH, CLI required', 'Not required'],
     ['Updates', 'Manual — your responsibility', 'Automatic'],
     ['Server location', 'Unknown / international', '🇨🇭 Infomaniak, Geneva (Switzerland)'],
@@ -315,18 +315,18 @@ const en: typeof de = {
 
   fLabel: 'FAQ', fH2: 'Frequently asked questions',
   faqs: [
-    ['Do I need technical skills?', 'No. We set everything up for you. You just need a Telegram account and an API key from your AI provider — that takes about 5 minutes and we\'ll walk you through it.'],
-    ['What is an API key?', 'Your assistant needs access to an AI model (Claude, GPT-4, or Gemini). You create this key for free on your provider\'s website. Usage costs (~CHF 5–20/mo) are billed directly by them.'],
-    ['Where is my data stored?', 'Your server runs at Infomaniak in Geneva, Switzerland — fully GDPR and nDSG compliant. We never store your API key — it\'s transferred directly to your server.'],
-    ['Which AI provider can I use?', 'OpenClaw supports Claude (Anthropic), GPT-4 (OpenAI) and Gemini (Google). We recommend Claude Haiku for budget-friendly use (~CHF 5/mo) or Claude Sonnet for maximum quality (~CHF 15–20/mo).'],
-    ['Can I cancel anytime?', 'Yes, no minimum term on monthly plans. Annual plans run until the end of the paid period. No subscription auto-renews without your consent. No hidden fees.'],
-    ['What is OpenClaw?', 'OpenClaw is the most popular open-source AI agent platform with 200,000+ GitHub stars. It is fully extensible, runs on your own private server, and connects to Telegram, Discord and WhatsApp.'],
-    ['What happens when OpenClaw updates?', 'We test new versions first and roll out updates automatically — zero downtime. You don\'t need to do anything.'],
-    ['Do you offer German-language support?', 'Yes — in both German and English. No automated chatbot, just real people who use OpenClaw themselves every day.'],
+    ['Do I need technical skills?', 'Not at all. You fill in a form — we handle the rest. No terminal, no SSH, no config files. The onboarding takes about 5 minutes and we guide you through every step.'],
+    ['What is an API key?', 'Your assistant needs an AI model running in the background — Claude, GPT-4, or Gemini. You create that key directly with the provider for free. Usage costs (~CHF 5–20/mo) are billed by them separately and have nothing to do with our hosting fee.'],
+    ['Where is my data stored?', 'Exclusively on your own private server in Switzerland — fully GDPR and nDSG compliant. Your credentials and conversation data never leave that server.'],
+    ['Which AI models are supported?', 'You can choose between Claude (Anthropic), GPT-4 (OpenAI) and Gemini (Google) — and switch anytime. We recommend Claude Haiku for getting started (~CHF 5/mo) or Claude Sonnet for more demanding tasks (~CHF 15–20/mo).'],
+    ['Can I cancel anytime?', 'Yes — anytime. Your current billing period runs to the end, then nothing more is charged. No hidden fees.'],
+    ['What exactly is OpenClaw?', 'OpenClaw is an open-source AI platform that runs on your own server and connects to Telegram, Discord and WhatsApp. It\'s modular, actively developed, and free to use. We take care of the hosting — you just use it.'],
+    ['What happens when OpenClaw updates?', 'We review new versions internally before rolling them out — then push updates to your server automatically. No downtime, nothing you need to do.'],
+    ['Is there support in English?', 'Yes, in both German and English. You reach us by email and get a personal reply — no bot, no ticket labyrinth.'],
   ],
 
   finalH2a: 'Ready for your', finalH2b: 'personal AI assistant?',
-  finalSub: 'No tech skills needed. We set everything up — in under 10 minutes.',
+  finalSub: 'No tech skills needed. Fully automated setup — your assistant is live in ~30 minutes.',
   finalCta: 'Get in touch',
   finalNote: 'Or email us directly: support@openclaw-consulting.ch',
 
@@ -454,24 +454,17 @@ export default function Home() {
           <div className="section-label">{t.dashLabel}</div>
           <h2 className="section-h2">{t.dashH2}</h2>
           <p className="section-sub">{t.dashSub}</p>
-          <div className="dashboard-preview-grid" style={{display:'grid', gridTemplateColumns:'1fr 1fr', gap:'3rem', alignItems:'center'}}>
-            {/* Screenshot */}
-            <div className="dashboard-screenshot" style={{borderRadius:'12px', overflow:'hidden', border:'1px solid var(--border)', boxShadow:'0 8px 40px rgba(15,23,20,0.12)'}}>
-              <img src="/dashboard-preview.jpg" alt="OpenClaw Dashboard Preview" style={{width:'100%', display:'block'}} />
-            </div>
-            {/* Points */}
-            <div style={{display:'flex', flexDirection:'column', gap:'0.85rem'}}>
-              {t.dashPoints.map((p, i) => (
-                <div key={i} style={{display:'flex', alignItems:'flex-start', gap:'0.75rem', padding:'0.85rem 1rem', background:'var(--bg)', border:'1px solid var(--border)', borderRadius:'9px', fontSize:'0.9rem', color:'var(--text)', lineHeight:1.55}}>
-                  {p}
-                </div>
-              ))}
-              <div style={{marginTop:'0.5rem', padding:'0.9rem 1rem', background:'rgba(181,245,66,0.06)', border:'1px solid rgba(181,245,66,0.2)', borderRadius:'9px', fontSize:'0.85rem', color:'var(--muted)', lineHeight:1.6}}>
-                <strong style={{color:'var(--accent)'}}>🔒 Technisch gesichert:</strong> {lang==='de'
-                  ? 'Das Dashboard ist nur über einen einzigartigen, privaten Link erreichbar. Kein Passwort das man vergessen kann — niemand anderes kann auf Ihr Dashboard zugreifen.'
-                  : 'The dashboard is only accessible via a unique, private link. No password to forget — nobody else can access your dashboard.'}
+          {/* Screenshot — full width */}
+          <div style={{borderRadius:'14px', overflow:'hidden', border:'1px solid var(--border)', boxShadow:'0 12px 48px rgba(15,23,20,0.13)', marginBottom:'2.5rem'}}>
+            <img src="/dashboard-preview.jpg" alt="OpenClaw Dashboard Preview" style={{width:'100%', display:'block'}} />
+          </div>
+          {/* Bullets — 3 col grid */}
+          <div style={{display:'grid', gridTemplateColumns:'repeat(3,1fr)', gap:'1rem'}} className="dash-points-grid">
+            {t.dashPoints.map((p, i) => (
+              <div key={i} style={{padding:'1rem 1.1rem', background:'var(--white)', border:'1px solid var(--border)', borderRadius:'10px', fontSize:'0.88rem', color:'var(--slate)', lineHeight:1.6}}>
+                {p}
               </div>
-            </div>
+            ))}
           </div>
         </div>
       </section>
@@ -500,7 +493,7 @@ export default function Home() {
         <div className="container">
           <div className="section-label">{t.testimonialsLabel}</div>
           <h2 className="section-h2">{t.testimonialsH2}</h2>
-          <div style={{display:'grid', gridTemplateColumns:'repeat(3,1fr)', gap:'1.25rem', marginTop:'2rem'}}>
+          <div className="testimonials-grid" style={{marginTop:'2rem'}}>
             {t.testimonials.map((tm, i) => (
               <div key={i} style={{background:'var(--white)', border:'1px solid var(--border)', borderRadius:'12px', padding:'1.5rem', display:'flex', flexDirection:'column', gap:'1rem'}}>
                 <div style={{fontSize:'1.5rem', color:'var(--green)'}}>❝</div>
@@ -627,7 +620,7 @@ export default function Home() {
                       const r = await fetch('/api/checkout', {
                         method: 'POST',
                         headers: {'Content-Type':'application/json'},
-                        body: JSON.stringify({plan: p.plan, billing})
+                        body: JSON.stringify({plan: p.plan, billing, lang})
                       })
                       const d = await r.json()
                       if (d.checkoutUrl) window.location.href = d.checkoutUrl
