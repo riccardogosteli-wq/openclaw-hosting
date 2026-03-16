@@ -98,18 +98,30 @@ export async function POST(req: NextRequest) {
       const plan = extractPlan(data)
       const planName = plan === 'starter' ? 'Starter' : plan === 'pro' ? 'Pro' : 'Business'
 
-      // Notify Ricci to shut down server
+      // Auto-trigger backup + server deletion via provisioning API
+      const PROVISION_API_URL = process.env.PROVISION_API_URL || 'http://195.15.202.192:8001'
+      const PROVISION_SECRET = process.env.PROVISION_SECRET || ''
+      try {
+        const cancelResp = await fetch(`${PROVISION_API_URL}/cancel`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'x-provision-secret': PROVISION_SECRET },
+          body: JSON.stringify({ email }),
+        })
+        const cancelData = await cancelResp.json().catch(() => ({}))
+        console.log('Auto-cancel triggered:', email, cancelData)
+      } catch (e) {
+        console.error('Auto-cancel API call failed:', e)
+        // Will fall through to email notification — Ricci must handle manually
+      }
+
+      // Notify Ricci (backup confirmation or fallback manual action)
       await sendEmail(NOTIFY_EMAIL,
-        `❌ Abo gekündigt: ${name} (${planName})`,
+        `❌ Abo gekündigt (auto): ${name} (${planName})`,
         `<div style="font-family:sans-serif">
           <h2>OpenClaw Hosting — Abo gekündigt</h2>
           <p><strong>${name}</strong> (${email}) hat den ${planName}-Plan gekündigt.</p>
-          <p style="margin-top:16px;color:#ef4444"><strong>Aktion erforderlich:</strong> Server für ${email} herunterfahren und löschen.</p>
-          <p style="font-family:monospace;background:#f1f5f9;padding:12px;border-radius:8px">
-            # Finde den Server:<br/>
-            cat ~/.openclaw/workspace/customers/ | grep ${email}<br/><br/>
-            # Dann Server löschen via Infomaniak API oder Dashboard
-          </p>
+          <p style="margin-top:16px;color:#15803d">✅ Server-Löschung automatisch ausgelöst (Backup + Delete via Provisioning API).</p>
+          <p style="color:#6b7280;font-size:13px">Falls der Server nicht gelöscht wurde, manuelle Löschung über Infomaniak erforderlich.</p>
         </div>`
       )
 
