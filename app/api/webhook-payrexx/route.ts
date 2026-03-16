@@ -1,10 +1,17 @@
 import { NextRequest, NextResponse } from 'next/server'
 import crypto from 'crypto'
 
-const RESEND_API_KEY = process.env.RESEND_API_KEY || 're_jSGcCv3C_NHdjr17ryPUYFtUx3S3qKQEZ'
-const PAYREXX_API_KEY = process.env.PAYREXX_API_KEY || '7aMLk1381W7xpAEVRHNuBKSiBTJb47'
+const RESEND_API_KEY = process.env.RESEND_API_KEY || ''
+const PAYREXX_WEBHOOK_SECRET = process.env.PAYREXX_WEBHOOK_SECRET || ''
 const FROM_EMAIL = 'support@openclaw-consulting.ch'
 const NOTIFY_EMAIL = 'riccardogosteli@gmail.com'
+
+function verifyWebhookSignature(body: string, signature: string | null): boolean {
+  if (!PAYREXX_WEBHOOK_SECRET) return false // secret not configured — reject all requests
+  if (!signature) return false
+  const expected = crypto.createHmac('sha256', PAYREXX_WEBHOOK_SECRET).update(body).digest('hex')
+  return crypto.timingSafeEqual(Buffer.from(expected), Buffer.from(signature))
+}
 
 async function sendEmail(to: string, subject: string, html: string) {
   await fetch('https://api.resend.com/emails', {
@@ -17,8 +24,15 @@ async function sendEmail(to: string, subject: string, html: string) {
 export async function POST(req: NextRequest) {
   try {
     const body = await req.text()
-    const data = JSON.parse(body)
 
+    // Verify Payrexx webhook signature
+    const signature = req.headers.get('x-payrexx-signature') || req.headers.get('x-webhook-signature')
+    if (!verifyWebhookSignature(body, signature)) {
+      console.error('Webhook signature verification failed')
+      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
+    }
+
+    const data = JSON.parse(body)
     const event = data.transaction?.status || data.subscription?.status || data.event
 
     // ── Subscription activated (payment successful) ──────────────────────────
@@ -57,7 +71,7 @@ export async function POST(req: NextRequest) {
           <p style="color:#4B5563;line-height:1.7;">Ihre Zahlung war erfolgreich. Sie haben den <strong>${planName}-Plan</strong> gebucht.</p>
           <div style="background:#E6F7F2;border:1px solid #b2dfd4;border-radius:10px;padding:16px 20px;margin:20px 0;font-size:14px;color:#1E3329;line-height:1.8;">
             <strong>Nächster Schritt:</strong><br/>
-            Füllen Sie jetzt das Onboarding-Formular aus (ca. 5 Min.) — wir richten Ihren Server dann innerhalb von 24 Stunden ein:<br/>
+            Füllen Sie jetzt das Onboarding-Formular aus (ca. 5 Min.) — Ihr Server wird vollautomatisch eingerichtet, in der Regel innerhalb von 30 Minuten:<br/>
             <a href="https://hosting.openclaw-consulting.ch/onboarding?plan=${plan}" style="display:inline-block;margin-top:12px;background:#12A878;color:#fff;padding:8px 20px;border-radius:8px;text-decoration:none;font-weight:700">Onboarding-Formular ausfüllen →</a>
           </div>
           ${dashboardNote}
