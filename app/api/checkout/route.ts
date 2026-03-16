@@ -1,7 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 
-const PAYREXX_INSTANCE = process.env.PAYREXX_INSTANCE
-if (!PAYREXX_INSTANCE) throw new Error('PAYREXX_INSTANCE env var is required')
+const PAYREXX_INSTANCE = process.env.PAYREXX_INSTANCE || ''
 const PAYREXX_API_KEY = process.env.PAYREXX_API_KEY || ''
 const BASE_URL = 'https://hosting.openclaw-consulting.ch'
 
