@@ -4,14 +4,14 @@ import { useState } from 'react'
 /* ─── CONTENT ───────────────────────────────────────────────────── */
 const de = {
   navBrand1: 'OpenClaw', navBrand2: 'Hosting',
-  navHow: 'So funktioniert\'s', navPricing: 'Preise', navFaq: 'FAQ', navContact: 'Kontakt', navAbout: 'Über uns',
+  navHow: 'So funktioniert\'s', navPricing: 'Preise', navFaq: 'FAQ', navContact: 'Kontakt', navAbout: 'Über uns', navVergleich: 'Vergleich', navSkills: 'Skills',
   navCta: 'Jetzt starten',
 
   badge: '🇨🇭 In der Schweiz gehostet',
   h1a: 'Ihr KI-Assistent.',
-  h1b: 'Läuft 24/7.',
-  h1c: 'Ohne Aufwand.',
-  sub: 'OpenClaw auf Ihrem eigenen Server – wir richten alles ein, warten ihn und halten ihn am Laufen. Sie chatten einfach los. Auf Deutsch.',
+  h1b: 'Fertig eingerichtet.',
+  h1c: 'Direkt loslegen.',
+  sub: 'Kein Linux-Wissen nötig. Kein Setup-Stress. Ihr persönlicher OpenClaw-Assistent läuft in ~30 Minuten — auf Ihrem eigenen Schweizer Server, mit Gmail, Kalender, Sprache und Web-Suche bereits eingerichtet.',
   cta: 'Jetzt starten – ab CHF 19/Mt.',
   ghost: 'Mehr erfahren',
   n1: '✓ Kein Technikwissen nötig',
@@ -170,14 +170,14 @@ const de = {
 
 const en: typeof de = {
   navBrand1: 'OpenClaw', navBrand2: 'Hosting',
-  navHow: 'How it works', navPricing: 'Pricing', navFaq: 'FAQ', navContact: 'Contact', navAbout: 'About',
+  navHow: 'How it works', navPricing: 'Pricing', navFaq: 'FAQ', navContact: 'Contact', navAbout: 'About', navVergleich: 'Compare', navSkills: 'Skills',
   navCta: 'Get started',
 
   badge: '🇨🇭 Hosted in Geneva · Infomaniak datacenter',
   h1a: 'Your AI assistant.',
-  h1b: 'Running 24/7.',
-  h1c: 'Zero hassle.',
-  sub: 'OpenClaw on your own private server — we set it up, maintain it, and keep it running. You just chat.',
+  h1b: 'Fully set up.',
+  h1c: 'Ready to go.',
+  sub: 'No Linux. No server config. Your personal OpenClaw assistant is live in ~30 minutes — on your own Swiss server, with Gmail, calendar, voice and web search already configured.',
   cta: 'Get started – from CHF 19/mo',
   ghost: 'Learn more',
   n1: '✓ No technical skills needed',
@@ -349,6 +349,8 @@ export default function Home() {
           <div className="nav-links">
             <a href="#how">{t.navHow}</a>
             <a href="#pricing">{t.navPricing}</a>
+            <a href="/vergleich">{t.navVergleich}</a>
+            <a href="/skills">{t.navSkills}</a>
             <a href="#faq">{t.navFaq}</a>
             <a href="/contact">{t.navContact}</a>
             <a href="/ueber-uns">{t.navAbout}</a>

@@ -154,31 +154,35 @@ export default function GuidePage() {
         {/* STEP 3: API Key */}
         {step('3', 'KI-API-Schlüssel erstellen', <>
           <p style={{ color: '#4B5563', fontSize: '0.92rem', lineHeight: 1.7, marginBottom: '1rem' }}>
-            Ihr Assistent braucht Zugang zu einem KI-Modell. Wir empfehlen <strong>Claude von Anthropic</strong> — günstig, schnell und sehr leistungsfähig.
+            Ihr Assistent braucht Zugang zu einem KI-Modell. Zum Einstieg empfehlen wir <strong>Google Gemini Flash</strong> — kostenlos, ohne Kreditkarte, in 30 Sekunden eingerichtet. Für mehr Leistung: Claude von Anthropic.
           </p>
 
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', marginBottom: '1.25rem' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '1rem', marginBottom: '1.25rem' }}>
             {[
-              { name: 'Anthropic (Claude)', rec: true, link: 'https://console.anthropic.com/settings/keys', desc: 'Empfohlen · ab ~CHF 1/Mo', color: '#b87333' },
-              { name: 'OpenAI (GPT-4)', rec: false, link: 'https://platform.openai.com/api-keys', desc: 'Beliebt · ab ~CHF 3/Mo', color: '#10a37f' },
+              { name: 'Google (Gemini Flash)', rec: true, badge: 'GRATIS STARTEN', link: 'https://aistudio.google.com/app/apikey', desc: 'Kostenlos · kein Kreditkarte nötig', keyFmt: 'AIzaSy...' },
+              { name: 'Anthropic (Claude)', rec: false, badge: '', link: 'https://console.anthropic.com/settings/keys', desc: 'Günstig · ab ~CHF 2/Mo', keyFmt: 'sk-ant-...' },
+              { name: 'OpenAI (GPT-4)', rec: false, badge: '', link: 'https://platform.openai.com/api-keys', desc: 'Beliebt · ab ~CHF 3/Mo', keyFmt: 'sk-proj-...' },
             ].map(p => (
               <div key={p.name} style={{ border: `1.5px solid ${p.rec ? '#12A878' : '#E4EDE9'}`, borderRadius: '10px', padding: '1rem', position: 'relative', background: p.rec ? '#fafffe' : '#fff' }}>
-                {p.rec && <div style={{ position: 'absolute', top: '-10px', left: '12px', background: '#12A878', color: '#fff', fontSize: '0.68rem', fontWeight: 800, padding: '0.1rem 0.5rem', borderRadius: '99px', letterSpacing: '0.05em' }}>EMPFOHLEN</div>}
-                <p style={{ margin: '0 0 0.25rem', fontWeight: 700, fontSize: '0.9rem', color: '#0F1714' }}>{p.name}</p>
-                <p style={{ margin: '0 0 0.6rem', fontSize: '0.8rem', color: '#4B5563' }}>{p.desc}</p>
-                <a href={p.link} target="_blank" rel="noopener noreferrer" style={{ display: 'inline-block', background: p.rec ? '#12A878' : '#F7FAF9', color: p.rec ? '#fff' : '#0F1714', padding: '0.35rem 0.75rem', borderRadius: '6px', fontSize: '0.82rem', fontWeight: 600, textDecoration: 'none', border: p.rec ? 'none' : '1px solid #E4EDE9' }}>
+                {p.rec && <div style={{ position: 'absolute', top: '-10px', left: '12px', background: '#12A878', color: '#fff', fontSize: '0.68rem', fontWeight: 800, padding: '0.1rem 0.5rem', borderRadius: '99px', letterSpacing: '0.05em' }}>{p.badge}</div>}
+                <p style={{ margin: '0 0 0.25rem', fontWeight: 700, fontSize: '0.88rem', color: '#0F1714' }}>{p.name}</p>
+                <p style={{ margin: '0 0 0.6rem', fontSize: '0.78rem', color: '#4B5563' }}>{p.desc}</p>
+                <a href={p.link} target="_blank" rel="noopener noreferrer" style={{ display: 'inline-block', background: p.rec ? '#12A878' : '#F7FAF9', color: p.rec ? '#fff' : '#0F1714', padding: '0.35rem 0.75rem', borderRadius: '6px', fontSize: '0.8rem', fontWeight: 600, textDecoration: 'none', border: p.rec ? 'none' : '1px solid #E4EDE9' }}>
                   API-Key erstellen →
                 </a>
               </div>
             ))}
           </div>
 
+          <div style={{ background: '#E6F7F2', border: '1px solid #b2dfd4', borderRadius: '8px', padding: '0.75rem 1rem', fontSize: '0.85rem', color: '#1E3329', marginBottom: '1.25rem', lineHeight: 1.6 }}>
+            💡 <strong>Empfehlung für den Einstieg:</strong> Starten Sie mit <strong>Google Gemini Flash</strong> — kostenlos, kein Kreditkarte nötig, in 30 Sekunden eingerichtet. Sie können jederzeit wechseln.
+          </div>
+
           <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
             {[
               { n: '3a', text: 'Klicken Sie oben auf "API-Key erstellen" beim gewünschten Anbieter' },
-              { n: '3b', text: 'Erstellen Sie ein kostenloses Konto (E-Mail + Passwort) — dauert 2 Minuten' },
-              { n: '3c', text: 'Hinterlegen Sie eine Zahlungsmethode — Anthropic verlangt dies für neue Konten. Die ersten ~CHF 5 sind oft gratis.' },
-              { n: '3d', text: <>Klicken Sie auf <strong>"Create Key"</strong> / <strong>"API-Schlüssel erstellen"</strong></> },
+              { n: '3b', text: 'Melden Sie sich mit Ihrem Google-Konto an (für Gemini) oder erstellen Sie ein Konto (Anthropic/OpenAI — ca. 2 Minuten)' },
+              { n: '3c', text: <>Klicken Sie auf <strong>"Create API key"</strong> resp. <strong>"API-Schlüssel erstellen"</strong></> },
             ].map(s => (
               <div key={s.n} style={{ display: 'grid', gridTemplateColumns: '2rem 1fr', gap: '0.75rem', alignItems: 'start' }}>
                 <div style={{ background: '#E6F7F2', color: '#0E8F67', borderRadius: '50%', width: '28px', height: '28px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '0.82rem', fontWeight: 700, flexShrink: 0 }}>{s.n}</div>
@@ -187,11 +191,13 @@ export default function GuidePage() {
             ))}
 
             <div style={{ display: 'grid', gridTemplateColumns: '2rem 1fr', gap: '0.75rem', alignItems: 'start' }}>
-              <div style={{ background: '#E6F7F2', color: '#0E8F67', borderRadius: '50%', width: '28px', height: '28px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '0.82rem', fontWeight: 700, flexShrink: 0 }}>3e</div>
+              <div style={{ background: '#E6F7F2', color: '#0E8F67', borderRadius: '50%', width: '28px', height: '28px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '0.82rem', fontWeight: 700, flexShrink: 0 }}>3d</div>
               <div>
-                <p style={{ margin: '0 0 0.4rem', fontSize: '0.92rem', color: '#0F1714' }}>Kopieren Sie den Schlüssel — er sieht aus wie:</p>
-                <div style={{ background: '#F7FAF9', border: '1px solid #E4EDE9', borderRadius: '6px', padding: '0.5rem 0.75rem', fontFamily: 'monospace', fontSize: '0.85rem', color: '#1E3329' }}>
-                  sk-ant-oat01-xxxxxxxxxxxxxxxxxxxx...
+                <p style={{ margin: '0 0 0.4rem', fontSize: '0.92rem', color: '#0F1714' }}>Kopieren Sie den Schlüssel — je nach Anbieter sieht er so aus:</p>
+                <div style={{ background: '#F7FAF9', border: '1px solid #E4EDE9', borderRadius: '6px', padding: '0.5rem 0.75rem', fontFamily: 'monospace', fontSize: '0.85rem', color: '#1E3329', lineHeight: 1.8 }}>
+                  <span style={{ color: '#4B5563', fontSize: '0.78rem' }}>Google:</span> AIzaSyXXXXXXXXXXXXXXXXXXXXXX<br />
+                  <span style={{ color: '#4B5563', fontSize: '0.78rem' }}>Anthropic:</span> sk-ant-oat01-XXXXXXXXX...<br />
+                  <span style={{ color: '#4B5563', fontSize: '0.78rem' }}>OpenAI:</span> sk-proj-XXXXXXXXXXXXXXXXX...
                 </div>
                 <p style={{ margin: '0.4rem 0 0', fontSize: '0.82rem', color: '#9ca3af' }}>⚠️ Zeigen Sie diesen Schlüssel niemandem. Er gibt Zugang zu Ihrem KI-Konto.</p>
               </div>

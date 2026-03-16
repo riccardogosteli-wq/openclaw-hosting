@@ -213,6 +213,25 @@ a { color: inherit; }
   .hero h1 { font-size: 1.95rem; }
   .stat-num { font-size: 1.6rem; }
 }
+.testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+
+@media (max-width: 900px) {
+  .testimonials-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 600px) {
+  .testimonials-grid { grid-template-columns: 1fr; }
+}
+
+/* ── DASHBOARD POINTS GRID ───────────────── */
+@media (max-width: 900px) {
+  .dash-points-grid { grid-template-columns: 1fr 1fr !important; }
+}
+@media (max-width: 600px) {
+  .dash-points-grid { grid-template-columns: 1fr !important; }
+}
+
+/* ── CONTACT PAGE MOBILE ─────────────────── */
 @media (max-width: 768px) {
-  .testimonials-grid { grid-template-columns: 1fr !important; }
+  .contact-grid { grid-template-columns: 1fr !important; gap: 2rem !important; }
+  .contact-name-email { grid-template-columns: 1fr !important; }
 }

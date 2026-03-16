@@ -40,7 +40,7 @@ export default function ContactPage() {
       <div style={{maxWidth:'1000px', margin:'0 auto'}}>
         <Link href="/" style={{color:'var(--green)', fontSize:'0.88rem', textDecoration:'none'}}>← Zurück</Link>
 
-        <div style={{display:'grid', gridTemplateColumns:'1fr 1.4fr', gap:'4rem', alignItems:'start', marginTop:'2rem'}}>
+        <div className="contact-grid" style={{display:'grid', gridTemplateColumns:'1fr 1.4fr', gap:'4rem', alignItems:'start', marginTop:'2rem'}}>
           {/* Left: Info */}
           <div>
             <div style={{fontSize:'0.74rem', fontWeight:800, letterSpacing:'0.1em', textTransform:'uppercase', color:'var(--green)', marginBottom:'0.5rem'}}>Kontakt</div>
@@ -73,7 +73,7 @@ export default function ContactPage() {
             <div style={{marginTop:'2rem', padding:'1.25rem', background:'var(--white)', border:'1px solid var(--border)', borderRadius:'12px'}}>
               <div style={{fontWeight:700, fontSize:'0.88rem', color:'var(--ink)', marginBottom:'0.75rem'}}>Häufige Fragen</div>
               {[
-                ['Wie schnell ist das Setup?', 'In der Regel innerhalb weniger Stunden nach dem Onboarding-Formular.'],
+                ['Wie schnell ist das Setup?', 'Vollautomatisch — in der Regel innerhalb von 30 Minuten nach dem Onboarding-Formular.'],
                 ['Kann ich vor dem Kauf testen?', 'Schreiben Sie uns — wir können eine kurze Demo einrichten.'],
                 ['Gibt es einen Onboarding-Call?', 'Im Pro-Plan inklusive. Im Business-Plan immer dabei.'],
               ].map(([q,a]) => (
@@ -99,7 +99,7 @@ export default function ContactPage() {
                 <h2 style={{fontFamily:'Bricolage Grotesque,sans-serif', fontSize:'1.4rem', color:'var(--ink)', marginBottom:'0.25rem'}}>Nachricht senden</h2>
                 <p style={{color:'var(--slate)', fontSize:'0.88rem', marginBottom:'0.5rem'}}>Wir antworten innerhalb von 24 Stunden auf Deutsch oder Englisch.</p>
 
-                <div style={{display:'grid', gridTemplateColumns:'1fr 1fr', gap:'0.85rem'}}>
+                <div className="contact-name-email" style={{display:'grid', gridTemplateColumns:'1fr 1fr', gap:'0.85rem'}}>
                   <div>
                     <label style={labelStyle}>Name *</label>
                     <input style={inputStyle} value={form.name} onChange={e => set('name', e.target.value)} placeholder="Max Muster" required />

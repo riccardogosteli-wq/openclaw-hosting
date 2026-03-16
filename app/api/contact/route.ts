@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 
-const RESEND_API_KEY = process.env.RESEND_API_KEY || 're_jSGcCv3C_NHdjr17ryPUYFtUx3S3qKQEZ'
+const RESEND_API_KEY = process.env.RESEND_API_KEY || ''
 const FROM_EMAIL = 'support@openclaw-consulting.ch'
 const NOTIFY_EMAIL = 'riccardogosteli@gmail.com'
 
