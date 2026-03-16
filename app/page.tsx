@@ -23,7 +23,7 @@ const de = {
     { bot: true, text: 'Guten Morgen! Hier Ihr Tagesbriefing:' },
     { bot: true, text: '📧 2 neue E-Mails — 1 dringend\n📅 3 Termine heute (9:00 / 14:00 / 16:30)\n🌤️ 11°C in Zürich, sonnig' },
     { bot: false, text: 'Fasse dieses YouTube-Video zusammen: https://youtu.be/dQw4w9WgXcQ' },
-    { bot: true, text: '📺 Zusammenfassung: Das Video erklärt die wichtigsten Trends in der KI-Automatisierung für 2026 — besonders interessant ab Minute 4:30 zum Thema Agenten-Workflows. Soll ich die Kernpunkte als Liste aufbereiten?' },
+    { bot: true, text: '📺 YouTube-Zusammenfassung:\n• KI-Agenten übernehmen repetitive Tasks vollautomatisch\n• Ab Min. 4:30: Multi-Agenten-Workflows im Praxiseinsatz\n• Fazit: Wer heute anfängt, spart 2026 Stunden pro Woche' },
   ],
 
   costLabel: '💡 Transparente Gesamtkosten — weil wir nichts verstecken',
@@ -189,7 +189,7 @@ const en: typeof de = {
     { bot: true, text: 'Good morning! Here\'s your daily briefing:' },
     { bot: true, text: '📧 2 new emails — 1 urgent\n📅 3 meetings today (9:00 / 14:00 / 16:30)\n🌤️ 11°C in Zurich, sunny' },
     { bot: false, text: 'Summarize this YouTube video: https://youtu.be/dQw4w9WgXcQ' },
-    { bot: true, text: '📺 Summary: The video covers the most important AI automation trends for 2026 — especially interesting from minute 4:30 on agent workflows. Want me to list the key points?' },
+    { bot: true, text: '📺 YouTube Summary:\n• AI agents automate repetitive tasks end-to-end\n• From min. 4:30: multi-agent workflows in real-world use\n• Takeaway: starting today saves hours per week in 2026' },
   ],
 
   costLabel: '💡 Full cost transparency — because we hide nothing',
