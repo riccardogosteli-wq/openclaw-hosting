@@ -54,7 +54,7 @@ const TX = {
     channelRec: 'Empfohlen',
     channels: [
       { value: 'telegram', label: 'Telegram', emoji: '✈️', rec: true, desc: 'Am einfachsten einzurichten — Bot in 2 Min. erstellt', guideLink: '/guide' },
-      { value: 'whatsapp', label: 'WhatsApp', emoji: '💬', rec: false, desc: 'WhatsApp Business API über einen Anbieter', guideLink: '/guide#whatsapp' },
+      { value: 'whatsapp', label: 'WhatsApp', emoji: '💬', rec: false, desc: 'Mit bestehender WhatsApp-Nummer — QR-Code scannen, fertig', guideLink: '/guide#whatsapp' },
       { value: 'discord', label: 'Discord', emoji: '🎮', rec: false, desc: 'Perfekt für Teams und Communities', guideLink: '/guide#discord' },
     ],
   },
@@ -90,7 +90,7 @@ const TX = {
     channelRec: 'Recommended',
     channels: [
       { value: 'telegram', label: 'Telegram', emoji: '✈️', rec: true, desc: 'Easiest to set up — bot created in 2 min', guideLink: '/guide?lang=en' },
-      { value: 'whatsapp', label: 'WhatsApp', emoji: '💬', rec: false, desc: 'WhatsApp Business API via a provider', guideLink: '/guide?lang=en#whatsapp' },
+      { value: 'whatsapp', label: 'WhatsApp', emoji: '💬', rec: false, desc: 'Use your existing WhatsApp — scan QR code, done', guideLink: '/guide?lang=en#whatsapp' },
       { value: 'discord', label: 'Discord', emoji: '🎮', rec: false, desc: 'Perfect for teams and communities', guideLink: '/guide?lang=en#discord' },
     ],
   },

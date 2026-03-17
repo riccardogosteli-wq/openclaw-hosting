@@ -42,7 +42,13 @@ export default function GuidePage() {
     if (typeof window !== 'undefined') return (localStorage.getItem('lang') as 'de'|'en') || 'de'
     return 'de'
   })
-  const [channel, setChannel] = useState<'telegram'|'whatsapp'|'discord'>('telegram')
+  const [channel, setChannel] = useState<'telegram'|'whatsapp'|'discord'>(() => {
+    if (typeof window !== 'undefined') {
+      const hash = window.location.hash.replace('#', '')
+      if (hash === 'whatsapp' || hash === 'discord' || hash === 'telegram') return hash
+    }
+    return 'telegram'
+  })
 
   const de = lang === 'de'
 
