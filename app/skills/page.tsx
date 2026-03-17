@@ -191,7 +191,10 @@ export default function SkillsPage() {
             <Link href="/#how" style={{ color: '#4B5563', textDecoration: 'none', fontSize: '0.88rem', fontWeight: 500 }}>{lang === 'de' ? 'So funktioniert\'s' : 'How it works'}</Link>
             <Link href="/#pricing" style={{ color: '#4B5563', textDecoration: 'none', fontSize: '0.88rem', fontWeight: 500 }}>{lang === 'de' ? 'Preise' : 'Pricing'}</Link>
             <Link href="/vergleich" style={{ color: '#4B5563', textDecoration: 'none', fontSize: '0.88rem', fontWeight: 500 }}>{lang === 'de' ? 'Vergleich' : 'Compare'}</Link>
+            <Link href="/skills" style={{ color: '#4B5563', textDecoration: 'none', fontSize: '0.88rem', fontWeight: 500 }}>Skills</Link>
             <Link href="/#faq" style={{ color: '#4B5563', textDecoration: 'none', fontSize: '0.88rem', fontWeight: 500 }}>FAQ</Link>
+            <Link href="/contact" style={{ color: '#4B5563', textDecoration: 'none', fontSize: '0.88rem', fontWeight: 500 }}>{lang === 'de' ? 'Kontakt' : 'Contact'}</Link>
+            <Link href="/ueber-uns" style={{ color: '#4B5563', textDecoration: 'none', fontSize: '0.88rem', fontWeight: 500 }}>{lang === 'de' ? 'Über uns' : 'About'}</Link>
             <button onClick={() => setLang(l => l === 'de' ? 'en' : 'de')}
               style={{ background: 'transparent', border: '1px solid #E4EDE9', color: '#4B5563', padding: '0.28rem 0.65rem', borderRadius: 6, fontSize: '0.8rem', fontWeight: 600, cursor: 'pointer' }}>
               {lang === 'de' ? 'EN' : 'DE'}
