@@ -254,7 +254,7 @@ export default function SkillsPage() {
           {/* ClawHub note */}
           <div style={{ marginTop: '2.5rem', padding: '1.1rem 1.4rem', background: '#E6F7F2', border: '1px solid #b2dfd4', borderRadius: 12, fontSize: '0.88rem', color: '#0E8F67', display: 'flex', alignItems: 'center', gap: '0.6rem', flexWrap: 'wrap' }}>
             <span>🔗</span>
-            <span>{t.clawhub} <a href="https://clawhub.com" target="_blank" rel="noopener noreferrer" style={{ color: '#0E8F67', fontWeight: 700 }}>{t.clawhubLink}</a> {t.clawhubSub}</span>
+            <span>{t.clawhub} <a href="https://clawhub.ai" target="_blank" rel="noopener noreferrer" style={{ color: '#0E8F67', fontWeight: 700 }}>{t.clawhubLink}</a> {t.clawhubSub}</span>
           </div>
         </div>
       </section>
