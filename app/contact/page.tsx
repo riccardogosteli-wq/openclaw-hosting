@@ -6,6 +6,7 @@ import type { Metadata } from 'next'
 export default function ContactPage() {
   const [sent, setSent] = useState(false)
   const [loading, setLoading] = useState(false)
+  const [lang, setLang] = useState<'de'|'en'>('de')
   const [form, setForm] = useState({ name:'', email:'', subject:'Frage zu OpenClaw Hosting', message:'' })
   const set = (k: string, v: string) => setForm(f => ({...f, [k]:v}))
 
@@ -36,8 +37,30 @@ export default function ContactPage() {
   }
 
   return (
-    <main style={{background:'var(--light)', minHeight:'100vh', padding:'3rem 1.5rem'}}>
-      <div style={{maxWidth:'1000px', margin:'0 auto'}}>
+    <main style={{background:'var(--light)', minHeight:'100vh'}}>
+      <nav style={{ position:'sticky', top:0, zIndex:100, background:'rgba(255,255,255,0.96)', backdropFilter:'blur(12px)', borderBottom:'1px solid #E4EDE9', padding:'0.9rem 0' }}>
+        <div style={{ maxWidth:1100, margin:'0 auto', padding:'0 1.5rem', display:'flex', alignItems:'center', justifyContent:'space-between' }}>
+          <Link href="/" style={{ fontFamily:'Bricolage Grotesque, sans-serif', fontWeight:800, fontSize:'1.05rem', color:'#0F1714', textDecoration:'none' }}>
+            OpenClaw<span style={{ color:'#12A878' }}>Hosting</span>
+          </Link>
+          <div style={{ display:'flex', alignItems:'center', gap:'1rem' }}>
+            <Link href="/#how" style={{ color:'#4B5563', textDecoration:'none', fontSize:'0.88rem', fontWeight:500 }}>{lang==='de' ? 'So funktioniert\'s' : 'How it works'}</Link>
+            <Link href="/#pricing" style={{ color:'#4B5563', textDecoration:'none', fontSize:'0.88rem', fontWeight:500 }}>{lang==='de' ? 'Preise' : 'Pricing'}</Link>
+            <Link href="/vergleich" style={{ color:'#4B5563', textDecoration:'none', fontSize:'0.88rem', fontWeight:500 }}>{lang==='de' ? 'Vergleich' : 'Compare'}</Link>
+            <Link href="/skills" style={{ color:'#4B5563', textDecoration:'none', fontSize:'0.88rem', fontWeight:500 }}>Skills</Link>
+            <Link href="/#faq" style={{ color:'#4B5563', textDecoration:'none', fontSize:'0.88rem', fontWeight:500 }}>FAQ</Link>
+            <Link href="/contact" style={{ color:'#4B5563', textDecoration:'none', fontSize:'0.88rem', fontWeight:500 }}>{lang==='de' ? 'Kontakt' : 'Contact'}</Link>
+            <Link href="/ueber-uns" style={{ color:'#4B5563', textDecoration:'none', fontSize:'0.88rem', fontWeight:500 }}>{lang==='de' ? 'Über uns' : 'About'}</Link>
+            <button onClick={() => setLang(l => l==='de' ? 'en' : 'de')} style={{ background:'transparent', border:'1px solid #E4EDE9', color:'#4B5563', padding:'0.28rem 0.65rem', borderRadius:6, fontSize:'0.8rem', fontWeight:600, cursor:'pointer' }}>
+              {lang==='de' ? 'EN' : 'DE'}
+            </button>
+            <Link href="/#pricing" style={{ background:'#12A878', color:'#fff', padding:'0.45rem 1.1rem', borderRadius:8, fontWeight:600, fontSize:'0.86rem', textDecoration:'none' }}>
+              {lang==='de' ? 'Jetzt starten' : 'Get started'}
+            </Link>
+          </div>
+        </div>
+      </nav>
+      <div style={{maxWidth:'1000px', margin:'0 auto', padding:'3rem 1.5rem'}}>
         <Link href="/" style={{color:'var(--green)', fontSize:'0.88rem', textDecoration:'none'}}>← Zurück</Link>
 
         <div className="contact-grid" style={{display:'grid', gridTemplateColumns:'1fr 1.4fr', gap:'4rem', alignItems:'start', marginTop:'2rem'}}>

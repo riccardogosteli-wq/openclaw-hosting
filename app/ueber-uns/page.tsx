@@ -10,6 +10,27 @@ export default function UeberUnsPage() {
   return (
     <main style={{ background: '#fff', minHeight: '100vh', fontFamily: 'Inter, sans-serif', color: '#0F1714' }}>
 
+      {/* Nav */}
+      <nav style={{ position:'sticky', top:0, zIndex:100, background:'rgba(255,255,255,0.96)', backdropFilter:'blur(12px)', borderBottom:'1px solid #E4EDE9', padding:'0.9rem 0' }}>
+        <div style={{ maxWidth:1100, margin:'0 auto', padding:'0 1.5rem', display:'flex', alignItems:'center', justifyContent:'space-between' }}>
+          <Link href="/" style={{ fontFamily:'Bricolage Grotesque, sans-serif', fontWeight:800, fontSize:'1.05rem', color:'#0F1714', textDecoration:'none' }}>
+            OpenClaw<span style={{ color:'#12A878' }}>Hosting</span>
+          </Link>
+          <div style={{ display:'flex', alignItems:'center', gap:'1rem' }}>
+            <Link href="/#how" style={{ color:'#4B5563', textDecoration:'none', fontSize:'0.88rem', fontWeight:500 }}>So funktioniert&apos;s</Link>
+            <Link href="/#pricing" style={{ color:'#4B5563', textDecoration:'none', fontSize:'0.88rem', fontWeight:500 }}>Preise</Link>
+            <Link href="/vergleich" style={{ color:'#4B5563', textDecoration:'none', fontSize:'0.88rem', fontWeight:500 }}>Vergleich</Link>
+            <Link href="/skills" style={{ color:'#4B5563', textDecoration:'none', fontSize:'0.88rem', fontWeight:500 }}>Skills</Link>
+            <Link href="/#faq" style={{ color:'#4B5563', textDecoration:'none', fontSize:'0.88rem', fontWeight:500 }}>FAQ</Link>
+            <Link href="/contact" style={{ color:'#4B5563', textDecoration:'none', fontSize:'0.88rem', fontWeight:500 }}>Kontakt</Link>
+            <Link href="/ueber-uns" style={{ color:'#4B5563', textDecoration:'none', fontSize:'0.88rem', fontWeight:500 }}>Über uns</Link>
+            <Link href="/#pricing" style={{ background:'#12A878', color:'#fff', padding:'0.45rem 1.1rem', borderRadius:8, fontWeight:600, fontSize:'0.86rem', textDecoration:'none' }}>
+              Jetzt starten
+            </Link>
+          </div>
+        </div>
+      </nav>
+
       {/* Hero */}
       <section style={{ background: '#F7FAF9', padding: '5rem 1.5rem 4rem', borderBottom: '1px solid #E4EDE9' }}>
         <div style={{ maxWidth: '720px', margin: '0 auto' }}>
