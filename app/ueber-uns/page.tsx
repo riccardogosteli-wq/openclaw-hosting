@@ -1,12 +1,12 @@
+'use client'
 import Link from 'next/link'
-import type { Metadata } from 'next'
-
-export const metadata: Metadata = {
-  title: 'Über uns – OpenClaw Hosting',
-  description: 'Wir sind ein kleines Team aus der Schweiz, das glaubt: ein eigener KI-Assistent sollte für jeden zugänglich sein — nicht nur für Entwickler.',
-}
+import { useState } from 'react'
 
 export default function UeberUnsPage() {
+  const [lang, setLang] = useState<'de'|'en'>(() => {
+    if (typeof window !== 'undefined') return (localStorage.getItem('lang') as 'de'|'en') || 'de'
+    return 'de'
+  })
   return (
     <main style={{ background: '#fff', minHeight: '100vh', fontFamily: 'Inter, sans-serif', color: '#0F1714' }}>
 
@@ -17,15 +17,18 @@ export default function UeberUnsPage() {
             OpenClaw<span style={{ color:'#12A878' }}>Hosting</span>
           </Link>
           <div style={{ display:'flex', alignItems:'center', gap:'1rem' }}>
-            <Link href="/#how" style={{ color:'#4B5563', textDecoration:'none', fontSize:'0.88rem', fontWeight:500 }}>So funktioniert&apos;s</Link>
-            <Link href="/#pricing" style={{ color:'#4B5563', textDecoration:'none', fontSize:'0.88rem', fontWeight:500 }}>Preise</Link>
-            <Link href="/vergleich" style={{ color:'#4B5563', textDecoration:'none', fontSize:'0.88rem', fontWeight:500 }}>Vergleich</Link>
+            <Link href="/#how" style={{ color:'#4B5563', textDecoration:'none', fontSize:'0.88rem', fontWeight:500 }}>{lang==='de' ? 'So funktioniert\'s' : 'How it works'}</Link>
+            <Link href="/#pricing" style={{ color:'#4B5563', textDecoration:'none', fontSize:'0.88rem', fontWeight:500 }}>{lang==='de' ? 'Preise' : 'Pricing'}</Link>
+            <Link href="/vergleich" style={{ color:'#4B5563', textDecoration:'none', fontSize:'0.88rem', fontWeight:500 }}>{lang==='de' ? 'Vergleich' : 'Compare'}</Link>
             <Link href="/skills" style={{ color:'#4B5563', textDecoration:'none', fontSize:'0.88rem', fontWeight:500 }}>Skills</Link>
             <Link href="/#faq" style={{ color:'#4B5563', textDecoration:'none', fontSize:'0.88rem', fontWeight:500 }}>FAQ</Link>
-            <Link href="/contact" style={{ color:'#4B5563', textDecoration:'none', fontSize:'0.88rem', fontWeight:500 }}>Kontakt</Link>
-            <Link href="/ueber-uns" style={{ color:'#4B5563', textDecoration:'none', fontSize:'0.88rem', fontWeight:500 }}>Über uns</Link>
+            <Link href="/contact" style={{ color:'#4B5563', textDecoration:'none', fontSize:'0.88rem', fontWeight:500 }}>{lang==='de' ? 'Kontakt' : 'Contact'}</Link>
+            <Link href="/ueber-uns" style={{ color:'#4B5563', textDecoration:'none', fontSize:'0.88rem', fontWeight:500 }}>{lang==='de' ? 'Über uns' : 'About'}</Link>
+            <button onClick={() => setLang(l => { const n = l==='de'?'en':'de'; localStorage.setItem('lang', n); return n })} style={{ background:'transparent', border:'1px solid #E4EDE9', color:'#4B5563', padding:'0.28rem 0.65rem', borderRadius:6, fontSize:'0.8rem', fontWeight:600, cursor:'pointer' }}>
+              {lang==='de' ? 'EN' : 'DE'}
+            </button>
             <Link href="/#pricing" style={{ background:'#12A878', color:'#fff', padding:'0.45rem 1.1rem', borderRadius:8, fontWeight:600, fontSize:'0.86rem', textDecoration:'none' }}>
-              Jetzt starten
+              {lang==='de' ? 'Jetzt starten' : 'Get started'}
             </Link>
           </div>
         </div>
