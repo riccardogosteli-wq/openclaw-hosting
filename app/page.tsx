@@ -336,7 +336,10 @@ const en: typeof de = {
 
 /* ─── PAGE ──────────────────────────────────────────────────────── */
 export default function Home() {
-  const [lang, setLang] = useState<'de'|'en'|'fr'>('de')
+  const [lang, setLang] = useState<'de'|'en'|'fr'>(() => {
+    if (typeof window !== 'undefined') return (localStorage.getItem('lang') as 'de'|'en'|'fr') || 'de'
+    return 'de'
+  })
   const [billing, setBilling] = useState<'monthly'|'annual'>('annual')
   const t = lang === 'de' ? de : en
 
@@ -354,7 +357,7 @@ export default function Home() {
             <a href="#faq">{t.navFaq}</a>
             <a href="/contact">{t.navContact}</a>
             <a href="/ueber-uns">{t.navAbout}</a>
-            <button className="lang-btn" onClick={() => setLang(l => l==='de'?'en':'de')}>{lang==='de'?'EN':'DE'}</button>
+            <button className="lang-btn" onClick={() => setLang(l => { const n = l==='de'?'en':'de'; localStorage.setItem('lang', n); return n })}>{lang==='de'?'EN':'DE'}</button>
             <a href="#pricing" className="nav-cta">{t.navCta}</a>
           </div>
         </div>

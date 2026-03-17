@@ -6,7 +6,10 @@ import type { Metadata } from 'next'
 export default function ContactPage() {
   const [sent, setSent] = useState(false)
   const [loading, setLoading] = useState(false)
-  const [lang, setLang] = useState<'de'|'en'>('de')
+  const [lang, setLang] = useState<'de'|'en'>(() => {
+    if (typeof window !== 'undefined') return (localStorage.getItem('lang') as 'de'|'en') || 'de'
+    return 'de'
+  })
   const [form, setForm] = useState({ name:'', email:'', subject:'Frage zu OpenClaw Hosting', message:'' })
   const set = (k: string, v: string) => setForm(f => ({...f, [k]:v}))
 
@@ -51,7 +54,7 @@ export default function ContactPage() {
             <Link href="/#faq" style={{ color:'#4B5563', textDecoration:'none', fontSize:'0.88rem', fontWeight:500 }}>FAQ</Link>
             <Link href="/contact" style={{ color:'#4B5563', textDecoration:'none', fontSize:'0.88rem', fontWeight:500 }}>{lang==='de' ? 'Kontakt' : 'Contact'}</Link>
             <Link href="/ueber-uns" style={{ color:'#4B5563', textDecoration:'none', fontSize:'0.88rem', fontWeight:500 }}>{lang==='de' ? 'Über uns' : 'About'}</Link>
-            <button onClick={() => setLang(l => l==='de' ? 'en' : 'de')} style={{ background:'transparent', border:'1px solid #E4EDE9', color:'#4B5563', padding:'0.28rem 0.65rem', borderRadius:6, fontSize:'0.8rem', fontWeight:600, cursor:'pointer' }}>
+            <button onClick={() => setLang(l => { const n = l==='de' ? 'en' : 'de'; localStorage.setItem('lang', n); return n })} style={{ background:'transparent', border:'1px solid #E4EDE9', color:'#4B5563', padding:'0.28rem 0.65rem', borderRadius:6, fontSize:'0.8rem', fontWeight:600, cursor:'pointer' }}>
               {lang==='de' ? 'EN' : 'DE'}
             </button>
             <Link href="/#pricing" style={{ background:'#12A878', color:'#fff', padding:'0.45rem 1.1rem', borderRadius:8, fontWeight:600, fontSize:'0.86rem', textDecoration:'none' }}>
