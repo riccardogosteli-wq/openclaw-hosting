@@ -69,12 +69,6 @@ const de = {
       ex: '"Trag mein Training ein: 45 Min Laufen"',
     },
     {
-      icon: '🏠',
-      title: 'Smart Home',
-      desc: 'Home Assistant, Philips Hue und weitere Geräte steuern (externe URL erforderlich).',
-      ex: '"Schalte das Licht im Wohnzimmer aus"',
-    },
-    {
       icon: '🔔',
       title: 'Reminders & Automatisierungen',
       desc: 'Tägliche Briefings, automatische Erinnerungen und wiederkehrende Aufgaben per Cron.',
@@ -159,12 +153,6 @@ const en: typeof de = {
       title: 'Google Sheets',
       desc: 'Read and automatically write data to Sheets — ideal for training logs, budgets, notes.',
       ex: '"Log my workout: 45 min running"',
-    },
-    {
-      icon: '🏠',
-      title: 'Smart Home',
-      desc: 'Control Home Assistant, Philips Hue and more (external URL required).',
-      ex: '"Turn off the living room lights"',
     },
     {
       icon: '🔔',
