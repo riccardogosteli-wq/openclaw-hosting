@@ -41,7 +41,7 @@ const de = {
   s1t: '1. Plan wählen & bezahlen',
   s1d: 'Wählen Sie Ihren Plan und bezahlen Sie bequem mit TWINT, Visa oder Mastercard. Innerhalb weniger Minuten erhalten Sie eine Bestätigung.',
   s2t: '2. Onboarding-Formular ausfüllen',
-  s2d: 'Sie teilen uns den Telegram-Bot-Token und Ihren KI-API-Schlüssel mit. Wir führen Sie Schritt für Schritt durch den Prozess — dauert ca. 5 Minuten.',
+  s2d: 'Sie teilen uns Ihren Messenger-Zugang (Telegram, WhatsApp oder Discord) und Ihren KI-API-Schlüssel mit. Wir führen Sie Schritt für Schritt durch den Prozess — dauert ca. 5–10 Minuten.',
   s3t: '3. Ihr Assistent ist online',
   s3d: 'Wir richten Ihren privaten Server in der Schweiz vollautomatisch ein. In der Regel ist Ihr Assistent innerhalb von 30 Minuten einsatzbereit.',
 
@@ -149,7 +149,7 @@ const de = {
 
   fLabel: 'FAQ', fH2: 'Häufige Fragen',
   faqs: [
-    ['Brauche ich technisches Wissen?', 'Kein bisschen. Sie füllen ein Formular aus — wir erledigen den Rest. Kein Terminal, kein SSH, keine Konfigurationsdateien. Das Onboarding dauert etwa 5 Minuten, und wir begleiten Sie dabei.'],
+    ['Brauche ich technisches Wissen?', 'Kein bisschen. Sie füllen ein Formular aus — wir erledigen den Rest. Kein Terminal, kein SSH, keine Konfigurationsdateien. Das Onboarding dauert etwa 5–10 Minuten, und wir begleiten Sie dabei.'],
     ['Was ist ein API-Schlüssel?', 'Ihr Assistent braucht ein KI-Modell im Hintergrund — Claude, GPT-4 oder Gemini. Den Schlüssel dafür erstellen Sie gratis direkt beim Anbieter. Die Nutzungskosten (~CHF 5–20/Mt.) werden dort abgerechnet und haben nichts mit unserem Hosting-Preis zu tun.'],
     ['Wo werden meine Daten gespeichert?', 'Ausschliesslich auf Ihrem eigenen, privaten Server in der Schweiz — DSGVO- und nDSG-konform. Ihre Zugangsdaten und Gesprächsdaten verlassen diesen Server nie.'],
     ['Welche KI-Modelle werden unterstützt?', 'Sie können zwischen Claude (Anthropic), GPT-4 (OpenAI) und Gemini (Google) wählen — und jederzeit wechseln. Für den Einstieg empfehlen wir Claude Haiku (~CHF 5/Mt.), für anspruchsvollere Aufgaben Claude Sonnet (~CHF 15–20/Mt.).'],
