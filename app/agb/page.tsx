@@ -95,33 +95,43 @@ export default function AgbPage() {
           {p('Jeder Tarif beinhaltet die auf der Website angegebenen Ressourcen (vCPU, RAM, Speicher). Bei dauerhafter Überschreitung der Ressourcenlimits kann der Anbieter den Kunden zur Umstiegsmöglichkeit in einen höheren Tarif auffordern oder die Instanz vorübergehend drosseln.')}
         </Section>
 
-        <Section title="9. Verfügbarkeit und Wartung">
+        <Section title="9. Serverzugang (SSH)">
+          {p('Jeder Kunde erhält nach Einrichtung seiner Instanz einen persönlichen SSH-Schlüssel (Keypair), der per E-Mail zugestellt wird. Dieser ermöglicht den Zugang zur Serverinstanz als eingeschränkter Benutzer (kein Root-Zugriff). Der Kunde kann damit seinen OpenClaw-Workspace und seine Konfigurationsdateien direkt einsehen und bearbeiten.')}
+          {p('Der Anbieter behält sich jederzeit einen eigenen administrativen SSH-Zugang zur Instanz vor, um Wartungsarbeiten, Updates und Supportleistungen zu erbringen. Dieser Zugang ist für den Kunden nicht einsehbar und wird ausschliesslich für administrative Zwecke genutzt.')}
+          {ul([
+            'Standard-SSH-Zugang (eingeschränkter Benutzer): Im Lieferumfang enthalten, wird im Willkommens-E-Mail zugestellt.',
+            'Root-Zugang: Auf ausdrücklichen schriftlichen Antrag möglich. Der Kunde übernimmt in diesem Fall die volle Verantwortung für alle Änderungen auf Systemebene. Der Anbieter übernimmt keine Haftung für Schäden oder Ausfälle, die durch eigenmächtige Systemänderungen des Kunden entstehen. Der administrative Zugang des Anbieters bleibt erhalten.',
+          ])}
+          {p('SSH-Schlüssel dürfen nicht an Dritte weitergegeben werden. Bei Verlust oder Kompromittierung ist der Anbieter umgehend zu informieren, damit ein neues Schlüsselpaar ausgestellt werden kann.')}
+        </Section>
+
+        <Section title="10. Verfügbarkeit und Wartung">
           {p('Der Anbieter bemüht sich um eine hohe Verfügbarkeit und strebt eine Betriebszeit von 99 % an. Eine Garantie für ununterbrochene Verfügbarkeit wird nicht übernommen. Geplante Wartungsfenster werden nach Möglichkeit im Voraus angekündigt.')}
           {p('Für Ausfälle beim Infrastrukturanbieter (Infomaniak) übernimmt der Anbieter keine Haftung.')}
         </Section>
 
-        <Section title="10. Datenschutz">
+        <Section title="11. Datenschutz">
           {p('Die Verarbeitung personenbezogener Daten erfolgt gemäss unserer Datenschutzerklärung unter hosting.openclaw-consulting.ch/datenschutz sowie in Übereinstimmung mit dem Schweizer Datenschutzgesetz (DSG/nDSG) und der DSGVO.')}
           {p('API-Schlüssel und Telegram-Tokens des Kunden werden nicht beim Anbieter gespeichert, sondern ausschliesslich auf dem privaten Server des Kunden.')}
         </Section>
 
-        <Section title="11. Geistiges Eigentum">
+        <Section title="12. Geistiges Eigentum">
           {p('Die Plattform, Marke und propriäre Werkzeuge des Anbieters sind urheberrechtlich geschützt. OpenClaw und andere eingesetzte Open-Source-Komponenten unterliegen ihren jeweiligen Open-Source-Lizenzen, die durch diese AGB nicht eingeschränkt werden.')}
           {p('Der Kunde behält sämtliche Rechte an den Daten und Konfigurationen, die er auf seiner Instanz erstellt oder speichert.')}
         </Section>
 
-        <Section title="12. Haftungsbeschränkung">
+        <Section title="13. Haftungsbeschränkung">
           {p('Der Anbieter haftet nur für Schäden, die durch grobe Fahrlässigkeit oder Vorsatz verursacht wurden. Für leichte Fahrlässigkeit sowie für indirekte Schäden, entgangenen Gewinn oder Datenverlust wird keine Haftung übernommen, sofern dies gesetzlich zulässig ist.')}
           {p('Die Gesamthaftung des Anbieters ist auf den vom Kunden in den letzten 12 Monaten bezahlten Betrag begrenzt.')}
         </Section>
 
-        <Section title="13. Schlussbestimmungen">
+        <Section title="14. Schlussbestimmungen">
           {p('Es gilt Schweizer Recht (Obligationenrecht, OR). Gerichtsstand ist Zürich, Schweiz.')}
           {p('Sollten einzelne Bestimmungen dieser AGB unwirksam sein, bleiben die übrigen Bestimmungen davon unberührt.')}
           {p('Der Anbieter behält sich vor, diese AGB jederzeit anzupassen. Kunden werden über wesentliche Änderungen per E-Mail informiert. Die jeweils aktuelle Version ist auf dieser Seite abrufbar.')}
         </Section>
 
-        <Section title="14. Kontakt">
+        <Section title="15. Kontakt">
           {p('Bei Fragen zu diesen AGB wenden Sie sich an:')}
           <p style={{ color: '#4B5563', lineHeight: 1.75, fontSize: '0.93rem' }}>
             OpenClaw Hosting (openclaw-consulting.ch)<br />
