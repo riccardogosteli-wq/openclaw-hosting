@@ -22,8 +22,8 @@ const de = {
   chatMessages: [
     { bot: true, text: 'Guten Morgen! Hier Ihr Tagesbriefing:' },
     { bot: true, text: '📧 2 neue E-Mails — 1 dringend\n📅 3 Termine heute (9:00 / 14:00 / 16:30)\n🌤️ 11°C in Zürich, sonnig' },
-    { bot: false, text: 'Fasse dieses YouTube-Video zusammen: https://youtu.be/bSiMSSeno9g' },
-    { bot: true, text: '📺 YouTube-Zusammenfassung:\n• OpenClaw verwandelt KI-Modelle in autonome Agenten — die nicht warten, bis man fragt\n• Emails beantworten, Kalender managen, Code schreiben, Workflows automatisieren — alles aus einem Chat\n• Fazit: Das ist kein Chatbot. Das ist ein digitaler Mitarbeiter, der 24/7 für Sie arbeitet' },
+    { bot: false, text: 'Fasse dieses YouTube-Video zusammen: https://youtu.be/yIKxXRks4Jo' },
+    { bot: true, text: '📺 YouTube-Zusammenfassung:\n• Echte Anwendungsfälle: Emails automatisch triagieren, Kalender managen, Leads in CRM übertragen, Proposals aus Meeting-Notizen generieren\n• Ein Nutzer betreibt seinen gesamten Content-Kanal auf Autopilot — Recherche, Skript, Video, Post\n• Fazit: Menschen, die das beherrschen, sind laut Video 200× produktiver als die, die es nicht tun' },
   ],
 
   costLabel: '💡 Transparente Gesamtkosten — weil wir nichts verstecken',
@@ -188,8 +188,8 @@ const en: typeof de = {
   chatMessages: [
     { bot: true, text: 'Good morning! Here\'s your daily briefing:' },
     { bot: true, text: '📧 2 new emails — 1 urgent\n📅 3 meetings today (9:00 / 14:00 / 16:30)\n🌤️ 11°C in Zurich, sunny' },
-    { bot: false, text: 'Summarize this YouTube video: https://youtu.be/bSiMSSeno9g' },
-    { bot: true, text: '📺 YouTube Summary:\n• OpenClaw turns AI models into autonomous agents — they act without being asked\n• Reply to emails, manage calendars, write code, run workflows — all from one chat\n• Takeaway: this isn\'t a chatbot. It\'s a digital employee working 24/7 for you' },
+    { bot: false, text: 'Summarize this YouTube video: https://youtu.be/yIKxXRks4Jo' },
+    { bot: true, text: '📺 YouTube Summary:\n• Real use cases: auto-triage emails, manage calendar, push leads to CRM, generate proposals from meeting notes\n• One user runs his entire content channel on autopilot — research, script, video, post\n• Takeaway: people who master this are 200× more productive than those who don\'t' },
   ],
 
   costLabel: '💡 Full cost transparency — because we hide nothing',
