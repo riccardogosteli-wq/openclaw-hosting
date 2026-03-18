@@ -22,8 +22,8 @@ const de = {
   chatMessages: [
     { bot: true, text: 'Guten Morgen! Hier Ihr Tagesbriefing:' },
     { bot: true, text: '📧 2 neue E-Mails — 1 dringend\n📅 3 Termine heute (9:00 / 14:00 / 16:30)\n🌤️ 11°C in Zürich, sonnig' },
-    { bot: false, text: 'Fasse dieses YouTube-Video zusammen: https://youtu.be/dQw4w9WgXcQ' },
-    { bot: true, text: '📺 YouTube-Zusammenfassung:\n• KI-Agenten übernehmen repetitive Tasks vollautomatisch\n• Ab Min. 4:30: Multi-Agenten-Workflows im Praxiseinsatz\n• Fazit: Wer heute anfängt, spart 2026 Stunden pro Woche' },
+    { bot: false, text: 'Fasse dieses YouTube-Video zusammen: https://youtu.be/WSata1-1IJQ' },
+    { bot: true, text: '📺 YouTube-Zusammenfassung:\n• OpenClaw in 15 Min. einrichten — kein Terminal, kein Technikwissen nötig\n• Ab Min. 7: Assistent via Telegram verbinden und erste Aufgaben erledigen\n• Fazit: Ein eigener KI-Assistent läuft schneller als gedacht — und bleibt 24/7 online' },
   ],
 
   costLabel: '💡 Transparente Gesamtkosten — weil wir nichts verstecken',
@@ -188,8 +188,8 @@ const en: typeof de = {
   chatMessages: [
     { bot: true, text: 'Good morning! Here\'s your daily briefing:' },
     { bot: true, text: '📧 2 new emails — 1 urgent\n📅 3 meetings today (9:00 / 14:00 / 16:30)\n🌤️ 11°C in Zurich, sunny' },
-    { bot: false, text: 'Summarize this YouTube video: https://youtu.be/dQw4w9WgXcQ' },
-    { bot: true, text: '📺 YouTube Summary:\n• AI agents automate repetitive tasks end-to-end\n• From min. 4:30: multi-agent workflows in real-world use\n• Takeaway: starting today saves hours per week in 2026' },
+    { bot: false, text: 'Summarize this YouTube video: https://youtu.be/WSata1-1IJQ' },
+    { bot: true, text: '📺 YouTube Summary:\n• Set up OpenClaw in 15 min — no terminal, no tech skills required\n• From min. 7: connect your assistant to Telegram and run first tasks\n• Takeaway: your own private AI assistant, up and running faster than you'd think — 24/7' },
   ],
 
   costLabel: '💡 Full cost transparency — because we hide nothing',
