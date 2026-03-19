@@ -62,8 +62,16 @@ export default function AgbPage() {
 
         <Section title="4. Preise und Abrechnung">
           {p('Die aktuellen Preise sind auf der Website hosting.openclaw-consulting.ch einsehbar. Alle Preise sind in CHF angegeben und verstehen sich inklusive Mehrwertsteuer (falls anwendbar).')}
+          <p style={{ color: '#4B5563', lineHeight: 1.75, marginBottom: '0.85rem', fontSize: '0.93rem' }}>
+            <strong>Aktuelle Preise (monatlich / jährlich):</strong>
+          </p>
+          <ul style={{ color: '#4B5563', lineHeight: 1.75, marginBottom: '0.85rem', fontSize: '0.93rem', paddingLeft: '1.5rem' }}>
+            <li><strong>Starter:</strong> CHF 19/Monat · CHF 180/Jahr</li>
+            <li><strong>Pro:</strong> CHF 34/Monat · CHF 320/Jahr</li>
+            <li><strong>Business:</strong> CHF 59/Monat · CHF 560/Jahr</li>
+          </ul>
           <p style={{ color: '#4B5563', lineHeight: 1.75, marginBottom: '0.85rem', fontSize: '0.93rem' }}><strong>Monatliches Abo:</strong> Abrechnung monatlich im Voraus. Das Abo verlängert sich automatisch, sofern es nicht rechtzeitig gekündigt wird.</p>
-          <p style={{ color: '#4B5563', lineHeight: 1.75, marginBottom: '0.85rem', fontSize: '0.93rem' }}><strong>Jahresabo:</strong> Abrechnung des Jahresbetrags im Voraus. Das Abo verlängert sich automatisch um ein weiteres Jahr, sofern es nicht rechtzeitig gekündigt wird. Der Jahresdiscount ist für die Dauer des bezahlten Zeitraums garantiert.</p>
+          <p style={{ color: '#4B5563', lineHeight: 1.75, marginBottom: '0.85rem', fontSize: '0.93rem' }}><strong>Jahresabo:</strong> Abrechnung des Jahresbetrags im Voraus. Das Abo verlängert sich automatisch um ein weiteres Jahr, sofern es nicht rechtzeitig gekündigt wird.</p>
           {p('Zahlungen werden via Payrexx (TWINT, Visa, Mastercard) verarbeitet. Der Anbieter speichert keine Zahlungsdaten des Kunden.')}
         </Section>
 
