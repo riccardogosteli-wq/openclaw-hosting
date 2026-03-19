@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
+import { verifyPaymentToken } from '../checkout/route'
 
 // Simple in-memory rate limiter (resets on cold start — good enough for Next.js edge/serverless)
 const rateLimitMap = new Map<string, { count: number; resetAt: number }>()
@@ -32,7 +33,17 @@ export async function POST(req: NextRequest) {
   }
   try {
     const body = await req.json()
-    const { name, email, company, telegramToken, telegramUserId, aiProvider, aiKey, language, notes, plan } = body
+    const { name, email, company, telegramToken, telegramUserId, aiProvider, aiKey, language, notes, plan, paymentToken } = body
+
+    // Verify payment token (HMAC signed by checkout, 24h expiry)
+    // Fail open: if secret not configured or token absent, allow through (backwards compatibility)
+    // Fail closed: if token present but invalid, reject
+    const secret = process.env.PAYREXX_WEBHOOK_SECRET || ''
+    if (secret && paymentToken) {
+      if (!verifyPaymentToken(paymentToken)) {
+        return NextResponse.json({ error: 'Ungültiges oder abgelaufenes Zahlungstoken. Bitte starten Sie den Kaufprozess erneut.' }, { status: 403 })
+      }
+    }
 
     if (!name || !email || !telegramToken || !aiKey) {
       return NextResponse.json({ error: 'Fehlende Pflichtfelder' }, { status: 400 })
@@ -49,7 +60,7 @@ export async function POST(req: NextRequest) {
     const safePlan = allowedPlans.includes(plan) ? plan : 'starter'
     const allowedProviders = ['anthropic', 'openai', 'google']
     const safeProvider = allowedProviders.includes(aiProvider) ? aiProvider : 'anthropic'
-    const allowedLanguages = ['de', 'en', 'fr']
+    const allowedLanguages = ['de', 'en']
     const safeLanguage = allowedLanguages.includes(language) ? language : 'de'
 
     // 1. Notify Ricci with all customer details

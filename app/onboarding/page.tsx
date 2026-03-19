@@ -125,8 +125,9 @@ const STORAGE_KEY = 'openclaw_onboarding_form'
 function OnboardingForm() {
   const params = useSearchParams()
   const plan = params.get('plan') || 'starter'
+  const pt = params.get('pt') || ''
   const langParam = params.get('lang') || 'de'
-  const lang = (['de','en','fr'].includes(langParam) ? langParam : 'de') as 'de'|'en'
+  const lang = (['de','en'].includes(langParam) ? langParam : 'de') as 'de'|'en'
   const tx = TX[lang]
   const providers = AI_PROVIDERS[lang]
 
@@ -181,6 +182,7 @@ function OnboardingForm() {
           notes: form.notes,
           channel: form.channel,
           plan,
+          paymentToken: pt,
         }),
       })
       // Clear saved form on success

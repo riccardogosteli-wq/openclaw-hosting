@@ -26,24 +26,14 @@ const t = {
     cta: 'Fill in onboarding form →',
     support: 'Questions?',
   },
-  fr: {
-    title: 'Paiement réussi !',
-    welcome: 'Bienvenue sur OpenClaw Hosting.',
-    sub: 'Prochaine étape : remplir le formulaire d\'intégration — environ 5 minutes.',
-    step1: '1. Remplissez le formulaire (5 min)',
-    step2: '2. Votre serveur est configuré automatiquement (~30 min)',
-    step3: '3. Vous recevrez un e-mail dès que tout est prêt',
-    whatsNext: 'Ce qui se passe ensuite :',
-    cta: 'Remplir le formulaire →',
-    support: 'Questions ?',
-  },
 }
 
 function SuccessContent() {
   const params = useSearchParams()
   const plan = params.get('plan') || 'starter'
   const billing = params.get('billing') || 'monthly'
-  const lang = (['de','en','fr'].includes(params.get('lang') || '')) ? params.get('lang') as 'de'|'en'|'fr' : 'de'
+  const pt = params.get('pt') || ''
+  const lang = (['de','en'].includes(params.get('lang') || '')) ? params.get('lang') as 'de'|'en' : 'de'
   const tx = t[lang]
   const planNames: Record<string, string> = { starter: 'Starter', pro: 'Pro', business: 'Business' }
   const planPrices: Record<string, Record<string, string>> = {
@@ -70,7 +60,7 @@ function SuccessContent() {
           {tx.step2}<br />
           {tx.step3}
         </div>
-        <Link href={`/onboarding?plan=${plan}&lang=${lang}`} style={{ display: 'block', background: 'var(--green)', color: '#fff', padding: '0.85rem', borderRadius: '9px', fontWeight: 700, textDecoration: 'none', fontSize: '1rem', marginBottom: '1rem' }}>
+        <Link href={`/onboarding?plan=${plan}&lang=${lang}${params.get('pt') ? '&pt=' + params.get('pt') : ''}`} style={{ display: 'block', background: 'var(--green)', color: '#fff', padding: '0.85rem', borderRadius: '9px', fontWeight: 700, textDecoration: 'none', fontSize: '1rem', marginBottom: '1rem' }}>
           {tx.cta}
         </Link>
         <p style={{ fontSize: '0.82rem', color: 'var(--slate)' }}>

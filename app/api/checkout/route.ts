@@ -1,4 +1,34 @@
 import { NextRequest, NextResponse } from 'next/server'
+import crypto from 'crypto'
+
+// Generate a short-lived signed payment token so onboarding can verify the user actually paid
+export function generatePaymentToken(plan: string, billing: string): string {
+  const secret = process.env.PAYREXX_WEBHOOK_SECRET || ''
+  if (!secret) return ''
+  const ts = Math.floor(Date.now() / 1000)
+  const payload = `${plan}:${billing}:${ts}`
+  const sig = crypto.createHmac('sha256', secret).update(payload).digest('hex').slice(0, 16)
+  return Buffer.from(`${payload}:${sig}`).toString('base64url')
+}
+
+export function verifyPaymentToken(token: string): boolean {
+  const secret = process.env.PAYREXX_WEBHOOK_SECRET || ''
+  if (!secret || !token) return false
+  try {
+    const decoded = Buffer.from(token, 'base64url').toString()
+    const parts = decoded.split(':')
+    if (parts.length !== 4) return false
+    const [plan, billing, tsStr, sig] = parts
+    const ts = parseInt(tsStr)
+    const age = Math.floor(Date.now() / 1000) - ts
+    if (age > 86400) return false // expired after 24h
+    const payload = `${plan}:${billing}:${tsStr}`
+    const expected = crypto.createHmac('sha256', secret).update(payload).digest('hex').slice(0, 16)
+    return crypto.timingSafeEqual(Buffer.from(sig), Buffer.from(expected))
+  } catch {
+    return false
+  }
+}
 
 // Simple in-memory rate limiter (resets on cold start — good enough for Next.js edge/serverless)
 const rateLimitMap = new Map<string, { count: number; resetAt: number }>()
@@ -36,7 +66,7 @@ export async function POST(req: NextRequest) {
   }
   try {
     const { plan, billing, lang } = await req.json()
-    const safeLang = ['de','en','fr'].includes(lang) ? lang : 'de'
+    const safeLang = (['de','en'] as string[]).includes(lang) ? (lang as string) : 'de'
 
     if (!PLANS[plan]) {
       return NextResponse.json({ error: 'Invalid plan' }, { status: 400 })
@@ -67,7 +97,7 @@ export async function POST(req: NextRequest) {
           currency: 'CHF',
           title: planInfo.name,
           description: isAnnual ? `${planInfo.name} — Jahresabo` : `${planInfo.name} — Monatsabo`,
-          successRedirectUrl: `${BASE_URL}/success?plan=${plan}&billing=${billing || 'monthly'}&lang=${safeLang}`,
+          successRedirectUrl: `${BASE_URL}/success?plan=${plan}&billing=${billing || 'monthly'}&lang=${safeLang}&pt=${generatePaymentToken(plan, billing || 'monthly')}`,
           failedRedirectUrl: `${BASE_URL}/cancel`,
           cancelRedirectUrl: `${BASE_URL}/cancel`,
           referenceId,
