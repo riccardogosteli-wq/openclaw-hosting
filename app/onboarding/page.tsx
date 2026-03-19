@@ -13,12 +13,7 @@ const AI_PROVIDERS = {
     { value: 'google', label: 'Google (Gemini Flash) – free to start', link: 'https://aistudio.google.com/app/apikey' },
     { value: 'anthropic', label: 'Anthropic (Claude) – affordable & powerful', link: 'https://console.anthropic.com/settings/keys' },
     { value: 'openai', label: 'OpenAI (GPT-4)', link: 'https://platform.openai.com/api-keys' },
-  ],
-  fr: [
-    { value: 'google', label: 'Google (Gemini Flash) – gratuit pour démarrer', link: 'https://aistudio.google.com/app/apikey' },
-    { value: 'anthropic', label: 'Anthropic (Claude) – abordable & puissant', link: 'https://console.anthropic.com/settings/keys' },
-    { value: 'openai', label: 'OpenAI (GPT-4)', link: 'https://platform.openai.com/api-keys' },
-  ],
+  ]
 }
 
 const TX = {
@@ -94,42 +89,6 @@ const TX = {
       { value: 'discord', label: 'Discord', emoji: '🎮', rec: false, desc: 'Perfect for teams and communities', guideLink: '/guide?lang=en#discord' },
     ],
   },
-  fr: {
-    badge: 'Intégration OpenClaw',
-    step1title: 'Étape 1 : Vos informations',
-    step1sub: 'Pour savoir pour qui configurer le serveur.',
-    nameLabel: 'Prénom & nom *', namePlaceholder: 'Jean Dupont',
-    emailLabel: 'Adresse e-mail *', emailPlaceholder: 'jean@entreprise.ch',
-    companyLabel: 'Entreprise (optionnel)', companyPlaceholder: 'Dupont SA',
-    langLabel: 'Langue préférée de votre assistant',
-    next: 'Suivant →', back: '← Retour',
-    step2title: 'Étape 2 : Connecter votre canal',
-    step2sub: 'Quelle application souhaitez-vous utiliser pour chatter avec votre assistant ?',
-    guideLabel: 'Ouvrir le guide →',
-    tokenLabel: (ch: string) => ch === 'telegram' ? 'Token du bot Telegram *' : ch === 'whatsapp' ? 'Token API WhatsApp *' : 'Token du bot Discord *',
-    tokenHint: 'Votre token est stocké uniquement sur votre propre serveur — nous ne le voyons jamais.',
-    userIdLabel: (ch: string) => ch === 'telegram' ? 'Votre ID utilisateur Telegram *' : ch === 'whatsapp' ? 'Votre numéro WhatsApp *' : 'Votre ID utilisateur Discord *',
-    step3title: 'Étape 3 : Fournisseur IA',
-    step3sub: 'Le « cerveau » de votre assistant. Vous payez votre fournisseur directement.',
-    guideApiLabel: 'Où trouver ma clé API ? →',
-    providerLabel: 'Choisir un fournisseur IA',
-    providerHint: 'Pas encore de clé ? Créez-en une gratuitement chez',
-    keyLabel: 'Clé API *',
-    keyHint: 'Votre clé est stockée uniquement sur votre propre serveur — nous ne la voyons jamais.',
-    notesLabel: 'Remarques (optionnel)',
-    notesPlaceholder: 'Demandes particulières, ex. outils souhaités...',
-    submit: 'Envoyer & terminer ✓', submitting: 'Envoi en cours...',
-    doneTitle: 'Formulaire reçu !',
-    doneSub: 'Votre serveur est en cours de configuration automatique — vous serez généralement opérationnel dans 30 minutes. Vous recevrez un e-mail dès que tout est prêt.',
-    doneSupport: 'Questions ?',
-    errorMsg: 'Erreur lors de l\'envoi. Veuillez réessayer ou nous contacter directement.',
-    channelRec: 'Recommandé',
-    channels: [
-      { value: 'telegram', label: 'Telegram', emoji: '✈️', rec: true, desc: 'Le plus simple à configurer — bot créé en 2 min', guideLink: '/guide?lang=fr' },
-      { value: 'whatsapp', label: 'WhatsApp', emoji: '💬', rec: false, desc: 'API WhatsApp Business via un fournisseur', guideLink: '/guide?lang=fr#whatsapp' },
-      { value: 'discord', label: 'Discord', emoji: '🎮', rec: false, desc: 'Parfait pour les équipes et communautés', guideLink: '/guide?lang=fr#discord' },
-    ],
-  },
 }
 
 // CHANNELS now in TX[lang].channels
@@ -167,7 +126,7 @@ function OnboardingForm() {
   const params = useSearchParams()
   const plan = params.get('plan') || 'starter'
   const langParam = params.get('lang') || 'de'
-  const lang = (['de','en','fr'].includes(langParam) ? langParam : 'de') as 'de'|'en'|'fr'
+  const lang = (['de','en','fr'].includes(langParam) ? langParam : 'de') as 'de'|'en'
   const tx = TX[lang]
   const providers = AI_PROVIDERS[lang]
 
@@ -180,7 +139,7 @@ function OnboardingForm() {
     channel: 'telegram',
     token: '', userId: '',
     aiProvider: 'google', aiKey: '',
-    language: lang === 'fr' ? 'fr' : lang === 'en' ? 'en' : 'de',
+    language: lang === 'en' ? 'en' : 'de',
     notes: '',
   })
 
@@ -401,7 +360,7 @@ function OnboardingForm() {
               <select style={inputStyle} value={form.aiProvider} onChange={e => set('aiProvider', e.target.value)}>
                 {providers.map(p => <option key={p.value} value={p.value}>{p.label}</option>)}
               </select>
-              <p style={hintStyle}>{tx.providerHint} <a href={selectedProvider?.link} target="_blank" rel="noopener noreferrer" style={{ color: 'var(--green)' }}>{lang==='en'?'your chosen provider →':lang==='fr'?'votre fournisseur →':'Ihrem gewählten Anbieter →'}</a></p>
+              <p style={hintStyle}>{tx.providerHint} <a href={selectedProvider?.link} target="_blank" rel="noopener noreferrer" style={{ color: 'var(--green)' }}>{lang==='en'?'your chosen provider →':'Ihrem gewählten Anbieter →'}</a></p>
             </div>
 
             <div>

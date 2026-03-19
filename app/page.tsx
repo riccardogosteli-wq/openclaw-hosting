@@ -336,8 +336,8 @@ const en: typeof de = {
 
 /* ─── PAGE ──────────────────────────────────────────────────────── */
 export default function Home() {
-  const [lang, setLang] = useState<'de'|'en'|'fr'>(() => {
-    if (typeof window !== 'undefined') return (localStorage.getItem('lang') as 'de'|'en'|'fr') || 'de'
+  const [lang, setLang] = useState<'de'|'en'>(() => {
+    if (typeof window !== 'undefined') return (localStorage.getItem('lang') as 'de'|'en') || 'de'
     return 'de'
   })
   const [billing, setBilling] = useState<'monthly'|'annual'>('annual')
@@ -548,7 +548,7 @@ export default function Home() {
                 color: billing==='monthly' ? 'var(--ink)' : 'var(--slate)',
                 boxShadow: billing==='monthly' ? '0 1px 4px rgba(0,0,0,0.1)' : 'none'
               }}>
-              {lang==='de' ? 'Monatlich' : lang==='fr' ? 'Mensuel' : 'Monthly'}
+              {lang==='de' ? 'Monatlich' : 'Monthly'}
             </button>
             <button
               onClick={() => setBilling('annual')}
@@ -557,10 +557,10 @@ export default function Home() {
                 color: billing==='annual' ? '#fff' : 'var(--slate)',
                 boxShadow: billing==='annual' ? '0 1px 4px rgba(18,168,120,0.3)' : 'none'
               }}>
-              {lang==='de' ? 'Jährlich' : lang==='fr' ? 'Annuel' : 'Annual'}
+              {lang==='de' ? 'Jährlich' : 'Annual'}
             </button>
             <span style={{marginLeft:'0.6rem', background:'#dcfce7', color:'#14532d', padding:'0.2rem 0.6rem', borderRadius:'99px', fontSize:'0.75rem', fontWeight:700, whiteSpace:'nowrap'}}>
-              {lang==='de' ? 'Günstiger' : lang==='fr' ? 'Économique' : 'Save more'}
+              {lang==='de' ? 'Günstiger' : 'Save more'}
             </span>
           </div>
 
@@ -606,7 +606,7 @@ export default function Home() {
                 <p className="plan-desc">{p.desc}</p>
                 <div className="plan-price">
                   <span className="amount">CHF {p.price}</span>
-                  <span className="per">{lang==='de'?'/Mt.':lang==='fr'?'/mois':'/mo'}</span>
+                  <span className="per">{lang==='de'?'/Mt.':'/mo'}</span>
                 </div>
                 <p className="plan-annual" style={{color: billing==='annual'?'var(--green2)':'var(--muted)', fontWeight: billing==='annual'?700:400}}>
                   {p.annual}
