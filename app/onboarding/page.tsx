@@ -93,8 +93,13 @@ const TX = {
 
 // CHANNELS now in TX[lang].channels
 
-const CHANNEL_FIELDS: Record<string, { tokenLabel: string; tokenPlaceholder: string; tokenHint: string; userIdLabel: string; userIdPlaceholder: string; userIdHint: React.ReactNode }> = {
+const CHANNEL_FIELDS: Record<string, {
+  showToken: boolean; tokenLabel?: string; tokenPlaceholder?: string; tokenHint?: string;
+  userIdLabel: string; userIdPlaceholder: string; userIdHint: React.ReactNode;
+  extraFields?: { key: string; label: string; placeholder: string; hint: React.ReactNode }[]
+}> = {
   telegram: {
+    showToken: true,
     tokenLabel: 'Telegram-Bot-Token *',
     tokenPlaceholder: '123456789:AAFxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',
     tokenHint: '🔒 Ihr Token wird nur auf Ihrem eigenen Server gespeichert — wir sehen ihn nie.',
@@ -103,20 +108,25 @@ const CHANNEL_FIELDS: Record<string, { tokenLabel: string; tokenPlaceholder: str
     userIdHint: <>Ihr Assistent antwortet <strong>nur auf Ihre Nachrichten</strong>. ID finden: Schreiben Sie in Telegram an <a href="https://t.me/userinfobot" target="_blank" rel="noopener noreferrer" style={{color:'var(--green)'}}>@userinfobot</a> — er antwortet sofort.</>,
   },
   whatsapp: {
-    tokenLabel: 'WhatsApp API Token *',
-    tokenPlaceholder: 'EAAxxxxxxxxxxxxxxx...',
-    tokenHint: '🔒 Ihr Token wird nur auf Ihrem eigenen Server gespeichert — wir sehen ihn nie.',
+    showToken: false,
     userIdLabel: 'Ihre WhatsApp-Nummer (mit Ländercode) *',
     userIdPlaceholder: '+41791234567',
-    userIdHint: <>Geben Sie Ihre Nummer mit Ländervorwahl ein, z.B. <strong>+41791234567</strong>. Ihr Assistent antwortet nur auf Ihre Nachrichten.</>,
+    userIdHint: <>Geben Sie Ihre Nummer mit Ländervorwahl ein, z.B. <strong>+41791234567</strong>. Nach dem Setup erhalten Sie einen QR-Code zum Scannen — kein API-Token nötig.</>,
   },
   discord: {
+    showToken: true,
     tokenLabel: 'Discord-Bot-Token *',
     tokenPlaceholder: 'MTIzNDU2Nzg5...',
     tokenHint: '🔒 Ihr Token wird nur auf Ihrem eigenen Server gespeichert — wir sehen ihn nie.',
     userIdLabel: 'Ihre Discord-User-ID *',
     userIdPlaceholder: '123456789012345678',
     userIdHint: <>Ihre User-ID finden Sie unter <strong>Einstellungen → Erweitert → Entwicklermodus</strong> (aktivieren), dann Rechtsklick auf Ihren Namen → "ID kopieren".</>,
+    extraFields: [{
+      key: 'serverId',
+      label: 'Discord-Server-ID *',
+      placeholder: '123456789012345678',
+      hint: <>Rechtsklick auf Ihren Server → "Server-ID kopieren" (Entwicklermodus muss aktiv sein).</>,
+    }],
   },
 }
 
@@ -138,7 +148,7 @@ function OnboardingForm() {
   const [form, setForm] = useState({
     name: '', email: '', company: '',
     channel: 'telegram',
-    token: '', userId: '',
+    token: '', userId: '', serverId: '',
     aiProvider: 'google', aiKey: '',
     language: lang === 'en' ? 'en' : 'de',
     notes: '',
@@ -177,6 +187,7 @@ function OnboardingForm() {
           channel: form.channel,
           channelToken: form.token,
           channelUserId: form.userId,
+          channelServerId: form.serverId,
           aiProvider: form.aiProvider,
           aiKey: form.aiKey,
           language: form.language,
@@ -315,14 +326,17 @@ function OnboardingForm() {
           </a>
 
           <div style={{ display: 'flex', flexDirection: 'column', gap: '1.1rem' }}>
-            <div>
-              <label style={labelStyle}>{tx.tokenLabel(form.channel)}</label>
-              <input style={inputStyle} value={form.token} onChange={e => set('token', e.target.value)} placeholder={channelFields.tokenPlaceholder} />
-              <p style={hintStyle}>{tx.tokenHint}</p>
-            </div>
+            {/* Token field — hidden for WhatsApp (QR-based, no token needed) */}
+            {channelFields.showToken && (
+              <div>
+                <label style={labelStyle}>{channelFields.tokenLabel}</label>
+                <input style={inputStyle} value={form.token} onChange={e => set('token', e.target.value)} placeholder={channelFields.tokenPlaceholder} />
+                <p style={hintStyle}>{channelFields.tokenHint}</p>
+              </div>
+            )}
 
             <div>
-              <label style={labelStyle}>{tx.userIdLabel(form.channel)}</label>
+              <label style={labelStyle}>{channelFields.userIdLabel}</label>
               <input
                 style={inputStyle}
                 value={form.userId}
@@ -332,18 +346,40 @@ function OnboardingForm() {
               />
               <p style={hintStyle}>{channelFields.userIdHint}</p>
             </div>
+
+            {/* Extra fields (e.g. Discord Server ID) */}
+            {channelFields.extraFields?.map(f => (
+              <div key={f.key}>
+                <label style={labelStyle}>{f.label}</label>
+                <input
+                  style={inputStyle}
+                  value={f.key === 'serverId' ? form.serverId : ''}
+                  onChange={e => set(f.key, e.target.value.replace(/\D/g,''))}
+                  placeholder={f.placeholder}
+                  inputMode="numeric"
+                />
+                <p style={hintStyle}>{f.hint}</p>
+              </div>
+            ))}
           </div>
 
+          {(() => {
+            const needsToken = channelFields.showToken ? !!form.token : true
+            const needsServerId = channelFields.extraFields?.some(f => f.key === 'serverId') ? !!form.serverId : true
+            const canProceed = needsToken && !!form.userId && needsServerId
+            return (
           <div style={{ display: 'flex', gap: '0.75rem', marginTop: '1.75rem' }}>
             <button onClick={() => setStep(1)} style={{ flex: 1, padding: '0.8rem', background: 'transparent', border: '1px solid var(--border)', borderRadius: '9px', fontWeight: 600, fontSize: '0.93rem', cursor: 'pointer', color: 'var(--slate)' }}>{tx.back}</button>
             <button
               onClick={() => setStep(3)}
-              disabled={!form.token || !form.userId}
-              style={{ flex: 2, padding: '0.8rem', background: form.token && form.userId ? 'var(--green)' : 'var(--border)', color: form.token && form.userId ? '#fff' : 'var(--slate)', border: 'none', borderRadius: '9px', fontWeight: 700, fontSize: '0.97rem', cursor: form.token && form.userId ? 'pointer' : 'not-allowed' }}
+              disabled={!canProceed}
+              style={{ flex: 2, padding: '0.8rem', background: canProceed ? 'var(--green)' : 'var(--border)', color: canProceed ? '#fff' : 'var(--slate)', border: 'none', borderRadius: '9px', fontWeight: 700, fontSize: '0.97rem', cursor: canProceed ? 'pointer' : 'not-allowed' }}
             >
               {tx.next}
             </button>
           </div>
+            )
+          })()}
         </div>
       )}
 
