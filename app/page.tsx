@@ -131,7 +131,8 @@ const de = {
 
   p3badge: 'BUSINESS', p3n: 'Business', p3d: 'Für anspruchsvolle Workloads und maximale Leistung',
   p3p: '59', p3a: '→ CHF 560/Jahr (günstiger)',
-  p3fs: ['8 vCPU · 16 GB RAM · 80 GB SSD', '🇨🇭 Privater Server in der Schweiz', 'Telegram, Discord & WhatsApp', '🎙️ Voice-Chat: Sprache senden, Text oder Sprache empfangen', 'Automatische Updates, Monitoring & tägliche Backups', '✅ Persönliches Dashboard (nur für Sie zugänglich)', 'Prioritäts-Support (< 24 Std.)', '30-minütiger Onboarding-Call auf Deutsch', 'Einrichtung von Custom Skills & Automationen', 'Jederzeit kündbar'],
+  p3fs: ['8 vCPU · 16 GB RAM · 80 GB SSD', '🇨🇭 Privater Server in der Schweiz', 'Telegram, Discord & WhatsApp', '🎙️ Voice-Chat: Sprache senden, Text oder Sprache empfangen', 'Automatische Updates, Monitoring & tägliche Backups', '✅ Persönliches Dashboard (nur für Sie zugänglich)', 'Prioritäts-Support (< 24 Std.)', 'Einrichtung von Custom Skills & Automationen', 'Jederzeit kündbar'],
+  p3fsAnnualExtra: '📞 30-minütiger Onboarding-Call auf Deutsch',
   p3cta: 'Business wählen',
 
   cLabel: 'Vergleich', cH2: 'Warum nicht selbst hosten?',
@@ -297,7 +298,8 @@ const en: typeof de = {
 
   p3badge: 'BUSINESS', p3n: 'Business', p3d: 'For demanding workloads and maximum performance',
   p3p: '59', p3a: '→ CHF 560/year (save more)',
-  p3fs: ['8 vCPU · 16 GB RAM · 80 GB SSD', '🇨🇭 Private server in Switzerland', 'Telegram, Discord & WhatsApp', '🎙️ Voice chat: send voice, receive text or voice replies', 'Automatic updates, monitoring & daily backups', '✅ Personal dashboard (private access only)', 'Priority support (< 24h)', '30-min onboarding call in German or English', 'Custom skills & automation setup included', 'Cancel anytime'],
+  p3fs: ['8 vCPU · 16 GB RAM · 80 GB SSD', '🇨🇭 Private server in Switzerland', 'Telegram, Discord & WhatsApp', '🎙️ Voice chat: send voice, receive text or voice replies', 'Automatic updates, monitoring & daily backups', '✅ Personal dashboard (private access only)', 'Priority support (< 24h)', 'Custom skills & automation setup included', 'Cancel anytime'],
+  p3fsAnnualExtra: '📞 30-min onboarding call in German or English',
   p3cta: 'Choose Business',
 
   cLabel: 'Comparison', cH2: 'Why not self-host?',
@@ -593,7 +595,7 @@ export default function Home() {
                 name:t.p3n, desc:t.p3d,
                 price: billing==='annual' ? 47 : 59,
                 annual: billing==='annual' ? (lang==='de'?'CHF 560/Jahr abgerechnet':'CHF 560/year billed') : (lang==='de'?'→ CHF 560/Jahr (günstiger)':'→ CHF 560/year (save more)'),
-                features:t.p3fs, dims:[], cta:t.p3cta,
+                features: billing==='annual' ? [...t.p3fs, t.p3fsAnnualExtra] : t.p3fs, dims:[], cta:t.p3cta,
                 href: billing==='annual'
                   ? (process.env.NEXT_PUBLIC_PAYREXX_BUSINESS_ANNUAL||'/onboarding?plan=business&billing=annual')
                   : (process.env.NEXT_PUBLIC_PAYREXX_BUSINESS||'/onboarding?plan=business'),
