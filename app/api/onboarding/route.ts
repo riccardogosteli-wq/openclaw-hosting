@@ -59,7 +59,9 @@ export async function POST(req: NextRequest) {
       }
     }
 
-    if (!name || !email || !token || !aiKey) {
+    // WhatsApp uses QR-based auth — no token required; Telegram/Discord require a bot token
+    const tokenRequired = safeChannel !== 'whatsapp'
+    if (!name || !email || (tokenRequired && !token) || !aiKey) {
       return NextResponse.json({ error: 'Fehlende Pflichtfelder' }, { status: 400 })
     }
 
