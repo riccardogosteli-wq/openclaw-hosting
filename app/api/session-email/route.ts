@@ -14,7 +14,8 @@ export async function GET(req: NextRequest) {
     const session = await stripe.checkout.sessions.retrieve(sessionId)
     const email = session.customer_details?.email || ''
     const name = session.customer_details?.name || ''
-    return NextResponse.json({ email, name })
+    const stripeCustomerId = typeof session.customer === 'string' ? session.customer : ''
+    return NextResponse.json({ email, name, stripeCustomerId })
   } catch {
     return NextResponse.json({ error: 'Session not found' }, { status: 404 })
   }
