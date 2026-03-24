@@ -141,7 +141,8 @@ export async function POST(req: NextRequest) {
 
     // Cancellation confirmation to customer
     if (email) {
-      const endDate = new Date(subscription.current_period_end * 1000).toLocaleDateString('de-CH', {
+      const periodEnd = (subscription as any).current_period_end ?? 0
+      const endDate = new Date(periodEnd * 1000).toLocaleDateString('de-CH', {
         day: '2-digit', month: 'long', year: 'numeric'
       })
       await sendEmail(email,
