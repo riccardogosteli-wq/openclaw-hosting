@@ -148,8 +148,8 @@ export async function POST(req: NextRequest) {
 
     // 3. Confirmation email to customer
     const channelInstructions: Record<string, string> = {
-      telegram: '✓ Sie erhalten eine E-Mail mit Ihrem Telegram-Bot-Link',
-      discord: '✓ Sie erhalten eine E-Mail mit Ihrem Discord-Bot-Link und Einladungs-URL',
+      telegram: '✓ Sie erhalten eine Willkommens-E-Mail mit Ihren Zugangsdaten und Bot-Infos',
+      discord: '✓ Sie erhalten eine Willkommens-E-Mail mit Ihren Zugangsdaten und Bot-Infos',
     }
     await fetch('https://api.resend.com/emails', {
       method: 'POST',
