@@ -1,9 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server'
+import Stripe from 'stripe'
 import crypto from 'crypto'
 
 // Generate a short-lived signed payment token so onboarding can verify the user actually paid
 export function generatePaymentToken(plan: string, billing: string): string {
-  const secret = process.env.PAYREXX_WEBHOOK_SECRET || ''
+  const secret = process.env.STRIPE_WEBHOOK_SECRET || process.env.PAYREXX_WEBHOOK_SECRET || ''
   if (!secret) return ''
   const ts = Math.floor(Date.now() / 1000)
   const payload = `${plan}:${billing}:${ts}`
@@ -12,7 +13,7 @@ export function generatePaymentToken(plan: string, billing: string): string {
 }
 
 export function verifyPaymentToken(token: string): boolean {
-  const secret = process.env.PAYREXX_WEBHOOK_SECRET || ''
+  const secret = process.env.STRIPE_WEBHOOK_SECRET || process.env.PAYREXX_WEBHOOK_SECRET || ''
   if (!secret || !token) return false
   try {
     const decoded = Buffer.from(token, 'base64url').toString()
@@ -21,7 +22,7 @@ export function verifyPaymentToken(token: string): boolean {
     const [plan, billing, tsStr, sig] = parts
     const ts = parseInt(tsStr)
     const age = Math.floor(Date.now() / 1000) - ts
-    if (age > 86400) return false // expired after 24h
+    if (age > 86400) return false
     const payload = `${plan}:${billing}:${tsStr}`
     const expected = crypto.createHmac('sha256', secret).update(payload).digest('hex').slice(0, 16)
     return crypto.timingSafeEqual(Buffer.from(sig), Buffer.from(expected))
@@ -30,9 +31,9 @@ export function verifyPaymentToken(token: string): boolean {
   }
 }
 
-// Simple in-memory rate limiter (resets on cold start — good enough for Next.js edge/serverless)
+// Simple in-memory rate limiter
 const rateLimitMap = new Map<string, { count: number; resetAt: number }>()
-function checkRateLimit(ip: string, maxPerMinute = 10): boolean {
+function checkRateLimit(ip: string, maxPerMinute = 5): boolean {
   const now = Date.now()
   const entry = rateLimitMap.get(ip)
   if (!entry || now > entry.resetAt) {
@@ -40,85 +41,65 @@ function checkRateLimit(ip: string, maxPerMinute = 10): boolean {
     return true
   }
   entry.count++
-  if (entry.count > maxPerMinute) return false
-  return true
+  return entry.count <= maxPerMinute
 }
 function getClientIp(req: NextRequest): string {
   return req.headers.get('cf-connecting-ip') || req.headers.get('x-forwarded-for')?.split(',')[0]?.trim() || '0.0.0.0'
 }
 
-
-
-const PAYREXX_INSTANCE = process.env.PAYREXX_INSTANCE || ''
-const PAYREXX_API_KEY = process.env.PAYREXX_API_KEY || ''
 const BASE_URL = 'https://hosting.openclaw-consulting.ch'
 
-const PLANS: Record<string, { monthly: number; annual: number; name: string }> = {
-  starter:  { monthly: 1900,  annual: 18000, name: 'OpenClaw Starter' },
-  pro:      { monthly: 3400,  annual: 32000, name: 'OpenClaw Pro' },
-  business: { monthly: 5900,  annual: 56000, name: 'OpenClaw Business' },
+// Stripe Price IDs (live)
+const PRICE_IDS: Record<string, { monthly: string; annual: string; name: string }> = {
+  starter:  { monthly: 'price_1TEQoqDGUBi3vyUQIb4iafh2', annual: 'price_1TEQisDGUBi3vyUQe1nuBBCU', name: 'OpenClaw Starter' },
+  pro:      { monthly: 'price_1TEQorDGUBi3vyUQNpBU3DqI', annual: 'price_1TEQiuDGUBi3vyUQ7ZPwLghS', name: 'OpenClaw Pro' },
+  business: { monthly: 'price_1TEQosDGUBi3vyUQHNTrqctJ', annual: 'price_1TEQivDGUBi3vyUQdaUPSqTB', name: 'OpenClaw Business' },
+}
+
+function getStripe() {
+  return new Stripe(process.env.STRIPE_SECRET_KEY!)
 }
 
 export async function POST(req: NextRequest) {
   const ip = getClientIp(req)
-  if (!checkRateLimit(ip, 5)) {
+  if (!checkRateLimit(ip)) {
     return NextResponse.json({ error: 'Too many requests — please wait a moment' }, { status: 429 })
   }
+
   try {
     const { plan, billing, lang } = await req.json()
-    const safeLang = (['de','en'] as string[]).includes(lang) ? (lang as string) : 'de'
+    const safeLang = (['de', 'en'] as string[]).includes(lang) ? (lang as string) : 'de'
 
-    if (!PLANS[plan]) {
+    if (!PRICE_IDS[plan]) {
       return NextResponse.json({ error: 'Invalid plan' }, { status: 400 })
     }
 
-    if (!PAYREXX_INSTANCE || !PAYREXX_API_KEY) {
-      console.error('Payrexx not configured')
-      return NextResponse.json({ error: 'Zahlungsanbieter nicht konfiguriert' }, { status: 500 })
-    }
-
-    const planInfo = PLANS[plan]
+    const planInfo = PRICE_IDS[plan]
     const isAnnual = billing === 'annual'
-    const amount = isAnnual ? planInfo.annual : planInfo.monthly
-    const interval = isAnnual ? 'P1Y' : 'P1M'
-    const referenceId = `${plan}-${billing || 'monthly'}`
+    const priceId = isAnnual ? planInfo.annual : planInfo.monthly
 
-
-    const response = await fetch(
-      `https://api.payrexx.com/v1/Gateway/?instance=${PAYREXX_INSTANCE}`,
-      {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'x-api-key': PAYREXX_API_KEY,
+    const stripe = getStripe()
+    const session = await stripe.checkout.sessions.create({
+      mode: 'subscription',
+      line_items: [{ price: priceId, quantity: 1 }],
+      payment_method_types: ['card'],
+      success_url: `${BASE_URL}/success?plan=${plan}&billing=${billing || 'monthly'}&lang=${safeLang}&session_id={CHECKOUT_SESSION_ID}`,
+      cancel_url: `${BASE_URL}/cancel`,
+      metadata: {
+        plan,
+        billing: billing || 'monthly',
+        site: 'openclaw-hosting',
+      },
+      subscription_data: {
+        metadata: {
+          plan,
+          billing: billing || 'monthly',
+          site: 'openclaw-hosting',
         },
-        body: JSON.stringify({
-          amount,
-          currency: 'CHF',
-          title: planInfo.name,
-          description: isAnnual ? `${planInfo.name} — Jahresabo` : `${planInfo.name} — Monatsabo`,
-          successRedirectUrl: `${BASE_URL}/success?plan=${plan}&billing=${billing || 'monthly'}&lang=${safeLang}&pt=${generatePaymentToken(plan, billing || 'monthly')}`,
-          failedRedirectUrl: `${BASE_URL}/cancel`,
-          cancelRedirectUrl: `${BASE_URL}/cancel`,
-          referenceId,
-          sku: referenceId,
-          subscriptionState: 1,
-          subscriptionInterval: interval,
-          subscriptionPeriod: interval,
-          subscriptionCancellationInterval: 'P1M',
-        }),
-      }
-    )
+      },
+    })
 
-    const data = await response.json()
-
-    if (data.status !== 'success' || !data.data?.[0]?.link) {
-      console.error('Payrexx error:', JSON.stringify(data))
-      return NextResponse.json({ error: 'Fehler beim Erstellen der Zahlung' }, { status: 500 })
-    }
-
-    return NextResponse.json({ checkoutUrl: data.data[0].link })
-
+    return NextResponse.json({ checkoutUrl: session.url })
   } catch (err) {
     console.error('Checkout error:', err)
     return NextResponse.json({ error: 'Server-Fehler' }, { status: 500 })
