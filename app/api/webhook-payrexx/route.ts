@@ -71,7 +71,7 @@ export async function POST(req: NextRequest) {
       await sendEmail(email,
         `Willkommen bei OpenClaw Hosting – Ihr ${planName}-Plan ist aktiv 🎉`,
         `<div style="font-family:Inter,sans-serif;max-width:560px;margin:0 auto;color:#0F1714;">
-          <h2 style="font-size:22px;margin-bottom:8px">Willkommen, ${name.split(' ')[0]}! 👋</h2>
+          <h2 style="font-size:22px;margin-bottom:8px">Willkommen, ${name}! 👋</h2>
           <p style="color:#4B5563;line-height:1.7;">Ihre Zahlung war erfolgreich. Sie haben den <strong>${planName}-Plan</strong> gebucht.</p>
           <div style="background:#E6F7F2;border:1px solid #b2dfd4;border-radius:10px;padding:16px 20px;margin:20px 0;font-size:14px;color:#1E3329;line-height:1.8;">
             <strong>Nächster Schritt:</strong><br/>
@@ -130,7 +130,7 @@ export async function POST(req: NextRequest) {
         `Ihr OpenClaw Hosting Abo wurde gekündigt`,
         `<div style="font-family:Inter,sans-serif;max-width:560px;margin:0 auto;color:#0F1714;">
           <h2 style="font-size:20px">Ihr Abo wurde gekündigt</h2>
-          <p style="color:#4B5563;line-height:1.7;">Hallo ${name.split(' ')[0]},<br/><br/>Wir bestätigen die Kündigung Ihres ${planName}-Plans.</p>
+          <p style="color:#4B5563;line-height:1.7;">Hallo ${name},<br/><br/>Wir bestätigen die Kündigung Ihres ${planName}-Plans.</p>
           <div style="background:#fef2f2;border:1px solid #fecaca;border-radius:10px;padding:16px 20px;margin:20px 0;font-size:14px;color:#7f1d1d;line-height:1.8;">
             Ihr Server und alle Daten werden innerhalb von 48 Stunden gelöscht.<br/>
             Falls Sie Ihre Daten vorher exportieren möchten, kontaktieren Sie uns bitte umgehend.
@@ -153,7 +153,7 @@ export async function POST(req: NextRequest) {
         `Zahlung fehlgeschlagen — OpenClaw Hosting`,
         `<div style="font-family:Inter,sans-serif;max-width:560px;margin:0 auto;color:#0F1714;">
           <h2>Zahlung fehlgeschlagen</h2>
-          <p style="color:#4B5563;line-height:1.7;">Hallo ${name.split(' ')[0]},<br/><br/>Leider konnte Ihre Zahlung nicht verarbeitet werden.</p>
+          <p style="color:#4B5563;line-height:1.7;">Hallo ${name},<br/><br/>Leider konnte Ihre Zahlung nicht verarbeitet werden.</p>
           <p style="color:#4B5563;line-height:1.7;">Bitte versuchen Sie es erneut oder kontaktieren Sie uns:<br/>
           <a href="mailto:support@openclaw-consulting.ch" style="color:#12A878;">support@openclaw-consulting.ch</a></p>
         </div>`

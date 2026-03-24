@@ -160,7 +160,7 @@ export async function POST(req: NextRequest) {
         subject: 'OpenClaw Hosting — Wir richten Ihren Assistenten ein',
         html: `
           <div style="font-family:Inter,sans-serif;max-width:560px;margin:0 auto;color:#0F1714;">
-            <h2 style="font-size:22px;margin-bottom:8px;">Hallo ${name.split(' ')[0]} 👋</h2>
+            <h2 style="font-size:22px;margin-bottom:8px;">Hallo ${name} 👋</h2>
             <p style="color:#4B5563;line-height:1.7;">Vielen Dank — wir haben Ihr Onboarding-Formular erhalten!</p>
             <div style="background:#E6F7F2;border:1px solid #b2dfd4;border-radius:10px;padding:16px 20px;margin:20px 0;font-size:14px;color:#1E3329;line-height:1.7;">
               <strong>Was als nächstes passiert:</strong><br/>

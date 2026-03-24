@@ -79,7 +79,7 @@ export async function POST(req: NextRequest) {
     await sendEmail(email,
       `Willkommen bei OpenClaw Hosting – Ihr ${planName}-Plan ist aktiv 🎉`,
       `<div style="font-family:Inter,sans-serif;max-width:560px;margin:0 auto;color:#0F1714;">
-        <h2 style="font-size:22px;margin-bottom:8px">Willkommen, ${name.split(' ')[0]}! 👋</h2>
+        <h2 style="font-size:22px;margin-bottom:8px">Willkommen, ${name}! 👋</h2>
         <p style="color:#4B5563;line-height:1.7;">Ihre Zahlung war erfolgreich. Sie haben den <strong>${planName}-Plan</strong> gebucht (${planPrice}).</p>
         <div style="background:#E6F7F2;border:1px solid #b2dfd4;border-radius:10px;padding:16px 20px;margin:20px 0;font-size:14px;color:#1E3329;line-height:1.8;">
           <strong>Nächster Schritt:</strong><br/>
@@ -148,7 +148,7 @@ export async function POST(req: NextRequest) {
         `Ihr OpenClaw ${planName}-Abo wurde gekündigt`,
         `<div style="font-family:Inter,sans-serif;max-width:560px;margin:0 auto;color:#0F1714;">
           <h2 style="font-size:22px;margin-bottom:8px">Kündigung bestätigt</h2>
-          <p style="color:#4B5563;line-height:1.7;">Hallo ${name.split(' ')[0]},</p>
+          <p style="color:#4B5563;line-height:1.7;">Hallo ${name},</p>
           <p style="color:#4B5563;line-height:1.7;">Ihre Kündigung für den <strong>${planName}-Plan</strong> wurde erfolgreich verarbeitet.</p>
           <div style="background:#FEF2F2;border:1px solid #FECACA;border-radius:10px;padding:16px 20px;margin:20px 0;font-size:14px;color:#7F1D1D;line-height:1.8;">
             <strong>Ihr Zugang bleibt aktiv bis:</strong><br/>
