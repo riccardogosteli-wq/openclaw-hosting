@@ -60,7 +60,7 @@ function SuccessContent() {
           {tx.step2}<br />
           {tx.step3}
         </div>
-        <Link href={`/onboarding?plan=${plan}&lang=${lang}${params.get('pt') ? '&pt=' + params.get('pt') : ''}`} style={{ display: 'block', background: 'var(--green)', color: '#fff', padding: '0.85rem', borderRadius: '9px', fontWeight: 700, textDecoration: 'none', fontSize: '1rem', marginBottom: '1rem' }}>
+        <Link href={`/onboarding?plan=${plan}&lang=${lang}${params.get('pt') ? '&pt=' + params.get('pt') : ''}${params.get('session_id') ? '&session_id=' + params.get('session_id') : ''}`} style={{ display: 'block', background: 'var(--green)', color: '#fff', padding: '0.85rem', borderRadius: '9px', fontWeight: 700, textDecoration: 'none', fontSize: '1rem', marginBottom: '1rem' }}>
           {tx.cta}
         </Link>
         <p style={{ fontSize: '0.82rem', color: 'var(--slate)' }}>

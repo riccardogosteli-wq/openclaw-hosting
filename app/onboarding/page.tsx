@@ -145,6 +145,23 @@ function OnboardingForm() {
   const [loading, setLoading] = useState(false)
   const [done, setDone] = useState(false)
   const [submitError, setSubmitError] = useState('')
+  const [emailFromStripe, setEmailFromStripe] = useState('')
+
+  // Auto-fetch email from Stripe session if session_id is in URL
+  useEffect(() => {
+    const sessionId = new URLSearchParams(window.location.search).get('session_id')
+    if (!sessionId) return
+    fetch(`/api/session-email?session_id=${encodeURIComponent(sessionId)}`)
+      .then(r => r.json())
+      .then(d => {
+        if (d.email) {
+          setEmailFromStripe(d.email)
+          setForm(f => ({ ...f, email: d.email, name: f.name || d.name || '' }))
+        }
+      })
+      .catch(() => {})
+  }, [])
+
   const [form, setForm] = useState({
     name: '', email: '', company: '',
     channel: 'telegram',
@@ -259,8 +276,15 @@ function OnboardingForm() {
               <input style={inputStyle} value={form.name} onChange={e => set('name', e.target.value)} {...{placeholder: tx.namePlaceholder}} />
             </div>
             <div>
-              <label style={labelStyle}>{tx.emailLabel}</label>
-              <input style={inputStyle} type="email" value={form.email} onChange={e => set('email', e.target.value)} {...{placeholder: tx.emailPlaceholder}} />
+              {!emailFromStripe && <>
+                <label style={labelStyle}>{tx.emailLabel}</label>
+                <input style={inputStyle} type="email" value={form.email} onChange={e => set('email', e.target.value)} {...{placeholder: tx.emailPlaceholder}} />
+              </>}
+              {emailFromStripe && (
+                <p style={{ fontSize: '0.85rem', color: 'var(--slate)', margin: '0.25rem 0 0.75rem' }}>
+                  📧 {emailFromStripe}
+                </p>
+              )}
             </div>
             <div>
               <label style={labelStyle}>{tx.companyLabel}</label>
