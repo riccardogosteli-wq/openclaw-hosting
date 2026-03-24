@@ -138,6 +138,7 @@ function OnboardingForm() {
   const [done, setDone] = useState(false)
   const [submitError, setSubmitError] = useState('')
   const [emailFromStripe, setEmailFromStripe] = useState('')
+  const [stripeCustomerId, setStripeCustomerId] = useState('')
 
   // Auto-fetch email from Stripe session if session_id is in URL
   useEffect(() => {
@@ -150,6 +151,7 @@ function OnboardingForm() {
           setEmailFromStripe(d.email)
           setForm(f => ({ ...f, email: d.email, name: f.name || d.name || '' }))
         }
+        if (d.stripeCustomerId) setStripeCustomerId(d.stripeCustomerId)
       })
       .catch(() => {})
   }, [])
@@ -203,6 +205,7 @@ function OnboardingForm() {
           notes: form.notes,
           plan,
           paymentToken: pt,
+          stripeCustomerId,
         }),
       })
       // Clear saved form on success
