@@ -128,6 +128,7 @@ export async function POST(req: NextRequest) {
       }
     }
 
+    // Notify Ricci
     await sendEmail(NOTIFY_EMAIL,
       `❌ Abo gekündigt: ${name} (${planName})`,
       `<div style="font-family:sans-serif">
@@ -137,6 +138,32 @@ export async function POST(req: NextRequest) {
         <p style="color:#6b7280;font-size:13px">Falls der Server nicht gelöscht wurde, manuelle Löschung über Infomaniak erforderlich.</p>
       </div>`
     )
+
+    // Cancellation confirmation to customer
+    if (email) {
+      const endDate = new Date(subscription.current_period_end * 1000).toLocaleDateString('de-CH', {
+        day: '2-digit', month: 'long', year: 'numeric'
+      })
+      await sendEmail(email,
+        `Ihr OpenClaw ${planName}-Abo wurde gekündigt`,
+        `<div style="font-family:Inter,sans-serif;max-width:560px;margin:0 auto;color:#0F1714;">
+          <h2 style="font-size:22px;margin-bottom:8px">Kündigung bestätigt</h2>
+          <p style="color:#4B5563;line-height:1.7;">Hallo ${name.split(' ')[0]},</p>
+          <p style="color:#4B5563;line-height:1.7;">Ihre Kündigung für den <strong>${planName}-Plan</strong> wurde erfolgreich verarbeitet.</p>
+          <div style="background:#FEF2F2;border:1px solid #FECACA;border-radius:10px;padding:16px 20px;margin:20px 0;font-size:14px;color:#7F1D1D;line-height:1.8;">
+            <strong>Ihr Zugang bleibt aktiv bis:</strong><br/>
+            📅 ${endDate}<br/><br/>
+            Danach wird Ihr Server automatisch gelöscht und alle Daten werden unwiderruflich entfernt.
+          </div>
+          <p style="color:#4B5563;line-height:1.7;">Möchten Sie Ihren Assistenten trotzdem weiter nutzen? Sie können Ihr Abo jederzeit reaktivieren:</p>
+          <a href="https://hosting.openclaw-consulting.ch" style="display:inline-block;margin:8px 0 20px;background:#12A878;color:#fff;padding:8px 20px;border-radius:8px;text-decoration:none;font-weight:700">Abo reaktivieren →</a>
+          <p style="color:#4B5563;line-height:1.7;">Fragen? <a href="mailto:support@openclaw-consulting.ch" style="color:#12A878;">support@openclaw-consulting.ch</a></p>
+          <p style="color:#4B5563;">Freundliche Grüsse,<br/>OpenClaw Hosting</p>
+          <hr style="border:none;border-top:1px solid #E4EDE9;margin:24px 0"/>
+          <p style="font-size:12px;color:#9ca3af">Alexandra Gosteli Digital Solutions · Truttikon, Schweiz · <a href="https://hosting.openclaw-consulting.ch/datenschutz" style="color:#9ca3af">Datenschutz</a></p>
+        </div>`
+      )
+    }
   }
 
   return NextResponse.json({ ok: true })
