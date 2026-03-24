@@ -139,6 +139,7 @@ function OnboardingForm() {
   const [submitError, setSubmitError] = useState('')
   const [emailFromStripe, setEmailFromStripe] = useState('')
   const [stripeCustomerId, setStripeCustomerId] = useState('')
+  const [stripePlan, setStripePlan] = useState('')
 
   // Auto-fetch email from Stripe session if session_id is in URL
   useEffect(() => {
@@ -152,6 +153,7 @@ function OnboardingForm() {
           setForm(f => ({ ...f, email: d.email, name: f.name || d.name || '' }))
         }
         if (d.stripeCustomerId) setStripeCustomerId(d.stripeCustomerId)
+        if (d.plan) setStripePlan(d.plan)
       })
       .catch(() => {})
   }, [])
@@ -203,7 +205,7 @@ function OnboardingForm() {
           aiKey: form.aiKey,
           language: form.language,
           notes: form.notes,
-          plan,
+          plan: stripePlan || plan,
           paymentToken: pt,
           stripeCustomerId,
         }),
