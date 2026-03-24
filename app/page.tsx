@@ -577,8 +577,8 @@ export default function Home() {
                 annual: billing==='annual' ? (lang==='de'?'CHF 180/Jahr abgerechnet':'CHF 180/year billed') : (lang==='de'?'→ CHF 180/Jahr (günstiger)':'→ CHF 180/year (save more)'),
                 features:t.p1fs, dims:t.p1ds, cta:t.p1cta,
                 href: billing==='annual'
-                  ? (process.env.NEXT_PUBLIC_PAYREXX_STARTER_ANNUAL||'/onboarding?plan=starter&billing=annual')
-                  : (process.env.NEXT_PUBLIC_PAYREXX_STARTER||'/onboarding?plan=starter'),
+                  ? (process.env.NEXT_PUBLIC_STRIPE_STARTER_ANNUAL||'/onboarding?plan=starter&billing=annual')
+                  : (process.env.NEXT_PUBLIC_STRIPE_STARTER||'/onboarding?plan=starter'),
                 ctaClass:'plan-cta outline'
               },
               { plan:'pro', featured:true, badge:t.p2badge, badgeStyle:{},
@@ -587,8 +587,8 @@ export default function Home() {
                 annual: billing==='annual' ? (lang==='de'?'CHF 320/Jahr abgerechnet':'CHF 320/year billed') : (lang==='de'?'→ CHF 320/Jahr (günstiger)':'→ CHF 320/year (save more)'),
                 features:t.p2fs, dims:t.p2ds, cta:t.p2cta,
                 href: billing==='annual'
-                  ? (process.env.NEXT_PUBLIC_PAYREXX_PRO_ANNUAL||'/onboarding?plan=pro&billing=annual')
-                  : (process.env.NEXT_PUBLIC_PAYREXX_PRO||'/onboarding?plan=pro'),
+                  ? (process.env.NEXT_PUBLIC_STRIPE_PRO_ANNUAL||'/onboarding?plan=pro&billing=annual')
+                  : (process.env.NEXT_PUBLIC_STRIPE_PRO||'/onboarding?plan=pro'),
                 ctaClass:'plan-cta'
               },
               { plan:'business', featured:false, badge:t.p3badge, badgeStyle:{background:'var(--ink2)', color:'#fff'},
@@ -597,8 +597,8 @@ export default function Home() {
                 annual: billing==='annual' ? (lang==='de'?'CHF 560/Jahr abgerechnet':'CHF 560/year billed') : (lang==='de'?'→ CHF 560/Jahr (günstiger)':'→ CHF 560/year (save more)'),
                 features: billing==='annual' ? [...t.p3fs, t.p3fsAnnualExtra] : t.p3fs, dims:[], cta:t.p3cta,
                 href: billing==='annual'
-                  ? (process.env.NEXT_PUBLIC_PAYREXX_BUSINESS_ANNUAL||'/onboarding?plan=business&billing=annual')
-                  : (process.env.NEXT_PUBLIC_PAYREXX_BUSINESS||'/onboarding?plan=business'),
+                  ? (process.env.NEXT_PUBLIC_STRIPE_BUSINESS_ANNUAL||'/onboarding?plan=business&billing=annual')
+                  : (process.env.NEXT_PUBLIC_STRIPE_BUSINESS||'/onboarding?plan=business'),
                 ctaClass:'plan-cta outline'
               },
             ].map((p) => (
@@ -643,8 +643,8 @@ export default function Home() {
           </div>
           <p style={{marginTop:'1.5rem', fontSize:'0.83rem', color:'var(--dim)'}}>
             {lang==='de'
-              ? '💳 Zahlung via TWINT, Visa & Mastercard über Payrexx — sicher und in der Schweiz verarbeitet.'
-              : '💳 Payment via TWINT, Visa & Mastercard through Payrexx — secure and processed in Switzerland.'}
+              ? '💳 Zahlung via TWINT, Visa & Mastercard — sicher und in der Schweiz verarbeitet (Stripe).'
+              : '💳 Payment via TWINT, Visa & Mastercard — secure and processed in Switzerland (Stripe).'}
           </p>
         </div>
       </section>
