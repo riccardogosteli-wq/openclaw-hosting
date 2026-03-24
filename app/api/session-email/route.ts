@@ -15,7 +15,9 @@ export async function GET(req: NextRequest) {
     const email = session.customer_details?.email || ''
     const name = session.customer_details?.name || ''
     const stripeCustomerId = typeof session.customer === 'string' ? session.customer : ''
-    return NextResponse.json({ email, name, stripeCustomerId })
+    const plan = session.metadata?.plan || ''
+    const billing = session.metadata?.billing || 'monthly'
+    return NextResponse.json({ email, name, stripeCustomerId, plan, billing })
   } catch {
     return NextResponse.json({ error: 'Session not found' }, { status: 404 })
   }
