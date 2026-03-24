@@ -174,7 +174,7 @@ export async function POST(req: NextRequest) {
               Bei Fragen: einfach auf diese E-Mail antworten oder schreiben Sie uns an<br/>
               <a href="mailto:support@openclaw-consulting.ch" style="color:#12A878;">support@openclaw-consulting.ch</a>
             </p>
-            <p style="color:#4B5563;line-height:1.7;">Freundliche Grüsse,<br/>Riccardo Gosteli<br/>OpenClaw Hosting</p>
+            <p style="color:#4B5563;line-height:1.7;">Freundliche Grüsse,<br/>OpenClaw Hosting</p>
             <hr style="border:none;border-top:1px solid #E4EDE9;margin:24px 0;"/>
             <p style="font-size:12px;color:#9ca3af;">
               Alexandra Gosteli Digital Solutions · Truttikon, Schweiz<br/>

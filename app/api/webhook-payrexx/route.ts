@@ -83,7 +83,7 @@ export async function POST(req: NextRequest) {
             Ihr Plan: <strong>${planName} – CHF ${plan === 'starter' ? '19' : plan === 'pro' ? '34' : '59'}/Mt.</strong><br/>
             Fragen? <a href="mailto:support@openclaw-consulting.ch" style="color:#12A878;">support@openclaw-consulting.ch</a>
           </p>
-          <p style="color:#4B5563;">Freundliche Grüsse,<br/>Riccardo Gosteli<br/>OpenClaw Hosting</p>
+          <p style="color:#4B5563;">Freundliche Grüsse,<br/>OpenClaw Hosting</p>
           <hr style="border:none;border-top:1px solid #E4EDE9;margin:24px 0"/>
           <p style="font-size:12px;color:#9ca3af">Alexandra Gosteli Digital Solutions · Truttikon, Schweiz · <a href="https://hosting.openclaw-consulting.ch/datenschutz" style="color:#9ca3af">Datenschutz</a></p>
         </div>`
@@ -137,7 +137,7 @@ export async function POST(req: NextRequest) {
           </div>
           <p style="color:#4B5563;line-height:1.7;">Schade, dass Sie gehen! Falls Sie Feedback haben oder es Probleme gab, freuen wir uns über eine kurze Nachricht.<br/><br/>
           <a href="mailto:support@openclaw-consulting.ch" style="color:#12A878;">support@openclaw-consulting.ch</a></p>
-          <p style="color:#4B5563;">Freundliche Grüsse,<br/>Riccardo Gosteli<br/>OpenClaw Hosting</p>
+          <p style="color:#4B5563;">Freundliche Grüsse,<br/>OpenClaw Hosting</p>
         </div>`
       )
 
