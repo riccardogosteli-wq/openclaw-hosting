@@ -42,7 +42,7 @@ export async function POST(req: NextRequest) {
       channelToken, channelUserId,
       // legacy field names (Telegram signups before this fix)
       telegramToken, telegramUserId,
-      aiProvider, aiKey, language, notes, plan, paymentToken,
+      aiProvider, aiKey, language, notes, plan, paymentToken, stripeCustomerId,
     } = body
 
     // Normalise — support both old (telegram-only) and new (generic) field names
@@ -135,6 +135,8 @@ export async function POST(req: NextRequest) {
             ai_provider: safeProvider,
             language: safeLanguage,
             plan: safePlan,
+            stripe_customer_id: (stripeCustomerId || '').trim(),
+            stripe_email: email.trim(),
           }),
         })
         const provData = await provRes.json()
