@@ -74,7 +74,7 @@ export default function AgbPage() {
             `Business: CHF 59/${de?'Monat':'month'} · CHF 560/${de?'Jahr':'year'}`,
           ]} />
           <P>{de ? 'Monatliches Abo: Abrechnung monatlich im Voraus, automatische Verlängerung. Jahresabo: Abrechnung im Voraus, automatische Verlängerung um ein weiteres Jahr.' : 'Monthly subscription: billed monthly in advance, auto-renews. Annual subscription: billed upfront, auto-renews for another year.'}</P>
-          <P>{de ? 'Zahlungen werden via Payrexx (TWINT, Visa, Mastercard) verarbeitet.' : 'Payments are processed via Payrexx (TWINT, Visa, Mastercard).'}</P>
+          <P>{de ? 'Zahlungen werden via Stripe (TWINT, Visa, Mastercard) sicher verarbeitet.' : 'Payments are processed securely via Stripe (TWINT, Visa, Mastercard).'}</P>
         </Section>
 
         <Section title={de ? '5. Kündigung und Rückerstattung' : '5. Cancellation and Refunds'}>
