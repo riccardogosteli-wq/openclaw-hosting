@@ -41,7 +41,7 @@ const de = {
   s1t: '1. Plan wählen & bezahlen',
   s1d: 'Wählen Sie Ihren Plan und bezahlen Sie bequem mit TWINT, Visa oder Mastercard. Innerhalb weniger Minuten erhalten Sie eine Bestätigung.',
   s2t: '2. Onboarding-Formular ausfüllen',
-  s2d: 'Sie teilen uns Ihren Messenger-Zugang (Telegram, WhatsApp oder Discord) und Ihren KI-API-Schlüssel mit. Wir führen Sie Schritt für Schritt durch den Prozess — dauert ca. 5–10 Minuten.',
+  s2d: 'Sie teilen uns Ihren Messenger-Zugang (Telegram oder Discord) und Ihren KI-API-Schlüssel mit. Wir führen Sie Schritt für Schritt durch den Prozess — dauert ca. 5–10 Minuten.',
   s3t: '3. Ihr Assistent ist online',
   s3d: 'Wir richten Ihren privaten Server in der Schweiz vollautomatisch ein. In der Regel ist Ihr Assistent innerhalb von 30 Minuten einsatzbereit.',
 
@@ -119,19 +119,19 @@ const de = {
 
   p1n: 'Starter', p1d: 'Für den Einstieg und den persönlichen Alltag',
   p1p: '19', p1a: '→ CHF 180/Jahr (günstiger)',
-  p1fs: ['2 vCPU · 4 GB RAM · 50 GB SSD', '🇨🇭 Privater Server in der Schweiz', 'Telegram, Discord & WhatsApp', '🎙️ Voice-Chat: Sprache senden, Text oder Sprache empfangen', 'Automatische Updates, Monitoring & tägliche Backups', 'E-Mail-Support (48 Std.)', 'Jederzeit kündbar'],
+  p1fs: ['2 vCPU · 4 GB RAM · 50 GB SSD', '🇨🇭 Privater Server in der Schweiz', 'Telegram & Discord', '🎙️ Voice-Chat: Sprache senden, Text oder Sprache empfangen', 'Automatische Updates, Monitoring & tägliche Backups', 'E-Mail-Support (48 Std.)', 'Jederzeit kündbar'],
   p1ds: ['Kein Dashboard', 'Kein Onboarding-Call'],
   p1cta: 'Starter wählen',
 
   p2badge: 'EMPFOHLEN', p2n: 'Pro', p2d: 'Für alle, die KI täglich produktiv einsetzen',
   p2p: '34', p2a: '→ CHF 320/Jahr (günstiger)',
-  p2fs: ['4 vCPU · 8 GB RAM · 80 GB SSD', '🇨🇭 Privater Server in der Schweiz', 'Telegram, Discord & WhatsApp', '🎙️ Voice-Chat: Sprache senden, Text oder Sprache empfangen', 'Automatische Updates, Monitoring & tägliche Backups', '✅ Persönliches Dashboard (nur für Sie zugänglich)', 'E-Mail-Support (24 Std.)', 'Jederzeit kündbar'],
+  p2fs: ['4 vCPU · 8 GB RAM · 80 GB SSD', '🇨🇭 Privater Server in der Schweiz', 'Telegram & Discord', '🎙️ Voice-Chat: Sprache senden, Text oder Sprache empfangen', 'Automatische Updates, Monitoring & tägliche Backups', '✅ Persönliches Dashboard (nur für Sie zugänglich)', 'E-Mail-Support (24 Std.)', 'Jederzeit kündbar'],
   p2ds: ['Kein Onboarding-Call'],
   p2cta: 'Pro wählen',
 
   p3badge: 'BUSINESS', p3n: 'Business', p3d: 'Für anspruchsvolle Workloads und maximale Leistung',
   p3p: '59', p3a: '→ CHF 560/Jahr (günstiger)',
-  p3fs: ['8 vCPU · 16 GB RAM · 80 GB SSD', '🇨🇭 Privater Server in der Schweiz', 'Telegram, Discord & WhatsApp', '🎙️ Voice-Chat: Sprache senden, Text oder Sprache empfangen', 'Automatische Updates, Monitoring & tägliche Backups', '✅ Persönliches Dashboard (nur für Sie zugänglich)', 'Prioritäts-Support (< 24 Std.)', 'Einrichtung von Custom Skills & Automationen', 'Jederzeit kündbar'],
+  p3fs: ['8 vCPU · 16 GB RAM · 80 GB SSD', '🇨🇭 Privater Server in der Schweiz', 'Telegram & Discord', '🎙️ Voice-Chat: Sprache senden, Text oder Sprache empfangen', 'Automatische Updates, Monitoring & tägliche Backups', '✅ Persönliches Dashboard (nur für Sie zugänglich)', 'Prioritäts-Support (< 24 Std.)', 'Einrichtung von Custom Skills & Automationen', 'Jederzeit kündbar'],
   p3fsAnnualExtra: '📞 30-minütiger Onboarding-Call auf Deutsch',
   p3cta: 'Business wählen',
 
@@ -155,7 +155,7 @@ const de = {
     ['Wo werden meine Daten gespeichert?', 'Ausschliesslich auf Ihrem eigenen, privaten Server in der Schweiz — DSGVO- und nDSG-konform. Ihre Zugangsdaten und Gesprächsdaten verlassen diesen Server nie.'],
     ['Welche KI-Modelle werden unterstützt?', 'Sie können zwischen Claude (Anthropic), GPT-4 (OpenAI) und Gemini (Google) wählen — und jederzeit wechseln. Für den Einstieg empfehlen wir Claude Haiku (~CHF 5/Mt.), für anspruchsvollere Aufgaben Claude Sonnet (~CHF 15–20/Mt.).'],
     ['Kann ich jederzeit kündigen?', 'Ja — jederzeit. Die aktuelle Aboperiode läuft bis zum Ende aus, danach wird nichts mehr belastet. Keine versteckten Gebühren.'],
-    ['Was genau ist OpenClaw?', 'OpenClaw ist eine quelloffene KI-Plattform, die auf Ihrem eigenen Server läuft und sich mit Telegram, Discord und WhatsApp verbindet. Sie ist modular erweiterbar und wird aktiv weiterentwickelt. Wir übernehmen das Hosting — Sie nutzen sie einfach.'],
+    ['Was genau ist OpenClaw?', 'OpenClaw ist eine quelloffene KI-Plattform, die auf Ihrem eigenen Server läuft und sich mit Telegram & Discord verbindet. Sie ist modular erweiterbar und wird aktiv weiterentwickelt. Wir übernehmen das Hosting — Sie nutzen sie einfach.'],
     ['Was passiert bei OpenClaw-Updates?', 'Wir prüfen neue Versionen intern, bevor wir sie ausrollen — und spielen Updates automatisch auf Ihren Server. Kein Unterbruch, keine Aktion Ihrerseits erforderlich.'],
     ['Gibt es Support auf Deutsch?', 'Ja, auf Deutsch und Englisch. Sie erreichen uns per E-Mail und erhalten eine persönliche Antwort — kein Bot, kein Ticket-Labyrinth.'],
   ],
@@ -286,19 +286,19 @@ const en: typeof de = {
 
   p1n: 'Starter', p1d: 'For getting started and everyday personal use',
   p1p: '19', p1a: '→ CHF 180/year (save more)',
-  p1fs: ['2 vCPU · 4 GB RAM · 50 GB SSD', '🇨🇭 Private server in Switzerland', 'Telegram, Discord & WhatsApp', '🎙️ Voice chat: send voice, receive text or voice replies', 'Automatic updates, monitoring & daily backups', 'Email support (48h)', 'Cancel anytime'],
+  p1fs: ['2 vCPU · 4 GB RAM · 50 GB SSD', '🇨🇭 Private server in Switzerland', 'Telegram & Discord', '🎙️ Voice chat: send voice, receive text or voice replies', 'Automatic updates, monitoring & daily backups', 'Email support (48h)', 'Cancel anytime'],
   p1ds: ['No dashboard', 'No onboarding call'],
   p1cta: 'Choose Starter',
 
   p2badge: 'RECOMMENDED', p2n: 'Pro', p2d: 'For those who rely on AI every single day',
   p2p: '34', p2a: '→ CHF 320/year (save more)',
-  p2fs: ['4 vCPU · 8 GB RAM · 80 GB SSD', '🇨🇭 Private server in Switzerland', 'Telegram, Discord & WhatsApp', '🎙️ Voice chat: send voice, receive text or voice replies', 'Automatic updates, monitoring & daily backups', '✅ Personal dashboard (private access only)', 'Email support (24h)', 'Cancel anytime'],
+  p2fs: ['4 vCPU · 8 GB RAM · 80 GB SSD', '🇨🇭 Private server in Switzerland', 'Telegram & Discord', '🎙️ Voice chat: send voice, receive text or voice replies', 'Automatic updates, monitoring & daily backups', '✅ Personal dashboard (private access only)', 'Email support (24h)', 'Cancel anytime'],
   p2ds: ['No onboarding call'],
   p2cta: 'Choose Pro',
 
   p3badge: 'BUSINESS', p3n: 'Business', p3d: 'For demanding workloads and maximum performance',
   p3p: '59', p3a: '→ CHF 560/year (save more)',
-  p3fs: ['8 vCPU · 16 GB RAM · 80 GB SSD', '🇨🇭 Private server in Switzerland', 'Telegram, Discord & WhatsApp', '🎙️ Voice chat: send voice, receive text or voice replies', 'Automatic updates, monitoring & daily backups', '✅ Personal dashboard (private access only)', 'Priority support (< 24h)', 'Custom skills & automation setup included', 'Cancel anytime'],
+  p3fs: ['8 vCPU · 16 GB RAM · 80 GB SSD', '🇨🇭 Private server in Switzerland', 'Telegram & Discord', '🎙️ Voice chat: send voice, receive text or voice replies', 'Automatic updates, monitoring & daily backups', '✅ Personal dashboard (private access only)', 'Priority support (< 24h)', 'Custom skills & automation setup included', 'Cancel anytime'],
   p3fsAnnualExtra: '📞 30-min onboarding call in German or English',
   p3cta: 'Choose Business',
 
@@ -322,7 +322,7 @@ const en: typeof de = {
     ['Where is my data stored?', 'Exclusively on your own private server in Switzerland — fully GDPR and nDSG compliant. Your credentials and conversation data never leave that server.'],
     ['Which AI models are supported?', 'You can choose between Claude (Anthropic), GPT-4 (OpenAI) and Gemini (Google) — and switch anytime. We recommend Claude Haiku for getting started (~CHF 5/mo) or Claude Sonnet for more demanding tasks (~CHF 15–20/mo).'],
     ['Can I cancel anytime?', 'Yes — anytime. Your current billing period runs to the end, then nothing more is charged. No hidden fees.'],
-    ['What exactly is OpenClaw?', 'OpenClaw is an open-source AI platform that runs on your own server and connects to Telegram, Discord and WhatsApp. It\'s modular, actively developed, and free to use. We take care of the hosting — you just use it.'],
+    ['What exactly is OpenClaw?', 'OpenClaw is an open-source AI platform that runs on your own server and connects to Telegram & Discord. It\'s modular, actively developed, and free to use. We take care of the hosting — you just use it.'],
     ['What happens when OpenClaw updates?', 'We review new versions internally before rolling them out — then push updates to your server automatically. No downtime, nothing you need to do.'],
     ['Is there support in English?', 'Yes, in both German and English. You reach us by email and get a personal reply — no bot, no ticket labyrinth.'],
   ],
@@ -686,7 +686,7 @@ export default function Home() {
               { "@type": "Question", "name": "Wo werden meine Daten gespeichert?", "acceptedAnswer": { "@type": "Answer", "text": "Ausschliesslich auf Ihrem eigenen, privaten Server in der Schweiz — DSGVO- und nDSG-konform. Ihre Zugangsdaten und Gesprächsdaten verlassen diesen Server nie." } },
               { "@type": "Question", "name": "Welche KI-Modelle werden unterstützt?", "acceptedAnswer": { "@type": "Answer", "text": "Sie können zwischen Claude (Anthropic), GPT-4 (OpenAI) und Gemini (Google) wählen — und jederzeit wechseln. Für den Einstieg empfehlen wir Claude Haiku (~CHF 5/Mt.)." } },
               { "@type": "Question", "name": "Kann ich jederzeit kündigen?", "acceptedAnswer": { "@type": "Answer", "text": "Ja — jederzeit. Die aktuelle Aboperiode läuft bis zum Ende aus, danach wird nichts mehr belastet. Keine versteckten Gebühren." } },
-              { "@type": "Question", "name": "Was genau ist OpenClaw?", "acceptedAnswer": { "@type": "Answer", "text": "OpenClaw ist eine quelloffene KI-Plattform, die auf Ihrem eigenen Server läuft und sich mit Telegram, Discord und WhatsApp verbindet. Wir übernehmen das Hosting — Sie nutzen sie einfach." } },
+              { "@type": "Question", "name": "Was genau ist OpenClaw?", "acceptedAnswer": { "@type": "Answer", "text": "OpenClaw ist eine quelloffene KI-Plattform, die auf Ihrem eigenen Server läuft und sich mit Telegram & Discord verbindet. Wir übernehmen das Hosting — Sie nutzen sie einfach." } },
               { "@type": "Question", "name": "Gibt es Support auf Deutsch?", "acceptedAnswer": { "@type": "Answer", "text": "Ja, auf Deutsch und Englisch. Sie erreichen uns per E-Mail und erhalten eine persönliche Antwort — kein Bot, kein Ticket-Labyrinth." } }
             ]
           })

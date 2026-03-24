@@ -42,10 +42,10 @@ export default function GuidePage() {
     if (typeof window !== 'undefined') return (localStorage.getItem('lang') as 'de'|'en') || 'de'
     return 'de'
   })
-  const [channel, setChannel] = useState<'telegram'|'whatsapp'|'discord'>(() => {
+  const [channel, setChannel] = useState<'telegram'|'discord'>(() => {
     if (typeof window !== 'undefined') {
       const hash = window.location.hash.replace('#', '')
-      if (hash === 'whatsapp' || hash === 'discord' || hash === 'telegram') return hash
+      if (hash === 'discord' || hash === 'telegram') return hash
     }
     return 'telegram'
   })
@@ -98,7 +98,6 @@ export default function GuidePage() {
         <div style={{ display: 'flex', gap: '0.75rem', marginBottom: '2.5rem', flexWrap: 'wrap' }}>
           {([
             { id: 'telegram', emoji: '✈️', label: 'Telegram', badge: de ? 'Empfohlen' : 'Recommended' },
-            { id: 'whatsapp', emoji: '💬', label: 'WhatsApp', badge: '' },
             { id: 'discord', emoji: '🎮', label: 'Discord', badge: '' },
           ] as const).map(ch => (
             <button key={ch.id} onClick={() => setChannel(ch.id)}
@@ -182,78 +181,6 @@ export default function GuidePage() {
           </>)}
 
           <hr style={{ border: 'none', borderTop: '1px solid #E4EDE9', margin: '2rem 0' }} />
-        </>}
-
-        {/* ============ WHATSAPP ============ */}
-        {channel === 'whatsapp' && <>
-          <div id="whatsapp" style={{ marginBottom: '2rem' }}>
-            {note(<>{de
-              ? <><strong>💡 Keine Business API nötig.</strong> OpenClaw nutzt WhatsApp Web — Sie scannen einfach einen QR-Code mit Ihrer bestehenden WhatsApp, genau wie bei WhatsApp Web auf dem Computer.</>
-              : <><strong>💡 No Business API needed.</strong> OpenClaw uses WhatsApp Web — you simply scan a QR code with your existing WhatsApp, just like WhatsApp Web on your computer.</>
-            }</>)}
-            <p style={{ color: '#4B5563', lineHeight: 1.7 }}>
-              {de
-                ? 'Für WhatsApp brauchen Sie nur Ihre Handynummer und WhatsApp bereits installiert. Wir empfehlen eine separate Nummer für den Assistenten — aber Ihre persönliche Nummer funktioniert ebenfalls.'
-                : 'For WhatsApp you only need your phone number and WhatsApp already installed. We recommend a separate number for the assistant — but your personal number works too.'}
-            </p>
-          </div>
-
-          {step('1', de ? 'WhatsApp-Nummer bereithalten' : 'Have your WhatsApp number ready', <>
-            <p style={{ color: '#4B5563', fontSize: '0.92rem', lineHeight: 1.7, marginBottom: '1rem' }}>
-              {de
-                ? 'Sie brauchen keine neue App oder API. Ihr Assistent verbindet sich mit Ihrer bestehenden WhatsApp-Nummer via QR-Code-Scan.'
-                : 'You don\'t need a new app or API. Your assistant connects to your existing WhatsApp number via QR code scan.'}
-            </p>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-              {substep('1a', <p style={{ margin: 0, fontSize: '0.92rem', color: '#0F1714' }}>{de ? <>Stellen Sie sicher, dass WhatsApp auf Ihrem Smartphone <strong>installiert und aktiv</strong> ist</> : <>Make sure WhatsApp is <strong>installed and active</strong> on your smartphone</>}</p>)}
-              {substep('1b', <p style={{ margin: 0, fontSize: '0.92rem', color: '#0F1714' }}>{de ? <>Notieren Sie Ihre Handynummer im internationalen Format: <strong>+41791234567</strong></> : <>Note your phone number in international format: <strong>+41791234567</strong></>}</p>)}
-              {substep('1c', <p style={{ margin: 0, fontSize: '0.92rem', color: '#0F1714' }}>{de ? 'Das ist alles, was Sie für Schritt 1 brauchen — keine Tokens, keine API-Schlüssel' : 'That\'s all you need for step 1 — no tokens, no API keys'}</p>)}
-            </div>
-            {note(<>{de
-              ? <>💡 <strong>Tipp:</strong> Für den Assistenten empfehlen wir eine separate WhatsApp-Nummer (z.B. eine günstige SIM-Karte). So bleibt Ihr persönliches WhatsApp unberührt. Ihre persönliche Nummer funktioniert aber genauso.</>
-              : <>💡 <strong>Tip:</strong> We recommend a separate WhatsApp number for the assistant (e.g. a cheap SIM card). This keeps your personal WhatsApp untouched. Your personal number works just as well though.</>
-            }</>)}
-          </>)}
-
-          <hr style={{ border: 'none', borderTop: '1px solid #E4EDE9', margin: '2rem 0' }} />
-
-          {step('2', de ? 'QR-Code scannen (nach dem Onboarding)' : 'Scan QR code (after onboarding)', <>
-            <p style={{ color: '#4B5563', fontSize: '0.92rem', lineHeight: 1.7, marginBottom: '1rem' }}>
-              {de
-                ? 'Nach dem Absenden des Onboarding-Formulars richtet unser System Ihren Server ein. Sobald er läuft, erhalten Sie einen QR-Code — den scannen Sie einmal mit WhatsApp.'
-                : 'After submitting the onboarding form, our system sets up your server. Once it\'s running, you\'ll receive a QR code — scan it once with WhatsApp.'}
-            </p>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-              {substep('2a', <p style={{ margin: 0, fontSize: '0.92rem', color: '#0F1714' }}>{de ? 'Wir senden Ihnen eine E-Mail mit einem Link zu Ihrem persönlichen Dashboard' : 'We\'ll send you an email with a link to your personal dashboard'}</p>)}
-              {substep('2b', <p style={{ margin: 0, fontSize: '0.92rem', color: '#0F1714' }}>{de ? <>Im Dashboard navigieren Sie zu <strong>Einstellungen → WhatsApp verbinden</strong></> : <>In the dashboard navigate to <strong>Settings → Connect WhatsApp</strong></>}</p>)}
-              {substep('2c', <p style={{ margin: 0, fontSize: '0.92rem', color: '#0F1714' }}>{de ? 'Ein QR-Code erscheint — wie beim normalen WhatsApp Web' : 'A QR code appears — just like regular WhatsApp Web'}</p>)}
-              {substep('2d', <div>
-                <p style={{ margin: '0 0 0.4rem', fontSize: '0.92rem', color: '#0F1714' }}>{de ? <>Öffnen Sie auf Ihrem Smartphone: <strong>WhatsApp → Verknüpfte Geräte → Gerät hinzufügen</strong></> : <>On your smartphone: <strong>WhatsApp → Linked Devices → Link a Device</strong></>}</p>
-                <div style={{ background: '#F7FAF9', border: '1px solid #E4EDE9', borderRadius: '8px', padding: '0.75rem 1rem', fontSize: '0.85rem', color: '#4B5563', lineHeight: 1.7 }}>
-                  {de ? <>iPhone: <strong>WhatsApp öffnen → ⋯ (oben rechts) → Verknüpfte Geräte</strong><br />Android: <strong>WhatsApp öffnen → ⋮ (oben rechts) → Verknüpfte Geräte</strong></> : <>iPhone: <strong>Open WhatsApp → ⋯ (top right) → Linked Devices</strong><br />Android: <strong>Open WhatsApp → ⋮ (top right) → Linked Devices</strong></>}
-                </div>
-              </div>)}
-              {substep('2e', <p style={{ margin: 0, fontSize: '0.92rem', color: '#0F1714' }}>{de ? <>Scannen Sie den QR-Code im Dashboard — <strong>fertig!</strong> Die Verbindung ist sofort aktiv.</> : <>Scan the QR code in the dashboard — <strong>done!</strong> The connection is immediately active.</>}</p>)}
-            </div>
-            {warn(<>{de
-              ? <><strong>⚠️ Hinweis:</strong> Der QR-Code ist 60 Sekunden gültig. Falls er abläuft, erscheint automatisch ein neuer. Halten Sie Ihr Smartphone bereit, bevor Sie den Dashboard-Link öffnen.</>
-              : <><strong>⚠️ Note:</strong> The QR code is valid for 60 seconds. If it expires, a new one appears automatically. Have your smartphone ready before opening the dashboard link.</>
-            }</>)}
-          </>)}
-
-          <hr style={{ border: 'none', borderTop: '1px solid #E4EDE9', margin: '2rem 0' }} />
-
-          {step('3', de ? 'Ersten Chat starten' : 'Start your first chat', <>
-            <p style={{ color: '#4B5563', fontSize: '0.92rem', lineHeight: 1.7, marginBottom: '1rem' }}>
-              {de ? 'Nach dem QR-Scan ist Ihr Assistent direkt erreichbar.' : 'After the QR scan, your assistant is immediately reachable.'}
-            </p>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-              {substep('3a', <p style={{ margin: 0, fontSize: '0.92rem', color: '#0F1714' }}>{de ? 'Öffnen Sie WhatsApp auf Ihrem Smartphone' : 'Open WhatsApp on your smartphone'}</p>)}
-              {substep('3b', <p style={{ margin: 0, fontSize: '0.92rem', color: '#0F1714' }}>{de ? <>Schreiben Sie an die verknüpfte Nummer: <strong>&quot;Hallo&quot;</strong></> : <>Message the linked number: <strong>&quot;Hello&quot;</strong></>}</p>)}
-              {substep('3c', <p style={{ margin: 0, fontSize: '0.92rem', color: '#0F1714' }}>{de ? 'Ihr Assistent antwortet sofort — die Verbindung ist aktiv.' : 'Your assistant replies instantly — the connection is active.'}</p>)}
-            </div>
-            {note(<>{de ? '💡 Ihr Assistent läuft auf Ihrem eigenen Server — er ist 24/7 erreichbar, auch wenn Ihr Smartphone aus ist.' : '💡 Your assistant runs on your own server — it\'s reachable 24/7, even when your smartphone is off.'}</>)}
-          </>)}
         </>}
 
         {/* ============ DISCORD ============ */}
@@ -393,7 +320,7 @@ export default function GuidePage() {
         {/* ============ SHARED: API KEY ============ */}
         <hr style={{ border: 'none', borderTop: '1px solid #E4EDE9', margin: '0 0 2.5rem 0' }} />
 
-        {step(channel === 'telegram' ? '3' : channel === 'whatsapp' ? '4' : '7', de ? 'KI-API-Schlüssel erstellen' : 'Create AI API key', <>
+        {step(channel === 'telegram' ? '3' : '7', de ? 'KI-API-Schlüssel erstellen' : 'Create AI API key', <>
           <p style={{ color: '#4B5563', fontSize: '0.92rem', lineHeight: 1.7, marginBottom: '1rem' }}>
             {de
               ? 'Ihr Assistent braucht Zugang zu einem KI-Modell. Zum Einstieg empfehlen wir Google Gemini Flash — kostenlos, ohne Kreditkarte, in 30 Sekunden eingerichtet.'
@@ -416,9 +343,9 @@ export default function GuidePage() {
             ))}
           </div>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-            {substep(channel === 'telegram' ? '3a' : channel === 'whatsapp' ? '4a' : '7a', <p style={{ margin: 0, fontSize: '0.92rem', color: '#0F1714' }}>{de ? 'Klicken Sie oben auf "API-Key erstellen" beim gewünschten Anbieter' : 'Click "Create API key" above for your preferred provider'}</p>)}
-            {substep(channel === 'telegram' ? '3b' : channel === 'whatsapp' ? '4b' : '7b', <p style={{ margin: 0, fontSize: '0.92rem', color: '#0F1714' }}>{de ? 'Melden Sie sich an oder erstellen Sie ein Konto (bei Anthropic/OpenAI ca. 2 Minuten)' : 'Sign in or create an account (for Anthropic/OpenAI about 2 minutes)'}</p>)}
-            {substep(channel === 'telegram' ? '3c' : channel === 'whatsapp' ? '4c' : '7c', <div>
+            {substep(channel === 'telegram' ? '3a' : '7a', <p style={{ margin: 0, fontSize: '0.92rem', color: '#0F1714' }}>{de ? 'Klicken Sie oben auf "API-Key erstellen" beim gewünschten Anbieter' : 'Click "Create API key" above for your preferred provider'}</p>)}
+            {substep(channel === 'telegram' ? '3b' : '7b', <p style={{ margin: 0, fontSize: '0.92rem', color: '#0F1714' }}>{de ? 'Melden Sie sich an oder erstellen Sie ein Konto (bei Anthropic/OpenAI ca. 2 Minuten)' : 'Sign in or create an account (for Anthropic/OpenAI about 2 minutes)'}</p>)}
+            {substep(channel === 'telegram' ? '3c' : '7c', <div>
               <p style={{ margin: '0 0 0.4rem', fontSize: '0.92rem', color: '#0F1714' }}>{de ? 'Kopieren Sie den Schlüssel:' : 'Copy the key:'}</p>
               <div style={{ background: '#F7FAF9', border: '1px solid #E4EDE9', borderRadius: '6px', padding: '0.5rem 0.75rem', fontFamily: 'monospace', fontSize: '0.85rem', color: '#1E3329', lineHeight: 1.8 }}>
                 <span style={{ color: '#4B5563', fontSize: '0.78rem' }}>Google:</span> AIzaSyXXXXXXXXXXXXXXXXXXXXXX<br />

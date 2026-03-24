@@ -26,8 +26,7 @@ const PROVISION_SECRET = process.env.PROVISION_SECRET || ''
 
 const CHANNEL_LABELS: Record<string, string> = {
   telegram: 'Telegram',
-  whatsapp: 'WhatsApp',
-  discord: 'Discord',
+    discord: 'Discord',
 }
 
 export async function POST(req: NextRequest) {
@@ -47,7 +46,7 @@ export async function POST(req: NextRequest) {
     } = body
 
     // Normalise — support both old (telegram-only) and new (generic) field names
-    const safeChannel = ['telegram', 'whatsapp', 'discord'].includes(channel) ? channel : 'telegram'
+    const safeChannel = ['telegram', 'discord'].includes(channel) ? channel : 'telegram'
     const token = (channelToken || telegramToken || '').trim()
     const userId = (channelUserId || telegramUserId || '').trim()
 
@@ -60,7 +59,7 @@ export async function POST(req: NextRequest) {
     }
 
     // WhatsApp uses QR-based auth — no token required; Telegram/Discord require a bot token
-    const tokenRequired = safeChannel !== 'whatsapp'
+    const tokenRequired = true
     if (!name || !email || (tokenRequired && !token) || !aiKey) {
       return NextResponse.json({ error: 'Fehlende Pflichtfelder' }, { status: 400 })
     }
@@ -148,7 +147,6 @@ export async function POST(req: NextRequest) {
     // 3. Confirmation email to customer
     const channelInstructions: Record<string, string> = {
       telegram: '✓ Sie erhalten eine E-Mail mit Ihrem Telegram-Bot-Link',
-      whatsapp: '✓ Sie erhalten eine E-Mail mit einem QR-Code zum Verbinden via WhatsApp',
       discord: '✓ Sie erhalten eine E-Mail mit Ihrem Discord-Bot-Link und Einladungs-URL',
     }
     await fetch('https://api.resend.com/emails', {

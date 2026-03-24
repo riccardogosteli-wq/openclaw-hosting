@@ -29,9 +29,9 @@ const TX = {
     step2title: 'Schritt 2: Kanal verbinden',
     step2sub: 'Über welche App möchten Sie mit Ihrem Assistenten chatten?',
     guideLabel: 'Anleitung öffnen →',
-    tokenLabel: (ch: string) => ch === 'telegram' ? 'Telegram-Bot-Token *' : ch === 'whatsapp' ? 'WhatsApp API Token *' : 'Discord-Bot-Token *',
+    tokenLabel: (ch: string) => ch === 'telegram' ? 'Telegram-Bot-Token *' : 'Discord-Bot-Token *',
     tokenHint: 'Ihr Token wird nur auf Ihrem eigenen Server gespeichert — wir sehen ihn nie.',
-    userIdLabel: (ch: string) => ch === 'telegram' ? 'Ihre Telegram-Benutzer-ID *' : ch === 'whatsapp' ? 'Ihre WhatsApp-Nummer *' : 'Ihre Discord-User-ID *',
+    userIdLabel: (ch: string) => ch === 'telegram' ? 'Ihre Telegram-Benutzer-ID *' : 'Ihre Discord-User-ID *',
     step3title: 'Schritt 3: KI-Anbieter',
     step3sub: 'Das «Gehirn» Ihres Assistenten. Sie bezahlen Ihren Anbieter direkt.',
     guideApiLabel: 'Wo finde ich meinen API-Schlüssel? →',
@@ -49,7 +49,6 @@ const TX = {
     channelRec: 'Empfohlen',
     channels: [
       { value: 'telegram', label: 'Telegram', emoji: '✈️', rec: true, desc: 'Am einfachsten einzurichten — Bot in 2 Min. erstellt', guideLink: '/guide' },
-      { value: 'whatsapp', label: 'WhatsApp', emoji: '💬', rec: false, desc: 'Mit bestehender WhatsApp-Nummer — QR-Code scannen, fertig', guideLink: '/guide#whatsapp' },
       { value: 'discord', label: 'Discord', emoji: '🎮', rec: false, desc: 'Perfekt für Teams und Communities', guideLink: '/guide#discord' },
     ],
   },
@@ -65,9 +64,9 @@ const TX = {
     step2title: 'Step 2: Connect your channel',
     step2sub: 'Which app do you want to use to chat with your assistant?',
     guideLabel: 'Open guide →',
-    tokenLabel: (ch: string) => ch === 'telegram' ? 'Telegram bot token *' : ch === 'whatsapp' ? 'WhatsApp API token *' : 'Discord bot token *',
+    tokenLabel: (ch: string) => ch === 'telegram' ? 'Telegram bot token *' : 'Discord bot token *',
     tokenHint: 'Your token is stored only on your own server — we never see it.',
-    userIdLabel: (ch: string) => ch === 'telegram' ? 'Your Telegram user ID *' : ch === 'whatsapp' ? 'Your WhatsApp number *' : 'Your Discord user ID *',
+    userIdLabel: (ch: string) => ch === 'telegram' ? 'Your Telegram user ID *' : 'Your Discord user ID *',
     step3title: 'Step 3: AI provider',
     step3sub: 'The "brain" of your assistant. You pay your provider directly.',
     guideApiLabel: 'Where do I find my API key? →',
@@ -85,7 +84,6 @@ const TX = {
     channelRec: 'Recommended',
     channels: [
       { value: 'telegram', label: 'Telegram', emoji: '✈️', rec: true, desc: 'Easiest to set up — bot created in 2 min', guideLink: '/guide?lang=en' },
-      { value: 'whatsapp', label: 'WhatsApp', emoji: '💬', rec: false, desc: 'Use your existing WhatsApp — scan QR code, done', guideLink: '/guide?lang=en#whatsapp' },
       { value: 'discord', label: 'Discord', emoji: '🎮', rec: false, desc: 'Perfect for teams and communities', guideLink: '/guide?lang=en#discord' },
     ],
   },
@@ -106,12 +104,6 @@ const CHANNEL_FIELDS: Record<string, {
     userIdLabel: 'Ihre Telegram-Benutzer-ID *',
     userIdPlaceholder: '123456789',
     userIdHint: <>Ihr Assistent antwortet <strong>nur auf Ihre Nachrichten</strong>. ID finden: Schreiben Sie in Telegram an <a href="https://t.me/userinfobot" target="_blank" rel="noopener noreferrer" style={{color:'var(--green)'}}>@userinfobot</a> — er antwortet sofort.</>,
-  },
-  whatsapp: {
-    showToken: false,
-    userIdLabel: 'Ihre WhatsApp-Nummer (mit Ländercode) *',
-    userIdPlaceholder: '+41791234567',
-    userIdHint: <>Geben Sie Ihre Nummer mit Ländervorwahl ein, z.B. <strong>+41791234567</strong>. Nach dem Setup erhalten Sie einen QR-Code zum Scannen — kein API-Token nötig.</>,
   },
   discord: {
     showToken: true,
@@ -350,7 +342,7 @@ function OnboardingForm() {
           </a>
 
           <div style={{ display: 'flex', flexDirection: 'column', gap: '1.1rem' }}>
-            {/* Token field — hidden for WhatsApp (QR-based, no token needed) */}
+            
             {channelFields.showToken && (
               <div>
                 <label style={labelStyle}>{channelFields.tokenLabel}</label>
