@@ -46,7 +46,7 @@ const de = {
   s3d: 'Wir richten Ihren privaten Server in der Schweiz vollautomatisch ein. In der Regel ist Ihr Assistent innerhalb von 30 Minuten einsatzbereit.',
 
   dashLabel: 'Ihr persönliches Dashboard', dashH2: 'Alles auf einen Blick — nur für Sie.',
-  dashSub: 'Im Pro- und Business-Plan erhalten Sie ein persönliches Dashboard — nur über Ihren privaten Link erreichbar, ausschliesslich auf Ihrem eigenen Server in der Schweiz.',
+  dashSub: 'In allen Plänen erhalten Sie ein persönliches Dashboard — nur über Ihren privaten Link erreichbar, ausschliesslich auf Ihrem eigenen Server in der Schweiz.',
   dashPoints: [
     '🏠 Übersicht: Wetter, Assistenten-Status, Schnellbefehle und letzte Aktivitäten',
     '🚀 Erste Schritte: Geführte Einrichtung mit Fortschrittsanzeige — Gmail, Telegram, Sprache, Briefing',
@@ -119,8 +119,8 @@ const de = {
 
   p1n: 'Starter', p1d: 'Für den Einstieg und den persönlichen Alltag',
   p1p: '19', p1a: '→ CHF 180/Jahr (günstiger)',
-  p1fs: ['2 vCPU · 4 GB RAM · 50 GB SSD', '🇨🇭 Privater Server in der Schweiz', 'Telegram & Discord', '🎙️ Voice-Chat: Sprache senden, Text oder Sprache empfangen', 'Automatische Updates, Monitoring & tägliche Backups', 'E-Mail-Support (48 Std.)', 'Jederzeit kündbar'],
-  p1ds: ['Kein Dashboard', 'Kein Onboarding-Call'],
+  p1fs: ['2 vCPU · 4 GB RAM · 50 GB SSD', '🇨🇭 Privater Server in der Schweiz', 'Telegram & Discord', '🎙️ Voice-Chat: Sprache senden, Text oder Sprache empfangen', 'Automatische Updates, Monitoring & tägliche Backups', '✅ Persönliches Dashboard (nur für Sie zugänglich)', 'E-Mail-Support (48 Std.)', 'Jederzeit kündbar'],
+  p1ds: ['Kein Onboarding-Call'],
   p1cta: 'Starter wählen',
 
   p2badge: 'EMPFOHLEN', p2n: 'Pro', p2d: 'Für alle, die KI täglich produktiv einsetzen',
@@ -213,7 +213,7 @@ const en: typeof de = {
   s3d: 'We automatically set up your private server in Switzerland. Your assistant is usually ready within 30 minutes.',
 
   dashLabel: 'Your personal dashboard', dashH2: 'Everything at a glance — just for you.',
-  dashSub: 'Included in the Pro and Business plans: a personal dashboard, accessible only via your private link — running exclusively on your own server in Switzerland.',
+  dashSub: 'Included in all plans: a personal dashboard, accessible only via your private link — running exclusively on your own server in Switzerland.',
   dashPoints: [
     '🏠 Overview: weather, assistant status, quick commands and recent activity',
     '🚀 Getting started: guided setup with progress bar — Gmail, Telegram, language, briefing',
@@ -286,8 +286,8 @@ const en: typeof de = {
 
   p1n: 'Starter', p1d: 'For getting started and everyday personal use',
   p1p: '19', p1a: '→ CHF 180/year (save more)',
-  p1fs: ['2 vCPU · 4 GB RAM · 50 GB SSD', '🇨🇭 Private server in Switzerland', 'Telegram & Discord', '🎙️ Voice chat: send voice, receive text or voice replies', 'Automatic updates, monitoring & daily backups', 'Email support (48h)', 'Cancel anytime'],
-  p1ds: ['No dashboard', 'No onboarding call'],
+  p1fs: ['2 vCPU · 4 GB RAM · 50 GB SSD', '🇨🇭 Private server in Switzerland', 'Telegram & Discord', '🎙️ Voice chat: send voice, receive text or voice replies', 'Automatic updates, monitoring & daily backups', '✅ Personal dashboard (private access only)', 'Email support (48h)', 'Cancel anytime'],
+  p1ds: ['No onboarding call'],
   p1cta: 'Choose Starter',
 
   p2badge: 'RECOMMENDED', p2n: 'Pro', p2d: 'For those who rely on AI every single day',
