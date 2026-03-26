@@ -424,8 +424,23 @@ function OnboardingForm() {
 
             <div>
               <label style={labelStyle}>{tx.keyLabel}</label>
-              <input style={inputStyle} type="password" value={form.aiKey} onChange={e => set('aiKey', e.target.value)}
+              <input style={{...inputStyle, borderColor: form.aiKey && (
+                (form.aiProvider === 'anthropic' && !form.aiKey.startsWith('sk-ant-')) ||
+                (form.aiProvider === 'openai' && !form.aiKey.startsWith('sk-')) ||
+                (form.aiProvider === 'google' && !form.aiKey.startsWith('AIza')) ||
+                form.aiKey.startsWith('sk_live_') || form.aiKey.startsWith('sk_test_')
+              ) ? '#ef4444' : ''}} type="password" value={form.aiKey} onChange={e => set('aiKey', e.target.value)}
                 placeholder={form.aiProvider === 'google' ? 'AIzaSy...' : form.aiProvider === 'openai' ? 'sk-proj-...' : 'sk-ant-...'} />
+              {form.aiKey && (form.aiKey.startsWith('sk_live_') || form.aiKey.startsWith('sk_test_')) && (
+                <p style={{...hintStyle, color: '#ef4444', fontWeight: 600}}>
+                  {lang === 'en' ? '⚠️ This looks like a Stripe payment key, not an AI API key. Please use your Anthropic / OpenAI / Google key.' : '⚠️ Das sieht nach einem Stripe-Zahlungsschlüssel aus, nicht nach einem KI-API-Schlüssel. Bitte verwenden Sie Ihren Anthropic / OpenAI / Google Schlüssel.'}
+                </p>
+              )}
+              {form.aiKey && form.aiProvider === 'anthropic' && !form.aiKey.startsWith('sk-ant-') && !form.aiKey.startsWith('sk_') && (
+                <p style={{...hintStyle, color: '#f59e0b', fontWeight: 600}}>
+                  {lang === 'en' ? '⚠️ Anthropic keys start with sk-ant-...' : '⚠️ Anthropic-Schlüssel beginnen mit sk-ant-...'}
+                </p>
+              )}
               <p style={hintStyle}>{tx.keyHint}</p>
             </div>
 
@@ -439,8 +454,8 @@ function OnboardingForm() {
             <button onClick={() => setStep(2)} style={{ flex: 1, padding: '0.8rem', background: 'transparent', border: '1px solid var(--border)', borderRadius: '9px', fontWeight: 600, fontSize: '0.93rem', cursor: 'pointer', color: 'var(--slate)' }}>{tx.back}</button>
             <button
               onClick={() => { setSubmitError(''); handleSubmit() }}
-              disabled={!form.aiKey || loading}
-              style={{ flex: 2, padding: '0.8rem', background: form.aiKey && !loading ? 'var(--green)' : 'var(--border)', color: form.aiKey && !loading ? '#fff' : 'var(--slate)', border: 'none', borderRadius: '9px', fontWeight: 700, fontSize: '0.97rem', cursor: form.aiKey && !loading ? 'pointer' : 'not-allowed' }}
+              disabled={!form.aiKey || loading || form.aiKey.startsWith('sk_live_') || form.aiKey.startsWith('sk_test_')}
+              style={{ flex: 2, padding: '0.8rem', background: (form.aiKey && !loading && !form.aiKey.startsWith('sk_live_') && !form.aiKey.startsWith('sk_test_')) ? 'var(--green)' : 'var(--border)', color: (form.aiKey && !loading && !form.aiKey.startsWith('sk_live_') && !form.aiKey.startsWith('sk_test_')) ? '#fff' : 'var(--slate)', border: 'none', borderRadius: '9px', fontWeight: 700, fontSize: '0.97rem', cursor: (form.aiKey && !loading && !form.aiKey.startsWith('sk_live_') && !form.aiKey.startsWith('sk_test_')) ? 'pointer' : 'not-allowed' }}
             >
               {loading ? tx.submitting : tx.submit}
             </button>

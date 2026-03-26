@@ -31,7 +31,7 @@ const CHANNEL_LABELS: Record<string, string> = {
 
 export async function POST(req: NextRequest) {
   const ip = getClientIp(req)
-  if (!checkRateLimit(ip, 3)) {
+  if (!checkRateLimit(ip, 20)) {
     return NextResponse.json({ ok: false, error: 'Too many requests' }, { status: 429 })
   }
   try {
@@ -70,6 +70,10 @@ export async function POST(req: NextRequest) {
     if (name.length > 100) return NextResponse.json({ error: 'Name zu lang' }, { status: 400 })
     if (token.length > 300) return NextResponse.json({ error: 'Token ungültig' }, { status: 400 })
     if (aiKey.length > 500) return NextResponse.json({ error: 'API-Key ungültig' }, { status: 400 })
+    // Reject Stripe keys submitted as AI keys
+    if (aiKey.startsWith('sk_live_') || aiKey.startsWith('sk_test_')) {
+      return NextResponse.json({ error: 'Ungültiger API-Schlüssel: Bitte verwenden Sie Ihren Anthropic / OpenAI / Google Schlüssel, nicht einen Stripe-Zahlungsschlüssel.' }, { status: 400 })
+    }
     // Telegram user ID must be numeric; WhatsApp is a phone number; Discord is also numeric
     if (safeChannel === 'telegram' && userId && !/^\d+$/.test(userId)) {
       return NextResponse.json({ error: 'Telegram-ID muss numerisch sein' }, { status: 400 })
