@@ -70,9 +70,19 @@ export async function POST(req: NextRequest) {
     if (name.length > 100) return NextResponse.json({ error: 'Name zu lang' }, { status: 400 })
     if (token.length > 300) return NextResponse.json({ error: 'Token ungültig' }, { status: 400 })
     if (aiKey.length > 500) return NextResponse.json({ error: 'API-Key ungültig' }, { status: 400 })
-    // Reject Stripe keys submitted as AI keys
+    // Validate AI key format per provider
+    const validKeyPrefixes: Record<string, string[]> = {
+      anthropic: ['sk-ant-'],
+      openai: ['sk-proj-', 'sk-'],
+      google: ['AIza'],
+    }
     if (aiKey.startsWith('sk_live_') || aiKey.startsWith('sk_test_')) {
-      return NextResponse.json({ error: 'Ungültiger API-Schlüssel: Bitte verwenden Sie Ihren Anthropic / OpenAI / Google Schlüssel, nicht einen Stripe-Zahlungsschlüssel.' }, { status: 400 })
+      return NextResponse.json({ error: 'Ungültiger API-Schlüssel: Das ist ein Stripe-Zahlungsschlüssel. Bitte verwenden Sie Ihren Anthropic / OpenAI / Google Schlüssel.' }, { status: 400 })
+    }
+    const allowedPrefixes = validKeyPrefixes[safeProvider] || []
+    if (allowedPrefixes.length > 0 && !allowedPrefixes.some(px => aiKey.startsWith(px))) {
+      const expected = allowedPrefixes.map(px => `${px}...`).join(' oder ')
+      return NextResponse.json({ error: `Ungültiges Schlüsselformat für ${safeProvider}. Erwartet: ${expected}` }, { status: 400 })
     }
     // Telegram user ID must be numeric; WhatsApp is a phone number; Discord is also numeric
     if (safeChannel === 'telegram' && userId && !/^\d+$/.test(userId)) {
