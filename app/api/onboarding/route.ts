@@ -70,6 +70,18 @@ export async function POST(req: NextRequest) {
     if (name.length > 100) return NextResponse.json({ error: 'Name zu lang' }, { status: 400 })
     if (token.length > 300) return NextResponse.json({ error: 'Token ungültig' }, { status: 400 })
     if (aiKey.length > 500) return NextResponse.json({ error: 'API-Key ungültig' }, { status: 400 })
+    // Telegram user ID must be numeric; WhatsApp is a phone number; Discord is also numeric
+    if (safeChannel === 'telegram' && userId && !/^\d+$/.test(userId)) {
+      return NextResponse.json({ error: 'Telegram-ID muss numerisch sein' }, { status: 400 })
+    }
+    if (safeChannel === 'discord' && userId && !/^\d+$/.test(userId)) {
+      return NextResponse.json({ error: 'Discord-ID muss numerisch sein' }, { status: 400 })
+    }
+
+    const allowedPlans = ['starter', 'pro', 'business']
+    const safePlan = allowedPlans.includes(plan) ? plan : 'starter'
+    const allowedProviders = ['anthropic', 'openai', 'google']
+    const safeProvider = allowedProviders.includes(aiProvider) ? aiProvider : 'anthropic'
     // Validate AI key format per provider
     const validKeyPrefixes: Record<string, string[]> = {
       anthropic: ['sk-ant-'],
@@ -84,18 +96,6 @@ export async function POST(req: NextRequest) {
       const expected = allowedPrefixes.map(px => `${px}...`).join(' oder ')
       return NextResponse.json({ error: `Ungültiges Schlüsselformat für ${safeProvider}. Erwartet: ${expected}` }, { status: 400 })
     }
-    // Telegram user ID must be numeric; WhatsApp is a phone number; Discord is also numeric
-    if (safeChannel === 'telegram' && userId && !/^\d+$/.test(userId)) {
-      return NextResponse.json({ error: 'Telegram-ID muss numerisch sein' }, { status: 400 })
-    }
-    if (safeChannel === 'discord' && userId && !/^\d+$/.test(userId)) {
-      return NextResponse.json({ error: 'Discord-ID muss numerisch sein' }, { status: 400 })
-    }
-
-    const allowedPlans = ['starter', 'pro', 'business']
-    const safePlan = allowedPlans.includes(plan) ? plan : 'starter'
-    const allowedProviders = ['anthropic', 'openai', 'google']
-    const safeProvider = allowedProviders.includes(aiProvider) ? aiProvider : 'anthropic'
     const allowedLanguages = ['de', 'en']
     const safeLanguage = allowedLanguages.includes(language) ? language : 'de'
     const channelLabel = CHANNEL_LABELS[safeChannel] || safeChannel
