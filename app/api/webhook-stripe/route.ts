@@ -77,7 +77,7 @@ export async function POST(req: NextRequest) {
       : ''
 
     await sendEmail(email,
-      `Willkommen bei OpenClaw Hosting – Ihr ${planName}-Plan ist aktiv 🎉`,
+      `Willkommen bei OpenClaw Hosting – Ihr ${planName}-Plan ist aktiv`,
       `<div style="font-family:Inter,sans-serif;max-width:560px;margin:0 auto;color:#0F1714;">
         <h2 style="font-size:22px;margin-bottom:8px">Willkommen, ${name}! 👋</h2>
         <p style="color:#4B5563;line-height:1.7;">Ihre Zahlung war erfolgreich. Sie haben den <strong>${planName}-Plan</strong> gebucht (${planPrice}).</p>
