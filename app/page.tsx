@@ -12,7 +12,7 @@ const de = {
   h1b: 'Fertig eingerichtet.',
   h1c: 'Direkt loslegen.',
   sub: 'Kein Linux-Wissen nötig. Kein Setup-Stress. Ihr persönlicher KI-Assistent läuft in ~30 Minuten auf Ihrem eigenen Schweizer VPS — mit Gmail, Kalender, Sprache und Web-Suche bereits eingerichtet. OpenClaw Hosting Schweiz ab CHF 15/Mt.',
-  cta: 'Jetzt starten – ab CHF 19/Mt.',
+  cta: 'Jetzt starten – ab CHF 15/Mt.',
   ghost: 'Mehr erfahren',
   n1: '✓ Kein Technikwissen nötig',
   n2: '✓ Jederzeit kündbar',
@@ -34,7 +34,7 @@ const de = {
   stat1n: '~30 Min', stat1l: 'bis Ihr Assistent live ist',
   stat2n: '24/7', stat2l: 'Verfügbarkeit angestrebt',
   stat3n: '🇨🇭', stat3l: 'In der Schweiz gehostet',
-  stat4n: 'ab CHF 19', stat4l: 'pro Monat',
+  stat4n: 'ab CHF 15', stat4l: 'pro Monat',
 
   howLabel: 'So einfach geht\'s', howH2: 'In 3 Schritten live',
   howSub: 'Kein Terminal. Kein SSH. Kein Technikwissen. Wir erledigen alles.',
@@ -145,7 +145,7 @@ const de = {
     ['Datenschutz', 'Je nach VPS-Anbieter', 'DSGVO & nDSG-konform'],
     ['Support', 'OpenClaw-Community (English)', 'Persönlicher Support auf Deutsch'],
     ['Uptime-Monitoring', 'Selbst einrichten', 'Inklusive'],
-    ['Preis', 'CHF 5–15/Mt. VPS + Ihre Zeit', 'ab CHF 19/Mt. — alles inklusive'],
+    ['Preis', 'CHF 5–15/Mt. VPS + Ihre Zeit', 'ab CHF 15/Mt. — alles inklusive'],
   ],
 
   fLabel: 'FAQ', fH2: 'Häufige Fragen',
@@ -179,7 +179,7 @@ const en: typeof de = {
   h1b: 'Fully set up.',
   h1c: 'Ready to go.',
   sub: 'No Linux. No server config. Your personal OpenClaw assistant is live in ~30 minutes — on your own Swiss server, with Gmail, calendar, voice and web search already configured.',
-  cta: 'Get started – from CHF 19/mo',
+  cta: 'Get started – from CHF 15/mo',
   ghost: 'Learn more',
   n1: '✓ No technical skills needed',
   n2: '✓ Cancel anytime',
@@ -201,7 +201,7 @@ const en: typeof de = {
   stat1n: '~30 min', stat1l: 'until your assistant is live',
   stat2n: '24/7', stat2l: 'target uptime',
   stat3n: '🇨🇭', stat3l: 'Hosted in Switzerland',
-  stat4n: 'from CHF 19', stat4l: 'per month',
+  stat4n: 'from CHF 15', stat4l: 'per month',
 
   howLabel: 'How it works', howH2: 'Live in 3 steps',
   howSub: 'No terminal. No SSH. No technical knowledge required. We handle everything.',
@@ -312,7 +312,7 @@ const en: typeof de = {
     ['Privacy', 'Depends on VPS provider', 'GDPR & nDSG compliant'],
     ['Support', 'OpenClaw community (English only)', 'Personal support in German & English'],
     ['Uptime monitoring', 'Set up yourself', 'Included'],
-    ['Price', 'CHF 5–15/mo VPS + your time', 'from CHF 19/mo — all inclusive'],
+    ['Price', 'CHF 5–15/mo VPS + your time', 'from CHF 15/mo — all inclusive'],
   ],
 
   fLabel: 'FAQ', fH2: 'Frequently asked questions',
