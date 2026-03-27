@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'OpenClaw Hosting – Ihr KI-Assistent, 24/7 in der Schweiz | Your AI Agent, Always On',
+  title: 'OpenClaw Hosting – Ihr persönlicher KI-Assistent, jederzeit verfügbar',
   description: 'Ihr persönlicher KI-Assistent auf eigenem Schweizer Server. Kein Technikwissen nötig. In ~30 Minuten live. Ab CHF 19/Monat.',
   alternates: {
     canonical: 'https://hosting.openclaw-consulting.ch',

@@ -118,19 +118,19 @@ const de = {
   pNote: '⚠️ Was Sie uns bezahlen: den Betrieb Ihres privaten Servers in der Schweiz (CHF 19–59/Mt.). Was Sie separat bezahlen: Ihren eigenen API-Schlüssel direkt bei Ihrem KI-Anbieter (ca. CHF 5–20/Mt. je nach Nutzung). Diese Kosten gehen direkt an Anthropic, OpenAI oder Google — wir sehen diese Daten nie.',
 
   p1n: 'Starter', p1d: 'Für den Einstieg und den persönlichen Alltag',
-  p1p: '19', p1a: '→ CHF 180/Jahr (günstiger)',
+  p1p: '19', p1a: '→ CHF 180/Jahr (CHF 48 sparen)',
   p1fs: ['2 vCPU · 4 GB RAM · 50 GB SSD', '🇨🇭 Privater Server in der Schweiz', 'Telegram & Discord', '🎙️ Voice-Chat: Sprache senden, Text oder Sprache empfangen', 'Automatische Updates, Monitoring & tägliche Backups', '✅ Persönliches Dashboard (nur für Sie zugänglich)', 'E-Mail-Support (48 Std.)', 'Jederzeit kündbar'],
   p1ds: ['Kein Onboarding-Call'],
   p1cta: 'Starter wählen',
 
   p2badge: 'EMPFOHLEN', p2n: 'Pro', p2d: 'Für alle, die KI täglich produktiv einsetzen',
-  p2p: '34', p2a: '→ CHF 320/Jahr (günstiger)',
+  p2p: '34', p2a: '→ CHF 320/Jahr (CHF 88 sparen)',
   p2fs: ['4 vCPU · 8 GB RAM · 80 GB SSD', '🇨🇭 Privater Server in der Schweiz', 'Telegram & Discord', '🎙️ Voice-Chat: Sprache senden, Text oder Sprache empfangen', 'Automatische Updates, Monitoring & tägliche Backups', '✅ Persönliches Dashboard (nur für Sie zugänglich)', 'E-Mail-Support (24 Std.)', 'Jederzeit kündbar'],
   p2ds: ['Kein Onboarding-Call'],
   p2cta: 'Pro wählen',
 
   p3badge: 'BUSINESS', p3n: 'Business', p3d: 'Für anspruchsvolle Workloads und maximale Leistung',
-  p3p: '59', p3a: '→ CHF 560/Jahr (günstiger)',
+  p3p: '59', p3a: '→ CHF 560/Jahr (CHF 148 sparen)',
   p3fs: ['8 vCPU · 16 GB RAM · 80 GB SSD', '🇨🇭 Privater Server in der Schweiz', 'Telegram & Discord', '🎙️ Voice-Chat: Sprache senden, Text oder Sprache empfangen', 'Automatische Updates, Monitoring & tägliche Backups', '✅ Persönliches Dashboard (nur für Sie zugänglich)', 'Prioritäts-Support (< 24 Std.)', 'Einrichtung von Custom Skills & Automationen', 'Jederzeit kündbar'],
   p3fsAnnualExtra: '📞 30-minütiger Onboarding-Call auf Deutsch',
   p3cta: 'Business wählen',
@@ -285,19 +285,19 @@ const en: typeof de = {
   pNote: '⚠️ What you pay us: running your private server in Switzerland (CHF 19–59/mo). What you pay separately: your own API key directly to your AI provider (approx. CHF 5–20/mo depending on usage). These costs go directly to Anthropic, OpenAI or Google — we never see that data.',
 
   p1n: 'Starter', p1d: 'For getting started and everyday personal use',
-  p1p: '19', p1a: '→ CHF 180/year (save more)',
+  p1p: '19', p1a: '→ CHF 180/year (save CHF 48)',
   p1fs: ['2 vCPU · 4 GB RAM · 50 GB SSD', '🇨🇭 Private server in Switzerland', 'Telegram & Discord', '🎙️ Voice chat: send voice, receive text or voice replies', 'Automatic updates, monitoring & daily backups', '✅ Personal dashboard (private access only)', 'Email support (48h)', 'Cancel anytime'],
   p1ds: ['No onboarding call'],
   p1cta: 'Choose Starter',
 
   p2badge: 'RECOMMENDED', p2n: 'Pro', p2d: 'For those who rely on AI every single day',
-  p2p: '34', p2a: '→ CHF 320/year (save more)',
+  p2p: '34', p2a: '→ CHF 320/year (save CHF 88)',
   p2fs: ['4 vCPU · 8 GB RAM · 80 GB SSD', '🇨🇭 Private server in Switzerland', 'Telegram & Discord', '🎙️ Voice chat: send voice, receive text or voice replies', 'Automatic updates, monitoring & daily backups', '✅ Personal dashboard (private access only)', 'Email support (24h)', 'Cancel anytime'],
   p2ds: ['No onboarding call'],
   p2cta: 'Choose Pro',
 
   p3badge: 'BUSINESS', p3n: 'Business', p3d: 'For demanding workloads and maximum performance',
-  p3p: '59', p3a: '→ CHF 560/year (save more)',
+  p3p: '59', p3a: '→ CHF 560/year (save CHF 148)',
   p3fs: ['8 vCPU · 16 GB RAM · 80 GB SSD', '🇨🇭 Private server in Switzerland', 'Telegram & Discord', '🎙️ Voice chat: send voice, receive text or voice replies', 'Automatic updates, monitoring & daily backups', '✅ Personal dashboard (private access only)', 'Priority support (< 24h)', 'Custom skills & automation setup included', 'Cancel anytime'],
   p3fsAnnualExtra: '📞 30-min onboarding call in German or English',
   p3cta: 'Choose Business',
@@ -574,7 +574,7 @@ export default function Home() {
               { plan:'starter', featured:false, badge:null, badgeStyle:{},
                 name:t.p1n, desc:t.p1d,
                 price: billing==='annual' ? 15 : 19,
-                annual: billing==='annual' ? (lang==='de'?'CHF 180/Jahr abgerechnet':'CHF 180/year billed') : (lang==='de'?'→ CHF 180/Jahr (günstiger)':'→ CHF 180/year (save more)'),
+                annual: billing==='annual' ? (lang==='de'?'CHF 180/Jahr abgerechnet':'CHF 180/year billed') : (lang==='de'?'→ CHF 180/Jahr (CHF 48 sparen)':'→ CHF 180/year (save CHF 48)'),
                 features:t.p1fs, dims:t.p1ds, cta:t.p1cta,
                 href: billing==='annual'
                   ? (process.env.NEXT_PUBLIC_STRIPE_STARTER_ANNUAL||'/onboarding?plan=starter&billing=annual')
@@ -584,7 +584,7 @@ export default function Home() {
               { plan:'pro', featured:true, badge:t.p2badge, badgeStyle:{},
                 name:t.p2n, desc:t.p2d,
                 price: billing==='annual' ? 27 : 34,
-                annual: billing==='annual' ? (lang==='de'?'CHF 320/Jahr abgerechnet':'CHF 320/year billed') : (lang==='de'?'→ CHF 320/Jahr (günstiger)':'→ CHF 320/year (save more)'),
+                annual: billing==='annual' ? (lang==='de'?'CHF 320/Jahr abgerechnet':'CHF 320/year billed') : (lang==='de'?'→ CHF 320/Jahr (CHF 88 sparen)':'→ CHF 320/year (save CHF 88)'),
                 features:t.p2fs, dims:t.p2ds, cta:t.p2cta,
                 href: billing==='annual'
                   ? (process.env.NEXT_PUBLIC_STRIPE_PRO_ANNUAL||'/onboarding?plan=pro&billing=annual')
@@ -594,7 +594,7 @@ export default function Home() {
               { plan:'business', featured:false, badge:t.p3badge, badgeStyle:{background:'var(--ink2)', color:'#fff'},
                 name:t.p3n, desc:t.p3d,
                 price: billing==='annual' ? 47 : 59,
-                annual: billing==='annual' ? (lang==='de'?'CHF 560/Jahr abgerechnet':'CHF 560/year billed') : (lang==='de'?'→ CHF 560/Jahr (günstiger)':'→ CHF 560/year (save more)'),
+                annual: billing==='annual' ? (lang==='de'?'CHF 560/Jahr abgerechnet':'CHF 560/year billed') : (lang==='de'?'→ CHF 560/Jahr (CHF 148 sparen)':'→ CHF 560/year (save CHF 148)'),
                 features: billing==='annual' ? [...t.p3fs, t.p3fsAnnualExtra] : t.p3fs, dims:[], cta:t.p3cta,
                 href: billing==='annual'
                   ? (process.env.NEXT_PUBLIC_STRIPE_BUSINESS_ANNUAL||'/onboarding?plan=business&billing=annual')
@@ -672,6 +672,62 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* Organization + Service Schema */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "name": "OpenClaw Hosting",
+            "url": "https://hosting.openclaw-consulting.ch",
+            "logo": "https://hosting.openclaw-consulting.ch/og-image.svg",
+            "description": "Persönlicher KI-Assistent auf eigenem Schweizer Server. Kein Technikwissen nötig. In ~30 Minuten live.",
+            "address": {
+              "@type": "PostalAddress",
+              "addressCountry": "CH"
+            },
+            "contactPoint": {
+              "@type": "ContactPoint",
+              "contactType": "customer support",
+              "email": "support@openclaw-consulting.ch",
+              "availableLanguage": ["German", "English"]
+            },
+            "sameAs": ["https://openclaw-consulting.ch"],
+            "hasOfferCatalog": {
+              "@type": "OfferCatalog",
+              "name": "OpenClaw Hosting Pläne",
+              "itemListElement": [
+                {
+                  "@type": "Offer",
+                  "name": "Starter",
+                  "price": "15.00",
+                  "priceCurrency": "CHF",
+                  "priceSpecification": { "@type": "UnitPriceSpecification", "price": "15.00", "priceCurrency": "CHF", "unitText": "MONTH" },
+                  "description": "Persönlicher KI-Assistent auf privatem Schweizer Server. 2 vCPU, 4 GB RAM, 50 GB SSD."
+                },
+                {
+                  "@type": "Offer",
+                  "name": "Pro",
+                  "price": "27.00",
+                  "priceCurrency": "CHF",
+                  "priceSpecification": { "@type": "UnitPriceSpecification", "price": "27.00", "priceCurrency": "CHF", "unitText": "MONTH" },
+                  "description": "KI-Assistent für täglichen Produktiveinsatz. 4 vCPU, 8 GB RAM, 80 GB SSD."
+                },
+                {
+                  "@type": "Offer",
+                  "name": "Business",
+                  "price": "47.00",
+                  "priceCurrency": "CHF",
+                  "priceSpecification": { "@type": "UnitPriceSpecification", "price": "47.00", "priceCurrency": "CHF", "unitText": "MONTH" },
+                  "description": "KI-Assistent für anspruchsvolle Workloads. 8 vCPU, 16 GB RAM, 80 GB SSD."
+                }
+              ]
+            }
+          })
+        }}
+      />
 
       {/* FAQ Schema */}
       <script
