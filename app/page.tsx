@@ -11,7 +11,7 @@ const de = {
   h1a: 'Ihr KI-Assistent.',
   h1b: 'Fertig eingerichtet.',
   h1c: 'Direkt loslegen.',
-  sub: 'Kein Linux-Wissen nötig. Kein Setup-Stress. Ihr persönlicher OpenClaw-Assistent läuft in ~30 Minuten — auf Ihrem eigenen Schweizer Server, mit Gmail, Kalender, Sprache und Web-Suche bereits eingerichtet.',
+  sub: 'Kein Linux-Wissen nötig. Kein Setup-Stress. Ihr persönlicher KI-Assistent läuft in ~30 Minuten auf Ihrem eigenen Schweizer VPS — mit Gmail, Kalender, Sprache und Web-Suche bereits eingerichtet. OpenClaw Hosting Schweiz ab CHF 15/Mt.',
   cta: 'Jetzt starten – ab CHF 19/Mt.',
   ghost: 'Mehr erfahren',
   n1: '✓ Kein Technikwissen nötig',
@@ -45,7 +45,7 @@ const de = {
   s3t: '3. Ihr Assistent ist online',
   s3d: 'Wir richten Ihren privaten Server in der Schweiz vollautomatisch ein. In der Regel ist Ihr Assistent innerhalb von 30 Minuten einsatzbereit.',
 
-  dashLabel: 'Ihr persönliches Dashboard', dashH2: 'Alles auf einen Blick — nur für Sie.',
+  dashLabel: 'Ihr persönliches Dashboard', dashH2: 'Ihren KI-Assistenten verwalten — alles auf einen Blick.',
   dashSub: 'In allen Plänen erhalten Sie ein persönliches Dashboard — nur über Ihren privaten Link erreichbar, ausschliesslich auf Ihrem eigenen Server in der Schweiz.',
   dashPoints: [
     '🏠 Übersicht: Wetter, Assistenten-Status, Schnellbefehle und letzte Aktivitäten',
@@ -55,7 +55,7 @@ const de = {
     '⚙️ Einstellungen: Modell wechseln, API-Schlüssel aktualisieren, Assistenten anpassen',
     '🔒 Nur mit Ihrem persönlichen Link erreichbar — kein Login, kein gemeinsamer Server',
   ],
-  ucLabel: 'Was Ihr Assistent kann', ucH2: 'Ein Assistent. Unzählige Aufgaben.',
+  ucLabel: 'Was Ihr KI-Assistent kann', ucH2: 'Ein persönlicher KI-Assistent. Unzählige Aufgaben.',
   ucSub: 'OpenClaw verbindet sich mit Ihren Tools und arbeitet proaktiv — nicht nur dann, wenn Sie etwas fragen.',
   ucs: [
     { icon:'📧', t:'E-Mail-Management', d:'Tägliches Briefing, Antworten entwerfen, wichtige Mails priorisieren und Postfach automatisch sortieren.', ex:'"Welche Mails brauchen heute meine Antwort?"' },
@@ -114,7 +114,7 @@ const de = {
     },
   ],
 
-  pLabel: 'Preise', pH2: 'Einfach. Transparent. Fair.',
+  pLabel: 'Preise', pH2: 'KI-Assistent kaufen — einfach, transparent, fair.',
   pNote: '⚠️ Was Sie uns bezahlen: den Betrieb Ihres privaten Servers in der Schweiz (CHF 19–59/Mt.). Was Sie separat bezahlen: Ihren eigenen API-Schlüssel direkt bei Ihrem KI-Anbieter (ca. CHF 5–20/Mt. je nach Nutzung). Diese Kosten gehen direkt an Anthropic, OpenAI oder Google — wir sehen diese Daten nie.',
 
   p1n: 'Starter', p1d: 'Für den Einstieg und den persönlichen Alltag',
