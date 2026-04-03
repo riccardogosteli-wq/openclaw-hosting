@@ -121,8 +121,8 @@ a { color: inherit; }
 .sec-icon { font-size: 1.5rem; margin-bottom: 0.6rem; }
 .sec-card h3 { font-size: 0.94rem; color: var(--ink); margin-bottom: 0.4rem; font-weight: 600; }
 .sec-card p { font-size: 0.85rem; color: var(--slate); line-height: 1.6; }
-@media (max-width: 768px) { .sec-grid { grid-template-columns: 1fr; } }
 @media (max-width: 900px) { .sec-grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 768px) { .sec-grid { grid-template-columns: 1fr; } }
 
 /* ── PRICING ─────────────────────────────── */
 .pricing { padding: 5rem 0; }

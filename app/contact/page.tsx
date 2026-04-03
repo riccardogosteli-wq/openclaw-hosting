@@ -14,7 +14,7 @@ const de = {
   faqs: [
     ['Wie schnell ist das Setup?', 'Vollautomatisch — in der Regel innerhalb von 30 Minuten nach dem Onboarding-Formular.'],
     ['Kann ich vor dem Kauf testen?', 'Schreiben Sie uns — wir können eine kurze Demo einrichten.'],
-    ['Gibt es einen Onboarding-Call?', 'Im Pro-Plan inklusive. Im Business-Plan immer dabei.'],
+    ['Gibt es einen Onboarding-Call?', 'Nur im Business-Plan bei jährlicher Zahlung inklusive.'],
   ],
   formTitle: 'Nachricht senden',
   formSub: 'Wir antworten innerhalb von 24 Stunden auf Deutsch oder Englisch.',
@@ -44,7 +44,7 @@ const en = {
   faqs: [
     ['How fast is the setup?', 'Fully automatic — typically within 30 minutes of submitting the onboarding form.'],
     ['Can I try before buying?', 'Write to us — we can arrange a short demo.'],
-    ['Is there an onboarding call?', 'Included in the Pro plan. Always included in the Business plan.'],
+    ['Is there an onboarding call?', 'Only available with the Business plan on annual billing.'],
   ],
   formTitle: 'Send a message',
   formSub: 'We reply within 24 hours in German or English.',

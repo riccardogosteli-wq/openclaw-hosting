@@ -4,15 +4,19 @@ import { useState } from 'react'
 /* ─── CONTENT ───────────────────────────────────────────────────── */
 const de = {
   navBrand1: 'OpenClaw', navBrand2: 'Hosting',
-  navHow: 'So funktioniert\'s', navPricing: 'Preise', navFaq: 'FAQ', navContact: 'Kontakt', navAbout: 'Über uns', navVergleich: 'Vergleich', navSkills: 'Skills',
+  navHow: 'So funktioniert\'s', navPricing: 'Preise', navFaq: 'FAQ', navContact: 'Kontakt', navAbout: 'Über uns', navVergleich: 'Vergleich', navSkills: 'Skills', navUseCases: 'Anwendungsfälle',
   navCta: 'Jetzt starten',
+  navConsulting: 'Beratung',
+  footerConsultingHeadline: 'Lieber mit Expertenbegleitung?',
+  footerConsultingText: 'Wir richten Ihren KI-Assistenten persönlich ein — maßgeschneidert für Ihr Unternehmen.',
+  footerConsultingCta: 'OpenClaw Consulting ansehen ↗',
 
   badge: '🇨🇭 In der Schweiz gehostet',
   h1a: 'Ihr KI-Assistent.',
   h1b: 'Fertig eingerichtet.',
   h1c: 'Direkt loslegen.',
-  sub: 'Kein Linux-Wissen nötig. Kein Setup-Stress. Ihr persönlicher KI-Assistent läuft in ~30 Minuten auf Ihrem eigenen Schweizer VPS — mit Gmail, Kalender, Sprache und Web-Suche bereits eingerichtet. OpenClaw Hosting Schweiz ab CHF 15/Mt.',
-  cta: 'Jetzt starten – ab CHF 15/Mt.',
+  sub: 'Kein Linux-Wissen nötig. Kein Setup-Stress. Ihr persönlicher KI-Assistent läuft in ~30 Minuten auf Ihrem eigenen Schweizer VPS — mit Gmail, Kalender, Sprache und Web-Suche bereits eingerichtet. OpenClaw Hosting Schweiz ab CHF 15/Mt. (bei jährlicher Zahlung, sonst CHF 19/Mt.).',
+  cta: 'Jetzt starten – ab CHF 15/Mt.*',
   ghost: 'Mehr erfahren',
   n1: '✓ Kein Technikwissen nötig',
   n2: '✓ Jederzeit kündbar',
@@ -34,7 +38,7 @@ const de = {
   stat1n: '~30 Min', stat1l: 'bis Ihr Assistent live ist',
   stat2n: '24/7', stat2l: 'Verfügbarkeit angestrebt',
   stat3n: '🇨🇭', stat3l: 'In der Schweiz gehostet',
-  stat4n: 'ab CHF 15', stat4l: 'pro Monat',
+  stat4n: 'ab CHF 15*', stat4l: 'pro Monat (jährl.)',
 
   howLabel: 'So einfach geht\'s', howH2: 'In 3 Schritten live',
   howSub: 'Kein Terminal. Kein SSH. Kein Technikwissen. Wir erledigen alles.',
@@ -145,7 +149,7 @@ const de = {
     ['Datenschutz', 'Je nach VPS-Anbieter', 'DSGVO & nDSG-konform'],
     ['Support', 'OpenClaw-Community (English)', 'Persönlicher Support auf Deutsch'],
     ['Uptime-Monitoring', 'Selbst einrichten', 'Inklusive'],
-    ['Preis', 'CHF 5–15/Mt. VPS + Ihre Zeit', 'ab CHF 15/Mt. — alles inklusive'],
+    ['Preis', 'CHF 5–15/Mt. VPS + Ihre Zeit', 'ab CHF 15/Mt.* (jährl.) / CHF 19/Mt. — alles inklusive'],
   ],
 
   fLabel: 'FAQ', fH2: 'Häufige Fragen',
@@ -171,15 +175,19 @@ const de = {
 
 const en: typeof de = {
   navBrand1: 'OpenClaw', navBrand2: 'Hosting',
-  navHow: 'How it works', navPricing: 'Pricing', navFaq: 'FAQ', navContact: 'Contact', navAbout: 'About', navVergleich: 'Compare', navSkills: 'Skills',
+  navHow: 'How it works', navPricing: 'Pricing', navFaq: 'FAQ', navContact: 'Contact', navAbout: 'About', navVergleich: 'Compare', navSkills: 'Skills', navUseCases: 'Use Cases',
   navCta: 'Get started',
+  navConsulting: 'Consulting',
+  footerConsultingHeadline: 'Prefer expert guidance?',
+  footerConsultingText: 'We set up your AI assistant personally — tailored to your business.',
+  footerConsultingCta: 'See OpenClaw Consulting ↗',
 
   badge: '🇨🇭 Hosted in Geneva · Infomaniak datacenter',
   h1a: 'Your AI assistant.',
   h1b: 'Fully set up.',
   h1c: 'Ready to go.',
-  sub: 'No Linux. No server config. Your personal OpenClaw assistant is live in ~30 minutes — on your own Swiss server, with Gmail, calendar, voice and web search already configured.',
-  cta: 'Get started – from CHF 15/mo',
+  sub: 'No Linux. No server config. Your personal OpenClaw assistant is live in ~30 minutes — on your own Swiss server, with Gmail, calendar, voice and web search already configured. From CHF 15/mo* (annual billing; CHF 19/mo monthly).',
+  cta: 'Get started – from CHF 15/mo*',
   ghost: 'Learn more',
   n1: '✓ No technical skills needed',
   n2: '✓ Cancel anytime',
@@ -201,7 +209,7 @@ const en: typeof de = {
   stat1n: '~30 min', stat1l: 'until your assistant is live',
   stat2n: '24/7', stat2l: 'target uptime',
   stat3n: '🇨🇭', stat3l: 'Hosted in Switzerland',
-  stat4n: 'from CHF 15', stat4l: 'per month',
+  stat4n: 'from CHF 15*', stat4l: 'per month (annual)',
 
   howLabel: 'How it works', howH2: 'Live in 3 steps',
   howSub: 'No terminal. No SSH. No technical knowledge required. We handle everything.',
@@ -312,7 +320,7 @@ const en: typeof de = {
     ['Privacy', 'Depends on VPS provider', 'GDPR & nDSG compliant'],
     ['Support', 'OpenClaw community (English only)', 'Personal support in German & English'],
     ['Uptime monitoring', 'Set up yourself', 'Included'],
-    ['Price', 'CHF 5–15/mo VPS + your time', 'from CHF 15/mo — all inclusive'],
+    ['Price', 'CHF 5–15/mo VPS + your time', 'from CHF 15/mo* (annual) / CHF 19/mo — all inclusive'],
   ],
 
   fLabel: 'FAQ', fH2: 'Frequently asked questions',
@@ -356,9 +364,14 @@ export default function Home() {
             <a href="#pricing">{t.navPricing}</a>
             <a href="/vergleich">{t.navVergleich}</a>
             <a href="/skills">{t.navSkills}</a>
-            <a href="#faq">{t.navFaq}</a>
+            <a href="/anwendungsfaelle">{t.navUseCases}</a>
+            <a href="/faq">{t.navFaq}</a>
             <a href="/contact">{t.navContact}</a>
             <a href="/ueber-uns">{t.navAbout}</a>
+            <a href="https://openclaw-consulting.ch" target="_blank" rel="noopener" style={{display:'inline-flex',alignItems:'center',gap:'0.25rem',color:'var(--slate)',fontSize:'0.88rem',fontWeight:500,borderLeft:'1px solid var(--border)',paddingLeft:'1.25rem',marginLeft:'0.25rem'}}
+              onMouseOver={e=>(e.currentTarget.style.color='var(--ink)')} onMouseOut={e=>(e.currentTarget.style.color='var(--slate)')}>
+              ← {t.navConsulting}
+            </a>
             <button className="lang-btn" onClick={() => setLang(l => { const n = l==='de'?'en':'de'; localStorage.setItem('lang', n); return n })}>{lang==='de'?'EN':'DE'}</button>
             <a href="#pricing" className="nav-cta">{t.navCta}</a>
           </div>
@@ -774,6 +787,24 @@ export default function Home() {
           <p style={{marginTop:'1rem', fontSize:'0.83rem', color:'var(--dim)'}}>{t.finalNote}</p>
         </div>
       </section>
+
+      {/* CONSULTING CROSS-PROMO */}
+      <div style={{background:'var(--light)',borderTop:'1px solid var(--border)',padding:'1.5rem 0'}}>
+        <div className="container" style={{display:'flex',alignItems:'center',justifyContent:'space-between',flexWrap:'wrap',gap:'1rem'}}>
+          <div>
+            <div style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontWeight:800,fontSize:'1rem',color:'var(--ink)',marginBottom:'0.2rem'}}>
+              {t.footerConsultingHeadline}
+            </div>
+            <div style={{fontSize:'0.84rem',color:'var(--slate)'}}>{t.footerConsultingText}</div>
+          </div>
+          <a href="https://openclaw-consulting.ch" target="_blank" rel="noopener"
+            style={{display:'inline-flex',alignItems:'center',gap:'0.4rem',background:'transparent',color:'var(--green2)',border:'1.5px solid var(--green)',padding:'0.55rem 1.25rem',borderRadius:'8px',fontWeight:600,fontSize:'0.86rem',whiteSpace:'nowrap',transition:'all 0.15s'}}
+            onMouseOver={e=>{e.currentTarget.style.background='var(--green)';e.currentTarget.style.color='#fff'}}
+            onMouseOut={e=>{e.currentTarget.style.background='transparent';e.currentTarget.style.color='var(--green2)'}}>
+            {t.footerConsultingCta}
+          </a>
+        </div>
+      </div>
 
       {/* FOOTER */}
       <footer className="footer">
