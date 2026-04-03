@@ -368,10 +368,6 @@ export default function Home() {
             <a href="/faq">{t.navFaq}</a>
             <a href="/contact">{t.navContact}</a>
             <a href="/ueber-uns">{t.navAbout}</a>
-            <a href="https://openclaw-consulting.ch" target="_blank" rel="noopener" style={{display:'inline-flex',alignItems:'center',gap:'0.25rem',color:'var(--slate)',fontSize:'0.88rem',fontWeight:500,borderLeft:'1px solid var(--border)',paddingLeft:'1.25rem',marginLeft:'0.25rem'}}
-              onMouseOver={e=>(e.currentTarget.style.color='var(--ink)')} onMouseOut={e=>(e.currentTarget.style.color='var(--slate)')}>
-              ← {t.navConsulting}
-            </a>
             <button className="lang-btn" onClick={() => setLang(l => { const n = l==='de'?'en':'de'; localStorage.setItem('lang', n); return n })}>{lang==='de'?'EN':'DE'}</button>
             <a href="#pricing" className="nav-cta">{t.navCta}</a>
           </div>
