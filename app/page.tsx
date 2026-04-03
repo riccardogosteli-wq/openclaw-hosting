@@ -378,12 +378,12 @@ export default function Home() {
       <div style={{background:'var(--ink)',borderBottom:'1px solid rgba(255,255,255,0.08)',padding:'0.6rem 0'}}>
         <div className="container" style={{display:'flex',alignItems:'center',justifyContent:'center',gap:'0.75rem',flexWrap:'wrap'}}>
           <span style={{fontSize:'0.82rem',color:'rgba(255,255,255,0.65)'}}>
-            {lang==='de' ? 'Lieber jemanden, der das für Sie übernimmt?' : 'Prefer someone to handle everything for you?'}
+            {lang==='de' ? 'Lieber von KI-Experten einrichten lassen?' : 'Want AI experts to handle the setup?'}
           </span>
           <a href="https://openclaw-consulting.ch" target="_blank" rel="noopener"
             style={{fontSize:'0.82rem',fontWeight:600,color:'var(--green)',whiteSpace:'nowrap',textDecoration:'none',display:'inline-flex',alignItems:'center',gap:'0.25rem'}}
             onMouseOver={e=>(e.currentTarget.style.color='#fff')} onMouseOut={e=>(e.currentTarget.style.color='var(--green)')}>
-            {lang==='de' ? 'OpenClaw Consulting — persönliche Einrichtung ↗' : 'OpenClaw Consulting — personal setup ↗'}
+            {lang==='de' ? 'OpenClaw Consulting — wir übernehmen alles ↗' : 'OpenClaw Consulting — we handle everything ↗'}
           </a>
         </div>
       </div>
