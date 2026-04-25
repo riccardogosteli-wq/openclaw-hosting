@@ -39,21 +39,21 @@ export default function Datenschutz() {
         <ul style={{ color: 'var(--slate)', paddingLeft: '1.25rem', marginBottom: '1.5rem' }}>
           {de ? <>
             <li style={{ marginBottom: '0.5rem' }}><strong>Kontaktdaten</strong> (Name, E-Mail): zur Kommunikation und Vertragsabwicklung</li>
-            <li style={{ marginBottom: '0.5rem' }}><strong>Onboarding-Daten</strong> (Bot-Token, KI-API-Schlüssel): ausschliesslich zur Einrichtung Ihres Servers. Nicht bei uns gespeichert nach der Einrichtung.</li>
-            <li style={{ marginBottom: '0.5rem' }}><strong>Zahlungsdaten</strong>: werden über Payrexx verarbeitet. Wir erhalten keine Kreditkartendaten.</li>
+            <li style={{ marginBottom: '0.5rem' }}><strong>Onboarding-Daten</strong> (Bot-Token, KI-API-Schlüssel): zur Einrichtung und Wartung Ihrer privaten OpenClaw-Instanz. Diese Daten werden auf Ihrer Instanz gespeichert und nicht als separates Kundendatenarchiv bei uns geführt.</li>
+            <li style={{ marginBottom: '0.5rem' }}><strong>Zahlungsdaten</strong>: werden über Stripe verarbeitet. Wir erhalten keine Kreditkartendaten.</li>
             <li style={{ marginBottom: '0.5rem' }}><strong>Server-Logs</strong>: IP-Adresse, Zeitstempel, aufgerufene Seiten (30 Tage gespeichert)</li>
           </> : <>
             <li style={{ marginBottom: '0.5rem' }}><strong>Contact data</strong> (name, email): for communication and contract processing</li>
-            <li style={{ marginBottom: '0.5rem' }}><strong>Onboarding data</strong> (bot token, AI API key): solely for setting up your server. Not stored with us after setup.</li>
-            <li style={{ marginBottom: '0.5rem' }}><strong>Payment data</strong>: processed by Payrexx. We do not receive card data.</li>
+            <li style={{ marginBottom: '0.5rem' }}><strong>Onboarding data</strong> (bot token, AI API key): used to set up and maintain your private OpenClaw instance. This data is stored on your instance and is not kept by us as a separate customer-data archive.</li>
+            <li style={{ marginBottom: '0.5rem' }}><strong>Payment data</strong>: processed by Stripe. We do not receive card data.</li>
             <li style={{ marginBottom: '0.5rem' }}><strong>Server logs</strong>: IP address, timestamps, pages visited (stored 30 days)</li>
           </>}
         </ul>
 
         <H2>{de ? '3. API-Schlüssel und Tokens' : '3. API Keys and Tokens'}</H2>
         <P>{de
-          ? 'Ihr KI-API-Schlüssel und Ihr Bot-Token werden ausschliesslich zur Einrichtung Ihres Servers verwendet und dort gespeichert. Wir haben nach der Einrichtung keinen aktiven Zugriff auf diese Daten. Ihre Chat-Verläufe sind technisch nicht für uns einsehbar.'
-          : 'Your AI API key and bot token are used solely to set up your server and are stored there. We have no active access to this data after setup. Your chat history is technically not accessible to us.'
+          ? 'Ihr KI-API-Schlüssel und Ihr Bot-Token werden auf Ihrer privaten Instanz gespeichert. Wir verwenden diese Daten zur Einrichtung und, falls Support oder Wartung nötig ist, zur Verwaltung Ihrer Instanz. Wir greifen nicht routinemässig auf Ihre Gespräche zu und verwenden Ihre Inhalte nicht für Tracking oder Modelltraining.'
+          : 'Your AI API key and bot token are stored on your private instance. We use this data for setup and, if support or maintenance is required, to manage your instance. We do not routinely access your conversations and do not use your content for tracking or model training.'
         }</P>
 
         <H2>{de ? '4. Serverstandort und Datenhaltung' : '4. Server Location and Data Storage'}</H2>
@@ -65,7 +65,7 @@ export default function Datenschutz() {
         <H2>{de ? '5. Weitergabe an Dritte' : '5. Third-Party Disclosure'}</H2>
         <P>{de ? 'Wir geben Ihre Daten nicht an Dritte weiter, ausser:' : 'We do not share your data with third parties, except:'}</P>
         <ul style={{ color: 'var(--slate)', paddingLeft: '1.25rem', marginBottom: '1.5rem' }}>
-          <li style={{ marginBottom: '0.5rem' }}><strong>Payrexx AG</strong> ({de ? 'Schweiz' : 'Switzerland'}): {de ? 'Zahlungsabwicklung' : 'Payment processing'}</li>
+          <li style={{ marginBottom: '0.5rem' }}><strong>Stripe Payments Europe, Ltd. / Stripe, Inc.</strong>: {de ? 'Zahlungsabwicklung' : 'Payment processing'}</li>
           <li style={{ marginBottom: '0.5rem' }}><strong>Infomaniak Network SA</strong> ({de ? 'Schweiz' : 'Switzerland'}): {de ? 'Server-Hosting' : 'Server hosting'}</li>
           <li style={{ marginBottom: '0.5rem' }}><strong>Resend Inc.</strong>: {de ? 'E-Mail-Versand' : 'Email delivery'}</li>
           <li style={{ marginBottom: '0.5rem' }}><strong>Vercel Inc.</strong>: {de ? 'Website-Hosting' : 'Website hosting'}</li>

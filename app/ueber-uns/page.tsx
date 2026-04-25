@@ -14,7 +14,7 @@ const de = {
   s1p3: 'Also haben wir den technischen Teil übernommen. Sie chatten einfach los.',
   s2h: 'Was uns antreibt',
   values: [
-    { icon: '🇨🇭', title: 'Datenschutz ist kein Feature — es ist Pflicht', text: 'Ihr Server steht in der Schweiz, Ihre Daten bleiben dort. Wir legen das technisch so an, dass wir schlicht keinen Zugriff auf Ihre Gespräche haben. Nicht weil wir müssen — weil wir es richtig machen wollen.' },
+    { icon: '🇨🇭', title: 'Datenschutz ist kein Feature — es ist Pflicht', text: 'Ihre Instanz steht in der Schweiz, und Zugangsdaten werden nicht in einem gemeinsamen Kundensystem gespeichert. Wartungs- oder Supportzugriff erfolgt nur, wenn er für Betrieb, Updates, Sicherheit oder Hilfe nötig ist.' },
     { icon: '🔓', title: 'Keine geschlossenen Ökosysteme', text: 'OpenClaw ist Open Source. Das bedeutet: Sie sind nicht von uns abhängig. Wenn Sie den Dienst beenden, gehören Ihre Daten und Ihr Server Ihnen. Kein Vendor-Lock-in, kein Datenverlust.' },
     { icon: '🤝', title: 'Einfachheit hat einen echten Wert', text: 'Wir glauben, dass die Zeit, die Sie für ein Setup aufwenden, besser irgendwo anders investiert ist. Deswegen übernehmen wir das — damit Sie vom ersten Tag an produktiv sind.' },
     { icon: '💬', title: 'Support auf Augenhöhe', text: 'Kein Ticket-System, kein Bot-Chat. Wir schreiben zurück — auf Deutsch, innerhalb von 24 Stunden. Wenn etwas nicht funktioniert, kümmern wir uns darum.' },

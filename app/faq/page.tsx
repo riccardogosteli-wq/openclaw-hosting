@@ -23,11 +23,11 @@ const faqs = [
   },
   {
     q: 'Was kostet OpenClaw Hosting?',
-    a: 'Es gibt drei Pläne: Starter (CHF 19/Mt. oder CHF 15/Mt. bei Jahresabo), Pro (CHF 34/Mt. oder CHF 27/Mt. jährlich) und Business (CHF 59/Mt. oder CHF 47/Mt. jährlich). Dazu kommt Ihr eigener API-Schlüssel direkt beim KI-Anbieter — typisch CHF 5–20/Mt. je nach Nutzung. Gesamtkosten: CHF 20–79/Mt. Alle Pläne sind monatlich kündbar.',
+    a: 'Es gibt drei Pläne: Starter (CHF 19/Mt. oder CHF 15/Mt. bei Jahresabo), Pro (CHF 34/Mt. oder CHF 27/Mt. bei Jahresabo) und Business (CHF 59/Mt. oder CHF 47/Mt. bei Jahresabo). Dazu kommt Ihr eigener API-Schlüssel direkt beim KI-Anbieter — typisch CHF 5–20/Mt. je nach Nutzung. Gesamtkosten: CHF 24–79/Mt. Alle Pläne sind monatlich kündbar.',
   },
   {
     q: 'Wo werden meine Daten gespeichert?',
-    a: 'Ausschliesslich auf Ihrem eigenen, privaten Server in der Schweiz — gehostet bei Infomaniak in Genf. Ihre Daten verlassen diesen Server nie. Keine Weitergabe an Dritte, keine Verarbeitung ausserhalb der Schweiz. Der Betrieb ist DSGVO- und nDSG-konform.',
+    a: 'Auf Ihrer eigenen privaten OpenClaw-Instanz in der Schweiz — gehostet bei Infomaniak in Genf. Zugangsdaten werden nicht in einem gemeinsamen Kundensystem gespeichert. Support- oder Wartungszugriff erfolgt nur, wenn er für Betrieb oder Hilfe nötig ist. Der Betrieb ist DSGVO- und nDSG-konform.',
   },
   {
     q: 'Brauche ich technische Kenntnisse?',
@@ -47,7 +47,7 @@ const faqs = [
   },
   {
     q: 'Wie sicher ist OpenClaw?',
-    a: 'Sehr sicher. Ihre API-Schlüssel und Bot-Token werden einmalig beim Onboarding übertragen und direkt auf Ihrem privaten Server abgelegt — wir haben danach keinen Zugriff. Alle Gespräche mit Ihrem Assistenten laufen direkt zwischen Telegram/Discord und Ihrem Server ab. Optional können Ende-zu-Ende-verschlüsselte Kanäle eingesetzt werden. Wir analysieren keine Nutzungsdaten und trainieren keine Modelle mit Ihren Daten.',
+    a: 'Ihre API-Schlüssel und Bot-Token werden beim Onboarding auf Ihrer privaten Instanz eingerichtet und nicht in einem separaten Kundendatenarchiv gespeichert. Gespräche laufen zwischen Telegram/Discord und Ihrer Instanz. Wir greifen nicht routinemässig auf Gespräche zu, verwenden Inhalte nicht für Modelltraining und nutzen technische Betriebslogs nur für Stabilität, Support und Sicherheit.',
   },
   {
     q: 'Kann ich mehrere Geräte verbinden?',

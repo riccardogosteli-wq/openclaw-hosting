@@ -21,7 +21,7 @@ const de = {
   n1: '✓ Kein Technikwissen nötig',
   n2: '✓ Jederzeit kündbar',
   n3: '✓ Assistent live in ~30 Min.',
-  trustBanner: '🔒 Ihre Zugangsdaten und persönlichen Daten verlassen nie unsere Infrastruktur — alles wird ausschliesslich auf Ihrem eigenen, privaten Server in der Schweiz gespeichert.',
+  trustBanner: '🔒 Ihre Zugangsdaten und persönlichen Daten werden auf Ihrer eigenen privaten OpenClaw-Instanz in der Schweiz gespeichert — nicht in einem gemeinsamen Kundensystem.',
 
   chatMessages: [
     { bot: true, text: 'Guten Morgen! Hier Ihr Tagesbriefing:' },
@@ -89,7 +89,7 @@ const de = {
     {
       icon: '🔑',
       title: 'Zugangsdaten gehören nur Ihnen',
-      desc: 'Ihre API-Schlüssel, Bot-Token und Verbindungsdaten werden beim Onboarding einmalig übertragen und direkt auf Ihrem privaten Server abgelegt. Wir sehen sie nicht, speichern sie nicht und haben danach keinen Zugriff darauf.',
+      desc: 'Ihre API-Schlüssel, Bot-Token und Verbindungsdaten werden beim Onboarding auf Ihrer privaten Instanz eingerichtet. Sie werden nicht in einem separaten Kundendatenarchiv gespeichert; Support- oder Wartungszugriff erfolgt nur, wenn er für Betrieb oder Hilfe nötig ist.',
     },
     {
       icon: '🖥️',
@@ -104,12 +104,12 @@ const de = {
     {
       icon: '🔒',
       title: 'Nachrichten bleiben privat',
-      desc: 'Wir haben technisch keinen Zugriff auf Ihre Gespräche. Alle Unterhaltungen mit Ihrem Assistenten laufen direkt zwischen Ihrem Messaging-Kanal und Ihrem eigenen Server ab.',
+      desc: 'Ihre Unterhaltungen laufen zwischen Ihrem Messaging-Kanal und Ihrer privaten Instanz. Wir greifen nicht routinemässig auf Gespräche zu und verwenden Ihre Inhalte weder für Tracking noch für Modelltraining.',
     },
     {
       icon: '👁️',
       title: 'Kein Tracking, kein Training',
-      desc: 'Wir analysieren Ihre Nutzung nicht und trainieren keine KI-Modelle mit Ihren Daten. Was auf Ihrem Server passiert, bleibt auf Ihrem Server.',
+      desc: 'Wir trainieren keine KI-Modelle mit Ihren Daten und betreiben kein personenbezogenes Nutzungsprofiling. Technische Betriebslogs dienen ausschliesslich Stabilität, Support und Sicherheit.',
     },
     {
       icon: '🚫',
@@ -156,7 +156,7 @@ const de = {
   faqs: [
     ['Brauche ich technisches Wissen?', 'Kein bisschen. Sie füllen ein Formular aus — wir erledigen den Rest. Kein Terminal, kein SSH, keine Konfigurationsdateien. Das Onboarding dauert etwa 5–10 Minuten, und wir begleiten Sie dabei.'],
     ['Was ist ein API-Schlüssel?', 'Ihr Assistent braucht ein KI-Modell im Hintergrund — Claude, GPT-4 oder Gemini. Den Schlüssel dafür erstellen Sie gratis direkt beim Anbieter. Die Nutzungskosten (~CHF 5–20/Mt.) werden dort abgerechnet und haben nichts mit unserem Hosting-Preis zu tun.'],
-    ['Wo werden meine Daten gespeichert?', 'Ausschliesslich auf Ihrem eigenen, privaten Server in der Schweiz — DSGVO- und nDSG-konform. Ihre Zugangsdaten und Gesprächsdaten verlassen diesen Server nie.'],
+    ['Wo werden meine Daten gespeichert?', 'Auf Ihrer eigenen privaten OpenClaw-Instanz in der Schweiz — DSGVO- und nDSG-konform. Zugangsdaten werden nicht in einem gemeinsamen Kundensystem gespeichert; Supportzugriff erfolgt nur bei Betrieb, Wartung oder Hilfe.'],
     ['Welche KI-Modelle werden unterstützt?', 'Sie können zwischen Claude (Anthropic), GPT-4 (OpenAI) und Gemini (Google) wählen — und jederzeit wechseln. Für den Einstieg empfehlen wir Claude Haiku (~CHF 5/Mt.), für anspruchsvollere Aufgaben Claude Sonnet (~CHF 15–20/Mt.).'],
     ['Kann ich jederzeit kündigen?', 'Ja — jederzeit. Die aktuelle Aboperiode läuft bis zum Ende aus, danach wird nichts mehr belastet. Keine versteckten Gebühren.'],
     ['Was genau ist OpenClaw?', 'OpenClaw ist eine quelloffene KI-Plattform, die auf Ihrem eigenen Server läuft und sich mit Telegram & Discord verbindet. Sie ist modular erweiterbar und wird aktiv weiterentwickelt. Wir übernehmen das Hosting — Sie nutzen sie einfach.'],
@@ -192,7 +192,7 @@ const en: typeof de = {
   n1: '✓ No technical skills needed',
   n2: '✓ Cancel anytime',
   n3: '✓ Assistant live in ~30 min',
-  trustBanner: '🔒 Your credentials and personal data never leave your infrastructure — everything is stored exclusively on your own private server in Switzerland.',
+  trustBanner: '🔒 Your credentials and personal data are stored on your own private OpenClaw instance in Switzerland — not in a shared customer system.',
 
   chatMessages: [
     { bot: true, text: 'Good morning! Here\'s your daily briefing:' },
@@ -260,7 +260,7 @@ const en: typeof de = {
     {
       icon: '🔑',
       title: 'Your credentials belong to you',
-      desc: 'API keys, bot tokens and connection details are transferred once during onboarding and stored directly on your private server. We never see them, never store them, and have no access afterwards.',
+      desc: 'API keys, bot tokens and connection details are configured on your private instance during onboarding. They are not kept in a separate customer-data archive; support or maintenance access is used only when needed for operations or help.',
     },
     {
       icon: '🖥️',
@@ -275,12 +275,12 @@ const en: typeof de = {
     {
       icon: '🔒',
       title: 'Your conversations stay private',
-      desc: 'We have no technical access to your messages. All conversations with your assistant flow directly between your messaging channel and your own server.',
+      desc: 'Your conversations run between your messaging channel and your private instance. We do not routinely access conversations and do not use your content for tracking or model training.',
     },
     {
       icon: '👁️',
       title: 'No tracking, no training',
-      desc: 'We don\'t analyse your usage or train AI models on your data. What happens on your server stays on your server.',
+      desc: 'We do not train AI models with your data and do not build personal usage profiles. Technical operational logs are used only for stability, support and security.',
     },
     {
       icon: '🚫',
@@ -290,7 +290,7 @@ const en: typeof de = {
   ],
 
   pLabel: 'Pricing', pH2: 'Simple. Transparent. Fair.',
-  pNote: '⚠️ What you pay us: running your private server in Switzerland (CHF 19–59/mo). What you pay separately: your own API key directly to your AI provider (approx. CHF 5–20/mo depending on usage). These costs go directly to Anthropic, OpenAI or Google — we never see that data.',
+  pNote: '⚠️ What you pay us: running your private server in Switzerland (CHF 19–59/mo). What you pay separately: your own API key directly to your AI provider (approx. CHF 5–20/mo depending on usage). These costs are billed directly by Anthropic, OpenAI or Google.',
 
   p1n: 'Starter', p1d: 'For getting started and everyday personal use',
   p1p: '19', p1a: '→ CHF 180/year (save CHF 48)',
@@ -327,7 +327,7 @@ const en: typeof de = {
   faqs: [
     ['Do I need technical skills?', 'Not at all. You fill in a form — we handle the rest. No terminal, no SSH, no config files. The onboarding takes about 5 minutes and we guide you through every step.'],
     ['What is an API key?', 'Your assistant needs an AI model running in the background — Claude, GPT-4, or Gemini. You create that key directly with the provider for free. Usage costs (~CHF 5–20/mo) are billed by them separately and have nothing to do with our hosting fee.'],
-    ['Where is my data stored?', 'Exclusively on your own private server in Switzerland — fully GDPR and nDSG compliant. Your credentials and conversation data never leave that server.'],
+    ['Where is my data stored?', 'On your own private OpenClaw instance in Switzerland — GDPR and nDSG compliant. Credentials are not stored in a shared customer system; support access is used only for operations, maintenance or help.'],
     ['Which AI models are supported?', 'You can choose between Claude (Anthropic), GPT-4 (OpenAI) and Gemini (Google) — and switch anytime. We recommend Claude Haiku for getting started (~CHF 5/mo) or Claude Sonnet for more demanding tasks (~CHF 15–20/mo).'],
     ['Can I cancel anytime?', 'Yes — anytime. Your current billing period runs to the end, then nothing more is charged. No hidden fees.'],
     ['What exactly is OpenClaw?', 'OpenClaw is an open-source AI platform that runs on your own server and connects to Telegram & Discord. It\'s modular, actively developed, and free to use. We take care of the hosting — you just use it.'],
@@ -762,7 +762,7 @@ export default function Home() {
             "mainEntity": [
               { "@type": "Question", "name": "Brauche ich technisches Wissen?", "acceptedAnswer": { "@type": "Answer", "text": "Kein bisschen. Sie füllen ein Formular aus — wir erledigen den Rest. Kein Terminal, kein SSH, keine Konfigurationsdateien. Das Onboarding dauert etwa 5–10 Minuten." } },
               { "@type": "Question", "name": "Was ist ein API-Schlüssel?", "acceptedAnswer": { "@type": "Answer", "text": "Ihr Assistent braucht ein KI-Modell im Hintergrund — Claude, GPT-4 oder Gemini. Den Schlüssel dafür erstellen Sie gratis direkt beim Anbieter. Die Nutzungskosten (~CHF 5–20/Mt.) werden dort abgerechnet." } },
-              { "@type": "Question", "name": "Wo werden meine Daten gespeichert?", "acceptedAnswer": { "@type": "Answer", "text": "Ausschliesslich auf Ihrem eigenen, privaten Server in der Schweiz — DSGVO- und nDSG-konform. Ihre Zugangsdaten und Gesprächsdaten verlassen diesen Server nie." } },
+              { "@type": "Question", "name": "Wo werden meine Daten gespeichert?", "acceptedAnswer": { "@type": "Answer", "text": "Auf Ihrer eigenen privaten OpenClaw-Instanz in der Schweiz — DSGVO- und nDSG-konform. Zugangsdaten werden nicht in einem gemeinsamen Kundensystem gespeichert; Supportzugriff erfolgt nur bei Betrieb, Wartung oder Hilfe." } },
               { "@type": "Question", "name": "Welche KI-Modelle werden unterstützt?", "acceptedAnswer": { "@type": "Answer", "text": "Sie können zwischen Claude (Anthropic), GPT-4 (OpenAI) und Gemini (Google) wählen — und jederzeit wechseln. Für den Einstieg empfehlen wir Claude Haiku (~CHF 5/Mt.)." } },
               { "@type": "Question", "name": "Kann ich jederzeit kündigen?", "acceptedAnswer": { "@type": "Answer", "text": "Ja — jederzeit. Die aktuelle Aboperiode läuft bis zum Ende aus, danach wird nichts mehr belastet. Keine versteckten Gebühren." } },
               { "@type": "Question", "name": "Was genau ist OpenClaw?", "acceptedAnswer": { "@type": "Answer", "text": "OpenClaw ist eine quelloffene KI-Plattform, die auf Ihrem eigenen Server läuft und sich mit Telegram & Discord verbindet. Wir übernehmen das Hosting — Sie nutzen sie einfach." } },

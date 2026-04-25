@@ -69,9 +69,9 @@ export default function AgbPage() {
         <Section title={de ? '4. Preise und Abrechnung' : '4. Pricing and Billing'}>
           <P>{de ? 'Alle Preise in CHF inkl. MwSt. (falls anwendbar):' : 'All prices in CHF incl. VAT (if applicable):'}</P>
           <UL items={[
-            `Starter: CHF 19/${de?'Monat':'month'} · CHF 180/${de?'Jahr':'year'}`,
-            `Pro: CHF 34/${de?'Monat':'month'} · CHF 320/${de?'Jahr':'year'}`,
-            `Business: CHF 59/${de?'Monat':'month'} · CHF 560/${de?'Jahr':'year'}`,
+            `Starter: CHF 19/${de?'Monat':'month'} · CHF 180/${de?'Jahr':'year'} (${de?'entspricht CHF 15/Monat bei Jahreszahlung':'equals CHF 15/month with annual billing'})`,
+            `Pro: CHF 34/${de?'Monat':'month'} · CHF 320/${de?'Jahr':'year'} (${de?'entspricht CHF 27/Monat bei Jahreszahlung':'equals CHF 27/month with annual billing'})`,
+            `Business: CHF 59/${de?'Monat':'month'} · CHF 560/${de?'Jahr':'year'} (${de?'entspricht CHF 47/Monat bei Jahreszahlung':'equals CHF 47/month with annual billing'})`,
           ]} />
           <P>{de ? 'Monatliches Abo: Abrechnung monatlich im Voraus, automatische Verlängerung. Jahresabo: Abrechnung im Voraus, automatische Verlängerung um ein weiteres Jahr.' : 'Monthly subscription: billed monthly in advance, auto-renews. Annual subscription: billed upfront, auto-renews for another year.'}</P>
           <P>{de ? 'Zahlungen werden via Stripe (TWINT, Visa, Mastercard) sicher verarbeitet.' : 'Payments are processed securely via Stripe (TWINT, Visa, Mastercard).'}</P>
@@ -106,7 +106,7 @@ export default function AgbPage() {
         </Section>
 
         <Section title={de ? '8. SSH-Serverzugang' : '8. SSH Server Access'}>
-          <P>{de ? 'Jeder Kunde erhält nach Einrichtung einen persönlichen SSH-Schlüssel per E-Mail. Der Anbieter behält sich jederzeit einen administrativen SSH-Zugang für Wartungsarbeiten vor.' : 'Each Customer receives a personal SSH key by email after setup. The provider retains administrative SSH access at all times for maintenance purposes.'}</P>
+          <P>{de ? 'Jeder Kunde erhält nach Einrichtung einen persönlichen SSH-Zugang. Der Anbieter behält einen administrativen Wartungszugang, um Betrieb, Updates, Backups, Sicherheit und Support sicherzustellen. Ein Zugriff auf Kundendaten oder Gespräche erfolgt nicht routinemässig, sondern nur soweit dies für Betrieb, Wartung oder Support erforderlich ist.' : 'Each Customer receives personal SSH access after setup. The provider retains administrative maintenance access to ensure operations, updates, backups, security and support. Customer data or conversations are not accessed routinely, but only where required for operations, maintenance or support.'}</P>
         </Section>
 
         <Section title={de ? '9. Verfügbarkeit' : '9. Availability'}>
@@ -114,7 +114,7 @@ export default function AgbPage() {
         </Section>
 
         <Section title={de ? '10. Datenschutz' : '10. Privacy'}>
-          <P>{de ? 'Die Verarbeitung personenbezogener Daten erfolgt gemäss unserer Datenschutzerklärung sowie dem Schweizer DSG/nDSG und der DSGVO. API-Schlüssel und Tokens des Kunden werden ausschliesslich auf dem privaten Server des Kunden gespeichert.' : 'Personal data is processed in accordance with our Privacy Policy and Swiss DSG/nDSG and GDPR. API keys and tokens are stored exclusively on the Customer\'s private server.'}</P>
+          <P>{de ? 'Die Verarbeitung personenbezogener Daten erfolgt gemäss unserer Datenschutzerklärung sowie dem Schweizer DSG/nDSG und der DSGVO. API-Schlüssel und Tokens des Kunden werden auf der privaten Kundeninstanz gespeichert und nicht in einem separaten Kundendatenarchiv des Anbieters geführt.' : 'Personal data is processed in accordance with our Privacy Policy and Swiss DSG/nDSG and GDPR. Customer API keys and tokens are stored on the private customer instance and are not kept in a separate customer-data archive by the provider.'}</P>
         </Section>
 
         <Section title={de ? '11. Haftungsbeschränkung' : '11. Limitation of Liability'}>

@@ -76,11 +76,11 @@ const faqItems = [
   },
   {
     q: 'Wie sicher sind meine Geschäftsdaten?',
-    a: 'Sehr sicher. Ihr AI-Agent läuft auf einem privaten, isolierten Server in der Schweiz — ausschliesslich für Sie. Ihre Daten verlassen nie diesen Server, werden nicht für KI-Training verwendet und sind DSGVO- sowie nDSG-konform gespeichert. Sie haben die vollständige Kontrolle.',
+    a: 'Ihr AI-Agent läuft auf einer privaten, isolierten OpenClaw-Instanz in der Schweiz. Zugangsdaten werden nicht in einem gemeinsamen Kundensystem gespeichert; Support- oder Wartungszugriff erfolgt nur, wenn er für Betrieb oder Hilfe nötig ist. Inhalte werden nicht für KI-Training verwendet und sind DSGVO- sowie nDSG-konform gespeichert.',
   },
   {
     q: 'Was kostet ein AI-Agent pro Monat wirklich?',
-    a: 'OpenClaw Hosting kostet ab CHF 15/Monat für den Server-Betrieb in der Schweiz. Dazu kommt Ihr eigener API-Schlüssel bei Anthropic, OpenAI oder Google — typisch CHF 5–20/Monat je nach Nutzungsintensität. Gesamtkosten: CHF 20–79/Monat. Im Vergleich zu 1–2 Stunden Zeitersparnis täglich ist das ein ausserordentlich gutes Preis-Leistungs-Verhältnis.',
+    a: 'OpenClaw Hosting kostet ab CHF 15/Monat bei Jahreszahlung bzw. ab CHF 19/Monat bei monatlicher Zahlung für den Server-Betrieb in der Schweiz. Dazu kommt Ihr eigener API-Schlüssel bei Anthropic, OpenAI oder Google — typisch CHF 5–20/Monat je nach Nutzungsintensität. Gesamtkosten: typischerweise CHF 24–79/Monat. Im Vergleich zu 1–2 Stunden Zeitersparnis täglich ist das ein ausserordentlich gutes Preis-Leistungs-Verhältnis.',
   },
 ]
 
