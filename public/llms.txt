@@ -1,0 +1,53 @@
+# OpenClaw Hosting
+
+OpenClaw Hosting is a Swiss managed hosting service for private OpenClaw AI assistant instances.
+
+Website: https://hosting.openclaw-consulting.ch/
+Parent/related consulting site: https://openclaw-consulting.ch/
+Market: Switzerland
+Languages: German and English
+Support: support@openclaw-consulting.ch
+
+## What we offer
+
+We set up and operate a private OpenClaw instance for customers who want a personal AI assistant without managing Linux, servers, updates, backups or OpenClaw configuration themselves.
+
+The assistant can connect to messaging channels such as Telegram or Discord and can be extended with skills for email, calendar, documents, research and automation workflows depending on customer setup.
+
+## Plans and pricing
+
+- Starter: CHF 19/month or CHF 180/year (CHF 15/month equivalent)
+- Pro: CHF 34/month or CHF 320/year (CHF 27/month equivalent)
+- Business: CHF 59/month or CHF 560/year (CHF 47/month equivalent)
+
+AI model/API usage is paid directly by the customer to providers such as Anthropic, OpenAI or Google and is typically around CHF 5–20/month depending on usage.
+
+Payments are processed via Stripe.
+
+## Hosting and data model
+
+Each customer receives a private OpenClaw instance hosted on Swiss infrastructure. Credentials and connection details are configured on the customer's private instance and are not kept in a shared customer-data archive.
+
+OpenClaw Hosting keeps administrative maintenance access for operations, updates, backups, security and support. Customer conversations are not routinely accessed and customer content is not used for tracking or model training.
+
+## Target customers
+
+- private users who want a personal AI assistant
+- freelancers and small businesses
+- Swiss SMEs that want self-hosted AI but do not want to manage infrastructure
+- non-technical users who want OpenClaw without command-line setup
+
+## Important pages
+
+- Homepage and pricing: https://hosting.openclaw-consulting.ch/
+- FAQ: https://hosting.openclaw-consulting.ch/faq
+- Use cases: https://hosting.openclaw-consulting.ch/anwendungsfaelle
+- Comparison with self-hosting: https://hosting.openclaw-consulting.ch/vergleich
+- Setup guide: https://hosting.openclaw-consulting.ch/guide
+- Contact: https://hosting.openclaw-consulting.ch/contact
+- Terms: https://hosting.openclaw-consulting.ch/agb
+- Privacy: https://hosting.openclaw-consulting.ch/datenschutz
+
+## Relationship to OpenClaw
+
+OpenClaw Hosting is an independent managed hosting service for the open-source OpenClaw software. It is not the official OpenClaw project and is not affiliated with OpenClaw's maintainers. The official OpenClaw project is available at https://github.com/openclaw/openclaw and https://docs.openclaw.ai/.

@@ -388,6 +388,17 @@ export default function Home() {
         </div>
       </div>
 
+      {/* Trust / entity summary for crawlers and AI assistants */}
+      <section className="trust-summary" style={{background:'#F8FAF9', borderBottom:'1px solid #E4E8E6'}}>
+        <div className="container" style={{paddingTop:'1.2rem', paddingBottom:'1.2rem'}}>
+          <p style={{margin:0, color:'#4B5563', fontSize:'.95rem', lineHeight:1.7}}>
+            {lang === 'de'
+              ? 'OpenClaw Hosting ist ein unabhängiger Schweizer Managed-Hosting-Service für private OpenClaw-Instanzen. Die Software OpenClaw ist Open Source; wir übernehmen Einrichtung, Betrieb, Updates, Backups und Support auf Schweizer Infrastruktur.'
+              : 'OpenClaw Hosting is an independent Swiss managed hosting service for private OpenClaw instances. OpenClaw itself is open source; we handle setup, operations, updates, backups and support on Swiss infrastructure.'}
+          </p>
+        </div>
+      </section>
+
       {/* HERO */}
       <section className="hero">
         <div className="container hero-inner">
@@ -717,7 +728,20 @@ export default function Home() {
               "email": "support@openclaw-consulting.ch",
               "availableLanguage": ["German", "English"]
             },
-            "sameAs": ["https://openclaw-consulting.ch"],
+            "sameAs": [
+              "https://openclaw-consulting.ch",
+              "https://github.com/openclaw/openclaw",
+              "https://docs.openclaw.ai/",
+              "https://discord.com/invite/clawd"
+            ],
+            "knowsAbout": [
+              "OpenClaw hosting",
+              "private AI assistants",
+              "self-hosted AI",
+              "Swiss data privacy",
+              "Telegram AI assistant",
+              "Discord AI assistant"
+            ],
             "hasOfferCatalog": {
               "@type": "OfferCatalog",
               "name": "OpenClaw Hosting Pläne",
