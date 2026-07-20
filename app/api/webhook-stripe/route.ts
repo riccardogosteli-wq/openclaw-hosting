@@ -6,9 +6,20 @@ const FROM_EMAIL = 'support@openclaw-consulting.ch'
 const NOTIFY_EMAIL = 'riccardogosteli@gmail.com'
 const PROVISION_API_URL = process.env.PROVISION_API_URL || 'http://195.15.202.192:8001'
 const PROVISION_SECRET = process.env.PROVISION_SECRET || ''
+const HOSTING_SITE = 'openclaw-hosting'
+const HOSTING_PLANS = ['starter', 'pro', 'business'] as const
+type HostingPlan = typeof HOSTING_PLANS[number]
 
 function getStripe() {
   return new Stripe(process.env.STRIPE_SECRET_KEY!)
+}
+
+function isHostingPlan(plan: string): plan is HostingPlan {
+  return (HOSTING_PLANS as readonly string[]).includes(plan)
+}
+
+function planLabel(plan: HostingPlan) {
+  return plan === 'starter' ? 'Starter' : plan === 'pro' ? 'Pro' : 'Business'
 }
 
 async function sendEmail(to: string, subject: string, html: string) {
@@ -46,12 +57,22 @@ export async function POST(req: NextRequest) {
     const session = event.data.object as Stripe.Checkout.Session
     if (session.mode !== 'subscription') return NextResponse.json({ ok: true })
 
-    const plan = session.metadata?.plan || 'starter'
+    if (session.metadata?.site !== HOSTING_SITE) {
+      console.log('Ignoring non-hosting checkout session:', session.id, session.metadata?.site || 'missing-site')
+      return NextResponse.json({ ok: true })
+    }
+
+    const plan = session.metadata?.plan || ''
+    if (!isHostingPlan(plan)) {
+      console.error('Ignoring checkout session with invalid OpenClaw Hosting plan:', session.id, plan || 'missing-plan')
+      return NextResponse.json({ ok: true })
+    }
+
     const billing = session.metadata?.billing || 'monthly'
     const email = session.customer_details?.email || ''
     const name = session.customer_details?.name || email
 
-    const planName = plan === 'starter' ? 'Starter' : plan === 'pro' ? 'Pro' : 'Business'
+    const planName = planLabel(plan)
     const planPrice = plan === 'starter' ? (billing === 'annual' ? 'CHF 180/Jahr' : 'CHF 19/Mt.') :
                       plan === 'pro' ? (billing === 'annual' ? 'CHF 320/Jahr' : 'CHF 34/Mt.') :
                       billing === 'annual' ? 'CHF 560/Jahr' : 'CHF 59/Mt.'
@@ -98,8 +119,18 @@ export async function POST(req: NextRequest) {
   // ── Subscription cancelled ───────────────────────────────────────────────
   if (event.type === 'customer.subscription.deleted') {
     const subscription = event.data.object as Stripe.Subscription
-    const plan = subscription.metadata?.plan || 'unknown'
-    const planName = plan === 'starter' ? 'Starter' : plan === 'pro' ? 'Pro' : 'Business'
+    if (subscription.metadata?.site !== HOSTING_SITE) {
+      console.log('Ignoring non-hosting subscription cancellation:', subscription.id, subscription.metadata?.site || 'missing-site')
+      return NextResponse.json({ ok: true })
+    }
+
+    const plan = subscription.metadata?.plan || ''
+    if (!isHostingPlan(plan)) {
+      console.error('Ignoring subscription cancellation with invalid OpenClaw Hosting plan:', subscription.id, plan || 'missing-plan')
+      return NextResponse.json({ ok: true })
+    }
+
+    const planName = planLabel(plan)
 
     // Try to get customer email
     let email = ''
