@@ -9,6 +9,19 @@ const PROVISION_SECRET = process.env.PROVISION_SECRET || ''
 const HOSTING_SITE = 'openclaw-hosting'
 const HOSTING_PLANS = ['starter', 'pro', 'business'] as const
 type HostingPlan = typeof HOSTING_PLANS[number]
+const DOCUMENT_SITES = [
+  { host: 'kmu-dokumente.ch', label: 'KMU Dokumente' },
+  { host: 'datenschutzerklaerung-online-erstellen.ch', label: 'Datenschutzerklärung Online' },
+] as const
+const DOCUMENT_NAMES: Record<string, string> = {
+  arbeitsvertrag: 'Arbeitsvertrag',
+  personalreglement: 'Personalreglement',
+  kuendigung: 'Kündigung',
+  arbeitszeugnis: 'Arbeitszeugnis',
+  aufhebungsvertrag: 'Aufhebungsvertrag',
+  praktikumsvertrag: 'Praktikumsvertrag',
+  'bundle-complete': 'Komplettpaket (alle 6 Dokumente)',
+}
 
 function getStripe() {
   return new Stripe(process.env.STRIPE_SECRET_KEY!)
@@ -22,6 +35,49 @@ function planLabel(plan: HostingPlan) {
   return plan === 'starter' ? 'Starter' : plan === 'pro' ? 'Pro' : 'Business'
 }
 
+function escapeHtml(value: string) {
+  return value
+    .replaceAll('&', '&amp;')
+    .replaceAll('<', '&lt;')
+    .replaceAll('>', '&gt;')
+    .replaceAll('"', '&quot;')
+    .replaceAll("'", '&#039;')
+}
+
+function formatAmount(amount: number | null, currency: string | null) {
+  if (amount == null || !currency) return 'Betrag unbekannt'
+  return new Intl.NumberFormat('de-CH', {
+    style: 'currency',
+    currency: currency.toUpperCase(),
+  }).format(amount / 100)
+}
+
+function formatZurichDate(timestamp: number) {
+  return new Intl.DateTimeFormat('de-CH', {
+    dateStyle: 'medium',
+    timeStyle: 'short',
+    timeZone: 'Europe/Zurich',
+  }).format(new Date(timestamp * 1000))
+}
+
+function getDocumentSite(session: Stripe.Checkout.Session) {
+  const haystack = [
+    session.metadata?.site,
+    session.success_url,
+    session.cancel_url,
+  ].filter(Boolean).join(' ').toLowerCase()
+
+  return DOCUMENT_SITES.find(site => haystack.includes(site.host))
+}
+
+function documentName(session: Stripe.Checkout.Session, lineItems: Stripe.LineItem[]) {
+  const docType = session.metadata?.docType || ''
+  if (DOCUMENT_NAMES[docType]) return DOCUMENT_NAMES[docType]
+
+  const descriptions = lineItems.map(item => item.description).filter(Boolean)
+  return descriptions.length ? descriptions.join(', ') : docType || 'Unbekanntes Dokument'
+}
+
 async function sendEmail(to: string, subject: string, html: string) {
   try {
     await fetch('https://api.resend.com/emails', {
@@ -31,6 +87,43 @@ async function sendEmail(to: string, subject: string, html: string) {
     })
   } catch (e) {
     console.error('Email send error:', e)
+  }
+}
+
+async function notifyDocumentOrder(session: Stripe.Checkout.Session) {
+  const site = getDocumentSite(session)
+  if (!site || session.payment_status !== 'paid') return
+
+  try {
+    const stripe = getStripe()
+    const lineItems = await stripe.checkout.sessions.listLineItems(session.id, { limit: 10 })
+    const paymentIntentId = typeof session.payment_intent === 'string' ? session.payment_intent : ''
+    const amount = formatAmount(session.amount_total, session.currency)
+    const customerEmail = session.customer_email || session.customer_details?.email || ''
+    const customerName = session.customer_details?.name || customerEmail || 'Unbekannt'
+    const doc = documentName(session, lineItems.data)
+    const stripeUrl = paymentIntentId
+      ? `https://dashboard.stripe.com/payments/${paymentIntentId}`
+      : `https://dashboard.stripe.com/checkout/sessions/${session.id}`
+
+    await sendEmail(NOTIFY_EMAIL,
+      `🆕 Neue Dokument-Zahlung: ${site.label} - ${amount}`,
+      `<div style="font-family:sans-serif">
+        <h2>Neue Dokument-Zahlung</h2>
+        <table style="border-collapse:collapse;width:100%;font-size:14px">
+          <tr><td style="padding:8px;background:#f7faf9;font-weight:600">Site</td><td style="padding:8px;border-bottom:1px solid #e4ede9">${escapeHtml(site.label)}</td></tr>
+          <tr><td style="padding:8px;background:#f7faf9;font-weight:600">Dokument</td><td style="padding:8px;border-bottom:1px solid #e4ede9"><strong>${escapeHtml(doc)}</strong></td></tr>
+          <tr><td style="padding:8px;background:#f7faf9;font-weight:600">Betrag</td><td style="padding:8px;border-bottom:1px solid #e4ede9">${escapeHtml(amount)}</td></tr>
+          <tr><td style="padding:8px;background:#f7faf9;font-weight:600">Name</td><td style="padding:8px;border-bottom:1px solid #e4ede9">${escapeHtml(customerName)}</td></tr>
+          <tr><td style="padding:8px;background:#f7faf9;font-weight:600">E-Mail</td><td style="padding:8px;border-bottom:1px solid #e4ede9">${escapeHtml(customerEmail || '-')}</td></tr>
+          <tr><td style="padding:8px;background:#f7faf9;font-weight:600">Zeit</td><td style="padding:8px;border-bottom:1px solid #e4ede9">${escapeHtml(formatZurichDate(session.created))}</td></tr>
+        </table>
+        <p style="margin-top:16px;font-size:13px">Stripe Session: ${escapeHtml(session.id)}</p>
+        <p><a href="${stripeUrl}" style="display:inline-block;background:#12A878;color:#fff;padding:8px 16px;border-radius:8px;text-decoration:none;font-weight:700">In Stripe öffnen</a></p>
+      </div>`
+    )
+  } catch (e) {
+    console.error('Document order notification failed:', session.id, e)
   }
 }
 
@@ -55,6 +148,11 @@ export async function POST(req: NextRequest) {
   // ── Subscription activated ──────────────────────────────────────────────
   if (event.type === 'checkout.session.completed') {
     const session = event.data.object as Stripe.Checkout.Session
+    if (session.mode === 'payment') {
+      await notifyDocumentOrder(session)
+      return NextResponse.json({ ok: true })
+    }
+
     if (session.mode !== 'subscription') return NextResponse.json({ ok: true })
 
     if (session.metadata?.site !== HOSTING_SITE) {
