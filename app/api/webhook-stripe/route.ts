@@ -10,8 +10,21 @@ const HOSTING_SITE = 'openclaw-hosting'
 const HOSTING_PLANS = ['starter', 'pro', 'business'] as const
 type HostingPlan = typeof HOSTING_PLANS[number]
 const DOCUMENT_SITES = [
-  { host: 'kmu-dokumente.ch', label: 'KMU Dokumente' },
-  { host: 'datenschutzerklaerung-online-erstellen.ch', label: 'Datenschutzerklärung Online' },
+  {
+    host: 'kmu-dokumente.ch',
+    label: 'KMU Dokumente',
+    email: 'support@kmu-dokumente.ch',
+  },
+  {
+    host: 'datenschutzerklaerung-online-erstellen.ch',
+    label: 'Datenschutzerklärung Online',
+    email: 'support@datenschutzerklaerung-online-erstellen.ch',
+  },
+  {
+    host: 'mietformulare-online.ch',
+    label: 'Mietformulare Online',
+    email: 'support@mietformulare-online.ch',
+  },
 ] as const
 const DOCUMENT_NAMES: Record<string, string> = {
   arbeitsvertrag: 'Arbeitsvertrag',
@@ -78,12 +91,12 @@ function documentName(session: Stripe.Checkout.Session, lineItems: Stripe.LineIt
   return descriptions.length ? descriptions.join(', ') : docType || 'Unbekanntes Dokument'
 }
 
-async function sendEmail(to: string, subject: string, html: string) {
+async function sendEmail(to: string, subject: string, html: string, from = FROM_EMAIL) {
   try {
     await fetch('https://api.resend.com/emails', {
       method: 'POST',
       headers: { 'Authorization': `Bearer ${RESEND_API_KEY}`, 'Content-Type': 'application/json' },
-      body: JSON.stringify({ from: FROM_EMAIL, to, subject, html }),
+      body: JSON.stringify({ from, to, subject, html }),
     })
   } catch (e) {
     console.error('Email send error:', e)
@@ -106,7 +119,7 @@ async function notifyDocumentOrder(session: Stripe.Checkout.Session) {
       ? `https://dashboard.stripe.com/payments/${paymentIntentId}`
       : `https://dashboard.stripe.com/checkout/sessions/${session.id}`
 
-    await sendEmail(NOTIFY_EMAIL,
+    await sendEmail(site.email,
       `🆕 Neue Dokument-Zahlung: ${site.label} - ${amount}`,
       `<div style="font-family:sans-serif">
         <h2>Neue Dokument-Zahlung</h2>
@@ -120,7 +133,8 @@ async function notifyDocumentOrder(session: Stripe.Checkout.Session) {
         </table>
         <p style="margin-top:16px;font-size:13px">Stripe Session: ${escapeHtml(session.id)}</p>
         <p><a href="${stripeUrl}" style="display:inline-block;background:#12A878;color:#fff;padding:8px 16px;border-radius:8px;text-decoration:none;font-weight:700">In Stripe öffnen</a></p>
-      </div>`
+      </div>`,
+      site.email
     )
   } catch (e) {
     console.error('Document order notification failed:', session.id, e)
