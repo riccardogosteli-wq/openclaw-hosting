@@ -36,9 +36,9 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       {
-        source: '/preise',
-        destination: '/#pricing',
-        permanent: true,
+        source: '/:path*',
+        destination: 'https://openclaw-consulting.ch',
+        statusCode: 301,
       },
     ]
   },
